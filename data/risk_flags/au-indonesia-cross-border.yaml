@@ -1,0 +1,68 @@
+# au-indonesia-cross-border risk flags. Fields: id, topic, description, citations, skills.
+# The existing residency flags RES-003 (120 days confused with 183) and RES-004 (offset limit) still apply.
+risk_flags:
+  - id: IDN-001
+    topic: Rolling 12-month window not tested
+    description: The days limits in Arts 14 and 15 apply to any period of 12 months, not the income year, and count physical presence including part days, weekends and holidays. A person under the limit in each income year can be over it in a window that straddles two. If the presence exemption fails, all remuneration for the Indonesian work can be taxed there, not only the days above the limit.
+    citations: ["Australia-Indonesia DTA Arts 14(1)(b), 15(1), 15(2)(a)", "OECD Model Commentary on Art 15 para 5 (interpretive aid; TR 2001/13)"]
+    skills: [au-indonesia-cross-border, residency-cross-border]
+  - id: IDN-002
+    topic: Indonesian employer fails the exemption from day one
+    description: The Art 15(2) exemption needs all four conditions. An employer resident in Indonesia (for example a PT) fails the employer condition even for a few days, and so does remuneration borne by an Indonesian permanent establishment. Presence under the days limit does not help.
+    citations: ["Australia-Indonesia DTA Art 15(2)(b), (c)"]
+    skills: [au-indonesia-cross-border]
+  - id: IDN-003
+    topic: Service permanent establishment through staff in Indonesia
+    description: Art 5(2)(j) can create a permanent establishment with no fixed place of business when an enterprise furnishes services in Indonesia through employees or other personnel for the same or a connected project over the treaty days limit in any 12 months. The treaty does not define how days are counted (enterprise days, or person days), and the two methods can give opposite answers.
+    citations: ["Australia-Indonesia DTA Art 5(2)(j)", "OECD Model Commentary on Art 5 paras 160-163 (interpretive aid)"]
+    skills: [au-indonesia-cross-border]
+  - id: IDN-004
+    topic: Fixed base with no day count
+    description: A fixed base regularly available to an individual in Indonesia (a desk, co-working membership or home office used for the activities) lets Indonesia tax income attributable to that base with no days test. Directors' fees from an Indonesian company are also taxable in Indonesia with no days test.
+    citations: ["Australia-Indonesia DTA Arts 14(1)(a), 16"]
+    skills: [au-indonesia-cross-border]
+  - id: IDN-005
+    topic: Treaty limit treated as the Indonesian rate, excess claimed as offset
+    description: The treaty limits on dividends, interest, royalties and pensions are ceilings. Only Indonesian tax correctly imposed under Indonesian law and in accordance with the treaty counts for the foreign income tax offset. Tax above the limit is not creditable and must be sought back from Indonesia. Whether Indonesian tax was correctly imposed is not verified here.
+    citations: ["ITAA 1997 s 770-15", "Australia-Indonesia DTA Art 24(1)", "ATO Guide to foreign income tax offset rules 2026"]
+    skills: [au-indonesia-cross-border, residency-cross-border]
+  - id: IDN-006
+    topic: Foreign tax on a discounted or absorbed capital gain
+    description: Only the share of foreign tax matching the amount included in assessable income counts. On a gain that received the CGT discount the foreign tax is apportioned, and where the net capital gain is nil (losses absorb it) no offset arises. A villa sold in rupiah can also be a capital loss in Australian dollars, because each cost base element is translated at its own date.
+    citations: ["ITAA 1997 s 770-10", "ITAA 1997 s 960-50(6) item 5", "ATO Guide to foreign income tax offset rules 2026"]
+    skills: [au-indonesia-cross-border, cgt]
+  - id: IDN-007
+    topic: Dividend from an Indonesian company earning no offset
+    description: Where an Australian company holds a participation interest in an Indonesian company, the dividend can be non-assessable non-exempt income (ITAA 1997 s 768-5), so Indonesian withholding on it earns no foreign income tax offset and no underlying tax credit in practice, whatever Art 24(2) says.
+    citations: ["ITAA 1997 s 768-5", "Australia-Indonesia DTA Art 24(2)", "ATO Guide to foreign income tax offset rules 2026 Example 13"]
+    skills: [au-indonesia-cross-border]
+  - id: IDN-008
+    topic: Debt deductions wrongly disregarded in the offset limit
+    description: In the offset limit calculation debt deductions (interest, borrowing costs) are ignored only where attributable to an overseas permanent establishment. Interest on a loan for a Bali villa is not ignored, and is claimed at the deduction label, not in the foreign rent worksheet.
+    citations: ["ITAA 1997 s 770-75(4)", "ATO individual supplementary tax return 2026 instructions, question 20"]
+    skills: [au-indonesia-cross-border, residency-cross-border]
+  - id: IDN-009
+    topic: Share gains assumed to be taxed only in the seller's country
+    description: The treaty has no residence-only rule for share gains. Art 13(4) lets the property country tax gains on land-rich shares and Art 13(5) leaves gains on other property to each country's domestic law. An Indonesian tax on a share gain has no treaty ceiling. Ordinary share gains and villa sales are also taxed by Australia on its resident.
+    citations: ["Australia-Indonesia DTA Art 13(1), (4), (5)", "MLI Art 9"]
+    skills: [au-indonesia-cross-border, cgt]
+  - id: IDN-010
+    topic: Treaty assumed to exempt the income in Australia
+    description: The MLI saving clause keeps Australia's right to tax its own residents on worldwide income. Indonesian taxing rights under Arts 6 to 22 do not make the income exempt in Australia; the relief is the Art 24 credit applied through the foreign income tax offset, limited by s 770-75. The Art 4(3) tie-breaker is not a general escape either.
+    citations: ["MLI Art 11", "Australia-Indonesia DTA Arts 4, 23, 24", "ITAA 1997 s 6-5(2), Div 770"]
+    skills: [au-indonesia-cross-border, residency-cross-border]
+  - id: IDN-011
+    topic: Unlisted country for controlled foreign company purposes
+    description: Indonesia is not a listed country for the controlled foreign company measures, so an Indonesian company controlled by Australian residents (a PT or PT PMA holding a villa or other passive income) can have income attributed to them whether or not cash is paid. This is escalated, not calculated.
+    citations: ["ITAA 1936 Pt X", "Income Tax Assessment (1936 Act) Regulation 2015 reg 19"]
+    skills: [au-indonesia-cross-border, residency-cross-border]
+  - id: IDN-012
+    topic: Wrong rupiah translation basis
+    description: A year-end rate is not allowed for foreign income that was not received in Australia in the year it was derived, an average is not right for a one-off capital event (each element uses the rate at its own time), and the tax paid is translated when paid. The ATO does publish rupiah rates (annual, half-year and monthly); daily rates come from the Reserve Bank of Australia.
+    citations: ["ITAA 1997 s 960-50(6)", "ATO translation (conversion) rules", "ATO foreign exchange rates tables"]
+    skills: [au-indonesia-cross-border]
+  - id: IDN-013
+    topic: Australian withholding at the domestic rate on an Indonesian payee
+    description: A reduced treaty rate on an unfranked dividend or a royalty needs an Indonesian resident payee who is beneficially entitled. A conduit or interposed entity gets the domestic rate, and the MLI principal purpose test can deny a limit. Franked dividends carry no withholding. Interest carries the same rate with or without the treaty.
+    citations: ["ITAA 1953 s 17A(1)", "Australia-Indonesia DTA Arts 10-12", "MLI Art 7", "Income Tax (Dividends, Interest and Royalties Withholding Tax) Act 1974 s 7"]
+    skills: [au-indonesia-cross-border]

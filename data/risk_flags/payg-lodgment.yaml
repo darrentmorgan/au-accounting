@@ -1,0 +1,31 @@
+risk_flags:
+  - id: PAYG-VARY-UNDER-85
+    topic: Varying PAYG instalments too low
+    description: A varied instalment amount or rate below the safe harbour share of the benchmark tax or rate attracts GIC on the shortfall from the instalment due date until the assessment due date, in addition to the tax shortfall. Varying for cash flow rather than a reasoned forecast is the common failure.
+    citations: ["TAA 1953 Sch 1 ss 45-230, 45-232, 45-235, 45-240", "PCG 2026/D3 (draft)", "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/how-to-vary-your-payg-instalments/"]
+    skills: [payg-instalments-lodgment]
+  - id: PAYG-LATE-LODGE-BEFORE-PAY
+    topic: Instalments not lodged or paid before the return
+    description: Instalments must be reported and paid before the tax return is lodged so the credit is taken into the assessment. Unlodged activity statements also carry failure to lodge penalties.
+    citations: ["https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due"]
+    skills: [payg-instalments-lodgment]
+  - id: PAYG-FTL-PENALTY-UNIT-DATE
+    topic: Penalty unit applies by the date of the failure
+    description: The failure to lodge penalty uses the penalty unit in force when the document was due, so a document due before and lodged after a penalty unit increase is charged at the earlier amount.
+    citations: ["TAA 1953 Sch 1 s 286-80", "https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalty-units"]
+    skills: [payg-instalments-lodgment]
+  - id: PAYG-GIC-NOT-DEDUCTIBLE
+    topic: GIC and SIC not deductible
+    description: General interest charge and shortfall interest charge incurred on or after 1 July 2025 are not deductible; do not put them in the tax return as an expense.
+    citations: ["https://www.ato.gov.au/law/view/document?docid=AFS%2Fdeductions-for-ato-interest%2F00001"]
+    skills: [payg-instalments-lodgment]
+  - id: PAYG-GIC-DAILY-COMPOUND
+    topic: GIC compounds daily
+    description: GIC compounds daily on tax and unpaid GIC, so a long-running debt grows faster than simple interest and a payment plan does not stop it.
+    citations: ["TAA 1953 s 8AAB, s 8AAD", "https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/interest-we-charge/general-interest-charge"]
+    skills: [payg-instalments-lodgment]
+  - id: PAYG-REMISSION-NEEDS-LODGMENT
+    topic: Remission requests need the document lodged first
+    description: The ATO expects overdue documents to be lodged before it will consider remitting a failure to lodge penalty; holidays and busy periods are unlikely to be accepted.
+    citations: ["https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty"]
+    skills: [payg-instalments-lodgment]

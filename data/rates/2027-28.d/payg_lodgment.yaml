@@ -1,0 +1,191 @@
+# payg_lodgment overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+payg_instalments:
+  entry_company_instalment_income_min:
+    value: 2000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: 2026-09-29
+    notes: 'Companies and super funds enter automatically if ANY of: instalment income at or above this, notional tax at or above the notional tax minimum,
+      or head company of a consolidated group (ATO page). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the
+      source.'
+  monthly_instalment_income_min:
+    value: 20000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due
+    as_at: 2026-09-29
+    notes: 'Instalment income above this: monthly lodge and pay (out of scope of the calculators). For 2027-28 (read 2026-09-29): Unchanged; no year-specific
+      term or scheduled change found on the source.'
+  variation_safe_harbour_ratio:
+    value: 0.85
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/how-to-vary-your-payg-instalments/
+    as_at: 2026-09-29
+    notes: 'GIC can apply if varied instalments are less than this share of the benchmark tax or rate (TAA Sch 1 Subdiv 45-G, ss45-230, 45-232, 45-235).
+      For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  quarters_per_year:
+    value: 4
+    unit: count
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due
+    as_at: 2026-09-29
+    notes: 'Quarterly instalment amount = GDP-adjusted notional tax divided by this. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or
+      scheduled change found on the source.'
+  two_instalment_first_share:
+    value: 0.75
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due
+    as_at: 2026-09-29
+    notes: 'Two-instalment payers (primary producers, special professionals): this share of yearly instalments by 28 April, the rest by 28 July. For 2027-28
+      (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+penalties_interest:
+  ftl_period_days:
+    value: 28
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: 2026-09-29
+    notes: 'FTL base penalty accrues per period of this many days or part thereof. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled
+      change found on the source.'
+  ftl_max_base_units:
+    value: 5
+    unit: penalty_units
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: 2026-09-29
+    notes: 'Maximum base penalty units before the size multiplier. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found
+      on the source.'
+  ftl_multiplier_medium:
+    value: 2
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: 2026-09-29
+    notes: 'Medium entity: assessable income or GST turnover from 1m up to 20m (medium withholder tests also apply). For 2027-28 (read 2026-09-29): Unchanged;
+      no year-specific term or scheduled change found on the source.'
+  ftl_multiplier_large:
+    value: 5
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: 2026-09-29
+    notes: 'Large entity: assessable income or GST turnover 20m or more (large withholder tests also apply). For 2027-28 (read 2026-09-29): Unchanged; no
+      year-specific term or scheduled change found on the source.'
+  ftl_multiplier_sge:
+    value: 500
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: 2026-09-29
+    notes: 'Significant global entity. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+lodgment:
+  quarterly_due_day:
+    value: 28
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'Quarterly BAS and instalment due day of the month after the quarter (Q2 is 28 February). For 2027-28 (read 2026-09-29): Unchanged; no year-specific
+      term or scheduled change found on the source.'
+  quarterly_due_month_q1:
+    value: 10
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'Quarter 1 due month (standard July-June year). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on
+      the source.'
+  quarterly_due_month_q2:
+    value: 2
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'Quarter 2 due month (standard July-June year). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on
+      the source.'
+  quarterly_due_month_q3:
+    value: 4
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'Quarter 3 due month (standard July-June year). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on
+      the source.'
+  quarterly_due_month_q4:
+    value: 7
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'Quarter 4 due month (standard July-June year). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on
+      the source.'
+  online_concession_days:
+    value: 14
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'Extra days to lodge and pay for online-lodged quarterly BAS in quarters 1, 3 and 4 only; not quarter 2, not monthly; instalment notices excluded.
+      Arithmetic on the ATO two-week wording. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  individual_return_due_month:
+    value: 10
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
+    as_at: 2026-09-29
+    notes: 'Self-lodged individual return due 31 October; next business day if a weekend. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term
+      or scheduled change found on the source.'
+  individual_return_due_day:
+    value: 31
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
+    as_at: 2026-09-29
+    notes: 'See individual_return_due_month. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  individual_payment_due_month:
+    value: 11
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
+    as_at: 2026-09-29
+    notes: 'Payment due 21 November if a self-lodged return lodged by 31 October gives a tax bill; otherwise 21 days after the assessment issues. For 2027-28
+      (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  individual_payment_due_day:
+    value: 21
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
+    as_at: 2026-09-29
+    notes: 'See individual_payment_due_month. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  tpar_due_month:
+    value: 8
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/small-business-newsroom/final-reminder-tpar-due-28-august
+    as_at: 2026-09-29
+    notes: 'TPAR due 28 August each year. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  tpar_due_day:
+    value: 28
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/small-business-newsroom/final-reminder-tpar-due-28-august
+    as_at: 2026-09-29
+    notes: 'See tpar_due_month. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  stp_finalisation_due_month:
+    value: 7
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/single-touch-payroll/start-reporting/end-of-year-finalisation-through-stp
+    as_at: 2026-09-29
+    notes: 'STP finalisation declaration due 14 July after the year end; closely held payees are later (30 September, or the payee return due date for small
+      employers with only closely held payees). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  stp_finalisation_due_day:
+    value: 14
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/single-touch-payroll/start-reporting/end-of-year-finalisation-through-stp
+    as_at: 2026-09-29
+    notes: 'See stp_finalisation_due_month. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'

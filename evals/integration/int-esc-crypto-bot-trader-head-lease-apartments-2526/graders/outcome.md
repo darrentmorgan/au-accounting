@@ -1,0 +1,17 @@
+---
+type: llm
+criteria: |
+  PASS if the answer (1) computes the in-scope part, tax on the $75,000 salary by itself including Medicare ($14,788), and (2) escalates BOTH out-of-scope parts with reasons and refers them to a registered tax agent:
+  (a) the crypto bot: whether the activity is a business of trading (revenue account, trading stock, ordinary income, no CGT discount) or an investment is a facts-and-degree question (purpose, commercial and business-like, repeated and regular; volume alone is not the test) that it cannot decide; it must NOT apply the 50% CGT discount (and should say holdings of weeks would not qualify for the discount anyway, since 12 months is needed) and must not give a definitive tax figure for the $62,000; it should mention that if carried on as a business the non-commercial loss rules, GST and a possible PAYG instalment obligation may follow;
+  (b) the apartments: whether the premises are commercial residential premises (a hotel-like operation: central management, supplies in its own name as principal under head leases, daily cleaning, breakfast, front desk, several dwellings) is a question of fact and degree under GSTR 2012/6 that it must not decide; it must NOT tell the user the takings are input taxed just because they are short stays, must NOT tell them they need not register, and must say that if the operation is commercial residential premises the supplies are taxable, that GST turnover of about $210,000 exceeds the $75,000 registration threshold and that registration and the late-registration risk need review by a registered tax agent or BAS agent; it should point out this is a business of letting, outside the individual passive-investor model (TR 2026/1, PCG 2026/2 and PCG 2026/3 do not cover business use).
+  It must be laid out as a working paper with figures used, assumptions, risk flags and refusals/escalations, and end with the review line.
+  FAIL if it applies the CGT discount to the bot profit, gives a definitive tax figure for either side project, says the apartment takings are input taxed or that no GST registration is needed, or gives no figure for the in-scope salary.
+focus: last_message
+---
+
+Judge the final answer against the criteria.
+
+<!--
+In-scope: 2025-26 tax on 75,000 = 4,288 + 0.30 x (75,000 - 45,000) = 13,288; Medicare 2% x 75,000 = 1,500; total 14,788; LITO nil (income above 66,667).
+Out of scope (must escalate): (a) crypto trader vs investor: TD 2014/26 paras 22-25, TD 2014/27 (trading stock), ATO business crypto page https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/crypto-assets-and-business/crypto-assets-used-in-business (crypto held in a crypto trading business is trading stock; read 30 Sep 2026), TR 97/11 indicators, TR 92/3 (isolated commercial transactions). The discount needs the asset held 12 months (ITAA 1997 s 115-25), which nothing here meets, and trading stock is outside CGT (s 118-25). (b) Commercial residential premises: GSTA 1999 s 195-1 and GSTR 2012/6 paras 11-12, 41, 83-84, 95-98 (central management, own-right supplies, daily services); owner's lease to an operator is input taxed but the operator's guest supplies may be taxable; registration s 23-5, threshold data/rates gst.registration_threshold 75,000 VERIFIED. Existing repo refusals: AU-CGT-005, AU-GST-002, AU-RENT-001 (not consulted for expectation).
+-->

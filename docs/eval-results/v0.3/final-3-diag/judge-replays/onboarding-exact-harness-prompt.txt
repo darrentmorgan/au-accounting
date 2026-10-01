@@ -1,0 +1,125 @@
+You are grading the output of a coding agent against a criterion.
+Criterion:
+PASS only if the answer covers ALL of the following, correctly:
+1. ABN registration (mentioning the TFN is optional), and optionally a business name with ASIC if trading under a name.
+2. GST registration is required (not optional) because expected turnover of $120,000 is at or above the $75,000 threshold; register within 21 days of knowing (in practice from the 1 October 2026 start).
+3. PAYG withholding registration before the first wage payment to the employee (who starts on 2 November 2026; any stated or assumed first payday on or after that date is fine), plus Single Touch Payroll reporting on or before each payday.
+4. Super: 12% super guarantee on qualifying earnings under Payday Super, paid every payday and received by the employee's fund within 7 business days (for a new employee's first contribution the extended 20-business-day window is also correct) (no quarterly super due dates); super choice form for the new employee.
+5. SA workers compensation: register with ReturnToWorkSA within 14 days of employing (expected wages of about $21,000 for 2026-27 exceed the $16,806 threshold, so registration is needed).
+6. Payroll tax: not payable or registerable because wages are far below the SA $1.5 million threshold.
+7. 2026-27 quarterly BAS due dates: December 2026 quarter (Q2, first BAS since GST starts 1 October) due 28 February 2027 (a Sunday; Monday 1 March 2027 is WA Labour Day, a public holiday for the whole of a State, so the rolled date is Tuesday 2 March 2027; either 28 February 2027 stated with a next-business-day roll, or 2 March 2027, is acceptable; 1 March 2027 is not), March 2027 quarter due 28 April 2027, June 2027 quarter due 28 July 2027 (also correct if the answer gives the two-week online lodgment concession dates, 12 May 2027 and 11 August 2027, as long as the standard 28 April and 28 July dates or the concession basis are stated). The 28 October 2026 September quarter date is either omitted or explained as not applicable because GST registration starts 1 October (a note that the ATO may issue a first BAS is acceptable).
+8. 2026-27 income tax return due 31 October 2027 for self-lodgers (31 October 2027 is a Sunday, so Monday 1 November 2027 is also correct) (or later via a registered tax agent), and mention that PAYG instalments may commence after the first return.
+FAIL if any of items 2, 3, 4, 5, 7 is missing or wrong, if it says GST registration is optional, if it says quarterly super due dates (28 October etc.) apply under Payday Super, or if it invents a payroll tax obligation. The answer should be a working paper with figures used, assumptions, risk flags and any escalations.
+
+
+
+Agent output (last_message):
+# Working paper: new sole trader landscaping business, Adelaide SA, 2026-27
+
+**Client:** individual sole trader, Adelaide, trading from 1 Oct 2026. One part-time employee from Mon 2 Nov 2026.
+**Income year:** 2026-27. No FBT year applies because no fringe benefits are planned.
+**Skills run, in order:** router → gst-bas (complete) → payroll-sg (complete) → state-taxes-sa (complete) → payg-instalments-lodgment (complete).
+**Parts not completed:** none. Two items need a referral rather than a calculation. They are listed under "Refusals or escalations" below.
+
+---
+
+## 1. Result
+
+### A. Registrations checklist (do these before or on 1 Oct 2026)
+
+| ☐ | Registration | Required? | When | Source |
+|---|---|---|---|---|
+| ☐ | **ABN** (sole trader, your own TFN) | Yes | Before trading starts on 1 Oct 2026 | router |
+| ☐ | **GST** | **Must register.** Projected GST turnover of $120,000 is at or above the $75,000 threshold (GSTA s 188-10(1)(b)) | Your turnover is expected to be over the threshold from day one, so register effective **1 Oct 2026**. The legal limit is 21 days after you reach the threshold. Charge GST on every taxable sale from the date registration was required | gst-bas `gst_registration_check` |
+| ☐ | GST settings | Quarterly BAS. Simpler BAS is available. Cash accounting is available (turnover is under $10m) | Choose these when you register | gst-bas |
+| ☐ | **PAYG withholding** | Yes, because you will employ someone | Before the first pay (assumed Fri 6 Nov 2026) | payroll-sg |
+| ☐ | **STP-enabled payroll software** | Yes | A pay event must be reported on or before every payday from the first pay | payroll-sg |
+| ☐ | **Super**: give the employee a super choice form and set up a way to pay the fund directly | Yes | Before the first pay. The Small Business Superannuation Clearing House closed on 30 Jun 2026 | payroll-sg |
+| ☐ | Collect the employee's **TFN declaration** | Yes | Before the first pay. Without a TFN you must withhold at the no-TFN rate | payroll-sg |
+| ☐ | **ReturnToWorkSA** work injury insurance | **Required.** Expected remuneration is at or above the $16,806 minimum | **By Mon 16 Nov 2026** (14 days after employment starts on 2 Nov) | router `obligations_calendar` |
+| ☐ | SA payroll tax (RevenueSA) | **Not required.** Wages tested of $33,280 are far below the $1,500,000 threshold. Payroll tax is $0.00 | Check again only if your wages grow substantially | state-taxes-sa `sa_payroll_tax` |
+| ☐ | FBT | Not required (no benefits planned) | — | router |
+| ☐ | PAYG instalments | Not in 2026-27. The ATO decides whether you enter from your first lodged return (the 2026-27 return). Put money aside for the 2026-27 tax bill | After the 2026-27 return is assessed | payg-instalments-lodgment |
+| ☐ | TPAR | Only if you pay subcontractors (see the risk flag below) | Due 30 Aug 2027 if it applies | payg-instalments-lodgment |
+
+### B. Payroll per weekly pay (payroll-sg, 2026-27)
+
+I assumed a weekly gross of **$640** (20 hrs × $32), paid on Fridays.
+
+| Item | Amount | Basis |
+|---|---|---|
+| PAYG withholding | **$52 per week** | Schedule 1 scale 2 (tax-free threshold claimed, resident, no HELP debt) |
+| Super guarantee | **$76.80 per pay** | 12% of qualifying earnings (Payday Super) |
+| First super contribution (pay on 6 Nov 2026) | $76.80, must **reach the fund by Fri 4 Dec 2026** | First contribution for a new employee: 20 business days |
+| Later contributions (e.g. pay on 13 Nov 2026) | $76.80, must **reach the fund by Tue 24 Nov 2026** | 7 business days after each payday |
+
+Super is no longer paid quarterly. From 1 Jul 2026 it is due with each pay, and the deadline counts from when the fund receives the money, not when you send it.
+
+### C. Key ATO and SA dates for 2026-27
+
+The standard due date is shown first. The date you actually work to is shown in bold. I assumed you lodge online yourself (not through an agent).
+
+| Due date | Obligation | Period | Rule / reason |
+|---|---|---|---|
+| Each payday | STP pay event | Each pay | Report on or before payday |
+| Within 7 business days of each payday (20 for the first) | Super guarantee received by the fund | Each pay | Payday Super |
+| **16 Nov 2026** | ReturnToWorkSA registration | On employing | 14 days after the employee starts |
+| 28 Feb 2027 → **2 Mar 2027** | **First BAS**: GST plus PAYG withholding (W1, W2) | Oct–Dec 2026 (Q2) | Q2 has no online extension. Rolls forward because 28 Feb is a Sunday and 1 Mar is Labour Day (WA) |
+| 28 Apr 2027 → **12 May 2027** | BAS | Jan–Mar 2027 (Q3) | Two-week online concession |
+| 14 Jul 2027 → **14 Jul 2027** | STP finalisation declaration | 2026-27 | — |
+| 28 Jul 2027 → **11 Aug 2027** | BAS | Apr–Jun 2027 (Q4) | Two-week online concession |
+| 28 Aug 2027 → **30 Aug 2027** | TPAR (*only if it applies*) | 2026-27 | Rolls forward from a weekend |
+| 31 Oct 2027 → **1 Nov 2027** | Individual tax return, if you lodge it yourself | 2026-27 | Rolls forward from a Sunday. A tax agent's lodgment program can give a later date if you engage the agent before this date |
+| **22 Nov 2027** | Payment of any 2026-27 tax bill | 2026-27 | Applies if you lodge by the due date. Otherwise payment is due 21 days after the assessment issues |
+
+There is no Q1 (Jul–Sep) BAS because GST registration starts on 1 Oct 2026.
+
+---
+
+## 2. Figures used (all VERIFIED)
+
+| Key | Value | Skill | Source |
+|---|---|---|---|
+| gst.registration_threshold | $75,000 | gst-bas | ato.gov.au – Registering for GST |
+| gst.registration_deadline_days | 21 | gst-bas | same |
+| gst.simpler_bas_turnover_max / cash_accounting_turnover_max | $10,000,000 | gst-bas | ATO quarterly GST reporting / accounting method |
+| gst.monthly_reporting_turnover_min | $20,000,000 | gst-bas | ATO BAS due dates |
+| gst.bas_quarterly_due_day / bas_online_concession_days | 28 / 14 | router (calendar) | ATO BAS due dates; two-week concession T&Cs |
+| payroll.payg_scale2_tft (weekly coefficients) | Schedule 1 scale 2 | payroll-sg | ATO Schedule 1 weekly coefficients |
+| super.sg_rate | 12% | payroll-sg | ATO super guarantee |
+| super.max_contribution_base_annual | $270,830 | payroll-sg | ATO super guarantee |
+| super.payday_super_usual / first_contribution business days | 7 / 20 | payroll-sg | ATO Payday Super deadlines |
+| state.sa.payroll_tax_threshold_annual | $1,500,000 | state-taxes-sa | RevenueSA rates and thresholds |
+| state.sa.payroll_tax_max_deduction_annual | $600,000 | state-taxes-sa | RevenueSA |
+| employer_sa.return_to_work_registration_days / remuneration_min | 14 / $16,806 | router (calendar) | rtwsa.com – Register |
+| lodgment.stp_finalisation (14 Jul), tpar (28 Aug), individual return (31 Oct), payment (21 Nov) | as shown | payg-instalments-lodgment | ATO |
+| holidays.commonwealth_tax / sa_state_tax | data compiled 2026-09-29 | all | TAA 1953 s 8AAZMB; Legislation Interpretation Act 2021 (SA) |
+
+## 3. Assumptions
+
+- **Router:** turnover of $120,000 is GST-exclusive and all of it is taxable (no GST-free or input-taxed sales). Landscaping services are ordinarily taxable.
+- **Router:** you lodge BAS online yourself. If a registered agent lodges for you, BAS and tax return dates may be later under the agent's lodgment program.
+- **Payroll-sg:** pay is weekly on Fridays and the first pay is Fri 6 Nov 2026. All 20 hours are ordinary hours with no overtime. The employee is a resident, quotes a TFN, claims the tax-free threshold with you and has no study loan. Different facts change the $52 figure.
+- **State-taxes-sa / router:** wages were tested at a full-year run-rate of $33,280 (52 weeks × $640). This is conservative, because actual 2026-27 wages will be lower since employment starts in November. There are no interstate wages and no grouping with other businesses.
+- **Gst-bas:** registration takes effect from 1 Oct 2026, with a quarterly cycle.
+- **Payroll-sg:** if the year has 53 weekly pays, the employee can ask for extra withholding. This has not been added.
+
+## 4. Risk flags
+
+- **TPAR (payg-instalments-lodgment / router):** the ATO treats landscaping as a building and construction service. If you pay contractors or subcontractors with an ABN, you probably need to lodge a TPAR by 30 Aug 2027. The calendar was run on the basis that you use no subbies.
+- **Worker status (payroll-sg, RF-PAY-001):** any helpers you pay on ABN invoices need checking under the employee-vs-contractor tests. Super can be payable even to contractors paid mainly for their labour (SGAA s 12(3)).
+- **Late Payday Super (payroll-sg, RF-PAY-002):** a missed deadline triggers the SG charge, which includes interest and an uplift. Automate the super payment in your payroll software.
+- **No tax withheld from your own profit (payg-instalments-lodgment):** nothing is withheld from sole-trader profit, and PAYG instalments won't start until after your first return. The whole 2026-27 tax bill is due 22 Nov 2027, so set money aside regularly.
+- **GST cash flow (gst-bas):** GST is collected from 1 Oct, but the first BAS isn't due until 2 Mar 2027. Keep the GST in a separate account.
+
+## 5. Refusals or escalations
+
+- **AU-PAY-002 (payroll-sg): award interpretation.** The employee is likely covered by the Gardening and Landscaping Services Award. Its classification, minimum rate, part-time rules, penalties and allowances were not checked. Confirm that $32/hr meets the award using Fair Work's Pay Calculator or an adviser. The exact refusal wording could not be retrieved this session, so it is not quoted here.
+- **AU-PAY-009 (payroll-sg): TPAR.** Whether it applies depends on your contractor payments. Only the due date is given. (Refusal wording was not retrieved.)
+- **AU-GEN-002:** this paper does not register, lodge or pay anything for you.
+- **Tool warnings:** the SA payroll tax tool takes wages as given and does not decide what counts as wages; cents are indicative. The PAYG tool flagged the 53-pay year issue (see Assumptions).
+
+Working paper only. Review by a registered tax agent (or BAS agent for BAS matters) before use.
+
+
+Respond with exactly one word: PASS or FAIL.

@@ -1,0 +1,30 @@
+# au-indonesia-cross-border refusal codes. Same schema as au.yaml.
+# Skills quote code and message verbatim, then stop the affected work. Indonesian domestic tax is not
+# verified in this plugin (GOAL v0.3 out of scope): those questions are escalated, never answered.
+# Codes AU-RES-001 to AU-RES-005 (residency-cross-border) still apply to residency, CFC and offshore
+# structures; this file only adds codes the Indonesia treaty skill needs.
+refusals:
+  - code: AU-IDN-001
+    trigger: A permanent establishment or fixed base determination is needed and the treaty text does not settle it - the service PE day count differs by counting method, the days aggregation across projects is unclear, a fixed base (for example a regularly available desk, co-working space or home office in Indonesia) may exist, a dependent agent may habitually conclude contracts, a building site, installation or resource rig limb may apply, or income is effectively connected with an Australian permanent establishment of an Indonesian resident.
+    message: "Whether a permanent establishment or fixed base exists here turns on facts and on a day-counting method the Australia-Indonesia agreement does not settle (Art 5, Art 14(1)(a)). I can't reach a conclusion by calculation. A registered tax agent (or international tax adviser) should determine it before any business profits or independent services income is allocated between the two countries."
+    route: registered tax agent or international tax adviser
+  - code: AU-IDN-002
+    trigger: A question about Indonesian domestic tax - whether a person or company is an Indonesian domestic resident, the Indonesian rate or withholding on any payment, VAT or final tax on villa rent, land and building taxes, transfer duties, permits and tax registration, penalties, refunds of over-withheld Indonesian tax, or whether Indonesian tax was correctly imposed.
+    message: "Indonesian domestic tax law is outside what this plugin verifies. I can use the treaty limits and any Indonesian tax the taxpayer can evidence, but I can't say what Indonesia charges, whether a person is an Indonesian domestic resident, or whether Indonesian tax was correctly imposed. An Indonesian tax adviser must answer that, and the evidence (withholding slips, assessments) should be kept."
+    route: Indonesian tax adviser and registered tax agent
+  - code: AU-IDN-003
+    trigger: An Indonesian company (PT or PT PMA) or another structure is part of the matter, or the treaty position of a trust or partnership with Indonesian income is unclear, or fees, loans or royalties are charged between related Australian and Indonesian entities (associated enterprises, arm's length pricing, Art 7(8), Art 9, Art 11(6), Art 12(6)).
+    message: "This involves a company, trust, partnership or related-party arrangement across the Australia-Indonesia border. How the treaty treats the structure, and whether related-party charges are at arm's length, are not settled by the treaty text and are outside what I can calculate. A registered tax agent (or international tax adviser) should review the structure and the pricing before any figure is used."
+    route: registered tax agent or international tax adviser
+  - code: AU-IDN-004
+    trigger: Gain or income from Indonesian or Australian real property held indirectly - shares or comparable interests in a company, partnership or trust whose assets are wholly or principally real property (Art 13(4), MLI Art 9, ITAA 1953 s 3A), a villa held through a company, or an Indonesian resident selling an interest in Australian land-rich entities.
+    message: "A gain on an interest in an entity that holds mainly real property can be taxed where the property is (Art 13(4) of the Australia-Indonesia agreement, as modified by the MLI), and how the Australian look-through rule and the MLI interact is unresolved. I can't work this out reliably. A registered tax agent (or international tax adviser) should review it, including the value tests over the look-back period."
+    route: registered tax agent or international tax adviser
+  - code: AU-IDN-005
+    trigger: The character of a payment or the right to treaty benefits is unclear - software or licence payments where royalty status under Art 12(3) is unclear, a payee who may not be the beneficial owner (conduit or interposed entity), a possible principal purpose test issue (MLI Art 7), or a directors' or commissioners' payment whose capacity is uncertain.
+    message: "Whether this payment is a royalty, interest, dividend or business income, or whether the payee can claim treaty benefits at all (beneficial ownership, the MLI principal purpose test), is a characterisation question I can't decide by calculation. A registered tax agent (or international tax adviser) should characterise it before a treaty rate or allocation is applied."
+    route: registered tax agent or international tax adviser
+  - code: AU-IDN-006
+    trigger: A rupiah amount cannot be translated to Australian dollars from an ATO-published rate - the rate for the year or month is not yet published, a year-end or average rate is asked for a one-off capital event or for income or tax that arose on another date, or no rate for the event date has been supplied.
+    message: "I can't translate this rupiah amount from a published ATO rate. The ATO publishes annual, half-year and monthly rupiah averages (not always yet for the current year), and daily rates come from the Reserve Bank of Australia. A one-off event needs the rate for the day it happened, with its source recorded. Supply that rate and its source, or wait for the ATO table, and do not use a year-end or average rate as a substitute."
+    route: preparer

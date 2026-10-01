@@ -1,0 +1,52 @@
+# FBT structured audit risk points. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: FBT-YEAR-END
+    topic: FBT year is 1 April to 31 March
+    description: Running the FBT ledger on a July to June basis misses April to June benefits and mis-times the return; the FBT year label FBT2027 means 1 Apr 2026 to 31 Mar 2027 and its reportable amount goes on the 2026-27 income statement.
+    citations: [FBTAA 1986 s 136(1) (year of tax), "https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds"]
+    skills: [fbt]
+  - id: FBT-GROSS-UP-TYPE
+    topic: Type 1 versus type 2 gross-up
+    description: Type 1 applies only where the provider is entitled to a GST credit on the benefit; assuming type 1 for everything overstates FBT for input-taxed, non-registered or non-creditable benefits (for example loans), and assuming type 2 understates it where credits are claimed.
+    citations: [FBTAA 1986 s 5B, "https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds"]
+    skills: [fbt]
+  - id: FBT-EV-EXEMPTION-CONDITIONS
+    topic: Electric car exemption conditions and reporting
+    description: The exemption needs a zero or low emissions car first held and used on or after 1 Jul 2022, provided to a current employee or associate, with no luxury car tax ever payable. Plug-in hybrids lost eligibility from 1 Apr 2025 unless already exempt and under a binding commitment. Exempt EV benefits remain reportable fringe benefits. The 1 Apr 2027 wind-back is an exposure draft only, not law.
+    citations: [FBTAA 1986 s 8A, FBTAA 1986 s 135P(3), "https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/fbt-on-cars-other-vehicles-parking-and-tolls/electric-cars-exemption", "https://www.ato.gov.au/about-ato/new-legislation/in-detail/businesses/electric-car-discount-more-sustainable-fbt-treatment-of-electric-cars"]
+    skills: [fbt]
+  - id: FBT-GARAGED-CAR-AVAILABLE
+    topic: Car garaged at home is available for private use
+    description: A car kept at or near the employee's home is taken to be available for private use even where a policy forbids private use; only removal of custody and control (and consistently enforced rules) avoids a car benefit.
+    citations: [FBTAA 1986 s 7, "https://www.ato.gov.au/law/view/document?LocID=%22SAV%2FFBTGEMP%2F7.5.3.1%22"]
+    skills: [fbt]
+  - id: FBT-UTE-EXEMPTION
+    topic: Work-related vehicle exemption is limited by private use
+    description: Ute, van and similar eligible vehicles are exempt only if private use is limited to home to work travel, incidental work travel and minor, infrequent and irregular use. Dual cabs are eligible only if not designed principally to carry passengers. School runs and regular family use lose the exemption.
+    citations: [FBTAA 1986 s 8(2), PCG 2018/3, MT 2024]
+    skills: [fbt]
+  - id: FBT-OPERATING-COST-RECORDS
+    topic: Operating cost method needs a logbook and a timely election
+    description: The operating cost method needs an election by the return due date, adequate records and a logbook in a logbook year; without records no business use reduction is allowed. Deemed depreciation and interest are used, not the income tax figures.
+    citations: [FBTAA 1986 s 10, "https://www.ato.gov.au/law/view/document?LocID=%22SAV%2FFBTGEMP%2F7.5.3.1%22"]
+    skills: [fbt]
+  - id: FBT-MINOR-BENEFIT
+    topic: Minor benefits are not simply under the threshold
+    description: A benefit under the minor benefit threshold is exempt only if it is also unreasonable to treat it as a fringe benefit (frequency, total value, associated benefits, record difficulty, circumstances). Regular or salary-sacrificed benefits usually fail. The threshold applies per benefit.
+    citations: [FBTAA 1986 s 58P, TR 2007/12]
+    skills: [fbt]
+  - id: FBT-SALARY-SACRIFICE-2027
+    topic: Salary sacrificed work-related items and expenses from 1 April 2027
+    description: Under Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 4 Pt 2 (law), for FBT years starting on or after 1 Apr 2027 salary sacrificed work-related items lose the s 58X exemption and the otherwise deductible rule no longer reduces salary sacrificed expense payment benefits covered by the standard deduction. Both apply to the FBT year ending 31 Mar 2028 onwards, not FBT2027.
+    citations: [Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 4 Pt 2, "https://www.ato.gov.au/businesses-and-organisations/business-bulletins-newsroom/fbt-changes-for-salary-sacrificed-work-related-benefits"]
+    skills: [fbt]
+  - id: FBT-SHAREHOLDER-EMPLOYEE
+    topic: Benefits to directors and shareholders of private companies and trusts
+    description: Whether a director, shareholder or trust beneficiary is an employee, and whether a car or other benefit is in respect of employment, is a question of fact; SEPL Pty Ltd v Commissioner of Taxation [2026] FCAFC 36 went for the taxpayer and the ATO is reviewing MT 2019. Do not assume either outcome.
+    citations: ["SEPL Pty Ltd as trustee of the SFT Trust v Commissioner of Taxation [2026] FCAFC 36", "https://www.ato.gov.au/law/view/view.htm?docid=%22LIT%2FICD%2FSAD127of2025%2F00001%22"]
+    skills: [fbt]
+  - id: FBT-ENTERTAINMENT-METHOD
+    topic: Meal entertainment method and salary packaging
+    description: The 50/50 split and 12-week register methods tax all meal entertainment spend (including clients) and switch off exemptions such as minor benefits and on-premises; meal entertainment provided under a salary packaging arrangement cannot use them.
+    citations: [FBTAA 1986 Div 9A, "https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/entertainment-related-fringe-benefits/calculating-the-taxable-value-of-entertainment-related-benefits"]
+    skills: [fbt]

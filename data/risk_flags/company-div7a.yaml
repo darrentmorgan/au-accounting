@@ -1,0 +1,47 @@
+# company-div7a structured audit risk points. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: RF-COMP-001
+    topic: Bucket company taxed at the wrong rate
+    description: A company whose assessable income is mostly trust distributions, interest, dividends or rent usually fails the base rate entity passive income test and pays the general company rate, even with tiny turnover.
+    citations: ["Income Tax Rates Act 1986 s23AA, s23AB", "LCR 2019/5"]
+    skills: [company-div7a]
+  - id: RF-COMP-002
+    topic: Franking at the wrong rate
+    description: The rate for franking distributions is set from the previous year's turnover and passive income, not this year's tax rate. Over-franked distributions have the excess credit ignored for shareholders and can breach the benchmark rule.
+    citations: ["ITAA 1997 s202-60", "ITAA 1997 s995-1 corporate tax rate for imputation purposes", "ITAA 1997 Div 203"]
+    skills: [company-div7a]
+  - id: RF-COMP-003
+    topic: Franking account in deficit at year end
+    description: Paying franked dividends before tax is paid, or a tax refund debiting the account, can leave a deficit at 30 June and trigger franking deficit tax; a large deficit also cuts the franking deficit tax offset.
+    citations: ["ITAA 1997 Div 205", "ITAA 1997 s205-70"]
+    skills: [company-div7a]
+  - id: RF-COMP-004
+    topic: Loss carry back choice and integrity rule
+    description: The loss carry back offset needs a choice in the approved form by the loss-year lodgment day, every return for the loss year and prior five years lodged, and is denied where shares change hands in a deal priced on the expected offset.
+    citations: ["ITAA 1997 s160-5, s160-15, s160-30 (Act 71 of 2026 Sch 1)"]
+    skills: [company-div7a]
+  - id: RF-DIV7A-001
+    topic: Shareholder loan not on a complying agreement by lodgment day
+    description: Loans, drawings and payments to shareholders or associates not repaid or put under a complying written agreement before the company's lodgment day become unfranked deemed dividends.
+    citations: ["ITAA 1936 s109D", "ITAA 1936 s109N"]
+    skills: [company-div7a]
+  - id: RF-DIV7A-002
+    topic: Minimum yearly repayment shortfall
+    description: Paying less than the minimum yearly repayment by 30 June makes the shortfall an unfranked deemed dividend. Journal entries, accrued interest and backdated set-offs are not repayments.
+    citations: ["ITAA 1936 s109E", "ITAA 1936 s109R"]
+    skills: [company-div7a]
+  - id: RF-DIV7A-003
+    topic: Repay and redraw
+    description: Repayments funded by a new or planned loan from the same company (directly or through an interposed entity) are disregarded.
+    citations: ["ITAA 1936 s109R", "ITAA 1936 s109T", "TD 2011/16"]
+    skills: [company-div7a]
+  - id: RF-DIV7A-004
+    topic: Private use of company assets
+    description: Letting a shareholder or associate use a company car, holiday home or short-stay property for free or below market value is a Division 7A payment.
+    citations: ["ITAA 1936 s109CA"]
+    skills: [company-div7a]
+  - id: RF-DIV7A-005
+    topic: Unpaid trust entitlements after Bendel
+    description: A passive unpaid present entitlement owed to a company is not a Division 7A loan (Bendel [2026] HCA 18), but Subdivision EA and section 100A still apply, and entitlements already converted into loans stay loans.
+    citations: ["Commissioner of Taxation v Bendel [2026] HCA 18", "ATO Decision impact statement (26 Jun 2026)", "ITAA 1936 Subdiv EA, s100A"]
+    skills: [company-div7a]

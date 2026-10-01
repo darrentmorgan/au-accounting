@@ -1,0 +1,54 @@
+# individual overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+individual:
+  part_year_tax_free_threshold_flat:
+    value: 13464
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/coming-to-australia-or-going-overseas/your-tax-residency/australian-resident-for-tax-purposes
+    as_at: 2026-09-29
+    notes: 'Flat component of the part-year tax-free threshold (Income Tax Rates Act 1986 ss18-20; tax-free threshold $18,200 unchanged in the 1 Jul 2026
+      compilation). Current ATO residency page states the amount without a year limit. For 2027-28 (read 2026-09-29): ATO residency page (updated 3 Jun
+      2026, no year limit) still states this flat component; ITRA s 20 applies the pro-rating to the tax-free threshold in the year''s rates table, which
+      is $18,200 (s 3(1)), unchanged. The s 20 formula itself is an image in the compilation and was not read as text.'
+  part_year_tax_free_threshold_prorated:
+    value: 4736
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/coming-to-australia-or-going-overseas/your-tax-residency/australian-resident-for-tax-purposes
+    as_at: 2026-09-29
+    notes: 'Pro-rated component: amount x months resident (counting the month residency started or ended) / 12. For 2027-28 (read 2026-09-29): ATO residency
+      page (updated 3 Jun 2026) still states this pro-rated component; with the flat amount it sums to the $18,200 tax-free threshold.'
+medicare:
+  low_income_current_law_single_lower:
+    value: 28011
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Medicare Levy Act 1986 s3(1) threshold amount, para (c), as in force 1 Jul 2026 (Act 58 of 2026 Sch 5 applies to 2025-26 and later years). CURRENT
+      LAW ONLY: the final 2026-27 threshold is usually legislated after year end, so calculators use this only as a screen to show a taxpayer is clearly
+      outside the low-income range, never as the 2026-27 threshold itself (medicare.low_income_single_lower stays SUSPECT). For 2027-28 (read 2026-09-29):
+      Re-read in the Medicare Levy Act latest compilation (in force 1 Jul 2026): the same amount is current law for 2027-28 until an amending Act raises
+      it, but that future amount is not legislated, so it stays a screen only and medicare.low_income_single_lower stays SUSPECT.'
+  low_income_current_law_single_upper:
+    value: 35013
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Medicare Levy Act 1986 s3(1) phase-in limit, para (c), as in force 1 Jul 2026. Screen only; see low_income_current_law_single_lower. For 2027-28
+      (read 2026-09-29): Screen only.'
+  low_income_current_law_family_lower:
+    value: 47238
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Medicare Levy Act 1986 s8(5) family income threshold as in force 1 Jul 2026. Screen only. For 2027-28 (read 2026-09-29): Screen only.'
+  low_income_current_law_per_child_lower_add:
+    value: 4338
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Medicare Levy Act 1986 s8(5) increase per dependent child, as in force 1 Jul 2026. Screen only. For 2027-28 (read 2026-09-29): Screen only.'

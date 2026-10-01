@@ -1,0 +1,26 @@
+# sole-trader-business refusals. Skills surface code + message verbatim, then stop the affected work.
+refusals:
+  - code: AU-BUS-001
+    trigger: Personal services income (PSI) outcome cannot be settled from the facts given - a personal services business (PSB) test turns on facts not supplied, the 80% rule blocks the tests and a PSB determination is being considered, or the arrangement raises Part IVA (PCG 2025/5) risk.
+    message: "Whether the personal services income rules apply here depends on facts or a Commissioner determination that this tool can't settle. A registered tax agent should assess the personal services business tests (and any PSB determination) before you rely on either outcome."
+    route: registered tax agent
+  - code: AU-BUS-002
+    trigger: Non-commercial loss rules where the Commissioner's discretion is sought or may be needed, or the activity is an excepted activity (primary production or professional arts) or a partnership, so the four tests can't be applied from individual inputs.
+    message: "This non-commercial loss question needs the Commissioner's discretion, a special-activity rule or partnership-level figures that this tool doesn't model. A registered tax agent should assess it (a private ruling may be needed)."
+    route: registered tax agent
+  - code: AU-BUS-003
+    trigger: Simplified depreciation is not available or not modelled - aggregated turnover at or above the small business entity threshold, previously opted out of the regime, or an asset excluded from simplified depreciation.
+    message: "Simplified depreciation (instant asset write-off and the small business pool) isn't available or can't be modelled for this business or asset. Depreciation under the general capital allowance rules needs a registered tax agent."
+    route: registered tax agent
+  - code: AU-BUS-004
+    trigger: A shortcut method is not available on the facts - cents per kilometre for a vehicle that is not a car or for a company or trust, or the home office fixed rate without a record of actual hours worked from home for the whole year.
+    message: "That shortcut method isn't available on the facts given (cents per kilometre needs a car claimed by an individual or partnership; the home office fixed rate needs a record of actual hours worked from home for the whole income year). Use the actual cost or logbook method instead."
+    route: registered tax agent
+  - code: AU-BUS-005
+    trigger: An asset's first use or installed-ready-for-use date falls outside the income year being calculated, so the threshold and pool treatment for that year do not apply to it.
+    message: "An asset's write-off depends on the income year in which it was first used or installed ready for use. Run the calculation for that income year, and carry any pool balance forward as the opening balance."
+    route: preparer
+  - code: AU-BUS-006
+    trigger: General business income and deduction questions beyond the tools - hobby versus business, borderline s 8-1 deductibility, trading stock valuation choices beyond the simplified rules, partnerships or trusts, or a request to apply for a PSB determination.
+    message: "This part of the business question turns on judgement or elections that a registered tax agent must decide (for example, whether a business is being carried on, trading stock valuation, or an application for a determination). I can prepare the facts and workings for them."
+    route: registered tax agent

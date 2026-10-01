@@ -1,0 +1,55 @@
+# short-stay-accommodation overlay, income year 2026-27. Same schema as the base file; no key collisions.
+# Every figure below was read on the cited primary page on 2026-09-29. Dates are ISO dates, and due dates use the
+# month_number / day_of_month pairs the lodgment keys use. Sharing Economy Reporting Regime (SERR): a platform duty,
+# not a host filing duty. Figures for GST (Division 87, registration) and rental (s 26-50 start date, capital works)
+# already exist under gst.* and rental.*; they are not repeated here.
+shortstay:
+  serr_start_short_term_accommodation:
+    value: 2023-07-01
+    unit: date
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=PAC/19530001/Sch1-396-55&PiT=99991231235958
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s 396-55 table item 15 (Treasury Laws Amendment (2022 Measures No. 2) Act 2022, No. 84 of 2022, Sch 2 item 2): applies to short-term accommodation transactions entered into on or after this date (taxi travel from the same date; all other transactions from 1 Jul 2024). ATO What is the SERR: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/third-party-reporting/sharing-economy-reporting-regime/what-is-the-serr'
+  serr_due_month_period_jul_dec:
+    value: 1
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/third-party-reporting/sharing-economy-reporting-regime/how-and-when-to-report-under-the-serr/how-to-lodge-your-serr-report
+    as_at: 2026-09-29
+    notes: 'Report for the six months 1 Jul to 31 Dec is due in January of the following calendar year (platform obligation). Six-monthly periods come from a 2023 legislative instrument (explanatory statement to LI 2025/5 para 7); the Act default is a financial year.'
+  serr_due_day_period_jul_dec:
+    value: 31
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/third-party-reporting/sharing-economy-reporting-regime/how-and-when-to-report-under-the-serr/how-to-lodge-your-serr-report
+    as_at: 2026-09-29
+    notes: 'See serr_due_month_period_jul_dec.'
+  serr_due_month_period_jan_jun:
+    value: 7
+    unit: month_number
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/third-party-reporting/sharing-economy-reporting-regime/how-and-when-to-report-under-the-serr/how-to-lodge-your-serr-report
+    as_at: 2026-09-29
+    notes: 'Report for the six months 1 Jan to 30 Jun is due in July of the same calendar year (platform obligation).'
+  serr_due_day_period_jan_jun:
+    value: 31
+    unit: day_of_month
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/third-party-reporting/sharing-economy-reporting-regime/how-and-when-to-report-under-the-serr/how-to-lodge-your-serr-report
+    as_at: 2026-09-29
+    notes: 'See serr_due_month_period_jan_jun.'
+  serr_substantial_supplier_value:
+    value: 1000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=OPS%2FLI20255%2F00001&PiT=99991231235958
+    as_at: 2026-09-29
+    notes: 'LI 2025/5 (F2025L00517) ss 4 and 7(2): a platform need not report a supplier that made at least this value of supplies (GST inclusive) through that platform in the 12 months to the end of the reporting period. Prorated (days the supplier had supplies available on the platform in those 12 months, divided by 365, times this amount) for a supplier that started in the 12 months (s 4 "prorated amount").'
+  serr_substantial_property_transactions:
+    value: 2000
+    unit: transactions
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=OPS%2FLI20255%2F00001&PiT=99991231235958
+    as_at: 2026-09-29
+    notes: 'LI 2025/5 ss 4 and 8(a): a platform need not report a transaction for a "substantial property", one where the platform facilitated at least this many transactions for that property in the 12 months to the end of the reporting period. Prorated (days listed in those 12 months divided by 365, times this number) for a property first listed in the 12 months.'

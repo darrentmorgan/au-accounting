@@ -1,0 +1,16 @@
+# router overlay, income year 2025-26: non-tax state employer registrations used by obligations_calendar. Read 29 Sep 2026.
+employer_sa:
+  return_to_work_registration_days:
+    value: 14
+    unit: days
+    status: SOURCE-CITED
+    source: https://www.rtwsa.com/insurance/insurance-with-us/register
+    as_at: 2026-09-29
+    notes: 'Current ReturnToWorkSA page states 14 days; not re-read for the 2025-26 year specifically.'
+  return_to_work_registration_remuneration_min:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.rtwsa.com/insurance/insurance-with-us/register
+    as_at: 2026-09-29
+    notes: 'The ReturnToWorkSA page shows only the 2026-27 threshold; the 2025-26 threshold was not found on a primary page.'

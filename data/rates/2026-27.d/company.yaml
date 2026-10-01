@@ -1,0 +1,44 @@
+# company-div7a overlay, income year 2026-27. Same schema as the base file; no key collisions.
+company:
+  loss_carry_back_lodgment_lookback_years:
+    value: 5
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00071/asmade/2026-08-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s160-5(1)(f): returns lodged (or not required, or assessed) for the loss year and each of the 5 income years before it.'
+  fdt_offset_reduction_rate:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/205-70
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s205-70(2) step 1: franking deficit tax offset reduced by this share where the relevant deficit exceeds the threshold share of franking credits arising in the year.'
+  fdt_offset_reduction_threshold:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/205-70
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s205-70(2) step 1: share of franking credits arising in the year above which the offset reduction applies.'
+div7a:
+  secured_loan_min_security_ratio:
+    value: 1.1
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19360027/109N
+    as_at: 2026-09-29
+    notes: 'ITAA 1936 s109N(3)(a)(ii): market value of the mortgaged real property, less prior-ranking secured liabilities, must be at least this multiple of the loan when first made.'
+  benchmark_interest_rate_history:
+    value:
+    - {from: 2021-07-01, to: 2022-06-30, rate: 0.0452}
+    - {from: 2022-07-01, to: 2023-06-30, rate: 0.0477}
+    - {from: 2023-07-01, to: 2024-06-30, rate: 0.0827}
+    - {from: 2024-07-01, to: 2025-06-30, rate: 0.0877}
+    - {from: 2025-07-01, to: 2026-06-30, rate: 0.0837}
+    - {from: 2026-07-01, to: 2027-06-30, rate: 0.0877}
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/division-7a-benchmark-interest-rate
+    as_at: 2026-09-29
+    notes: 'ATO table, income years ended 30 June 2022 to 2027 (ITAA 1936 s109N(2)). Standard 1 Jul - 30 Jun years only; substituted accounting periods use a different RBA rate.'

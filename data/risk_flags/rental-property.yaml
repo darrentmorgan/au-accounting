@@ -1,0 +1,62 @@
+# rental-property risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: rental-private-use-apportionment
+    topic: Private use of a rental property
+    description: Owner or family use, below-market rent to relatives, or a room let inside the home means ownership costs (interest, rates, insurance, repairs, depreciation, capital works) must be apportioned. Claiming 100 per cent while using the property privately is a common ATO review point.
+    citations: [ITAA 1997 s 8-1, TR 2026/1, PCG 2026/2]
+    skills: [rental-property]
+  - id: rental-holiday-home-s26-50
+    topic: Holiday home also rented out
+    description: If the property is a holiday home (used or held for the owner's or associates' holidays or recreation) and is not used or held mainly to produce rent, s 26-50 denies all ownership and use costs, with no apportionment. Blocking peak periods for personal use is the red-zone pattern.
+    citations: [ITAA 1997 s 26-50, TR 2026/1, PCG 2026/3]
+    skills: [rental-property]
+  - id: rental-interest-purpose
+    topic: Loan purpose, redraws and offsets
+    description: Interest is deductible by reference to what the borrowed money was used for, not the security. Redraws for private purposes, refinancing that includes private borrowings and split loans need tracing.
+    citations: [ITAA 1997 s 8-1, TR 2000/2, PCG 2026/2 para 50]
+    skills: [rental-property]
+  - id: rental-initial-repairs
+    topic: Initial repairs and improvements claimed as repairs
+    description: Repairs for damage or defects that existed when the property was acquired, and improvements, are capital. Claiming them as immediate repairs is a frequent adjustment.
+    citations: [ITAA 1997 s 25-10, TR 97/23]
+    skills: [rental-property]
+  - id: rental-travel-denied
+    topic: Travel to inspect or maintain a residential rental
+    description: Travel costs relating to a residential rental property are not deductible for an individual not carrying on a rental business (s 26-31; from 1 Jul 2017).
+    citations: [ITAA 1997 s 26-31]
+    skills: [rental-property]
+  - id: rental-second-hand-assets
+    topic: Depreciation on second-hand assets
+    description: Depreciation on second-hand assets in a residential rental is denied for assets acquired at or after 7.30 pm on 9 May 2017 or first used privately by the owner, unless an exception applies. Quantity surveyor schedules often list them.
+    citations: [ITAA 1997 s 40-27]
+    skills: [rental-property]
+  - id: rental-vacant-land
+    topic: Holding costs of vacant land
+    description: Interest, rates and other holding costs of vacant land incurred from 1 Jul 2019 are not deductible unless an exception applies. Land does not stop being vacant until a residential building that was built while held can be lawfully occupied and is rented or available for rent.
+    citations: [ITAA 1997 s 26-102, TR 2023/3]
+    skills: [rental-property]
+  - id: rental-co-ownership-title
+    topic: Co-owners split income and deductions by legal title
+    description: Rent and expenses are attributed to co-owners by legal interest (joint tenants equally, tenants in common by share) except in very limited cases with evidence of a different equitable interest. Agreements to split differently do not change the tax result.
+    citations: [TR 2026/1 paras 22 and 26, TR 93/32]
+    skills: [rental-property]
+  - id: rental-negative-gearing-2027-28
+    topic: Residential dwelling loss quarantining from 2027-28
+    description: From the 2027-28 income year, an excess of deductions over income from residential dwellings acquired on or after 7.30 pm on 12 May 2026 (contract date counts) is quarantined and carried forward, unless the dwelling is a new residential dwelling or another exception applies. The definition of new residential dwelling depends on a ministerial instrument that had not been made as at the date this data was compiled.
+    citations: [ITAA 1997 ss 26-155 and 26-160, Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 2, Treasury Laws Amendment (Tax Reform No. 2) Act 2026 Sch 4]
+    skills: [rental-property]
+  - id: rental-short-stay-data-matching
+    topic: Sharing economy reporting of short-stay income
+    description: Booking platforms report short-term accommodation income to the ATO under the Sharing Economy Reporting Regime, from 1 Jul 2023 (the current instrument, LI 2025/5, has no limit by length of stay). Income must be declared gross of platform fees; unreported platform income is matched.
+    citations: [TAA 1953 Sch 1 Subdiv 396-B]
+    skills: [rental-property]
+  - id: rental-non-arms-length-rent
+    topic: Renting to family or friends below market
+    description: Below-market rent is still assessable. Deductions are apportioned to exclude the private element, and under PCG 2026/2 are limited to the rent received so there is no net rental loss. Market-rate rent needs evidence at the time the rent was set.
+    citations: [TR 2026/1 para 21, PCG 2026/2 paras 44-49]
+    skills: [rental-property]
+  - id: rental-foreign-property-stated-deductions
+    topic: Overseas rental worked from stated amounts
+    description: Rent from a property outside Australia is assessable to an Australian resident (with any foreign tax relieved through the foreign income tax offset), but the deductions used are the taxpayer's own stated amounts, taken as given. Whether each cost is deductible for foreign property, depreciation, capital works, interest apportionment, private use and any holiday home rule are not tested.
+    citations: [ITAA 1997 s 6-5, ITAA 1997 s 8-1, ITAA 1997 Div 770, TR 2026/1]
+    skills: [rental-property, au-indonesia-cross-border]

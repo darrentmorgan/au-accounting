@@ -1,0 +1,22 @@
+# rental-property refusal codes. Skills surface code + message verbatim, then stop the affected work.
+refusals:
+  - code: AU-RENT-001
+    trigger: Rental arrangement outside the individual passive-investor model - property development or flipping (revenue v capital), commercial or non-residential property, property held by a company, trust, partnership or SMSF, a business of letting or a large portfolio, or mixed use with a business.
+    message: "This rental arrangement is outside what this calculator covers (for example property development or resale, commercial property, property held in a company, trust or super fund, a rental business, or mixed business use). A registered tax agent should prepare it."
+    route: registered tax agent
+  - code: AU-RENT-002
+    trigger: Negative gearing quarantine mechanics cannot be verified - the dwelling is claimed to be a new residential dwelling (or covered by a Minister determination) but the defining legislative instruments under ITAA 1997 ss 26-155(2)(c) and 26-160(4) are not available, or a year from 2027-28 is requested.
+    message: "From the 2027-28 income year, losses on residential dwellings acquired on or after 7.30 pm on 12 May 2026 are quarantined unless an exception applies. Whether a dwelling is a 'new residential dwelling' depends on a ministerial instrument that has not been made, so I can't say whether the exception applies. A registered tax agent should confirm this once the instrument exists."
+    route: registered tax agent
+  - code: AU-RENT-003
+    trigger: A holiday home is also rented out and it is not resolved whether it is used or held mainly to produce rent (s 26-50 exception), so the deduction outcome depends on an unresolved qualitative test.
+    message: "Whether this holiday home is used or held for use mainly to produce rent is a judgement about all the facts (ITAA 1997 s 26-50; TR 2026/1; PCG 2026/3). I can't decide it by calculation. If it is not mainly used for rent, ownership costs are not deductible at all. Confirm the position with a registered tax agent before claiming."
+    route: registered tax agent
+  - code: AU-RENT-004
+    trigger: Capital works or depreciation input outside the modelled rules - construction start date rules that cannot be verified (for example works subject to the pre-16 September 1987 contract rate, or works begun before the eligibility dates), or effective life unknown for a depreciating asset.
+    message: "The construction date or contract history for these capital works falls outside the rules I can verify. A quantity surveyor's report and a registered tax agent should confirm the rate and start date."
+    route: registered tax agent
+  - code: AU-RENT-005
+    trigger: Rental property located outside Australia (foreign-source rent, foreign tax offsets, local tax law).
+    message: "Rent from a property outside Australia is assessable in Australia for an Australian resident but also depends on the foreign country's tax, foreign income tax offsets and any tax treaty. I can't compute this. A registered tax agent with cross-border experience should prepare it."
+    route: registered tax agent

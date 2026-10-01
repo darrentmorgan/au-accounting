@@ -1,0 +1,22 @@
+# payg-instalments-lodgment refusals. Fields: code, trigger, message, route.
+refusals:
+  - code: AU-PAYG-001
+    trigger: PAYG instalment situation outside the calculator's scope - consolidated group head company, monthly instalment payer, combined GST instalment method, substituted accounting period with non-standard quarters, or use of the ATO dynamic (accounting-software) method.
+    message: "This PAYG instalment situation (for example a consolidated group, monthly payer, GST instalment or substituted accounting period) is not modelled here. Use the amount or rate shown on the activity statement or instalment notice, or ask a registered tax or BAS agent."
+    route: registered tax agent or BAS agent
+  - code: AU-PAYG-002
+    trigger: General interest charge or shortfall interest charge rate for a period is not yet published (null in the rates file) or falls outside the periods loaded, or the penalty unit for the failure date is not loaded.
+    message: "I can't work out interest or the penalty for that period: the ATO has not published the rate yet, or that period is not loaded. I can calculate up to the last published quarter, or you can check the rate on ato.gov.au."
+    route: preparer
+  - code: AU-PAYG-003
+    trigger: Request for remission of a failure to lodge penalty or interest where the facts are contested, or the outcome depends on judgement about circumstances (illness, disaster, agent failure, financial hardship).
+    message: "Whether a late lodgment penalty or interest is remitted turns on your circumstances and how the ATO weighs them. I can show what the penalty is and what the ATO looks for, but a registered tax agent should prepare and lodge the remission request."
+    route: registered tax agent
+  - code: AU-PAYG-004
+    trigger: Negotiating a payment plan or debt arrangement with the ATO, or an objection, review or dispute of an assessment, penalty or interest decision.
+    message: "Payment plans, debt negotiations, objections and disputes need a person to act for you with the ATO. Please contact the ATO on the number on your notice, or a registered tax agent (or a tax lawyer for a dispute)."
+    route: registered tax agent or tax lawyer
+  - code: AU-PAYG-005
+    trigger: Shortfall penalty where recklessness or intentional disregard is alleged or possible, or a shortfall penalty needs to be calculated or reduced (voluntary disclosure, Div 284).
+    message: "A shortfall penalty that involves recklessness or intentional disregard is a legal and factual judgement with serious consequences. I can only describe the base percentages; a registered tax agent or tax lawyer should advise before anything is lodged or said to the ATO."
+    route: registered tax agent or tax lawyer

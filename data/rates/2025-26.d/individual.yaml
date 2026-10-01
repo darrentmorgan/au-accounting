@@ -1,0 +1,17 @@
+# individual-tax overlay, income year 2025-26. Same schema as the base file; no key collisions.
+individual:
+  part_year_tax_free_threshold_flat:
+    value: 13464
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/coming-to-australia-or-going-overseas/coming-to-australia/tax-free-threshold-for-newcomers-to-australia
+    as_at: 2026-09-29
+    notes: 'Flat component of the part-year tax-free threshold (Income Tax Rates Act 1986 ss18-20). ATO worked example uses
+      2025-26 rates. Also stated at A2 Part-year tax-free threshold 2026 instructions.'
+  part_year_tax_free_threshold_prorated:
+    value: 4736
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/coming-to-australia-or-going-overseas/coming-to-australia/tax-free-threshold-for-newcomers-to-australia
+    as_at: 2026-09-29
+    notes: 'Pro-rated component: amount x months resident (counting the month residency started or ended) / 12.'

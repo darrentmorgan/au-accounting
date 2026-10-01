@@ -1,0 +1,26 @@
+# state-taxes-sa refusal codes. Fields: code, trigger, message, route. Surfaced verbatim by the skill.
+refusals:
+  - code: AU-SA-001
+    trigger: State or territory tax calculation requested for a jurisdiction other than South Australia (payroll tax, land tax or stamp duty in NSW, Vic, Qld, WA, Tas, ACT or NT).
+    message: "This version only calculates South Australian payroll tax, land tax and stamp duty. Other states and territories are out of scope for v0.2; check the relevant state revenue office or a registered tax agent."
+    route: state revenue office or registered tax agent
+  - code: AU-SA-002
+    trigger: SA payroll tax grouping is disputed or unclear (common control, common employees, tracing of interests, Commissioner exclusion under s 79), or the status of a contractor under the relevant-contract, employment agency or employee-contractor provisions needs a determination.
+    message: "Whether employers are grouped, or whether contractor payments count as taxable wages, needs a determination on the facts (Payroll Tax Act 2009 (SA) Part 5 and the relevant contract provisions). I can't decide it; RevenueSA or a registered tax agent should, and I can recompute once the answer is settled."
+    route: registered tax agent or RevenueSA
+  - code: AU-SA-003
+    trigger: SA land tax exemption is disputed, contested or needs an objection or discretion (principal place of residence edge cases, primary production in the defined rural area, waiver, ex gratia relief), or a corporate reconstruction exemption is claimed.
+    message: "This land tax exemption or relief turns on RevenueSA's assessment of the facts or an objection process. I can't determine it; a registered tax agent should apply to RevenueSA or lodge the objection, and I can recompute once the outcome is known."
+    route: registered tax agent
+  - code: AU-SA-004
+    trigger: SA duty or land tax involving land held on trust (designated beneficiary, discretionary trust apportionment), unit trusts, landholder duty, partnership land transfers, corporate group aggregation, deceased estates, or duty-exempt family or corporate reconstruction transfers.
+    message: "Trusts, landholder and unit trust duty, partnership transfers, corporate groups and reconstruction exemptions have special SA rules that this calculator does not model. A lawyer or registered tax agent should prepare this part."
+    route: lawyer or registered tax agent
+  - code: AU-SA-005
+    trigger: Seniors downsizing stamp duty relief claimed for an SA transfer. Start date, value caps and conditions are not verified on a primary source in this plugin.
+    message: "South Australia has announced stamp duty relief for eligible downsizers aged 60 and over, but I could not verify its start date, value limits and conditions on the RevenueSA page. I won't compute it; check RevenueSA before relying on it."
+    route: RevenueSA or conveyancer
+  - code: AU-SA-006
+    trigger: SA stamp duty transfer dated outside the supported range (before 1 July 2018), or a first home buyer relief claim on a contract dated before 13 February 2025.
+    message: "I only model current SA stamp duty rules: transfers from 1 July 2018 and first home buyer relief for contracts from 13 February 2025. Earlier dates had different rules (value caps, phased reductions, surcharge relief); check RevenueSA or a conveyancer."
+    route: RevenueSA or conveyancer

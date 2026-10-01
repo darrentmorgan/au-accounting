@@ -1,0 +1,42 @@
+# Structured audit risk points for the super-contributions skill. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: SUPER-NOI-TIMING
+    topic: Personal deductible contributions
+    description: A personal super deduction is denied unless a valid notice of intent is given to the fund and acknowledged before the earlier of lodging the return and the end of the next income year, and before any rollover, withdrawal or pension start from that contribution. Late or missing notices turn the amount into a non-concessional contribution.
+    citations: [ITAA 1997 s290-170, ITAA 1997 s290-175, ITAA 1997 s290-180]
+    skills: [super-contributions, individual-tax]
+  - id: SUPER-CARRY-FORWARD-TSB
+    topic: Carry-forward concessional contributions
+    description: Unused concessional cap can only be used if total super balance at the prior 30 June was below the carry-forward limit, counting all funds. Amounts expire after five years and are applied earliest first. Claims made on stale ATO online services data are a common source of excess contributions.
+    citations: [ITAA 1997 s291-20(3)-(7)]
+    skills: [super-contributions]
+  - id: SUPER-EXCESS-CC-TO-NCC
+    topic: Excess concessional contributions
+    description: Unreleased excess concessional contributions also count towards the non-concessional cap and can trigger a bring-forward period or excess non-concessional contributions.
+    citations: [ITAA 1997 s291-15, ITAA 1997 s292-90(1)(b), ITAA 1997 s292-90(1A)]
+    skills: [super-contributions]
+  - id: SUPER-BRING-FORWARD-INADVERTENT
+    topic: Non-concessional bring forward
+    description: Any non-concessional contributions above the annual cap automatically trigger a bring-forward period that fixes the cap for two or three years at the trigger-year amount, and a period triggered in either of the two previous years limits this year. Check ATO online services for an existing period before large contributions.
+    citations: [ITAA 1997 s292-85(3)-(7)]
+    skills: [super-contributions]
+  - id: SUPER-FUND-RECEIPT-DATE
+    topic: Timing of contributions
+    description: Contributions count in the year the fund receives them, not when paid. Payments made in late June (including clearing house or BPAY) may land in the next year and change both years' cap positions and deduction year.
+    citations: [ITAA 1997 s290-150(3), ITAA 1997 s291-25(2)(a)]
+    skills: [super-contributions, payroll-sg]
+  - id: SUPER-DIV293-INCOME-TEST
+    topic: Division 293
+    description: Division 293 income adds back reportable fringe benefits and net investment losses and replaces reportable super contributions with low tax contributions, so salary sacrifice and negative gearing do not reduce it. People under the threshold on taxable income can still be caught.
+    citations: [ITAA 1997 s293-20, ITAA 1997 s293-25, ITAA 1997 s995-1 income for surcharge purposes]
+    skills: [super-contributions]
+  - id: SUPER-DIV296-FUND-EARNINGS
+    topic: Division 296
+    description: Division 296 tax uses fund-reported realised earnings and the TSB reference amount (closing TSB only for 2026-27). Members with several funds or an SMSF must make sure every fund reports relevant earnings; LRBA amounts are excluded from the Division 296 TSB. SMSF trustees may have one-off CGT cost base choices that are time limited.
+    citations: [ITAA 1997 s296-40, ITAA 1997 s296-45, ITAA 1997 s296-55, Superannuation (Building a Stronger and Fairer Super System) Imposition Act 2026 s5]
+    skills: [super-contributions]
+  - id: SUPER-TSB-TBC-NIL-CAP
+    topic: Non-concessional cap nil
+    description: A total super balance at or above the general transfer balance cap at the prior 30 June makes the non-concessional cap nil, stops the co-contribution and denies the spouse contribution offset for that spouse.
+    citations: [ITAA 1997 s292-85(2)(b), ITAA 1997 s290-230(4A), Superannuation (Government Co-contribution for Low Income Earners) Act 2003 s6(1)(db)]
+    skills: [super-contributions]

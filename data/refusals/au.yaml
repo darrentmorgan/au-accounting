@@ -1,0 +1,35 @@
+# Refusal catalogue. Skills surface code + message verbatim, then stop the affected work.
+# Fields: code, trigger, message, route. Never invent a code outside this file.
+refusals:
+  - code: AU-GEN-001
+    trigger: A required figure has a value but is not VERIFIED (SOURCE-CITED or SUSPECT) and draft use was not requested. A draft is available.
+    message: "I can't compute this reliably: a required figure for that income year is not yet verified. I can produce a clearly marked draft, or you can confirm the figure from ato.gov.au."
+    route: preparer
+  - code: AU-GEN-002
+    trigger: User asks to lodge, submit or pay on their or a client's behalf.
+    message: "I prepare working papers only. Lodgment must be done by the taxpayer or a registered agent through ATO online services."
+    route: registered tax agent or BAS agent
+  - code: AU-IND-001
+    trigger: Individual tax scenario outside the individual-tax calculator's scope - deceased estate, trustee-assessed income (s98/s99/s99A, beneficiaries under a legal disability), minors' Div 6AA unearned income, employment termination payments or super lump sums, lump sums in arrears, income averaging (special professionals, primary producers), or first home super saver released amounts.
+    message: "This involves a special tax regime (such as a deceased estate, trust assessment, minor's unearned income, termination or lump sum payment, or income averaging) that this calculator does not model. A registered tax agent should prepare this part."
+    route: registered tax agent
+  - code: AU-IND-002
+    trigger: Taxpayer may be entitled to the seniors and pensioners tax offset (SAPTO), which changes offsets and Medicare thresholds and is not modelled.
+    message: "You may be entitled to the seniors and pensioners tax offset, which changes both the offset and the Medicare levy thresholds. I can't compute this reliably; a registered tax agent (or the ATO SAPTO calculator) should confirm it."
+    route: registered tax agent
+  - code: AU-IND-003
+    trigger: Foreign resident (or person living overseas) with a study or training loan (HELP/VSL etc.), where the obligation depends on worldwide income and overseas reporting.
+    message: "Study loan repayments for foreign residents and people living overseas depend on worldwide income and an overseas income report. I can't compute this; confirm with the ATO or a registered tax agent."
+    route: registered tax agent
+  - code: AU-IND-004
+    trigger: Working holiday maker who is an Australian resident for tax purposes, has income other than working holiday taxable income, or claims a tax-treaty non-discrimination outcome.
+    message: "Working holiday makers who are tax residents, have other income, or rely on a tax treaty need a split calculation that this tool does not model. A registered tax agent should prepare this."
+    route: registered tax agent
+  - code: AU-GEN-003
+    trigger: A required figure has no published value for that income year (no rates file, key absent, or value null), so a draft cannot be produced either.
+    message: "I can't compute this: a figure it needs has not been published for that income year, so no draft is possible either. Confirm the figure from ato.gov.au (or the relevant primary source), or ask again once it is published."
+    route: preparer
+  - code: AU-GEN-004
+    trigger: A due date, or a business-day count, needs a public holiday that is outside the public holiday data range in data/holidays/au.yaml (1 Jul 2025 to 30 Jun 2028), so weekends alone cannot be used to roll it. Tools whose main result is the date refuse. Tools where the date is secondary (SA payroll tax and land tax, SERR report check, PAYG instalment amount, FBT payable) return their main result and list this code, with this message, in `field_refusals` against the unrolled date.
+    message: "I can't work out this due date reliably: it falls outside the public holiday dates I hold (1 July 2025 to 30 June 2028), so I can't tell whether a public holiday moves it. Check the ATO's lodgment and payment dates on weekends or public holidays page (or RevenueSA for SA state taxes), or ask again once the holiday data is extended."
+    route: preparer

@@ -1,0 +1,14 @@
+# Banned synonyms for scripts/lint_skills.py. Keep this list short and unambiguous.
+# The linter fails on any synonym below in skill prose (outside code fences, inline code and URLs),
+# case-insensitive, whole words, with an optional plural "s". Each preferred term must be defined in
+# docs/GLOSSARY.md, and each synonym must be listed there against its preferred term
+# (tests/unit/test_lint_skills.py checks both).
+# "financial year" is not banned: it is the legislated term for SA land tax and for company
+# financial reports (see docs/GLOSSARY.md, entry "financial year").
+banned:
+  - preferred: income year
+    synonyms: [tax year, fiscal year]
+  - preferred: working paper
+    synonyms: [workpaper, work paper, working-paper]
+  - preferred: risk flag
+    synonyms: [red flag, audit flash point]

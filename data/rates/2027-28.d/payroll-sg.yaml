@@ -1,0 +1,239 @@
+# payroll-sg overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+payroll:
+  payg_scale1_no_tft:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_scale2_tft:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_scale3_foreign:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_scale5_full_medicare_exemption:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_scale6_half_medicare_exemption:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_scale4_no_tfn_resident_rate:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_scale4_no_tfn_foreign_rate:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_offset_factor_weekly:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/working-out-the-weekly-earnings
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_offset_factor_fortnightly:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/working-out-the-weekly-earnings
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_offset_factor_monthly:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/working-out-the-weekly-earnings
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_offset_factor_quarterly:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/working-out-the-weekly-earnings
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PAYG withholding schedule is remade by the Commissioner for payments from 1 July each year and the 2027 schedule
+      is not out (the ATO Schedule 1 pages read 2026-09-29 apply to payments from 1 Jul 2026; the second resident bracket rate changes to 14% from 1 Jul
+      2027).'
+  payg_stsl_component_tft_or_foreign:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/schedule-8-statement-of-formulas-for-calculating-study-and-training-support-loans-components
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: Schedule 8 is remade each year with the HELP repayment thresholds, which are not published for 2027-28.'
+  payg_stsl_component_no_tft:
+    value: null
+    unit: coefficients_weekly
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/schedule-8-statement-of-formulas-for-calculating-study-and-training-support-loans-components
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: Schedule 8 is remade each year with the HELP repayment thresholds, which are not published for 2027-28.'
+  no_abn_withholding_rate:
+    value: 0.47
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/statement-by-supplier-not-quoting-an-abn
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s12-190: payer withholds the top rate (47% from 1 Jul 2017, top marginal rate plus Medicare levy) from the whole payment when
+      the supplier quotes no ABN, unless an exception applies. For 2027-28 (read 2026-09-29): Follows the top marginal rate (45%) plus Medicare levy (2%),
+      both unchanged in 2027-28 (ITRA Sch 7 Pt I; Medicare Levy Act s 6). ATO form page.'
+  no_abn_payment_threshold:
+    value: 75
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/payg-withholding/payments-you-need-to-withhold-from/withholding-from-suppliers/payments-you-don-t-withhold-from
+    as_at: 2026-09-29
+    notes: 'No withholding where the total payment for the supply is $75 or less excluding GST. For 2027-28 (read 2026-09-29): TAA 1953 Sch 1 s 12-190(4)(b)
+      re-read: $50 or the higher amount in regulations for GSTA s 29-80(1) ($75). ATO page.'
+super:
+  payday_super_usual_period_business_days:
+    value: 7
+    unit: business_days
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/paying-super-on-payday/payment-deadlines-for-payday-super
+    as_at: 2026-09-29
+    notes: 'SGAA as amended by Treasury Laws Amendment (Payday Superannuation) Act 2025: contribution must be received by the fund (allocable) within 7
+      business days after the QE day. Business day excludes Sat, Sun and a public holiday for the whole of any state, the ACT or the NT (LCR 2026/3 para
+      4). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  payday_super_first_contribution_business_days:
+    value: 20
+    unit: business_days
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/paying-super-on-payday/payment-deadlines-for-payday-super
+    as_at: 2026-09-29
+    notes: 'Allowable longer period: first contribution for a new employee, or to a new fund for an existing employee: 20 business days after the QE day.
+      For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  sgc_admin_uplift_default_rate:
+    value: 0.6
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'SGAA s19B(1): administrative uplift = 60% of (individual final SG shortfalls + notional earnings) for the QE day. For 2027-28 (read 2026-09-29):
+      LCR 2026/3 para 102.'
+  sgc_admin_uplift_compliance_history_reduction:
+    value: 0.2
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'SG Regs 2018 s13C: 20 percentage points off if no Commissioner-initiated SGC assessment or estimate in the 24 months ending on the QE day (pre-1
+      Jul 2026 charges ignored). For 2027-28 (read 2026-09-29): LCR 2026/3 para 109.'
+  sgc_admin_uplift_vds_reduction_30_days:
+    value: 0.4
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'SG Regs 2018 s13D: voluntary disclosure statement lodged before the end of 30 calendar days starting on the QE day. For 2027-28 (read 2026-09-29):
+      LCR 2026/3 Table 1.'
+  sgc_admin_uplift_vds_reduction_60_days:
+    value: 0.35
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'Voluntary disclosure lodged 31 to 60 calendar days starting on the QE day. For 2027-28 (read 2026-09-29): LCR 2026/3 Table 1.'
+  sgc_admin_uplift_vds_reduction_120_days:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'Voluntary disclosure lodged 61 to 120 calendar days starting on the QE day. For 2027-28 (read 2026-09-29): LCR 2026/3 Table 1.'
+  sgc_admin_uplift_vds_reduction_later:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'Voluntary disclosure lodged more than 120 calendar days starting on the QE day (but before assessment). For 2027-28 (read 2026-09-29): LCR 2026/3
+      Table 1.'
+  sgc_choice_loading_rate:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'SGAA s20A(1)(a): 25% of contributions that did not comply with choice of fund rules. For 2027-28 (read 2026-09-29): LCR 2026/3.'
+  sgc_choice_loading_limit:
+    value: 1200
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG/LCR20263/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'SGAA s20C: limit per employee per notice period, reduced by prior choice loadings in the notice period. For 2027-28 (read 2026-09-29): LCR 2026/3
+      para 131.'
+  sgc_late_payment_penalty_rate_first:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/payday-super/about-payday-super
+    as_at: 2026-09-29
+    notes: 'Penalty for unpaid SGC from 1 Jul 2026 is 25% or 50% depending on prior penalties. Not computed by the calculator. For 2027-28 (read 2026-09-29):
+      Unchanged; no year-specific term or scheduled change found on the source.'
+  sgc_late_payment_penalty_rate_repeat:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/payday-super/about-payday-super
+    as_at: 2026-09-29
+    notes: 'See sgc_late_payment_penalty_rate_first. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'

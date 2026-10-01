@@ -1,0 +1,38 @@
+# company-div7a refusal codes. Same schema as au.yaml. Skills surface code + message verbatim.
+refusals:
+  - code: AU-COMP-001
+    trigger: Company is the head or member of a consolidated group or MEC group, or the question involves tax losses transferred within a company group (Div 170, Subdiv 707-A) or the entry history rule.
+    message: "This involves a consolidated group or losses transferred between group companies. Tax consolidation rules change how income, losses and franking work, and this calculator does not model them. A registered tax agent should prepare this part."
+    route: registered tax agent
+  - code: AU-COMP-002
+    trigger: Deducting prior-year tax losses where ownership or control changed (continuity of ownership test, business continuity or similar business test, same business test), or any question about whether a company can still use its losses.
+    message: "Whether a company can still use its carried-forward losses depends on the continuity of ownership and business continuity tests, which turn on share registers, control and business history. I can't decide that; a registered tax agent should review it."
+    route: registered tax agent
+  - code: AU-COMP-003
+    trigger: Loss carry back question involving the integrity rule for schemes to dispose of membership interests (ITAA 1997 s160-30), a foreign resident company (s160-10(3)), losses increased by excess franking offsets (s36-55), a substituted accounting period, or changing an earlier loss carry back choice.
+    message: "This loss carry back question involves a special rule (change-of-control integrity rule, foreign residency, excess franking offsets, substituted accounting period or an amended choice) that this calculator does not model. A registered tax agent should confirm the offset."
+    route: registered tax agent
+  - code: AU-COMP-004
+    trigger: Trust distributions or unpaid present entitlements owed to a private company (bucket company) where Subdivision EA, section 100A, sub-trust arrangements or steps that turned an entitlement into a loan are in issue.
+    message: "Unpaid trust entitlements owed to a company can still be caught by Subdivision EA or section 100A even though, after Bendel, a passive entitlement is not a Division 7A loan. This needs a review of the trust deed, resolutions and dealings by a registered tax agent."
+    route: registered tax agent or lawyer
+  - code: AU-COMP-005
+    trigger: The deemed dividend depends on the company's distributable surplus and that surplus needs working out (asset revaluations, provisions, the Commissioner's power to substitute values, prior non-commercial loans), rather than being given.
+    message: "The deemed dividend is capped at the company's distributable surplus, and working that out (including asset values, provisions and earlier Division 7A amounts) needs the company's full accounts. I can show the uncapped amount; a registered tax agent should confirm the surplus."
+    route: registered tax agent
+  - code: AU-COMP-006
+    trigger: Arrangement that may attract Part IVA or a Division 7A anti-avoidance rule - repay-and-redraw or reborrowing (s109R), loans or payments through interposed entities (s109T), backdated journal entries or set-offs without mutual liabilities used as repayments.
+    message: "This looks like an arrangement that anti-avoidance rules (such as section 109R repay-and-redraw, section 109T interposed entities or Part IVA) may disregard or recharacterise. I won't treat the repayment or structure as effective; a registered tax agent should review it."
+    route: registered tax agent or lawyer
+  - code: AU-COMP-007
+    trigger: Division 7A case outside the standard complying-loan calculation - loan past its maximum term, refinancing between secured and unsecured terms (s109N(3A)-(3D), s109E(3A)), pre-4 December 1997 loans, Commissioner's discretion (s109Q hardship, s109RB honest mistake, s109RD extension), substituted accounting period benchmark rate, non-resident private company, or payments/forgiveness where it is unclear whether an exclusion applies.
+    message: "This Division 7A situation (such as a loan past its term, a refinanced or re-secured loan, a pre-1997 loan, a request for the Commissioner's discretion, or a non-standard accounting period) is outside what this calculator models. A registered tax agent should handle it."
+    route: registered tax agent
+  - code: AU-COMP-008
+    trigger: Company that is not an ordinary resident private or public company taxed at the base or general rate - life insurer, RSA provider, pooled development fund, credit union, non-profit company, strata title body, non-resident company, or a company in liquidation.
+    message: "This company type has its own tax rates or rules that this calculator does not model. A registered tax agent should work out its tax."
+    route: registered tax agent
+  - code: AU-COMP-009
+    trigger: Imputation problem beyond a straight franking calculation - breach of the benchmark rule with over-franking tax or an under-franking debit to quantify, franking deficit tax offset reduction, exempting entities, dividend streaming or franking credit trading (s177EA, Subdiv 204-D), or franking a Division 7A deemed dividend.
+    message: "This involves an imputation integrity or penalty rule (benchmark rule, franking deficit offset reduction, exempting entity or streaming rules) that this calculator does not model. A registered tax agent should review the franking position."
+    route: registered tax agent

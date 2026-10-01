@@ -1,0 +1,8 @@
+{
+  "name": "au-accounting",
+  "version": "0.3.0",
+  "license": "MIT",
+  "description": "Australian tax and accounting skills for self-preparers and practitioners: primary-source rules, deterministic calculators and working papers for registered-agent review; rates for 2025-26 to 2027-28 (2027-28 partial), South Australia only for state taxes, and Australia-Indonesia only for treaty analysis (other countries get the generic foreign income tax offset).",
+  "author": { "name": "Darren Morgan" },
+  "experimental": { "evals": "evals" }
+}

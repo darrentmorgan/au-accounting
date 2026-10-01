@@ -1,0 +1,62 @@
+# Structured audit risk points for the trusts-partnerships skill. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: s100a-red-zone-4-screen
+    topic: Section 100A reimbursement agreements
+    description: A beneficiary is assessed on noticeably more than the trust income they are entitled to, or the entitlement is paid to, gifted to or used by someone else. PCG 2022/2 red-zone scenarios (including scenario 4, share of net income significantly more than the entitlement) attract ATO review; s100A treats the entitlement as never conferred and the trustee is assessed under s99A, with no time limit on amending the assessment.
+    citations: [ITAA 1936 s100A, TR 2022/4, PCG 2022/2]
+    skills: [trusts-partnerships]
+  - id: s99a-unallocated-income
+    topic: Trustee assessed under s99A
+    description: Part of the trust's net income is not covered by any present entitlement (no or late resolution, trust income below net income, or an invalid resolution). The trustee pays tax at the s99A rate plus Medicare levy on that part.
+    citations: ["ITAA 1936 s99A", "Income Tax Rates Act 1986 s12(9)", "FCT v Bamford [2010] HCA 10"]
+    skills: [trusts-partnerships]
+  - id: trustee-resolution-timing
+    topic: Present entitlement and streaming records
+    description: Present entitlement must exist by 30 June (or earlier if the deed requires). Franked distribution streaming must be recorded by 30 June; capital gain streaming within 2 months after year end. Late or undocumented resolutions push income to the trustee or to default beneficiaries.
+    citations: [ITAA 1936 s97, ITAA 1997 s115-228, ITAA 1997 s207-58]
+    skills: [trusts-partnerships]
+  - id: div6aa-minor
+    topic: Distributions to minors
+    description: A share of trust net income for a beneficiary under 18 on 30 June is usually eligible income under Div 6AA and taxed at penalty rates, with the trustee assessed under s98. Only excepted persons or excepted trust income (for example from a deceased estate) escape it.
+    citations: [ITAA 1936 Div 6AA, ITAA 1936 s98, ITAA 1936 s102AG, Income Tax Rates Act 1986 s13]
+    skills: [trusts-partnerships, individual-tax]
+  - id: corporate-beneficiary-upe
+    topic: Corporate beneficiary unpaid present entitlements
+    description: Commissioner of Taxation v Bendel [2026] HCA 18 held an untouched UPE is not a Div 7A loan and the ATO has said it will withdraw TD 2022/11. Subdiv EA, s100A, and any step that converts the UPE into a loan or lets shareholders use the funds still apply.
+    citations: ["Commissioner of Taxation v Bendel [2026] HCA 18", "ITAA 1936 Div 7A Subdiv EA", "ITAA 1936 s100A"]
+    skills: [trusts-partnerships, company-div7a]
+  - id: ftdt-outside-family-group
+    topic: Family trust distribution tax
+    description: A trust that has made a family trust election and distributes to someone outside the family group pays family trust distribution tax on that amount.
+    citations: [ITAA 1936 Sch 2F Div 271]
+    skills: [trusts-partnerships]
+  - id: trust-losses-sch2f
+    topic: Trust losses
+    description: A trust loss is not distributed; it is carried forward and recouped only if the Sch 2F trust loss tests (or a family trust election) are satisfied.
+    citations: [ITAA 1936 Sch 2F]
+    skills: [trusts-partnerships]
+  - id: non-resident-beneficiary
+    topic: Non-resident beneficiaries
+    description: The trustee is assessed under s98(3) on a non-resident beneficiary's share and withholding may apply to fund payments or interest and dividends.
+    citations: [ITAA 1936 s98(3), ITAA 1936 s98A]
+    skills: [trusts-partnerships, residency-cross-border]
+  - id: trustee-beneficiary-reporting
+    topic: Trustee beneficiaries and TFN reporting
+    description: Distributions to another trust need trustee beneficiary statements (Div 6D); trustees must also report beneficiaries' TFNs and withhold where a TFN is not quoted for closely held trusts.
+    citations: [ITAA 1936 Div 6D, Taxation Administration Act 1953 Sch 1 Subdiv 12-H]
+    skills: [trusts-partnerships]
+  - id: partner-salary-deducted
+    topic: Partnership salaries
+    description: Partner salaries and interest on partners' capital are distributions of profit, not deductions; they cannot create or increase a partnership loss. Salary and profit-share agreements must be made before year end.
+    citations: [TR 2005/7, ITAA 1936 s90, ITAA 1936 s92, FCT v Galland (1986) 162 CLR 408]
+    skills: [trusts-partnerships]
+  - id: professional-firm-profit-allocation
+    topic: Professional firm profits
+    description: Allocating professional firm profits away from the individual professional practitioner (through a trust, company or partnership of associated entities) is tested against PCG 2021/4 risk zones and Part IVA.
+    citations: [PCG 2021/4, ITAA 1936 Part IVA]
+    skills: [trusts-partnerships, sole-trader-business]
+  - id: discretionary-trust-minimum-tax-announced
+    topic: Announced minimum tax on discretionary trusts
+    description: A minimum tax on discretionary trusts from 1 Jul 2028 was announced in the 2026-27 Budget and exposure draft legislation was released on 3 Sep 2026. It is not law; do not apply it to 2025-26 or 2026-27 calculations.
+    citations: [ATO Tax reform - introducing a minimum tax on discretionary trusts (3 Sep 2026)]
+    skills: [trusts-partnerships]

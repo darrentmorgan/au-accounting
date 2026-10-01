@@ -1,0 +1,142 @@
+# business overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+business:
+  sbe_turnover_threshold:
+    value: 10000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/d4e347b76aca4585a9fd567df1931c8e?v=80e95725
+    as_at: 2026-09-29
+    notes: 'Small business entity: carries on a business and aggregated turnover below this amount (ITAA 1997 s 328-110). Read on the ATO business and professional
+      items schedule instructions (concessions for small business entities). Simplified depreciation and the instant asset write-off need this status. For
+      2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  sbito_turnover_threshold:
+    value: 5000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/concessions-offsets-and-rebates/small-business-income-tax-offset
+    as_at: 2026-09-29
+    notes: 'Aggregated turnover must be below this for the small business income tax offset (ATO table: 2016-17 onwards). Lower than the small business
+      entity threshold. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  sbito_rate:
+    value: 0.16
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/concessions-offsets-and-rebates/small-business-income-tax-offset
+    as_at: 2026-09-29
+    notes: 'Offset rate 2021-22 onwards (ATO table), applied to the basic income tax liability attributable to net small business income. ATO page last
+      updated 7 May 2025; no later change found. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  sbito_cap:
+    value: 1000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/concessions-offsets-and-rebates/small-business-income-tax-offset
+    as_at: 2026-09-29
+    notes: 'Maximum offset per individual per year across all small business income sources. For 2027-28 (read 2026-09-29): Unchanged; no year-specific
+      term or scheduled change found on the source.'
+  pool_first_year_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/simpler-depreciation-for-small-business/small-business-pool-calculations
+    as_at: 2026-09-29
+    notes: 'General small business pool: rate on the business portion of assets (and cost additions) added in the year, regardless of purchase date in the
+      year (ITAA 1997 s 328-190). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  pool_later_year_rate:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/simpler-depreciation-for-small-business/small-business-pool-calculations
+    as_at: 2026-09-29
+    notes: 'General small business pool: rate on the opening pool balance (ITAA 1997 s 328-190). Disposals reduce the closing balance but not this deduction
+      (ATO worksheet). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  ncl_income_requirement:
+    value: 250000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/what-is-a-non-commercial-loss
+    as_at: 2026-09-29
+    notes: 'Income requirement for offsetting a non-commercial business loss: income for the test must be under this amount. For 2027-28 (read 2026-09-29):
+      Unchanged; no year-specific term or scheduled change found on the source.'
+  ncl_assessable_income_test:
+    value: 20000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/offset-or-defer-the-loss-individuals-or-sole-traders/four-tests
+    as_at: 2026-09-29
+    notes: 'Assessable income test: assessable income from the activity at least this amount (reasonable estimate for a part year). For 2027-28 (read 2026-09-29):
+      Unchanged; no year-specific term or scheduled change found on the source.'
+  ncl_profit_test_years_required:
+    value: 3
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/what-is-a-non-commercial-loss
+    as_at: 2026-09-29
+    notes: 'Profit test: profit in this many of the past 5 income years. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change
+      found on the source.'
+  ncl_profit_test_window_years:
+    value: 5
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/what-is-a-non-commercial-loss
+    as_at: 2026-09-29
+    notes: 'Profit test window (the current year and the four before it). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change
+      found on the source.'
+  ncl_real_property_test:
+    value: 500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/offset-or-defer-the-loss-individuals-or-sole-traders/four-tests
+    as_at: 2026-09-29
+    notes: 'Real property test: real property (excluding a private dwelling) of at least this value used on a continuing basis. For 2027-28 (read 2026-09-29):
+      Unchanged; no year-specific term or scheduled change found on the source.'
+  ncl_other_assets_test:
+    value: 100000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/offset-or-defer-the-loss-individuals-or-sole-traders/four-tests
+    as_at: 2026-09-29
+    notes: 'Other assets test: eligible other assets (not real property, cars or similar vehicles) of at least this value used on a continuing basis. For
+      2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  psi_results_test_share:
+    value: 0.75
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/personal-services-income/working-out-if-the-psi-rules-apply/results-test
+    as_at: 2026-09-29
+    notes: 'Results test must be met for at least this share of PSI (ITAA 1997 s 87-18). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term
+      or scheduled change found on the source.'
+  psi_80_rule_share:
+    value: 0.8
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/personal-services-income/working-out-if-the-psi-rules-apply/self-assessing-as-a-psb
+    as_at: 2026-09-29
+    notes: '80% rule: fails if this share or more of PSI is from one client and its associates (ITAA 1997 s 87-15(3)). For 2027-28 (read 2026-09-29): Unchanged;
+      no year-specific term or scheduled change found on the source.'
+  psi_employment_test_share:
+    value: 0.2
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/personal-services-income/working-out-if-the-psi-rules-apply/employment-test
+    as_at: 2026-09-29
+    notes: 'Employment test: at least this share of principal work (by market value) performed by others, not associates or the individual (ITAA 1997 s
+      87-25). For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  psi_employment_test_apprentice_months:
+    value: 6
+    unit: months
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/personal-services-income/working-out-if-the-psi-rules-apply/employment-test
+    as_at: 2026-09-29
+    notes: 'Employment test alternative: one or more apprentices employed for at least this many months of the income year. For 2027-28 (read 2026-09-29):
+      Unchanged; no year-specific term or scheduled change found on the source.'
+  iawo_threshold:
+    value: 20000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00071/asmade/2026-08-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'Permanent threshold: Treasury Laws Amendment (Tax Reform No. 2) Act 2026 Sch 2 items 1-14 replace the $1,000 base in ITAA 1997 ss 328-170, 328-180,
+      328-210, 328-250 with this amount. Item 15: asset threshold applies to assets first used or installed ready for use on or after 1 July 2026; pool
+      balance write-off (s 328-210) applies to income years ending on or after 1 July 2026. Read on the Act text (authorised version C2026A00071). For 2027-28
+      (read 2026-09-29): Act No. 71 of 2026 Sch 2 has no end date in the amending text and the ATO page (updated 27 Aug 2026) says the $20,000 write-off
+      is permanent from 1 Jul 2026 and now law; applies to assets first used or installed ready for use on or after 1 Jul 2026.'

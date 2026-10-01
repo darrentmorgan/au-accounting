@@ -1,0 +1,42 @@
+# bookkeeping-year-end risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: BKP-RF-001
+    topic: Suspense or clearing balances left at year end
+    description: A non-zero suspense, ask-my-accountant or uncleared bank-feed account at balance date means transactions are unclassified; tax, GST and BAS reporting from that ledger is unreliable until it is cleared.
+    citations: ["ITAA 1936 s 262A", "TR 96/7"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-002
+    topic: GST control account does not agree to lodged BAS
+    description: Differences between GST collected or paid per the ledger and labels 1A or 1B lodged (mis-coded transactions, lodged periods reopened, timing) lead to under or over reporting; an under-reported amount attracts a shortfall penalty and interest.
+    citations: ["GSTA 1999 s 29-5", "TAA 1953 Sch 1 Div 284"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-003
+    topic: Prepayment claimed in full outside the 12-month rule
+    description: A prepaid expense claimed immediately when the eligible service period exceeds 12 months, ends after the next income year, or the entity is not a small business entity (or would-be one) must be apportioned; the ATO reviews large year-end prepayments.
+    citations: ["ITAA 1936 s 82KZM", "ITAA 1936 s 82KZMD"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-004
+    topic: Owner drawings, wages or loans misclassified
+    description: Money taken from a company by a shareholder or associate that is booked as drawings, wages or expenses instead of a loan, dividend or salary can give rise to a deemed dividend under Division 7A or PAYG withholding and super failures.
+    citations: ["ITAA 1936 Div 7A", "ITAA 1936 s 109C"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-005
+    topic: Bad debt written off after balance date
+    description: A bad debt deduction needs the debt to be written off as bad before the end of the income year and to have been included in assessable income, with the decision to write off recorded in writing before year end; a write-off dated after 30 June belongs to the next year. A company also needs continuity of ownership or a business continuity test to deduct the debt.
+    citations: ["ITAA 1997 s 25-35", "ITAA 1997 s 165-120", "TR 92/18"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-006
+    topic: Payroll liabilities do not agree to STP finalisation and super
+    description: Wages, PAYG withholding and super payable balances that differ from Single Touch Payroll finalised figures or from super actually received by funds within the Payday Super window risk penalties, super guarantee charge and incorrect payment summaries.
+    citations: ["SGAA 1992", "TAA 1953 Sch 1 s 16-150"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-007
+    topic: Large proprietary company thresholds crossed without reporting
+    description: A proprietary company that meets two of the three size tests for a financial year must lodge audited financial reports with ASIC within 4 months of year end; the test is on consolidated figures including controlled entities.
+    citations: ["Corporations Act 2001 s 45A", "Corporations Act 2001 s 292", "Corporations Act 2001 s 319"]
+    skills: [bookkeeping-year-end]
+  - id: BKP-RF-008
+    topic: Records destroyed or unreadable before retention period ends
+    description: Business records must be kept for 5 years (tax) or 7 years (company financial records), longer for CGT assets, depreciating assets and losses; digital records must remain readable and complete after software changes.
+    citations: ["ITAA 1936 s 262A", "TAA 1953 Sch 1 s 382-5", "Corporations Act 2001 s 286", "TR 2018/2"]
+    skills: [bookkeeping-year-end]

@@ -1,0 +1,1522 @@
+# Australian rates and thresholds, income year 2027-28. Machine-readable; read by every calculator.
+# As at 2026-09-29. Only figures legislated or published by then are VERIFIED; every other figure is SUSPECT with value null,
+# checked_at (the date the URL in source was checked and found not to publish it) and a note. Nothing here is indexed forward or estimated.
+# Statuses: VERIFIED = read on a primary page; SOURCE-CITED = stated with a primary cite, not re-read; SUSPECT = unknown, contradicted or secondary-only.
+# Bracket objects: tax = base + rate x (income - from) for from <= income < to; to: null is open-ended. whole_income: true means the rate applies to the whole income base, not the excess.
+# FBT figures are for the FBT year ending 31 Mar inside this income year (meta.fbt_year_ending).
+meta:
+  income_year: 2027-28
+  start: 2027-07-01
+  end: 2028-06-30
+  compiled: 2026-09-29
+  fbt_year_ending: 2028-03-31
+individual:
+  resident_rates:
+    value:
+    - from: 0
+      to: 18200
+      rate: 0
+      base: 0
+    - from: 18200
+      to: 45000
+      rate: 0.14
+      base: 0
+    - from: 45000
+      to: 135000
+      rate: 0.3
+      base: 3752
+    - from: 135000
+      to: 190000
+      rate: 0.37
+      base: 30752
+    - from: 190000
+      to: null
+      rate: 0.45
+      base: 51102
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: Income Tax Rates Act 1986 Sch 7 Pt I cl 1 table for the 2027-28 year of income or a later year (compilation C2026C00300, in force 1 Jul 2026
+      and the latest on 2026-09-29; also Treasury Laws Amendment (More Cost of Living Relief) Act 2025 Sch 1). Tax-free threshold $18,200 (ITRA s 3(1)).
+      Bases are computed from the legislated rates and thresholds (3,752 = 14% x 26,800; 30,752 = 3,752 + 30% x 90,000; 51,102 = 30,752 + 37% x 55,000).
+      The ATO tax rates page (updated 13 Aug 2026) lists resident rates only up to 2026-27. Tax = base + rate x (taxable income - from). Excludes Medicare
+      levy.
+  foreign_resident_rates:
+    value:
+    - from: 0
+      to: 135000
+      rate: 0.3
+      base: 0
+    - from: 135000
+      to: 190000
+      rate: 0.37
+      base: 40500
+    - from: 190000
+      to: null
+      rate: 0.45
+      base: 60850
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA Sch 7 Pt II cl 1 table for the 2024-25 year of income or a later year: first band uses the second resident personal tax rate (item 2 of
+      the resident table for the year, 30% in 2027-28), then the third resident rate 37% and 45%. Unchanged from 2026-27.'
+  whm_rates:
+    value:
+    - from: 0
+      to: 45000
+      rate: 0.15
+      base: 0
+    - from: 45000
+      to: 135000
+      rate: 0.3
+      base: 6750
+    - from: 135000
+      to: 190000
+      rate: 0.37
+      base: 33750
+    - from: 190000
+      to: null
+      rate: 0.45
+      base: 54100
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA Sch 7 Pt III table for the 2024-25 year of income or a later year: 15% to $45,000, then 30%, 37%, 45%. Unchanged from 2026-27 (compilation
+      in force 1 Jul 2026, read 2026-09-29).'
+  standard_work_deduction_cap:
+    value: 1000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 25-130 inserted by Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 4: lesser of $1,000 and assessable labour income, reduced
+      (not below nil) by other work-related deductions. Sch 4 item 17 applies it to 2026-27 and later years; no indexation.'
+  sapto_max_offset_single:
+    value: 2230
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/reg/r20251060.pdf
+    as_at: 2026-09-29
+    notes: 'Income Tax Assessment (1936 Act) Regulations 2025 s 9(2) table item 1: base rebate amount for an individual who is not a spouse. Not year-specific
+      (F2025L01060 registered 9 Sep 2025, the only version at 2026-09-29).'
+  sapto_max_offset_couple_each:
+    value: 1602
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/reg/r20251060.pdf
+    as_at: 2026-09-29
+    notes: Income Tax Assessment (1936 Act) Regulations 2025 s 9(2) table item 2 (spouse). Not year-specific.
+  sapto_max_offset_illness_separated_each:
+    value: 2040
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/reg/r20251060.pdf
+    as_at: 2026-09-29
+    notes: Income Tax Assessment (1936 Act) Regulations 2025 s 9(2) table item 3 (member of an illness separated couple). Not year-specific.
+  sapto_shade_out_single:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28. The threshold is set by formula in the Income Tax Assessment (1936 Act) Regulations 2025 s 9(4)-(8) and s 10 from
+      the year''s lowest marginal tax rate (15% in 2026-27, 14% in 2027-28), so the 2026-27 amount does not carry over. The ATO page (updated 13 May 2026)
+      lists 2026-27 only. Not adopted here: the formula could be evaluated, but no ATO or legislated 2027-28 figure exists to read.'
+  sapto_cut_out_single:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28. The threshold is set by formula in the Income Tax Assessment (1936 Act) Regulations 2025 s 9(4)-(8) and s 10 from
+      the year''s lowest marginal tax rate (15% in 2026-27, 14% in 2027-28), so the 2026-27 amount does not carry over. The ATO page (updated 13 May 2026)
+      lists 2026-27 only. Not adopted here: the formula could be evaluated, but no ATO or legislated 2027-28 figure exists to read.'
+  sapto_shade_out_couple_each:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28. The threshold is set by formula in the Income Tax Assessment (1936 Act) Regulations 2025 s 9(4)-(8) and s 10 from
+      the year''s lowest marginal tax rate (15% in 2026-27, 14% in 2027-28), so the 2026-27 amount does not carry over. The ATO page (updated 13 May 2026)
+      lists 2026-27 only. Not adopted here: the formula could be evaluated, but no ATO or legislated 2027-28 figure exists to read.'
+  sapto_cut_out_couple_each:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28. The threshold is set by formula in the Income Tax Assessment (1936 Act) Regulations 2025 s 9(4)-(8) and s 10 from
+      the year''s lowest marginal tax rate (15% in 2026-27, 14% in 2027-28), so the 2026-27 amount does not carry over. The ATO page (updated 13 May 2026)
+      lists 2026-27 only. Not adopted here: the formula could be evaluated, but no ATO or legislated 2027-28 figure exists to read.'
+  sapto_shade_out_illness_separated_each:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28. The threshold is set by formula in the Income Tax Assessment (1936 Act) Regulations 2025 s 9(4)-(8) and s 10 from
+      the year''s lowest marginal tax rate (15% in 2026-27, 14% in 2027-28), so the 2026-27 amount does not carry over. The ATO page (updated 13 May 2026)
+      lists 2026-27 only. Not adopted here: the formula could be evaluated, but no ATO or legislated 2027-28 figure exists to read.'
+  sapto_cut_out_illness_separated_each:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28. The threshold is set by formula in the Income Tax Assessment (1936 Act) Regulations 2025 s 9(4)-(8) and s 10 from
+      the year''s lowest marginal tax rate (15% in 2026-27, 14% in 2027-28), so the 2026-27 amount does not carry over. The ATO page (updated 13 May 2026)
+      lists 2026-27 only. Not adopted here: the formula could be evaluated, but no ATO or legislated 2027-28 figure exists to read.'
+  lito:
+    value:
+    - from: 0
+      to: 37500
+      rate: 0
+      base: 700
+    - from: 37500
+      to: 45000
+      rate: -0.05
+      base: 700
+    - from: 45000
+      to: 66667
+      rate: -0.015
+      base: 325
+    - from: 66667
+      to: null
+      rate: 0
+      base: 0
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/61-115
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 61-115(1) table: $700 to $37,500; less 5% of the excess to $45,000; then $325 less 1.5% of the excess to $66,667. Not year-specific
+      (read on the ATO legal database 2026-09-29). Offset = base + rate x (taxable income - from); rate is negative (taper). Non-refundable. Separate from
+      the Working Australians tax offset.'
+  personal_use_asset_cgt_exempt_max_cost:
+    value: 10000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: 2026-09-29
+    notes: 's 118-10(3): capital gain on a personal use asset disregarded if the first element of cost base is $10,000 or less (ITAA 1997 compilation C2026C00400,
+      27 Aug 2026, latest at 2026-09-29). Losses on personal use assets are always disregarded (s 108-20). Not indexed.'
+  etp_cap:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. The ETP cap amount is indexed to average weekly ordinary time earnings and the new amount is generally available each
+      February (ATO page updated 17 Apr 2026, read 2026-09-29).
+  etp_whole_of_income_cap:
+    value: 180000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-11-tax-table-for-employment-termination-payments
+    as_at: 2026-09-29
+    notes: 'ATO Schedule 11 page (updated 17 Jun 2026): the whole-of-income cap for 2026-27 and future years is $180,000 and is not indexed (ITAA 1997 s
+      82-10(4)). The ATO ETP rates page lists only the ETP cap and redundancy limits.'
+  genuine_redundancy_tax_free_base:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Base limit is indexed to AWOTE each income year; new amount generally available each February (ATO page updated 17
+      Apr 2026, read 2026-09-29).
+  genuine_redundancy_tax_free_per_year:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Amount per completed year of service is indexed to AWOTE each income year; new amount generally available each February
+      (ATO page updated 17 Apr 2026, read 2026-09-29).
+  working_australians_tax_offset_max:
+    value: 250
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 61-160 inserted by Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 3: offset is the lesser of $250 and the basic income
+      tax liability on net labour income (s 61-155(2)); entitlement needs Australian residency and net labour income above the tax-free threshold. Sch 3
+      item 4 applies it to 2027-28 and later years. Non-refundable, no carry forward (s 63-10). ATO page: measure is now law.'
+medicare:
+  levy_rate:
+    value: 0.02
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Medicare Levy Act 1986 s 6(1): 2% of taxable income, no year limit (compilation in force 1 Jul 2026, read 2026-09-29). Foreign residents exempt.'
+  low_income_shade_in_rate:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Medicare Levy Act 1986 s 7(2): levy capped at 10% of the excess of taxable income over the threshold amount. Also the phase-in rate in the s
+      8(2) family reduction formula. No year limit.'
+  low_income_single_lower:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_single_upper:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_sapto_single_lower:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_sapto_single_upper:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_family_lower:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_family_upper:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_sapto_family_lower:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_sapto_family_upper:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_per_child_lower_add:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  low_income_per_child_upper_add:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
+      in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
+      further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
+  mls_single_tiers:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Singles tier thresholds are indexed each year to an ABS AWOTE estimate and rounded down to $1,000 (Private Health
+      Insurance Act 2007 s 22-35, 22-45); ATO page (updated 22 Jun 2026) lists to 2026-27.
+  mls_family_tiers:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Family tier thresholds are double the singles tier thresholds (PHIA 2007 s 22-40), which are indexed each year (s
+      22-45); ATO page (updated 22 Jun 2026) lists to 2026-27.
+  mls_family_per_child_after_first:
+    value: 1500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    as_at: 2026-09-29
+    notes: 'PHIA 2007 s 22-40(4) and ATO page (updated 22 Jun 2026): family thresholds rise by $1,500 for each MLS dependent child after the first. The
+      same amount is stated for every year from 2022-23 to 2026-27; only the singles thresholds in s 22-35 are indexed (s 22-45).'
+  phi_rebate_1jul_to_31mar_under_65:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Income thresholds from 1 Jul 2027 and rebate rates from 1 Apr 2027 are not out (ATO page updated 22 Jun 2026 says
+      the rates from 1 Apr 2027 become available in March 2027).
+  phi_rebate_1jul_to_31mar_65_69:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Income thresholds from 1 Jul 2027 and rebate rates from 1 Apr 2027 are not out (ATO page updated 22 Jun 2026 says
+      the rates from 1 Apr 2027 become available in March 2027).
+  phi_rebate_1jul_to_31mar_70_plus:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. Income thresholds from 1 Jul 2027 and rebate rates from 1 Apr 2027 are not out (ATO page updated 22 Jun 2026 says
+      the rates from 1 Apr 2027 become available in March 2027).
+  phi_rebate_from_2028_04_01:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published. Rebate rates from 1 Apr 2028 are announced about March 2028. Replaces the 2026-27 file's phi_rebate_from_2027_04_01, which belongs
+      to that year.
+help:
+  repayment_schedule:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ATO page (updated 30 Jun 2026) lists repayment income thresholds and rates to 2026-27 only; thresholds are indexed
+      each year.'
+super:
+  sg_rate:
+    value: 0.12
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee
+    as_at: 2026-09-29
+    notes: 'ATO super guarantee page (updated 17 Apr 2026), Table 21: general SG percentage 12.00 for "1 July 2027 onwards". From 1 Jul 2026 it applies
+      to qualifying earnings (Payday Super).'
+  max_contribution_base_annual:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the maximum contribution base is indexed to AWOTE each income year (ATO page updated 17 Apr 2026).'
+  concessional_cap:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the general concessional cap is indexed to AWOTE in $2,500 steps and the new amount is set around February (ATO page
+      updated 11 Sep 2026 states 2026-27 only).'
+  carry_forward_tsb_limit:
+    value: 500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 291-20 (carry forward): total super balance just before the start of the year must be less than $500,000 (compilation C2026C00400,
+      27 Aug 2026). Fixed in legislation, not indexed; ATO caps page agrees.'
+  non_concessional_cap:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the general non-concessional cap is 4 times the concessional cap (ITAA 1997 s 292-85(2)), and the 2027-28 concessional
+      cap is not published.'
+  bring_forward_tiers:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: tiers depend on the 2027-28 non-concessional cap and general transfer balance cap.'
+  transfer_balance_cap:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/transfer-balance-cap
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the general transfer balance cap is indexed to CPI in $100,000 steps (ITAA 1997 s 294-35); ATO page (updated 27 Apr
+      2026) shows the amounts to 2026-27.'
+  defined_benefit_income_cap:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/transfer-balance-cap
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: it is one sixteenth of the general transfer balance cap, which is not published for 2027-28.'
+  div293_threshold:
+    value: 250000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 293-20: high income threshold $250,000, not indexed (compilation C2026C00400, 27 Aug 2026; ATO Div 293 page updated 7 Aug 2026 agrees).'
+  div293_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/division-293-tax
+    as_at: 2026-09-29
+    notes: 'ATO Division 293 page (updated 7 Aug 2026): Division 293 tax rate is 15%; imposed by the Superannuation (Sustaining the Superannuation Contributions
+      Tax Concession) Imposition Act 2012 with no year limit.'
+  cgt_cap_amount:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the CGT cap amount is indexed to AWOTE in $5,000 steps and the new amount is generally available each February (ATO
+      page updated 11 Sep 2026).'
+  co_contribution_max:
+    value: 500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Superannuation (Government Co-contribution for Low Income Earners) Act 2003 s 9 and s 10: maximum $500 for an income year, reduced by 3.333
+      cents per dollar above the lower income threshold. Fixed in the Act (latest compilation C2018C00325 read 2026-09-29).'
+  co_contribution_lower_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the lower income threshold is indexed each year by an AWOTE factor for the 12 months to 31 Dec before the income
+      year (Co-contribution Act s 10A); the Dec 2026 data is not out. ATO page shows 2026-27.'
+  co_contribution_higher_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: equal to the lower income threshold plus $15,000 (Co-contribution Act s 10A(3)(d)), and the lower threshold is not
+      published.'
+  listo_ati_limit:
+    value: 45000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/superannuation/low-income-superannuation-tax-offset-listo
+    as_at: 2026-09-29
+    notes: 'Superannuation (Government Co-contribution for Low Income Earners) Act 2003 s 12C as amended by Treasury Laws Amendment (Building a Stronger
+      and Fairer Super System) Act 2026 (legislation.gov.au C2026A00008, Sch 4, from 1 Jul 2027, applies to 2027-28 and later): adjusted taxable income
+      limit is the dollar amount in item 1 of the resident rates table for the year (ITRA Sch 7 Pt I), which is $45,000 for 2027-28. ATO LISTO page (updated
+      17 Mar 2026): now law. Was $37,000.'
+  listo_max:
+    value: 810
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/superannuation/low-income-superannuation-tax-offset-listo
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s 12E(3A) as inserted by Act No. 8 of 2026 (C2026A00008) Sch 4 (2027-28 and later): eligibility threshold x charge percentage
+      x 15% = 45,000 x 12% x 15% = $810. ATO LISTO page (updated 17 Mar 2026) states the maximum payment rises to $810 from 1 Jul 2027 and that the measure
+      is law. Was $500.'
+  smsf_lrba_safe_harbour_real_property:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/other-super-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PCG 2016/5 safe harbour interest rate is reset each income year (ATO page shows 2026-27).'
+  smsf_lrba_safe_harbour_listed_shares:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/other-super-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the PCG 2016/5 safe harbour interest rate is reset each income year (ATO page shows 2026-27).'
+  disregarded_small_fund_assets_tsb:
+    value: 1600000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 295-387(2)(c)(i): a person has a total superannuation balance that exceeds $1.6 million. Hard-coded in the section, not indexed
+      (compilation C2026C00400, 27 Aug 2026, read 2026-09-29).'
+  div296_large_balance_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/division-296-tax/how-division-296-tax-is-calculated
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. ITAA 1997 s 296-30 (Act No. 8 of 2026 Sch 1) sets $3,000,000 for 2026-27 and, for 2027-28 onwards, indexes it annually
+      in $150,000 steps by CPI from the December 2025 quarter (s 960-285); the December 2026 CPI is not out.
+  div296_very_large_balance_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/division-296-tax/how-division-296-tax-is-calculated
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28. ITAA 1997 s 296-35 (Act No. 8 of 2026 Sch 1) sets $10,000,000 for 2026-27 and indexes it annually in $500,000 steps
+      by CPI from the December 2025 quarter; the December 2026 CPI is not out.
+  div296_rate_over_lsbt:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00009/asmade/2026-03-13/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Superannuation (Building a Stronger and Fairer Super System) Imposition Act 2026 s 5(a): 15% of taxable superannuation earnings, no year limit.
+      ATO Div 296 page (updated 29 Jun 2026) agrees.'
+  div296_additional_rate_over_vlsbt:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00009/asmade/2026-03-13/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Imposition Act 2026 s 5(b)(ii): an additional 10% of the very large superannuation balance earnings component, no year limit. The APH Bills
+      Digest describes this as 25% of that band on an earnings basis; the Act text and ATO say 10% (as stored).'
+company:
+  rate_base_rate_entity:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA s 23(2)(a): 25% for a base rate entity, no year limit (compilation in force 1 Jul 2026).'
+  rate_other:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA s 23(2)(b): 30% for other companies, no year limit.'
+  bre_aggregated_turnover_threshold:
+    value: 50000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA s 23AA(b): aggregated turnover for the year less than $50 million.'
+  bre_passive_income_max_share:
+    value: 0.8
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA s 23AA(a): no more than 80% of assessable income is base rate entity passive income.'
+  small_business_entity_turnover:
+    value: 10000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/328-110
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 328-110(1): aggregated turnover for the previous year, or estimated for the year, less than $10 million (ATO legal database, read
+      2026-09-29). Not indexed.'
+  loss_carry_back_years:
+    value: 2
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00071/asmade/2026-08-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 160-5 as replaced by Treasury Laws Amendment (Tax Reform No. 2) Act 2026 Sch 1: a corporate tax entity with a current year starting
+      on or after 1 Jul 2026 may carry a loss back to either or both of the previous 2 income years. No end date.'
+div7a:
+  benchmark_interest_rate:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/division-7a-benchmark-interest-rate
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2028: the ATO table (updated 1 Jul 2026) lists income years to 2027. The rate is set from the RBA indicator lending rate published
+      in the previous June, so it is not known before mid-2027.'
+  max_term_unsecured_years:
+    value: 7
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19360027/109N
+    as_at: 2026-09-29
+    notes: 'ITAA 1936 s 109N(3)(b): 7 years for any other loan (read on the ATO legal database 2026-09-29).'
+  max_term_secured_years:
+    value: 25
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19360027/109N
+    as_at: 2026-09-29
+    notes: 'ITAA 1936 s 109N(3)(a): 25 years where 100% is secured by a registered mortgage over real property worth at least 110% of the loan when made.'
+cgt:
+  discount_individual_trust:
+    value: 0
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 115-100 as amended by Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 1 (compilation C2026C00400, 27 Aug 2026): the general
+      discount for an individual or a trust (other than a complying superannuation entity) applies only to CGT events before 1 Jul 2027 (paras (aa), (ab));
+      for events on or after 1 Jul 2027 the residual 0% in para (f) applies. Exceptions are held in cgt.discount_new_residential_dwelling and cgt.discount_individual_trust_deferred_gain.
+      Indexation of the cost base replaces the discount (s 110-36(1A)); a 30% minimum tax applies (cgt.minimum_tax_rate_from_2027_28).'
+  discount_complying_super_fund:
+    value: 0.3333333333333333
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 115-100(b): 33 1/3% for a complying superannuation entity, unchanged by the 2026 Act (compilation C2026C00400, 27 Aug 2026).'
+  discount_company:
+    value: 0
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: 2026-09-29
+    notes: 'Companies get no discount: s 115-100(f) residual 0% (compilation C2026C00400, 27 Aug 2026).'
+  small_business_aggregated_turnover:
+    value: 2000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/152-10
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 152-10(1AA)(b): CGT small business entity test uses the $2 million turnover threshold (ATO legal database, read 2026-09-29). From
+      the income year including 1 Jul 2027 the $2 million threshold is disregarded for the small business 50% reduction only (Act No. 49 of 2026 Sch 1 items
+      77A-79A).'
+  small_business_max_net_asset_value:
+    value: 6000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/152-15
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 152-15: maximum net asset value test $6,000,000 (ATO legal database, read 2026-09-29). Not indexed.'
+  small_business_retirement_exemption_lifetime:
+    value: 500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/152-320
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 152-320: CGT retirement exemption limit $500,000 (ATO legal database, read 2026-09-29). Not indexed.'
+  frcgw_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19530001/Sch1-14-200
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s 14-200(3)(a): 15% of the first element of the cost base, for acquisitions on or after 1 Jan 2025 (ATO legal database, read
+      2026-09-29). No end date.'
+  active_asset_reduction_turnover_gate_from_2027_28:
+    value: 10000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/152-10
+    as_at: 2026-09-29
+    notes: 'From the income year including 1 Jul 2027 the small business 50% active asset reduction (Subdiv 152-C) is available to a small business entity
+      without the $2 million turnover test, so the gate is the $10 million small business entity turnover (ITAA 1997 s 328-110): Act No. 49 of 2026 Sch
+      1 items 77A, 78A, 79A (s 152-10(1AA) note 2, s 152-205(2)). Other three concessions keep the $2 million or $6 million net asset test.'
+  minimum_tax_rate_from_2027_28:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 119-10(2) step 1 inserted by Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 1 Pt 2: 30% of the minimum tax capital gain;
+      applies to CGT events on or after 1 Jul 2027 (Income Tax (Transitional Provisions) Act 1997 s 119-1). Rate set through ITRA s 12AA. Not payable by
+      recipients of listed payments (s 119-15).'
+  discount_new_residential_dwelling:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 115-100(a) and s 115-102: 50% discount continues for an individual (or a beneficiary of a trust or partnership) on a CGT event on
+      or after 1 Jul 2027 for a new residential dwelling, unless the individual chooses indexation instead (s 115-102(5)). Affordable housing (s 115-125)
+      is also kept. "New residential dwelling" is defined by a Ministerial legislative instrument (s 26-160(4)) that was not confirmed as made on 2026-09-29.'
+  discount_individual_trust_deferred_gain:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 112-160(3), s 112-170(3) and s 115-100(aa), (ab): the deferred gain from the deemed sale on 30 Jun 2027 of an asset held at that
+      date is a discount capital gain reduced by 50% when the realisation event happens on or after 1 Jul 2027. Only the accrual to 30 Jun 2027 attracts
+      it; the post-1 Jul 2027 part is indexed.'
+  indexation_cpi_from_2027:
+    value: null
+    unit: index number
+    status: SUSPECT
+    source: https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/latest-release
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Quarterly All Groups CPI index numbers (weighted average of 8 capital cities, s 960-280) for the quarters from September 2027. The indexation
+      factor under s 960-275(1B) is the index number for the quarter of the CGT event over the index number for the quarter the expenditure was incurred
+      (deemed reacquisition on 1 Jul 2027 counts as expenditure in the September 2027 quarter). The ABS latest release checked 2026-09-29 covers up to June
+      2026; no 2027 quarter exists yet. When published, fill this as a list of quarter rows shaped like cgt.frozen_indexation_cpi (from, to, rate = index number),
+      first row the September 2027 quarter (2027-07-01 to 2027-09-30); capital_gain reads only this figure for indexation from 1 Jul 2027 and refuses
+      AU-GEN-003 while it is null or lacks the quarter it needs.
+gst:
+  rate:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19990055/9-70
+    as_at: 2026-09-29
+    notes: 'GSTA 1999 s 9-70: 10% of the value of the taxable supply (ATO legal database, read 2026-09-29). No year limit.'
+  registration_threshold:
+    value: 75000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst
+    as_at: 2026-09-29
+    notes: 'ATO registering for GST page (updated 14 Sep 2026): GST turnover of $75,000 or more (GSTA s 23-15, GST Regulations). Not indexed.'
+  registration_threshold_nfp:
+    value: 150000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst
+    as_at: 2026-09-29
+    notes: 'ATO registering for GST page (updated 14 Sep 2026): non-profit organisation GST turnover of $150,000 or more.'
+  margin_scheme_gst_fraction:
+    value: 0.09090909090909091
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/in-detail/your-industry/property/gst-and-the-margin-scheme/calculating-the-gst-payable
+    as_at: 2026-09-29
+    notes: 'GSTA s 75-10(3): GST is 1/11 of the margin (10/110 when the GST rate is 10%). Follows the GST rate.'
+  tax_invoice_threshold_incl_gst:
+    value: 82.5
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/tax-invoices
+    as_at: 2026-09-29
+    notes: 'ATO tax invoices page (updated 18 Sep 2026): no tax invoice needed on request for a sale of $82.50 (including GST) or less (the $75 before-GST
+      amount in GSTA s 29-80(1) or a higher amount in the regulations).'
+  cash_accounting_turnover_max:
+    value: 10000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/accounting-for-gst-in-your-business/choosing-an-accounting-method
+    as_at: 2026-09-29
+    notes: 'ATO accounting method page: cash accounting available with GST turnover of $10 million or less. Not indexed.'
+  monthly_reporting_turnover_min:
+    value: 20000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: 2026-09-29
+    notes: 'ATO BAS due dates page (updated 17 Sep 2026): GST turnover of $20 million or more must report monthly (a business under $20 million may choose
+      monthly).'
+  div87_long_term_days:
+    value: 28
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=GST%2FGSTR20127%2FNAT%2FATO%2F00001&PiT=20200724000001
+    as_at: 2026-09-29
+    notes: 'GSTA Div 87 and GSTR 2012/6: a stay of at least 28 continuous days is long term.'
+  div87_predominantly_long_term_share:
+    value: 0.7
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=GST%2FGSTR20127%2FNAT%2FATO%2F00001&PiT=20200724000001
+    as_at: 2026-09-29
+    notes: 'GSTA Div 87 and GSTR 2012/6: predominantly long-term when 70% or more of the accommodation days are long term.'
+  max_gst_credit_car_limit:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/api/public/content/0-33965a52-fc9f-4ff3-9e80-735e8ee12f89
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: it is one eleventh of the car limit, which is indexed each 1 July and not yet published for 2027-28.'
+payg_instalments:
+  gdp_adjustment:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://softwaredevelopers.ato.gov.au/GDPupliftfactor
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the GDP adjustment is set at the start of each income year from ABS data or a percentage set by law; ATO pages show
+      2026-27 only.'
+  reasonable_rate_individual_trust:
+    value: 0.55
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    as_at: 2026-09-29
+    notes: 'ATO reasonable instalment rates table: individuals (including sole traders) and trusts 55%. ATO administrative rule, not tied to a year on the
+      page (page read 2026-09-29).'
+  reasonable_rate_super_fund:
+    value: 0.45
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    as_at: 2026-09-29
+    notes: 'ATO reasonable instalment rates table: superannuation funds and SMSFs 45%. ATO administrative rule, not tied to a year on the page.'
+  reasonable_rate_corporate:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    as_at: 2026-09-29
+    notes: 'ATO reasonable instalment rates table: corporate tax entities 30%. ATO administrative rule, not tied to a year on the page.'
+  entry_instalment_income_min:
+    value: 4000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: 2026-09-29
+    notes: 'ATO starting PAYG instalments page: instalment income of $4,000 or more. Not indexed.'
+  entry_last_assessed_tax_min:
+    value: 1000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: 2026-09-29
+    notes: 'ATO starting PAYG instalments page: last assessed tax of $1,000 or more.'
+  entry_notional_tax_min:
+    value: 500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: 2026-09-29
+    notes: 'ATO starting PAYG instalments page: notional tax of $500 or more.'
+  annual_option_notional_tax_max:
+    value: 8000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due
+    as_at: 2026-09-29
+    notes: 'ATO when are PAYG instalments due page: annual payer option where the latest notional tax is $8,000 or less.'
+penalties_interest:
+  penalty_unit:
+    value: 364
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2026N00424/asmade/2026-06-16/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'Crimes (Amount of a Penalty Unit) Instrument 2026 s 5: $364 from 1 Jul 2026. Crimes Act 1914 s 4AA(3) next indexes on the third 1 July after
+      1 Jul 2026, i.e. 1 Jul 2029, so $364 applies throughout 2027-28 (Act compilation C2026C00368 read 2026-09-29).'
+  failure_to_lodge_units_per_28_days_small:
+    value: 1
+    unit: penalty_units
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s 286-80: 1 penalty unit per 28 days or part (ATO page read 2026-09-29).'
+  shortfall_penalty_no_reasonable_care:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s 284-90: base penalty amount 25% of the shortfall (ATO page read 2026-09-29).'
+  shortfall_penalty_recklessness:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s 284-90: base penalty amount 50% of the shortfall.'
+  shortfall_penalty_intentional_disregard:
+    value: 0.75
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    as_at: 2026-09-29
+    notes: 'TAA 1953 Sch 1 s 284-90: base penalty amount 75% of the shortfall.'
+  gic_quarterly:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/general-interest-charge-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published: none of the four 2027-28 quarters (Jul-Sep 2027 to Apr-Jun 2028). ATO page (updated 4 Sep 2026) lists to Oct-Dec 2026; each quarter
+      is announced about 2 weeks before it starts.'
+  sic_quarterly:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/shortfall-interest-charge-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published: none of the four 2027-28 quarters. ATO page (updated 4 Sep 2026) lists to Oct-Dec 2026; each quarter is announced about 2 weeks
+      before it starts. Compounds daily; 90-day BAB plus 3% uplift.'
+  gic_jan_mar_2028:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/general-interest-charge-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published: quarter starts 1 Jan 2028. Replaces the 2026-27 file''s gic_jan_mar_2027 (a quarter that belongs to that year).'
+  gic_apr_jun_2028:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/general-interest-charge-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published: quarter starts 1 Apr 2028.'
+  sic_jan_mar_2028:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/shortfall-interest-charge-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published: quarter starts 1 Jan 2028. Replaces the 2026-27 file''s sic_jan_mar_2027.'
+  sic_apr_jun_2028:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/shortfall-interest-charge-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published: quarter starts 1 Apr 2028.'
+car_home:
+  car_cents_per_km:
+    value: null
+    unit: AUD_per_km
+    status: SUSPECT
+    source: https://www.ato.gov.au/law/view/pdf/ldt/li2026-019.pdf
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the rate is set each year by a determination (2026 determination covers the income year commencing 1 Jul 2026).'
+  car_cents_per_km_max_km:
+    value: 5000
+    unit: km
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19970038/28-25
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 28-25(2): the cents per kilometre method covers at most 5,000 business kilometres a year (ATO legal database read 2026-09-29).'
+  car_limit:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/api/public/content/0-33965a52-fc9f-4ff3-9e80-735e8ee12f89
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the car limit is indexed each 1 July by CPI (ATO page lists 2026-27).'
+  lct_threshold_fuel_efficient:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/luxury-car-tax-rate-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: LCT thresholds are indexed each 1 July.'
+  lct_threshold_other:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/luxury-car-tax-rate-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: LCT thresholds are indexed each 1 July.'
+  home_office_fixed_rate_per_hour:
+    value: null
+    unit: AUD_per_hour
+    status: SUSPECT
+    source: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim/work-related-deductions/working-from-home-expenses/fixed-rate-method
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ATO fixed rate page (updated 8 Jun 2026) lists 70 cents for 2024-25 and 2025-26 only; PCG 2023/1 para 26A shows 70c
+      "from 1 July 2024" with no end date and no year-specific rate beyond that. Neither states 2027-28, so no rate is adopted.'
+fbt:
+  rate:
+    value: 0.47
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19860040/6
+    as_at: 2026-09-29
+    notes: 'Fringe Benefits Tax Act 1986 s 6: 47% of the employer''s fringe benefits taxable amount for a year of tax, no year limit (ATO legal database
+      read 2026-09-29). ATO rates page (updated 20 May 2026) shows 47% for every FBT year 2023 to 2027. FBT year ending 31 Mar 2028.'
+  gross_up_type1:
+    value: 2.0802
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page (updated 20 May 2026): 2.0802 for every FBT year ending 31 Mar 2023 to 2027. FBTAA 1986 s 5B(1B) fixes the formula from the FBT
+      rate (47%, FBT Act s 6) and the GST rate (10%), both unchanged, so it holds for the year ending 31 Mar 2028.'
+  gross_up_type2:
+    value: 1.8868
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page (updated 20 May 2026): 1.8868 for every FBT year ending 31 Mar 2023 to 2027. FBTAA 1986 s 5B(1C): 1 / (1 - FBT rate) = 1 / 0.53.'
+  car_statutory_rate:
+    value: 0.2
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19860039/9
+    as_at: 2026-09-29
+    notes: 'FBTAA 1986 s 9: statutory fraction 0.20 for car fringe benefits from 1 Apr 2014 (ATO legal database read 2026-09-29).'
+  car_parking_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: the car parking threshold is set each year (ATO page updated 20 May 2026 lists to 31 Mar
+      2027).'
+  benchmark_interest_rate:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: the benchmark rate is determined each year (ATO page updated 20 May 2026 lists to 31 Mar
+      2027).'
+  rfba_reporting_threshold_taxable_value:
+    value: 2000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page Table 4: taxable value exceeding $2,000 in the FBT year is reportable; identical for every FBT year 2023 to 2027.'
+  rfba_min_grossed_up_value:
+    value: 3773
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page Table 4: minimum reportable grossed-up amount $3,773 (about $2,000 x 1.8868); identical for every FBT year 2023 to 2027.'
+  record_keeping_exemption_base:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: the threshold changes each year (ATO Table 6 shows $9,181 to $10,962 across 2023 to 2027).'
+  motor_vehicle_cents_per_km_up_to_2500cc:
+    value: null
+    unit: AUD_per_km
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: set each year by taxation determination (2027 year is TD 2026/1).'
+  motor_vehicle_cents_per_km_over_2500cc:
+    value: null
+    unit: AUD_per_km
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: set each year by taxation determination.'
+  motor_vehicle_cents_per_km_motorcycle:
+    value: null
+    unit: AUD_per_km
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: set each year by taxation determination.'
+  ev_home_charging_rate_per_km:
+    value: null
+    unit: AUD_per_km
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: the PCG 2024/2 rate is revised for each FBT year (ATO shows 5.47 cents for the year starting
+      1 Apr 2026).'
+  car_operating_cost_depreciation_rate:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page: 25% diminishing value depreciation for cars purchased on or after 10 May 2006. No year limit.'
+  instalment_prior_year_fbt_min:
+    value: 3000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page: pay by quarterly instalments if the last year''s FBT liability was $3,000 or more; same for every FBT year shown.'
+  lafha_food_1_adult_per_week:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: reasonable food amounts are set each year by taxation determination.'
+  lafha_food_2_adults_per_week:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: reasonable food amounts are set each year by taxation determination.'
+  housing_indexation_sa:
+    value: null
+    unit: ratio
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for the FBT year ending 31 Mar 2028: housing indexation factors are published each year.'
+  pbi_exemption_cap:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page Table 5: public benevolent institutions and health promotion charities grossed-up cap $30,000; same for every FBT year 2023 to
+      2027.'
+  hospital_exemption_cap:
+    value: 17000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page Table 5: public hospitals and public ambulance services grossed-up cap $17,000; same for every FBT year 2023 to 2027.'
+  rebatable_employer_rebate_cap:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page Table 5: rebatable employers rebate cap $30,000 grossed-up; same for every FBT year 2023 to 2027.'
+  meal_entertainment_cap_nfp:
+    value: 5000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'ATO rates page Table 5: salary packaged meal entertainment and entertainment facility leasing capped at $5,000; same for every FBT year 2023
+      to 2027.'
+  minor_benefit_threshold:
+    value: 300
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/exemptions-concessions-and-other-ways-to-reduce-fbt/minor-benefits-exemption
+    as_at: 2026-09-29
+    notes: 'FBTAA 1986 s 58P: minor benefits under $300 exempt (ATO minor benefits page). Not indexed.'
+payroll_wages:
+  national_minimum_wage_hourly:
+    value: null
+    unit: AUD_per_hour
+    status: SUSPECT
+    source: https://www.fwc.gov.au/work-conditions/minimum-wages-and-conditions/national-minimum-wage
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: set by the Annual Wage Review 2027 (decision around June 2027); FWC page shows the rate from 1 Jul 2026.'
+  national_minimum_wage_weekly_38h:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.fwc.gov.au/work-conditions/minimum-wages-and-conditions/national-minimum-wage
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: set by the Annual Wage Review 2027; FWC page shows the amount from 1 Jul 2026.'
+  casual_loading:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.fwc.gov.au/work-conditions/minimum-wages-and-conditions/national-minimum-wage
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: the 25% casual loading for award/agreement-free casuals is stated in each year''s National Minimum Wage Order; the
+      2027 order is not made yet (FWC page shows the 2026 order).'
+asic:
+  annual_review_proprietary:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.asic.gov.au/for-business-and-companies/forms-and-fees/all-fees/fees-for-commonly-lodged-documents
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ASIC fees are indexed each 1 July by the March quarter CPI (INFO 30, reissued Jul 2026, shows fees from 1 Jul 2026
+      only). The March 2027 CPI is not out.'
+  annual_review_special_purpose_proprietary:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.asic.gov.au/for-business-and-companies/forms-and-fees/all-fees/fees-for-commonly-lodged-documents
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ASIC fees are indexed each 1 July by the March quarter CPI (INFO 30, reissued Jul 2026, shows fees from 1 Jul 2026
+      only). The March 2027 CPI is not out.'
+  company_registration_fee:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.asic.gov.au/for-business-and-companies/forms-and-fees/all-fees/fees-for-commonly-lodged-documents
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ASIC fees are indexed each 1 July by the March quarter CPI (INFO 30, reissued Jul 2026, shows fees from 1 Jul 2026
+      only). The March 2027 CPI is not out.'
+  late_fee_lower:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.asic.gov.au/for-business-and-companies/forms-and-fees/all-fees/fees-for-commonly-lodged-documents
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ASIC fees are indexed each 1 July by the March quarter CPI (INFO 30, reissued Jul 2026, shows fees from 1 Jul 2026
+      only). The March 2027 CPI is not out.'
+  late_fee_higher:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.asic.gov.au/for-business-and-companies/forms-and-fees/all-fees/fees-for-commonly-lodged-documents
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ASIC fees are indexed each 1 July by the March quarter CPI (INFO 30, reissued Jul 2026, shows fees from 1 Jul 2026
+      only). The March 2027 CPI is not out.'
+  large_proprietary_revenue:
+    value: 50000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2001B00274/2026-09-01/2026-09-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Corporations Regulations 2001 reg 1.0.02B(1): consolidated revenue of $50 million prescribed for Corporations Act s 45A(3)(a) (compilation F2026C00854,
+      1 Sep 2026). No year limit.'
+  large_proprietary_gross_assets:
+    value: 25000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2001B00274/2026-09-01/2026-09-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Corporations Regulations 2001 reg 1.0.02B(2): $25 million consolidated gross assets for s 45A(3)(b).'
+  large_proprietary_employees:
+    value: 100
+    unit: count
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2001B00274/2026-09-01/2026-09-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Corporations Regulations 2001 reg 1.0.02B(3): 100 employees for s 45A(3)(c).'
+state.sa:
+  payroll_tax_threshold_annual:
+    value: 1500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'Payroll Tax Act 2009 (SA) Sch 1 (version 31.3.2026): threshold amount $1,500,000; RevenueSA page states $1,500,000 from 1 Jan 2019. No indexation;
+      SA Budget 2026-27 (4 Jun 2026) announced no change to payroll tax.'
+  payroll_tax_threshold_monthly:
+    value: 125000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'RevenueSA page: $1,500,000 per annum equals $125,000 per month. No indexation.'
+  payroll_tax_rate:
+    value: 0.0495
+    unit: rate
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'Payroll Tax Act 2009 (SA) Sch 1: R is 4.95% (RevenueSA: 4.95% from 1 Jan 2019, with a variable rate between $1.5 million and $1.7 million).'
+  payroll_tax_max_deduction_annual:
+    value: 600000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'Payroll Tax Act 2009 (SA) Sch 1: EA is $600,000; RevenueSA: maximum deduction $600,000 per annum from 1 Jul 2009.'
+  payroll_tax_variable_band_top:
+    value: 1700000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'Payroll Tax Act 2009 (SA) Sch 1 Pt 2: variable rate applies to annualised wages above $1,500,000 and up to $1,700,000; 4.95% above $1,700,000.'
+  land_tax_general_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: SA land tax thresholds are indexed each year by the Valuer-General''s average change in site values and the Commissioner
+      gazettes them by 30 June (RevenueSA page read 2026-09-29 shows 2026-27; the Land Tax Act 1936 Schedule scales leave Thresholds A to D to that indexation).'
+  land_tax_trust_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: SA land tax thresholds are indexed each year by the Valuer-General''s average change in site values and the Commissioner
+      gazettes them by 30 June (RevenueSA page read 2026-09-29 shows 2026-27; the Land Tax Act 1936 Schedule scales leave Thresholds A to D to that indexation).'
+  land_tax_general_scale:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: SA land tax thresholds are indexed each year by the Valuer-General''s average change in site values and the Commissioner
+      gazettes them by 30 June (RevenueSA page read 2026-09-29 shows 2026-27; the Land Tax Act 1936 Schedule scales leave Thresholds A to D to that indexation).'
+  land_tax_trust_scale:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: SA land tax thresholds are indexed each year by the Valuer-General''s average change in site values and the Commissioner
+      gazettes them by 30 June (RevenueSA page read 2026-09-29 shows 2026-27; the Land Tax Act 1936 Schedule scales leave Thresholds A to D to that indexation).'
+  land_tax_minimum_assessment:
+    value: 20
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: 2026-09-29
+    notes: 'Land Tax Act 1936 (SA) s 6 (version 4.12.2025): no land tax is payable if the amount would be less than $20; RevenueSA rates page states the
+      same. Not indexed.'
+  stamp_duty_conveyance_scale:
+    value:
+    - from: 0
+      to: 12000
+      rate: 0.01
+      base: 0
+    - from: 12000
+      to: 30000
+      rate: 0.02
+      base: 120
+    - from: 30000
+      to: 50000
+      rate: 0.03
+      base: 480
+    - from: 50000
+      to: 100000
+      rate: 0.035
+      base: 1080
+    - from: 100000
+      to: 200000
+      rate: 0.04
+      base: 2830
+    - from: 200000
+      to: 250000
+      rate: 0.0425
+      base: 6830
+    - from: 250000
+      to: 300000
+      rate: 0.0475
+      base: 8955
+    - from: 300000
+      to: 500000
+      rate: 0.05
+      base: 11330
+    - from: 500000
+      to: null
+      rate: 0.055
+      base: 21330
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty
+    as_at: 2026-09-29
+    notes: 'RevenueSA rate of stamp duty page (read 2026-09-29): one current conveyance scale, no effective-date history and no indexation; SA Budget 2026-27
+      announced no change to rates. Per $100 or part of $100 over from.'
+  stamp_duty_foreign_ownership_surcharge:
+    value: 0.07
+    unit: rate
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/FOS
+    as_at: 2026-09-29
+    notes: 'RevenueSA foreign ownership surcharge page: 7% of the value of the interest in residential land, for instruments and transactions on or after
+      1 Jan 2018.'
+  land_tax_foreign_owner_surcharge:
+    value: 0
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.sa.gov.au/_legislation-documents/lz/c/a/land-tax-act-1936/current/1936.2318.auth.pdf
+    as_at: 2026-09-29
+    notes: 'No foreign owner land tax surcharge in SA: the Land Tax Act 1936 (SA), current version 4.12.2025 read in full via legislation.sa.gov.au on 2026-09-29,
+      has no foreign, non-resident, absentee or surcharge provision, and RevenueSA lists only general and trust scales.'
+state.nsw:
+  payroll_tax_threshold_annual:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/payroll-tax/lodge-and-pay-returns/thresholds-and-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28 (NSW is out of v0.3 scope). Revenue NSW page (updated 1 Jul 2026) lists 1 Jul 2026 to 30 Jun 2027 only.
+  payroll_tax_rate:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/payroll-tax/lodge-and-pay-returns/thresholds-and-rates
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: Not published for 2027-28 (NSW is out of v0.3 scope). Revenue NSW page (updated 1 Jul 2026) lists 1 Jul 2026 to 30 Jun 2027 only.
+  foreign_purchaser_duty_surcharge:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/transfer-duty/surcharge-purchaser-duty
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not read for 2027-28 (NSW is out of v0.3 scope): the Revenue NSW surcharge purchaser duty page (updated 25 Jun 2026) did not render a rate in
+      the text fetched.'

@@ -1,0 +1,42 @@
+# state-taxes-sa risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: SA-PAYROLL-GROUP
+    topic: Payroll tax grouping
+    description: Related businesses sharing employees, common control or tracing interests are grouped and share one threshold and one deduction (via the designated group employer). Undisclosed groups are a common source of unregistered liability and back assessments.
+    citations: [Payroll Tax Act 2009 (SA) ss 67-80]
+    skills: [state-taxes-sa]
+  - id: SA-PAYROLL-CONTRACTOR
+    topic: Contractor payments as wages
+    description: Amounts paid under relevant contracts (contractors, cleaners, maintenance or agency workers) can be taxable wages even where the worker is not a common-law employee. Short-stay operators using contractor cleaners are exposed.
+    citations: [Payroll Tax Act 2009 (SA) ss 32-41]
+    skills: [state-taxes-sa]
+  - id: SA-PAYROLL-RATE-ESTIMATE
+    topic: Estimated rate and annual reconciliation
+    description: Monthly returns use an estimated rate and deduction; the true rate and deduction are fixed at the annual reconciliation. Under-estimating annual Australian wages leads to a shortfall payment and possible interest or penalty tax.
+    citations: [Payroll Tax Act 2009 (SA) s 83, Sch 1 cl 5]
+    skills: [state-taxes-sa]
+  - id: SA-LANDTAX-MIDNIGHT
+    topic: Land tax assessed at midnight 30 June
+    description: Ownership, use and exemption status at midnight on 30 June before the financial year fix the liability. A sale after that date leaves the vendor liable, and an exemption not in place on that date is generally lost for the year.
+    citations: [Land Tax Act 1936 (SA)]
+    skills: [state-taxes-sa]
+  - id: SA-LANDTAX-TRUST-NOTIFY
+    topic: Trust land notification
+    description: Trustees must notify RevenueSA within one month of acquiring land on trust or changes to the trust. Unnotified trust land is assessed in the trustee's own ownership, and interest and penalty tax can apply. Discretionary trust land acquired after 16 October 2019 is taxed at trust rates.
+    citations: [Land Tax Act 1936 (SA) s 8A, RevenueSA land held on trust]
+    skills: [state-taxes-sa]
+  - id: SA-DUTY-FOS
+    topic: Foreign ownership surcharge and relief
+    description: Foreign persons pay a 7% surcharge on residential land on top of duty, and first home buyer relief from 13 February 2025 does not reduce the surcharge. Misstating foreign status is a compliance risk.
+    citations: [Stamp Duties Act 1923 (SA), RevenueSA foreign ownership surcharge]
+    skills: [state-taxes-sa]
+  - id: SA-DUTY-FHB-RESIDENCE
+    topic: First home buyer residence requirement
+    description: Relief is clawed back with interest and penalty tax if the purchasers do not occupy the home as their principal place of residence for 6 continuous months within the required timeframe, or were not eligible.
+    citations: [Stamp Duties Act 1923 (SA) ss 71DD, 71DE]
+    skills: [state-taxes-sa]
+  - id: SA-DUTY-SHORTSTAY
+    topic: Short-stay use and residential land
+    description: How SA stamp duty classifies land bought for short-stay use is not settled on the primary pages read (RevenueSA can treat some residentially coded land as commercial in nature, and a Bill may change residential purposes exemptions). Any duty figure is for general residential use only; the short-stay classification is unverified.
+    citations: [RevenueSA real property (land) page]
+    skills: [state-taxes-sa]

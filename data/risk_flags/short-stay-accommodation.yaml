@@ -1,0 +1,54 @@
+# short-stay-accommodation risk flags. Fields: id, topic, description, citations, skills.
+# Existing flags reused by this skill rather than repeated: GST-RF-002 (credits claimed on input taxed residential rent),
+# rental-second-hand-assets, rental-interest-purpose, rental-co-ownership-title, rental-non-arms-length-rent.
+risk_flags:
+  - id: short-stay-crp-drift
+    topic: Hotel-like services can move a short-stay operation towards commercial residential premises
+    description: Daily cleaning, meals, a reception, central booking and room allocation for several premises, holding out as a hotel or guest house, or an operator supplying in its own right under head leases are features the ATO weighs in deciding whether premises are commercial residential premises (taxable). Length of stay never changes residential premises into commercial residential premises. The determination is a question of fact and degree and is escalated, not decided.
+    citations: [GSTA 1999 s 195-1, GSTA 1999 s 40-35, GSTR 2012/6 paras 11-12 and 41]
+    skills: [short-stay-accommodation]
+  - id: short-stay-blocked-peak-periods
+    topic: Blocking out peak periods for owner, family or friends
+    description: Blocking out school holidays, public holidays or seasonal peaks for private use, advertising only to friends, pricing above comparables or refusing enquiries without reason points to a property not held to produce income or not used mainly for rent. For a holiday home, s 26-50 then denies all ownership and use costs with no apportionment (direct letting costs stay deductible).
+    citations: [ITAA 1997 s 26-50, TR 2026/1 paras 37-43 and 104-114, PCG 2026/2 paras 16-17, PCG 2026/3]
+    skills: [short-stay-accommodation]
+  - id: short-stay-friends-family-reduced-rate
+    topic: Free or discounted stays by family and friends
+    description: Rent-free or reduced-rate stays by family or friends make the property a holiday home and are private use. PCG 2026/2 gives no day-level method for occasional discounted stays, so this working paper counts those nights as private and flags the treatment as an assessment by the preparer, not an ATO-stated rule. Market-rate stays need evidence of the rate set at the time.
+    citations: [TR 2026/1 para 12 and Example 12, PCG 2026/2 paras 44-49]
+    skills: [short-stay-accommodation]
+  - id: short-stay-gross-vs-net-platform-income
+    topic: Net-of-fees platform income declared
+    description: Income must be declared before platform fees and commissions, including cleaning and host fees charged to guests; fees are deducted separately. Platforms report gross income, fees, refunds for cancellations and nights to the ATO, so declaring the net payout is visible as under-reporting.
+    citations: [TAA 1953 Sch 1 Subdiv 396-B and s 396-55 table item 15, ATO Income and deductions for renting out your home]
+    skills: [short-stay-accommodation]
+  - id: short-stay-room-held-days
+    topic: Unoccupied days of a room in the owner's home
+    description: A room let in the owner's own home has no days held to produce income; nights it is not rented are private even if the listing stays live. Apportioning by the days a listing was open overstates the deduction.
+    citations: [PCG 2026/2 paras 14-15 and 41]
+    skills: [short-stay-accommodation]
+  - id: short-stay-own-travel-s26-31
+    topic: Own travel to a short-stay dwelling
+    description: An individual who is not in business cannot deduct their own travel to clean, hand over keys, inspect, collect rent or repair a residential premises used for accommodation, and short-stay dwellings are residential premises for this purpose. Paying a cleaner or manager is still deductible.
+    citations: [ITAA 1997 s 26-31, LCR 2018/7]
+    skills: [short-stay-accommodation]
+  - id: short-stay-quarantine-2027-28
+    topic: Residential dwelling loss quarantine reaches short-stay dwellings from 2027-28
+    description: The explanatory memorandum says a short-stay apartment can be a residential dwelling; only hotels, motels, inns, hostels, boarding houses, caravans, student accommodation and boats are carved out. A short-stay house or unit last acquired on or after the cut-off is expected to be caught from the 2027-28 income year unless an exception applies. Do not treat short-stay as outside the rule.
+    citations: [ITAA 1997 ss 26-155 and 26-160, Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 2 and its explanatory memorandum paras 2.20-2.22]
+    skills: [short-stay-accommodation]
+  - id: short-stay-serr-manager-listing
+    topic: Manager or agent holds the listing
+    description: Where a manager holds the listing the reported seller may be the manager and not the owner, and platform data may sit with the manager. The owner still declares gross rent from the manager's statements before management fees. Bookings refunded or cancelled after payment may still appear in the platform's data.
+    citations: [TAA 1953 Sch 1 s 396-55 table item 15, ATO Renting out all or part of your home]
+    skills: [short-stay-accommodation]
+  - id: short-stay-gst-registration-wording
+    topic: ATO registration page wording versus the Act
+    description: The ATO Registering for GST page lists sharing economy or digital platform income among cases where registration is needed. GSTA 1999 s 23-5 and s 188-15 test GST turnover, which excludes input taxed residential rent, and the ATO's accommodation pages say residential short-stay rent attracts no GST. Do not tell a host they must register because they earn on a platform.
+    citations: [GSTA 1999 ss 23-5, 188-10 and 188-15, ATO Registering for GST]
+    skills: [short-stay-accommodation]
+  - id: short-stay-instalments
+    topic: Short-stay income with no tax withheld
+    description: Platform payouts reach the host with no tax withheld, so a tax bill at lodgment is likely. The ATO suggests considering voluntary PAYG instalments, and instalment income can include rent.
+    citations: [TAA 1953 Sch 1 Div 45, ATO Preparing for a potential tax bill]
+    skills: [short-stay-accommodation]

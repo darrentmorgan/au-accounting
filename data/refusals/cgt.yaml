@@ -1,0 +1,38 @@
+# CGT refusal and escalation codes (skill: cgt). Same schema as au.yaml. Skills surface code + message verbatim.
+refusals:
+  - code: AU-CGT-001
+    trigger: Applying the small business CGT concessions (15-year exemption, 50% active asset reduction, retirement exemption, rollover) beyond the eligibility screen, including CGT concession stakeholder, significant individual and connected-entity tests, or any share or trust interest.
+    message: "The small business CGT concessions may be available, but applying them (choice of concessions, connected entities, stakeholders, retirement and rollover conditions) needs a registered tax agent. I have only screened the basic conditions."
+    route: registered tax agent
+  - code: AU-CGT-002
+    trigger: A CGT rollover is involved or chosen (scrip for scrip, replacement asset, compulsory acquisition, demerger, small business restructure, same-asset rollovers including marriage or relationship breakdown transfers).
+    message: "This involves a CGT rollover, which changes the cost base, timing and discount eligibility of the gain. I can't compute this reliably; a registered tax agent should apply the rollover."
+    route: registered tax agent
+  - code: AU-CGT-003
+    trigger: Trust capital gains - trust CGT events (E-series), streaming of capital gains to beneficiaries (Subdiv 115-C), beneficiary gross-up, or any trust or complying super fund gain from a CGT event on or after 1 July 2027.
+    message: "Trust capital gains depend on the trust deed, streaming and beneficiary entitlements (and from 1 July 2027 on the new indexation and beneficiary statement rules). A registered tax agent should prepare this."
+    route: registered tax agent
+  - code: AU-CGT-004
+    trigger: Earnout rights, CGT events other than A1, C1, C2, D1, H2 and I1 (for example D2, D3, E-series, F-series, K-series), shares or trust interests acquired before 20 September 1985 (event K6), or non-widely held entity discount integrity rules (s115-45).
+    message: "This CGT event or arrangement is outside what I can compute reliably. A registered tax agent should work out the gain or loss."
+    route: registered tax agent
+  - code: AU-CGT-005
+    trigger: Complex crypto - decentralised finance, lending or borrowing, liquidity pools, staking derivatives, wrapping or bridging (draft TD 2026/D2), airdrops received in business (draft TR 2026/D1), or crypto held as trading stock or in a business of trading.
+    message: "This crypto arrangement raises unsettled CGT questions (some are covered only by draft ATO rulings). I can't compute it reliably; a registered tax agent should review it."
+    route: registered tax agent
+  - code: AU-CGT-006
+    trigger: A CGT event on or after 1 July 2027 for an asset held on 30 June 2027 (or a pre-CGT asset) where the market value just before 1 July 2027 has not been provided, so the deemed sale and reacquisition (ITAA 1997 ss112-155, 112-175) cannot be applied; or a main residence first used to produce income where the market value at that time is missing.
+    message: "The gain depends on a market value at a specific date (just before 1 July 2027, or when the home was first used to produce income) that I don't have. Please provide a valuation; I won't estimate it."
+    route: preparer
+  - code: AU-CGT-007
+    trigger: Post 1 July 2027 combination the calculator does not model - an individual with foreign or temporary residency after 8 May 2012 who is resident throughout the post-1 July 2027 testing period, a partial main residence exemption for a CGT event on or after 1 July 2027, or an asset partly used for residential accommodation.
+    message: "The 1 July 2027 CGT changes apply to this situation in a way I can't compute reliably (the Act's apportioning rules and any Ministerial determinations are needed). A registered tax agent should prepare this part."
+    route: registered tax agent
+  - code: AU-CGT-008
+    trigger: Main residence special rules not modelled - dwelling acquired from a deceased estate (s118-195), land over 2 hectares, building or renovating (s118-150), destroyed dwelling (s118-160), adjacent land sold separately, spouses with different main residences (s118-170), or part of the home used to produce income before moving out while the absence choice is made.
+    message: "This main residence situation needs a special rule I don't model (for example deceased estates, land over 2 hectares, construction, or spouses with different homes). A registered tax agent should work out the exemption."
+    route: registered tax agent
+  - code: AU-CGT-009
+    trigger: Foreign resident selling an indirect Australian real property interest or an interest whose taxable Australian property status depends on the principal asset test (including the 365-day look-back from 1 October 2026) or on the statutory real property definition.
+    message: "Whether this interest is taxable Australian property depends on the principal asset test and the expanded real property definition in force from 1 October 2026. A registered tax agent should confirm it before any gain is calculated."
+    route: registered tax agent

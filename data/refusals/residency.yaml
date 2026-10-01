@@ -1,0 +1,22 @@
+# residency-cross-border refusal codes. Same schema as au.yaml.
+refusals:
+  - code: AU-RES-001
+    trigger: Dual-resident individual who needs a treaty tie-breaker determination and the facts conflict or are incomplete, or any double tax agreement other than the Australia-Indonesia agreement (which this skill only handles for the structured articles it models).
+    message: "This needs a treaty residency determination or a treaty other than the Australia-Indonesia agreement, and the facts are conflicting or incomplete. I can't settle it reliably; a registered tax agent (or international tax adviser) should determine it, and a competent authority process may be needed."
+    route: registered tax agent or international tax adviser
+  - code: AU-RES-002
+    trigger: Controlled foreign company (Part X ITAA 1936), foreign investment fund or foreign hybrid interests, foreign trusts (including s 99B distributions and transferor trust rules), or an Australian resident controlling an offshore company such as an Indonesian PT.
+    message: "Controlled foreign companies, foreign trusts and similar offshore structures attribute income to Australian residents under rules this tool does not model. A registered tax agent or international tax adviser should review the structure before any return is prepared."
+    route: registered tax agent or international tax adviser
+  - code: AU-RES-003
+    trigger: Foreign superannuation or pension transfers, foreign super fund balances, or foreign pension income needing treatment under Div 305 or the foreign fund rules.
+    message: "Foreign super and pension balances, transfers and payments have their own rules (including the foreign super transfer choice and applicable fund earnings) that this tool does not model. A registered tax agent should advise before any transfer or claim."
+    route: registered tax agent
+  - code: AU-RES-004
+    trigger: Individual residency indicators are conflicting, incomplete or point both ways, so no test can be reported as likely met or likely not met.
+    message: "Residency is uncertain on these facts: the indicators point both ways or key facts are missing. Residency is a question of fact decided on all circumstances, so I won't give a conclusion. A registered tax agent should determine it (and the ATO can be asked for advice) before tax is worked out on either basis."
+    route: registered tax agent
+  - code: AU-RES-005
+    trigger: Foreign income tax offset with a complication the calculator does not model - deferred non-commercial business losses, foreign loss component of a tax loss, attribution account payments, Joint Petroleum Development Area income, foreign tax paid in a different year from the income, or foreign tax refunds.
+    message: "This foreign income tax offset has a special rule (such as deferred business losses, a foreign loss component, attribution account payments, Timor Sea JPDA income, or foreign tax paid or refunded in a different year) that this calculator does not model. A registered tax agent should work out the offset and its limit."
+    route: registered tax agent

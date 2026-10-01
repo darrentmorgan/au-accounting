@@ -1,0 +1,65 @@
+# residency-cross-border overlay. Same schema as the base file; no key collisions.
+residency:
+  fito_default_offset_limit:
+    value: 1000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC%2F19970038%2F770-75
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 770-75(2)(a): the offset limit is the greater of this amount and the computed amount in s 770-75(2)(b). Note 1: no need to compute (b) if the claim is not more than this amount. ATO FITO guide agrees. Statutory constant, not indexed.'
+  s23ag_min_foreign_service_days:
+    value: 91
+    unit: days
+    status: VERIFIED
+    source: https://www.austlii.edu.au/cgi-bin/viewdoc/au/legis/cth/consol_act/itaa1936240/s23ag.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1936 s 23AG(1): continuous period of foreign service of not less than this many days. Also stated on the ATO page https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/income-you-must-declare/foreign-and-worldwide-income/tax-exempt-income-from-foreign-employment/exempt-income-from-foreign-service. Since s 23AG(1AA) the foreign service must also be directly attributable to a listed activity.'
+  permanent_abode_substantial_period_years:
+    value: 2
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=TXR/TR20231/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'TR 2023/1 para 77: broadly 2 years is a substantial period for the permanent place of abode overseas proviso to the domicile test; a rule of thumb, not a bright line.'
+  short_visit_months:
+    value: 6
+    unit: months
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=TXR/TR20231/NAT/ATO/00001
+    as_at: 2026-09-29
+    notes: 'TR 2023/1 para 29: in many cases a visit to Australia of less than this many months is not sufficient to be regarded as residing here. A rule of thumb, not a bright line.'
+  indonesia_dta_days_threshold:
+    value: 120
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Australia-Indonesia DTA Art 14(1)(b) (independent personal services: present exceeding this many days in any 12 month period) and Art 15(2)(a) (employment: present not exceeding this many days in aggregate in any 12 months). Same text in the tabled treaty on ParlInfo.'
+  indonesia_dta_wht_dividends:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22publications%2Ftabledpapers%2FHSTP05892_1990-92%22;src1=sm1
+    as_at: 2026-09-29
+    notes: 'Art 10(2): source-country tax on dividends not to exceed this share of the gross amount. Treaty limit only; domestic law may impose less.'
+  indonesia_dta_wht_interest:
+    value: 0.10
+    unit: rate
+    status: VERIFIED
+    source: https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22publications%2Ftabledpapers%2FHSTP05892_1990-92%22;src1=sm1
+    as_at: 2026-09-29
+    notes: 'Art 11(2): source-country tax on interest not to exceed this share of the gross amount. Treaty limit only.'
+  indonesia_dta_wht_royalties_equipment_know_how:
+    value: 0.10
+    unit: rate
+    status: VERIFIED
+    source: https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22publications%2Ftabledpapers%2FHSTP05892_1990-92%22;src1=sm1
+    as_at: 2026-09-29
+    notes: 'Art 12(2)(a): royalties described in Art 12(3)(b) (industrial, commercial or scientific equipment) and (c) (scientific, technical, industrial or commercial knowledge) and related ancillary (d) and forbearance (f). Treaty limit only.'
+  indonesia_dta_wht_royalties_other:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://parlinfo.aph.gov.au/parlInfo/search/display/display.w3p;query=Id%3A%22publications%2Ftabledpapers%2FHSTP05892_1990-92%22;src1=sm1
+    as_at: 2026-09-29
+    notes: 'Art 12(2)(b): all other royalties (copyright, patents, trademarks, films and the like). Treaty limit only.'

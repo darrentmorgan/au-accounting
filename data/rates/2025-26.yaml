@@ -1,0 +1,1409 @@
+# Australian rates and thresholds, income year 2025-26. Machine-readable; read by every calculator.
+# Statuses: VERIFIED = read on a primary page; SOURCE-CITED = stated with a primary cite, not re-read; SUSPECT = unknown, contradicted or secondary-only.
+# Bracket objects: tax = base + rate x (income - from) for from <= income < to; to: null is open-ended. whole_income: true means the rate applies to the whole income base, not the excess.
+# FBT figures are for the FBT year ending 31 Mar inside this income year (meta.fbt_year_ending).
+meta:
+  income_year: 2025-26
+  start: 2025-07-01
+  end: 2026-06-30
+  compiled: 2026-09-29
+  fbt_year_ending: 2026-03-31
+individual:
+  resident_rates:
+    value:
+    - from: 0
+      to: 18200
+      rate: 0
+      base: 0
+    - from: 18200
+      to: 45000
+      rate: 0.16
+      base: 0
+    - from: 45000
+      to: 135000
+      rate: 0.3
+      base: 4288
+    - from: 135000
+      to: 190000
+      rate: 0.37
+      base: 31288
+    - from: 190000
+      to: null
+      rate: 0.45
+      base: 51638
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
+    as_at: &id001 2026-09-29
+    notes: Tax = base + rate x (taxable income - from). Excludes Medicare levy.
+  foreign_resident_rates:
+    value:
+    - from: 0
+      to: 135000
+      rate: 0.3
+      base: 0
+    - from: 135000
+      to: 190000
+      rate: 0.37
+      base: 40500
+    - from: 190000
+      to: null
+      rate: 0.45
+      base: 60850
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-foreign-residents
+    as_at: *id001
+    notes: No tax-free threshold; no Medicare levy.
+  whm_rates:
+    value:
+    - from: 0
+      to: 45000
+      rate: 0.15
+      base: 0
+    - from: 45000
+      to: 135000
+      rate: 0.3
+      base: 6750
+    - from: 135000
+      to: 190000
+      rate: 0.37
+      base: 33750
+    - from: 190000
+      to: null
+      rate: 0.45
+      base: 54100
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-working-holiday-makers
+    as_at: *id001
+    notes: Visa subclass 417/462 working holiday maker income.
+  sapto_cut_out_single:
+    value: 52759
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
+    as_at: *id001
+    notes: Single SAPTO entitlement ceases at rebate income $52,759 (2025-26).
+  sapto_max_offset_single:
+    value: 2230
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: *id001
+    notes: ATO states maximum offset amounts do not change from 2026-27; 2025-26 amount taken as the same.
+  sapto_shade_out_single:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    as_at: *id001
+    notes: 2025-26 shading-out threshold not read on a primary page.
+  lito:
+    value:
+    - from: 0
+      to: 37500
+      rate: 0
+      base: 700
+    - from: 37500
+      to: 45000
+      rate: -0.05
+      base: 700
+    - from: 45000
+      to: 66667
+      rate: -0.015
+      base: 325
+    - from: 66667
+      to: null
+      rate: 0
+      base: 0
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset
+    as_at: *id001
+    notes: 'Offset = base + rate x (taxable income - from); rate is negative (taper). Non-refundable. Statute: Subdiv 61-D
+      ITAA 1997.'
+  personal_use_asset_cgt_exempt_max_cost:
+    value: 10000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_3/document_3.html
+    as_at: *id001
+    notes: 's118-10(3): gain disregarded if the first element of cost base is $10,000 or less (read in compilation 266, 29 Sep 2026). Losses on personal use assets always disregarded (s108-20(1)).'
+  etp_cap:
+    value: 260000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments
+    as_at: *id001
+    notes: Life benefit and death benefit ETP cap amounts are equal.
+  etp_whole_of_income_cap:
+    value: 180000
+    unit: AUD
+    status: SOURCE-CITED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments
+    as_at: *id001
+    notes: Whole-of-income cap, not indexed. Not read this pass.
+medicare:
+  levy_rate:
+    value: 0.02
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
+    as_at: *id001
+    notes: 2% of taxable income (Medicare Levy Act 1986 s6). Foreign residents exempt.
+  low_income_shade_in_rate:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: *id001
+    notes: 'Medicare Levy Act 1986 s7(2): levy capped at 10% of the excess of taxable income over the threshold amount
+      (compilation in force 1 Jul 2026, read 2026-09-29). Also the phase-in rate in the s8(2) family reduction formula.'
+  low_income_single_lower:
+    value: 28011
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+  low_income_single_upper:
+    value: 35013
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+  low_income_sapto_single_lower:
+    value: 44268
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+  low_income_sapto_single_upper:
+    value: 55335
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+  low_income_family_upper:
+    value: 59047
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+    notes: Family taxable income limit (worksheet 2, row d).
+  low_income_sapto_family_upper:
+    value: 77028
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+  low_income_per_child_upper_add:
+    value: 5423
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
+    as_at: *id001
+    notes: Per dependent child.
+  low_income_family_lower:
+    value: 47238
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: *id001
+    notes: 'Medicare Levy Act 1986 s8(5) family income threshold (Act No. 58 of 2026 Sch 5, applies 2025-26 and later). Also on the ATO family income page. Read 2026-09-29; confirmed on https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income'
+  low_income_sapto_family_lower:
+    value: 61623
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: *id001
+    notes: 'Medicare Levy Act 1986 s8(7) (SAPTO-entitled family income threshold). Read 2026-09-29; confirmed on https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income'
+  low_income_per_child_lower_add:
+    value: 4338
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: *id001
+    notes: 'Medicare Levy Act 1986 s8(5): increase per dependent child or student. Read 2026-09-29; confirmed on https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income'
+  mls_single_tiers:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0
+      base: 0
+      whole_income: true
+    - from: 101000
+      to: 118000
+      rate: 0.01
+      base: 0
+      whole_income: true
+    - from: 118000
+      to: 158000
+      rate: 0.0125
+      base: 0
+      whole_income: true
+    - from: 158000
+      to: null
+      rate: 0.015
+      base: 0
+      whole_income: true
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    as_at: *id001
+    notes: Income for MLS purposes picks the tier; rate applies to MLS income base (whole_income). Tier boundary 'from' is
+      exclusive.
+  mls_family_tiers:
+    value:
+    - from: 0
+      to: 202000
+      rate: 0
+      base: 0
+      whole_income: true
+    - from: 202000
+      to: 236000
+      rate: 0.01
+      base: 0
+      whole_income: true
+    - from: 236000
+      to: 316000
+      rate: 0.0125
+      base: 0
+      whole_income: true
+    - from: 316000
+      to: null
+      rate: 0.015
+      base: 0
+      whole_income: true
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    as_at: *id001
+    notes: Family threshold rises by $1,500 per MLS dependent child after the first.
+  mls_family_per_child_after_first:
+    value: 1500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    as_at: *id001
+  phi_rebate_1jul_to_31mar_under_65:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0.24288
+      base: 0
+      whole_income: true
+      family_from: 0
+      family_to: 202000
+    - from: 101000
+      to: 118000
+      rate: 0.16192
+      base: 0
+      whole_income: true
+      family_from: 202000
+      family_to: 236000
+    - from: 118000
+      to: 158000
+      rate: 0.08095
+      base: 0
+      whole_income: true
+      family_from: 236000
+      family_to: 316000
+    - from: 158000
+      to: null
+      rate: 0
+      base: 0
+      whole_income: true
+      family_from: 316000
+      family_to: null
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: *id001
+    notes: Premiums paid 1 Jul 2025 to 31 Mar 2026. Values read on the Commonwealth privatehealth.gov.au table and the ATO
+      rebate page.
+  phi_rebate_1jul_to_31mar_65_69:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0.28337
+      base: 0
+      whole_income: true
+      family_from: 0
+      family_to: 202000
+    - from: 101000
+      to: 118000
+      rate: 0.2024
+      base: 0
+      whole_income: true
+      family_from: 202000
+      family_to: 236000
+    - from: 118000
+      to: 158000
+      rate: 0.12143
+      base: 0
+      whole_income: true
+      family_from: 236000
+      family_to: 316000
+    - from: 158000
+      to: null
+      rate: 0
+      base: 0
+      whole_income: true
+      family_from: 316000
+      family_to: null
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: *id001
+    notes: Premiums paid 1 Jul 2025 to 31 Mar 2026. Values read on the Commonwealth privatehealth.gov.au table and the ATO
+      rebate page.
+  phi_rebate_1jul_to_31mar_70_plus:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0.32385
+      base: 0
+      whole_income: true
+      family_from: 0
+      family_to: 202000
+    - from: 101000
+      to: 118000
+      rate: 0.24288
+      base: 0
+      whole_income: true
+      family_from: 202000
+      family_to: 236000
+    - from: 118000
+      to: 158000
+      rate: 0.16192
+      base: 0
+      whole_income: true
+      family_from: 236000
+      family_to: 316000
+    - from: 158000
+      to: null
+      rate: 0
+      base: 0
+      whole_income: true
+      family_from: 316000
+      family_to: null
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: *id001
+    notes: Premiums paid 1 Jul 2025 to 31 Mar 2026. Values read on the Commonwealth privatehealth.gov.au table and the ATO
+      rebate page.
+  phi_rebate_1apr_to_30jun_under_65:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0.24118
+      base: 0
+      whole_income: true
+      family_from: 0
+      family_to: 202000
+    - from: 101000
+      to: 118000
+      rate: 0.16079
+      base: 0
+      whole_income: true
+      family_from: 202000
+      family_to: 236000
+    - from: 118000
+      to: 158000
+      rate: 0.08038
+      base: 0
+      whole_income: true
+      family_from: 236000
+      family_to: 316000
+    - from: 158000
+      to: null
+      rate: 0
+      base: 0
+      whole_income: true
+      family_from: 316000
+      family_to: null
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: *id001
+    notes: Premiums paid 1 Apr 2026 to 30 Jun 2026 (after rebate adjustment factor).
+  phi_rebate_1apr_to_30jun_65_69:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0.28139
+      base: 0
+      whole_income: true
+      family_from: 0
+      family_to: 202000
+    - from: 101000
+      to: 118000
+      rate: 0.20098
+      base: 0
+      whole_income: true
+      family_from: 202000
+      family_to: 236000
+    - from: 118000
+      to: 158000
+      rate: 0.12058
+      base: 0
+      whole_income: true
+      family_from: 236000
+      family_to: 316000
+    - from: 158000
+      to: null
+      rate: 0
+      base: 0
+      whole_income: true
+      family_from: 316000
+      family_to: null
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: *id001
+    notes: Premiums paid 1 Apr 2026 to 30 Jun 2026 (after rebate adjustment factor).
+  phi_rebate_1apr_to_30jun_70_plus:
+    value:
+    - from: 0
+      to: 101000
+      rate: 0.32158
+      base: 0
+      whole_income: true
+      family_from: 0
+      family_to: 202000
+    - from: 101000
+      to: 118000
+      rate: 0.24118
+      base: 0
+      whole_income: true
+      family_from: 202000
+      family_to: 236000
+    - from: 118000
+      to: 158000
+      rate: 0.16079
+      base: 0
+      whole_income: true
+      family_from: 236000
+      family_to: 316000
+    - from: 158000
+      to: null
+      rate: 0
+      base: 0
+      whole_income: true
+      family_from: 316000
+      family_to: null
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    as_at: *id001
+    notes: Premiums paid 1 Apr 2026 to 30 Jun 2026 (after rebate adjustment factor).
+help:
+  repayment_schedule:
+    value:
+    - from: 0
+      to: 67000
+      rate: 0
+      base: 0
+    - from: 67000
+      to: 125000
+      rate: 0.15
+      base: 0
+    - from: 125000
+      to: 179285
+      rate: 0.17
+      base: 8700
+    - from: 179285
+      to: null
+      rate: 0.1
+      base: 0
+      whole_income: true
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds
+    as_at: *id001
+    notes: 'Marginal from 2025-26. Top band: 10% of TOTAL repayment income (whole_income), not marginal. Repayment income
+      = taxable income + RFBA + net investment losses + reportable super + exempt foreign employment income.'
+super:
+  sg_rate:
+    value: 0.12
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee
+    as_at: *id001
+    notes: From 1 Jul 2026 applied to qualifying earnings under Payday Super.
+  max_contribution_base_per_quarter:
+    value: 62500
+    unit: AUD_per_quarter
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee
+    as_at: *id001
+    notes: Quarterly base up to 30 Jun 2026; max SG $7,500 per quarter.
+  concessional_cap:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: *id001
+  carry_forward_tsb_limit:
+    value: 500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: *id001
+    notes: Unused concessional cap carries forward up to 5 years if TSB < $500,000 at prior 30 June.
+  non_concessional_cap:
+    value: 120000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: *id001
+    notes: Nil if TSB >= general transfer balance cap at prior 30 June.
+  bring_forward_tiers:
+    value:
+    - from: 0
+      to: 1760000
+      base: 0
+      years: 3
+      cap_first_year: 360000
+      rate: 0
+    - from: 1760000
+      to: 1880000
+      base: 0
+      years: 2
+      cap_first_year: 240000
+      rate: 0
+    - from: 1880000
+      to: 2000000
+      base: 0
+      years: 1
+      cap_first_year: 120000
+      rate: 0
+    - from: 2000000
+      to: null
+      base: 0
+      years: 0
+      cap_first_year: 0
+      rate: 0
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: *id001
+    notes: Bands by total super balance at prior 30 June (from/to). cap_first_year is the first-year non-concessional cap;
+      years is the bring-forward period.
+  transfer_balance_cap:
+    value: 2000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/transfer-balance-cap
+    as_at: *id001
+  defined_benefit_income_cap:
+    value: 125000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/transfer-balance-cap
+    as_at: *id001
+  div293_threshold:
+    value: 250000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/division-293-tax
+    as_at: *id001
+    notes: Not indexed.
+  div293_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/division-293-tax
+    as_at: *id001
+  cgt_cap_amount:
+    value: 1865000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: *id001
+    notes: Lifetime CGT cap for small business CGT contributions (Table 6). Resolves open item F1.
+  co_contribution_max:
+    value: 500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: *id001
+  co_contribution_lower_threshold:
+    value: 47488
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: *id001
+  co_contribution_higher_threshold:
+    value: 62488
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: *id001
+  listo_ati_limit:
+    value: 37000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: *id001
+    notes: LISTO refunds tax on concessional contributions up to $500 where adjusted taxable income <= $37,000.
+  listo_max:
+    value: 500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    as_at: *id001
+  smsf_lrba_safe_harbour_real_property:
+    value: 0.0895
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/other-super-rates-and-thresholds
+    as_at: *id001
+    notes: PCG 2016/5 safe harbour interest rate. Resolves the earlier SUSPECT on the 2026-27 figure.
+  smsf_lrba_safe_harbour_listed_shares:
+    value: 0.1095
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/other-super-rates-and-thresholds
+    as_at: *id001
+  disregarded_small_fund_assets_tsb:
+    value: 1600000
+    unit: AUD
+    status: SOURCE-CITED
+    source: https://www.legislation.gov.au/C2004A05138/latest/text
+    as_at: *id001
+    notes: s295-387; not indexed. Not read this pass.
+company:
+  rate_base_rate_entity:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/company-tax-rate-changes
+    as_at: *id001
+  rate_other:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/company-tax-rate-changes
+    as_at: *id001
+  bre_aggregated_turnover_threshold:
+    value: 50000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/company-tax-rate-changes
+    as_at: *id001
+    notes: Aggregated turnover must be less than this.
+  bre_passive_income_max_share:
+    value: 0.8
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/company-tax-rate-changes
+    as_at: *id001
+    notes: BRE passive income must be 80% or less of assessable income.
+  small_business_entity_turnover:
+    value: 10000000
+    unit: AUD
+    status: SOURCE-CITED
+    source: https://www.legislation.gov.au/C2004A00446/latest/text/1
+    as_at: *id001
+    notes: SBE threshold (s328-110). Cited via Act 71 / digest; ATO eligibility page not fetched.
+  loss_carry_back_years:
+    value: null
+    unit: years
+    status: SUSPECT
+    source: https://www.legislation.gov.au/C2026A00071/asmade/2026-08-26/text/original/pdf
+    as_at: *id001
+    notes: Not available for 2025-26.
+div7a:
+  benchmark_interest_rate:
+    value: 0.0837
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/division-7a-benchmark-interest-rate
+    as_at: *id001
+    notes: RBA indicator rate published 6 Jun 2025.
+  max_term_unsecured_years:
+    value: 7
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19360027/109N
+    as_at: *id001
+    notes: ITAA 1936 s109N(3)(b). Read on the ATO legal database 29 Sep 2026.
+  max_term_secured_years:
+    value: 25
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=PAC/19360027/109N
+    as_at: *id001
+    notes: ITAA 1936 s109N(3)(a); 100% of loan secured by registered mortgage over real property worth >= 110% of loan (net of prior liabilities). Read on the ATO legal database 29 Sep 2026.
+cgt:
+  discount_individual_trust:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount
+    as_at: *id001
+    notes: Held >= 12 months, Australian resident. Only for CGT events before 1 Jul 2027 (Act 49 Sch 1); indexation + 30%
+      minimum tax after.
+  discount_complying_super_fund:
+    value: 0.3333333333333333
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount
+    as_at: *id001
+    notes: 'One-third: ITAA 1997 s115-100(b) "33 1/3%" (exact third; was 0.3333, corrected 29 Sep 2026 from the 1 Jul 2026 compilation).'
+  discount_company:
+    value: 0
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount
+    as_at: *id001
+    notes: Companies cannot use the discount.
+  small_business_aggregated_turnover:
+    value: 2000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/incentives-and-concessions/small-business-cgt-concessions/small-business-cgt-concessions-eligibility-conditions/cgt-concessions-eligibility-overview
+    as_at: *id001
+    notes: 'Basic condition (CGT small business entity: turnover < $2m).'
+  small_business_max_net_asset_value:
+    value: 6000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/incentives-and-concessions/small-business-cgt-concessions/small-business-cgt-concessions-eligibility-conditions/cgt-concessions-eligibility-overview
+    as_at: *id001
+    notes: Alternative gateway; not indexed.
+  small_business_retirement_exemption_lifetime:
+    value: 500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/incentives-and-concessions/small-business-cgt-concessions/small-business-retirement-exemption
+    as_at: *id001
+    notes: Per individual / CGT concession stakeholder; not indexed.
+  frcgw_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/about-ato/new-legislation/in-detail/businesses/strengthening-the-foreign-resident-cgt-regime
+    as_at: *id001
+    notes: 15% with no value threshold for contracts from 1 Jan 2025 (carried from the federal verification pass).
+gst:
+  rate:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=PAC/19990055/9-70&PiT=99991231235958
+    as_at: *id001
+    notes: 'GST Act s9-70 (GST is 10% of the value of the taxable supply), read in the ATO legal database 29 Sep 2026. ATO pages use 1/11 of a GST-inclusive price.'
+  registration_threshold:
+    value: 75000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst
+    as_at: *id001
+    notes: GST turnover; taxi/ride-sourcing and some platform work must register regardless.
+  registration_threshold_nfp:
+    value: 150000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst
+    as_at: *id001
+  margin_scheme_gst_fraction:
+    value: 0.09090909090909091
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/in-detail/your-industry/property/gst-and-the-margin-scheme/calculating-the-gst-payable
+    as_at: *id001
+    notes: GST = 1/11 of the margin; report margin at G1 and GST at 1A.
+  tax_invoice_threshold_incl_gst:
+    value: 82.5
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/tax-invoices
+    as_at: *id001
+    notes: 'ATO Tax invoices page (updated 18 Sep 2026): no tax invoice needed for a sale of $82.50 incl GST or less. Law: s29-80 and GST Regulations 2019 reg 29-80.01 ($75 value). Read 29 Sep 2026.'
+  cash_accounting_turnover_max:
+    value: 10000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/accounting-for-gst-in-your-business/choosing-an-accounting-method
+    as_at: *id001
+    notes: 'Aggregated turnover less than this may choose cash basis (small business entity, s29-40(1)(a)); ATO page updated 14 Sep 2026, read 29 Sep 2026.'
+  monthly_reporting_turnover_min:
+    value: 20000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    as_at: *id001
+    notes: 'GST turnover at or above this must lodge BAS monthly (Div 27; ATO due dates page updated 17 Sep 2026, read 29 Sep 2026).'
+  div87_long_term_days:
+    value: 28
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=GST%2FGSTR20127%2FNAT%2FATO%2F00001&PiT=20200724000001
+    as_at: *id001
+    notes: s87-20, GSTR 2012/7 para 10.
+  div87_predominantly_long_term_share:
+    value: 0.7
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/print?DocID=GST%2FGSTR20127%2FNAT%2FATO%2F00001&PiT=20200724000001
+    as_at: *id001
+    notes: Value of supply reduced to 50% when premises predominantly long-term.
+payg_instalments:
+  gdp_adjustment:
+    value: 0.04
+    unit: rate
+    status: VERIFIED
+    source: https://softwaredevelopers.ato.gov.au/GDPupliftfactor
+    as_at: *id001
+    notes: SAP taxpayers with years starting 1 Jan to 1 Mar 2026 keep 4% into 2026-27 (ATO software developers page).
+  reasonable_rate_individual_trust:
+    value: 0.55
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    as_at: *id001
+  reasonable_rate_super_fund:
+    value: 0.45
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    as_at: *id001
+  reasonable_rate_corporate:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    as_at: *id001
+  entry_instalment_income_min:
+    value: 4000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: *id001
+    notes: 'Individuals and trusts: all three entry tests (instalment income, tax payable on latest assessment, notional tax). Read on ATO page 29 Sep 2026.'
+  entry_last_assessed_tax_min:
+    value: 1000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: *id001
+    notes: 'Tax payable on the latest notice of assessment; individuals and trusts. Read on ATO page 29 Sep 2026.'
+  entry_notional_tax_min:
+    value: 500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    as_at: *id001
+    notes: 'Estimated (notional) tax test. Read on ATO page 29 Sep 2026.'
+  annual_option_notional_tax_max:
+    value: 8000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due
+    as_at: *id001
+    notes: 'Annual payer eligibility: most recent notional tax less than this amount (ATO page read 29 Sep 2026).'
+penalties_interest:
+  penalty_unit:
+    value: 330
+    unit: AUD
+    status: VERIFIED
+    source: https://www.asic.gov.au/about-asic/asic-investigations-and-enforcement/fines-and-penalties
+    as_at: *id001
+    notes: $330 applied 7 Nov 2024 to 30 Jun 2026 (ASIC page, carried from verification pass).
+  failure_to_lodge_units_per_28_days_small:
+    value: 1
+    unit: penalty_units
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    as_at: *id001
+    notes: 'One penalty unit per 28 days or part thereof, maximum 5 base units; multiplied by 2 medium, 5 large, 500 significant global entity (ATO page read 29 Sep 2026).'
+  shortfall_penalty_no_reasonable_care:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    as_at: *id001
+    notes: 'Base penalty amount percentage of the shortfall (ATO page read 29 Sep 2026).'
+  shortfall_penalty_recklessness:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    as_at: *id001
+    notes: 'Base penalty amount percentage of the shortfall (ATO page read 29 Sep 2026).'
+  shortfall_penalty_intentional_disregard:
+    value: 0.75
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    as_at: *id001
+    notes: 'Base penalty amount percentage of the shortfall (ATO page read 29 Sep 2026).'
+  gic_quarterly:
+    value:
+    - from: 2025-07-01
+      to: 2025-09-30
+      rate: 0.1078
+      daily_rate: 0.0002953425
+    - from: 2025-10-01
+      to: 2025-12-31
+      rate: 0.1061
+      daily_rate: 0.0002906849
+    - from: 2026-01-01
+      to: 2026-03-31
+      rate: 0.1065
+      daily_rate: 0.0002917808
+    - from: 2026-04-01
+      to: 2026-06-30
+      rate: 0.1096
+      daily_rate: 0.000300274
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/general-interest-charge-rates
+    as_at: *id001
+  sic_quarterly:
+    value:
+    - from: 2025-07-01
+      to: 2025-09-30
+      rate: 0.0678
+      daily_rate: 0.0001857534
+    - from: 2025-10-01
+      to: 2025-12-31
+      rate: 0.0661
+      daily_rate: 0.0001810959
+    - from: 2026-01-01
+      to: 2026-03-31
+      rate: 0.0665
+      daily_rate: 0.0001821918
+    - from: 2026-04-01
+      to: 2026-06-30
+      rate: 0.0696
+      daily_rate: 0.0001906849
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/shortfall-interest-charge-rates
+    as_at: *id001
+car_home:
+  car_cents_per_km:
+    value: 0.88
+    unit: AUD_per_km
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/ldt/li2026-019.pdf
+    as_at: *id001
+    notes: 88c for 2024-25 and 2025-26 per ATO cents-per-km method page (carried from federal verification pass; the linked
+      2026 determination repeals the 2024 one and sets 91c for 2026-27).
+  car_cents_per_km_max_km:
+    value: 5000
+    unit: km
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/ldt/li2026-019.pdf
+    as_at: *id001
+    notes: Cap unchanged.
+  car_limit:
+    value: 69674
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/0-33965a52-fc9f-4ff3-9e80-735e8ee12f89
+    as_at: *id001
+    notes: 2025-26 value stated on the 2026-27 ATO page as the prior year figure.
+  home_office_fixed_rate_per_hour:
+    value: 0.7
+    unit: AUD_per_hour
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim/work-related-deductions/working-from-home-expenses/fixed-rate-method
+    as_at: *id001
+    notes: 70c per work hour; covers energy, phone, internet, stationery, consumables.
+fbt:
+  rate:
+    value: 0.47
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: FBT year ending 31 Mar 2026.
+  gross_up_type1:
+    value: 2.0802
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: Where benefit provider is entitled to GST credits.
+  gross_up_type2:
+    value: 1.8868
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  car_statutory_rate:
+    value: 0.2
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: Flat 20% from 1 Apr 2014.
+  car_parking_threshold:
+    value: 11.03
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  benchmark_interest_rate:
+    value: 0.0862
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  rfba_reporting_threshold_taxable_value:
+    value: 2000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  rfba_min_grossed_up_value:
+    value: 3773
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: Reportable benefits grossed up at the lower (type 2) rate.
+  record_keeping_exemption_base:
+    value: 10664
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  motor_vehicle_cents_per_km_up_to_2500cc:
+    value: 0.69
+    unit: AUD_per_km
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: TD 2025/1.
+  motor_vehicle_cents_per_km_over_2500cc:
+    value: 0.8
+    unit: AUD_per_km
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  motor_vehicle_cents_per_km_motorcycle:
+    value: 0.2
+    unit: AUD_per_km
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  ev_home_charging_rate_per_km:
+    value: 0.042
+    unit: AUD_per_km
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: PCG 2024/2.
+  car_operating_cost_depreciation_rate:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  instalment_prior_year_fbt_min:
+    value: 3000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  lafha_food_1_adult_per_week:
+    value: 341
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: TD 2025/2.
+  lafha_food_2_adults_per_week:
+    value: 512
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  housing_indexation_sa:
+    value: 1.06
+    unit: ratio
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  pbi_exemption_cap:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  hospital_exemption_cap:
+    value: 17000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  rebatable_employer_rebate_cap:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+    notes: Rebate 47% of FBT capped at $30,000.
+  meal_entertainment_cap_nfp:
+    value: 5000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    as_at: *id001
+  minor_benefit_threshold:
+    value: 300
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/exemptions-concessions-and-other-ways-to-reduce-fbt/minor-benefits-exemption
+    as_at: *id001
+    notes: 'FBTAA s 58P(1)(e) notional taxable value must be LESS than this amount (read on ATO minor benefits page and s 58P text 2026-09-29); applies per benefit, not as a total cap.'
+payroll_wages:
+  national_minimum_wage_hourly:
+    value: 24.95
+    unit: AUD_per_hour
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/about-us/workplace-laws/annual-wage-review/annual-wage-review-2024-2025
+    as_at: *id001
+    notes: 'From the first full pay period starting on or after 1 Jul 2025 ($948 per 38-hour week), Annual Wage Review 2025
+      [2025] FWCFB 3500. Verified correction by payroll-sg (was SUSPECT/null).'
+  casual_loading:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.fwc.gov.au/work-conditions/minimum-wages-and-conditions/national-minimum-wage
+    as_at: *id001
+    notes: Award/agreement-free casuals (National Minimum Wage Order). Awards set their own loading. Read 29 Sep 2026 by payroll-sg.
+asic:
+  annual_review_proprietary:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://asic.gov.au/for-business/payments-fees-and-invoices/asic-fees/fees-for-commonly-lodged-documents/annual-review
+    as_at: *id001
+    notes: Value for 1 Jul 2025 to 30 Jun 2026 not read on a primary page (cache shows $321 to 30 Jun 2025).
+  large_proprietary_revenue:
+    value: 50000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2001B00274/latest/text
+    as_at: *id001
+    notes: 'Corporations Regulations 2001 reg 1.0.02B prescribes the s45A thresholds (text read on the 29 Nov 2025 version; reg still listed in the 21 Apr 2026 compilation). Consolidated revenue of the company and entities it controls, $50 million or more. Large = at least 2 of 3 met.'
+  large_proprietary_gross_assets:
+    value: 25000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2001B00274/latest/text
+    as_at: *id001
+    notes: 'Corporations Regulations 2001 reg 1.0.02B prescribes the s45A thresholds (text read on the 29 Nov 2025 version; reg still listed in the 21 Apr 2026 compilation). Consolidated gross assets at year end, $25 million or more. Large = at least 2 of 3 met.'
+  large_proprietary_employees:
+    value: 100
+    unit: count
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2001B00274/latest/text
+    as_at: *id001
+    notes: 'Corporations Regulations 2001 reg 1.0.02B prescribes the s45A thresholds (text read on the 29 Nov 2025 version; reg still listed in the 21 Apr 2026 compilation). Employees at year end, part-time counted as a fraction of full-time equivalent (s45A(5)), 100 or more. Large = at least 2 of 3 met.'
+state.sa:
+  payroll_tax_threshold_annual:
+    value: 1500000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: *id001
+    notes: Max threshold, from 1 Jan 2019. No 2026-27 change per RevenueSA page (re-crawled 1 Jul 2026).
+  payroll_tax_threshold_monthly:
+    value: 125000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: *id001
+  payroll_tax_rate:
+    value: 0.0495
+    unit: rate
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: *id001
+    notes: 'Top rate, applies where annualised Australian taxable wages exceed $1.7m. Between $1.5m and $1.7m the rate is 4.95% x
+      (annualised wages - $1.5m) / $200,000 (Payroll Tax Act 2009 (SA) Sch 1 cl 5(2), Sch 2 cl 5(1a)). Corrected 29 Sep 2026: the
+      earlier note described a tapering deduction; the Act and RevenueSA show a flat deduction with a variable rate.'
+  payroll_tax_max_deduction_annual:
+    value: 600000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: *id001
+    notes: 'Flat maximum deduction, $50,000 per month (Payroll Tax Act 2009 (SA) Sch 1 cl 1 EA; Sch 2 cl 2 prescribed amount). It
+      does NOT taper to nil at $1.7m (correction 29 Sep 2026): it is reduced only for part-year employing, interstate wages
+      and group membership. Read at https://www.revenuesa.sa.gov.au/payroll-tax/how-is-payroll-tax-calculated (example: $1.6m
+      wages, deduction $600,000, tax on $1m).'
+  payroll_tax_variable_band_top:
+    value: 1700000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    as_at: *id001
+    notes: 'Upper end of the variable-rate band (above this wages are taxed at the top rate). The deduction
+      does not taper; it is flat (see payroll_tax_max_deduction_annual).'
+  land_tax_general_threshold:
+    value: 833000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: *id001
+    notes: Indexed each year to average site value change.
+  land_tax_trust_threshold:
+    value: 25000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: *id001
+  land_tax_general_scale:
+    value:
+    - from: 0
+      to: 833000
+      rate: 0
+      base: 0
+    - from: 833000
+      to: 1338000
+      rate: 0.005
+      base: 0
+    - from: 1338000
+      to: 1946000
+      rate: 0.01
+      base: 2525
+    - from: 1946000
+      to: 3116000
+      rate: 0.02
+      base: 8605
+    - from: 3116000
+      to: null
+      rate: 0.024
+      base: 32005
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: *id001
+    notes: Per $100 or part of $100 above 'from'. Rates as decimal of the excess.
+  land_tax_trust_scale:
+    value:
+    - from: 0
+      to: 25000
+      rate: 0
+      base: 0
+    - from: 25000
+      to: 833000
+      rate: 0.005
+      base: 125
+    - from: 833000
+      to: 1338000
+      rate: 0.01
+      base: 4165
+    - from: 1338000
+      to: 1946000
+      rate: 0.015
+      base: 9215
+    - from: 1946000
+      to: 3116000
+      rate: 0.024
+      base: 18335
+    - from: 3116000
+      to: null
+      rate: 0.024
+      base: 46415
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: *id001
+    notes: Search extract of RevenueSA page was partly truncated; bases $18,335 and $46,415 read directly, $4,165 and $9,215
+      (fragment '9,21') follow from the same chain of rate x width from $125. Treat as verified but re-check on the page.
+      Applies to trusts not qualifying for general rates (see https://www.revenuesa.sa.gov.au/land-tax/trusts).
+  land_tax_minimum_assessment:
+    value: 20
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    as_at: *id001
+    notes: No assessment issued where calculated tax is under $20.
+  stamp_duty_conveyance_scale:
+    value:
+    - from: 0
+      to: 12000
+      rate: 0.01
+      base: 0
+    - from: 12000
+      to: 30000
+      rate: 0.02
+      base: 120
+    - from: 30000
+      to: 50000
+      rate: 0.03
+      base: 480
+    - from: 50000
+      to: 100000
+      rate: 0.035
+      base: 1080
+    - from: 100000
+      to: 200000
+      rate: 0.04
+      base: 2830
+    - from: 200000
+      to: 250000
+      rate: 0.0425
+      base: 6830
+    - from: 250000
+      to: 300000
+      rate: 0.0475
+      base: 8955
+    - from: 300000
+      to: 500000
+      rate: 0.05
+      base: 11330
+    - from: 500000
+      to: null
+      rate: 0.055
+      base: 21330
+    unit: AUD
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty
+    as_at: *id001
+    notes: 'Per $100 or part of $100 over ''from''. RevenueSA shows one current table (page published 2020-12-07, read 29 Sep 2026)
+      with no effective-date history. Upgraded to VERIFIED 29 Sep 2026: RevenueSA first home buyer worked examples for
+      contracts from 15 Jun 2023 (https://www.revenuesa.sa.gov.au/stampduty/first-home-buyer-relief/relief-available) give duty of
+      $29,580 at $650,000, $30,130 at $660,000 and $16,330 at $400,000, which reproduce from this table, so the table was the same
+      in 2023-24 to 2025-26.'
+  stamp_duty_foreign_ownership_surcharge:
+    value: 0.07
+    unit: rate
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/FOS
+    as_at: *id001
+    notes: 7% of value of residential land interest, from 1 Jan 2018 (page read 29 Sep 2026; applies to instruments executed
+      on or after 1 Jan 2018, so it applies in 2025-26).
+state.nsw:
+  payroll_tax_threshold_annual:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.payrolltax.gov.au/harmonisation/payroll-tax-rates-and-thresholds
+    as_at: *id001
+    notes: 2025-26 NSW figure not checked in this pass.
+  payroll_tax_rate:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.payrolltax.gov.au/harmonisation/payroll-tax-rates-and-thresholds
+    as_at: *id001
+    notes: 2025-26 NSW figure not checked in this pass.
+  foreign_purchaser_duty_surcharge:
+    value: null
+    unit: rate
+    status: SUSPECT
+    source: https://www.payrolltax.gov.au/harmonisation/payroll-tax-rates-and-thresholds
+    as_at: *id001
+    notes: 2025-26 NSW figure not checked in this pass.

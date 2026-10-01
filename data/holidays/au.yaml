@@ -1,0 +1,1033 @@
+# Australian public holidays, 1 Jul 2025 to 30 Jun 2028 (FY2025-26 to FY2027-28). Machine-readable; read by due-date calculators.
+# Purpose: decide which days are NOT business days when a tax due date is rolled forward. Rules and citations: docs/research/due-dates-public-holidays.md
+# Scope: a public holiday declared for the WHOLE of a State or Territory (statewide or territory-wide). Excluded: regional or local days (Royal Hobart Regatta and
+#   Show, Recreation Day (TAS), Royal Queensland Show (Brisbane only), NT show days, local event days), bank-only holidays (NSW and ACT first Monday in August),
+#   and Tasmanian Public Service-only days (Easter Tuesday, Launceston Cup, Devonport Cup).
+# Entry: one row per (date, name, jurisdictions). jurisdictions is ALL (every State and Territory) or a sorted list of ACT NSW NT QLD SA TAS VIC WA.
+#   part_day: true marks a holiday that applies only from part_day_from (local time) on that date; absent means a whole-day holiday.
+#   weekday is a transcription check (the validator recomputes it). Substitute and additional days are separate rows with the name the State uses.
+# Status: VERIFIED = date read on a primary government page or fixed by the cited statute; SUSPECT = not yet declared or a law change is pending (see unresolved).
+# Public holidays can still be added or substituted by proclamation or ministerial order; re-check every July (annual update runbook, GOAL.md gate 7).
+meta:
+  schema_version: 1
+  range_start: 2025-07-01
+  range_end: 2028-06-30
+  compiled: 2026-09-29
+  income_years: [2025-26, 2026-27, 2027-28]
+  jurisdictions: [ACT, NSW, NT, QLD, SA, TAS, VIC, WA]
+regimes:
+  commonwealth_tax:
+    applies_to: ATO-administered obligations (BAS, PAYG, FBT, income tax lodgment and payment, Payday Super business days)
+    non_business_day: Saturday, Sunday, or a day that is a public holiday for the whole of any State, the ACT or the NT; the taxpayer's own location is irrelevant
+    jurisdictions: ALL
+    part_day_holidays_count: true
+    part_day_basis: The ATO table lists Christmas Eve (QLD, NT, SA) and New Year's Eve (NT, SA) as non-business days. The statutory wording is ambiguous on part-day holidays; follow the ATO table.
+    rule_source: https://www.legislation.gov.au/C1953A00001/latest/text
+    table_source: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+  sa_state_tax:
+    applies_to: RevenueSA-administered obligations (payroll tax returns and payment, land tax, other SA state taxes)
+    non_business_day: Saturday, Sunday, or a public holiday under the Public Holidays Act 2023 (SA); other States' holidays are irrelevant
+    jurisdictions: [SA]
+    part_day_holidays_count: false
+    part_day_basis: Legislation Interpretation Act 2021 (SA) s 46 and Public Holidays Act 2023 (SA) s 8(3) exclude part-day public holidays (Christmas Eve and New Year's Eve, 7pm to midnight).
+    rule_source: https://www.legislation.sa.gov.au/lz?path=/c/a/legislation%20interpretation%20act%202021
+    table_source: https://www.revenuesa.sa.gov.au/payrolltax/returns-and-annual-reconciliation/monthly-returns
+holidays:
+  - date: 2025-08-04
+    weekday: Mon
+    name: Picnic Day
+    jurisdictions: [NT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+  - date: 2025-09-26
+    weekday: Fri
+    name: Friday before the AFL Grand Final
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+  - date: 2025-09-29
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    sources:
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2025-10-06
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [QLD]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+  - date: 2025-10-06
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [ACT, NSW, SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2025-11-04
+    weekday: Tue
+    name: Melbourne Cup
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+    notes: 'Public holiday across Victoria unless a non-metropolitan council arranges a different local day.'
+  - date: 2025-12-24
+    weekday: Wed
+    name: Christmas Eve
+    jurisdictions: [NT, SA]
+    part_day: true
+    part_day_from: "19:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 19:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2025-12-24
+    weekday: Wed
+    name: Christmas Eve
+    jurisdictions: [QLD]
+    part_day: true
+    part_day_from: "18:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 18:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2025-12-25
+    weekday: Thu
+    name: Christmas Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+  - date: 2025-12-26
+    weekday: Fri
+    name: Boxing Day
+    jurisdictions: [ACT, NSW, NT, QLD, TAS, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    as_at: 2026-09-29
+  - date: 2025-12-26
+    weekday: Fri
+    name: Proclamation Day holiday
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'SafeWork SA: Proclamation Day holiday and Boxing Day.'
+  - date: 2025-12-31
+    weekday: Wed
+    name: New Year's Eve
+    jurisdictions: [NT, SA]
+    part_day: true
+    part_day_from: "19:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 19:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2026-01-01
+    weekday: Thu
+    name: New Year's Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-01-26
+    weekday: Mon
+    name: Australia Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-03-02
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2026-03-09
+    weekday: Mon
+    name: Adelaide Cup Day
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2026-03-09
+    weekday: Mon
+    name: Canberra Day
+    jurisdictions: [ACT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.act.gov.au/__data/assets/pdf_file/0004/2155495/ACT-Public-Holidays-2026.pdf
+    as_at: 2026-09-29
+  - date: 2026-03-09
+    weekday: Mon
+    name: Eight Hours Day
+    jurisdictions: [TAS]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+    as_at: 2026-09-29
+  - date: 2026-03-09
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026
+    as_at: 2026-09-29
+  - date: 2026-04-03
+    weekday: Fri
+    name: Good Friday
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-04-04
+    weekday: Sat
+    name: Easter Saturday
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+    notes: 'Named ''the day after Good Friday'' in QLD and ''Saturday before Easter Sunday'' in VIC.'
+  - date: 2026-04-05
+    weekday: Sun
+    name: Easter Sunday
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-04-06
+    weekday: Mon
+    name: Easter Monday
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-04-25
+    weekday: Sat
+    name: Anzac Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+    notes: 'No substitute day in QLD, NT, VIC, SA or TAS when it falls on a weekend.'
+  - date: 2026-04-27
+    weekday: Mon
+    name: Additional public holiday for Anzac Day
+    jurisdictions: [ACT, NSW, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.act.gov.au/__data/assets/pdf_file/0004/2155495/ACT-Public-Holidays-2026.pdf
+      - https://www.nsw.gov.au/about-nsw/public-holidays
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2026-05-04
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [QLD]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+  - date: 2026-05-04
+    weekday: Mon
+    name: May Day
+    jurisdictions: [NT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://nt.gov.au/nt-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-06-01
+    weekday: Mon
+    name: Reconciliation Day
+    jurisdictions: [ACT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.act.gov.au/__data/assets/pdf_file/0004/2155495/ACT-Public-Holidays-2026.pdf
+    as_at: 2026-09-29
+  - date: 2026-06-01
+    weekday: Mon
+    name: Western Australia Day
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2026-06-08
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [ACT, NSW, NT, SA, TAS, VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-08-03
+    weekday: Mon
+    name: Picnic Day
+    jurisdictions: [NT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://nt.gov.au/nt-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-09-25
+    weekday: Fri
+    name: Friday before the AFL Grand Final
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026
+    as_at: 2026-09-29
+  - date: 2026-09-28
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent=&query=gg2024_053.pdf
+    as_at: 2026-09-29
+    notes: 'Proclaimed under the Public and Bank Holidays Act 1972 (WA) s 5; some regional WA areas hold a different date.'
+  - date: 2026-10-05
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [QLD]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+  - date: 2026-10-05
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [ACT, NSW, SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.act.gov.au/__data/assets/pdf_file/0004/2155495/ACT-Public-Holidays-2026.pdf
+      - https://www.nsw.gov.au/about-nsw/public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2026-11-03
+    weekday: Tue
+    name: Melbourne Cup
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026
+    as_at: 2026-09-29
+    notes: 'Public holiday across Victoria unless a non-metropolitan council arranges a different local day.'
+  - date: 2026-12-24
+    weekday: Thu
+    name: Christmas Eve
+    jurisdictions: [NT, SA]
+    part_day: true
+    part_day_from: "19:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://nt.gov.au/nt-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 19:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2026-12-24
+    weekday: Thu
+    name: Christmas Eve
+    jurisdictions: [QLD]
+    part_day: true
+    part_day_from: "18:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 18:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2026-12-25
+    weekday: Fri
+    name: Christmas Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-12-26
+    weekday: Sat
+    name: Boxing Day
+    jurisdictions: [ACT, NSW, NT, QLD, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-12-26
+    weekday: Sat
+    name: Proclamation Day holiday
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2026-12-28
+    weekday: Mon
+    name: Additional public holiday for Boxing Day
+    jurisdictions: [ACT, NSW, NT, QLD, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    as_at: 2026-09-29
+  - date: 2026-12-28
+    weekday: Mon
+    name: Additional public holiday for Proclamation Day holiday
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2026-12-28
+    weekday: Mon
+    name: Boxing Day
+    jurisdictions: [TAS]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+    as_at: 2026-09-29
+    notes: 'Tasmania observes Boxing Day on the Monday when 26 December is a Saturday (Statutory Holidays Act 2000 s 4).'
+  - date: 2026-12-31
+    weekday: Thu
+    name: New Year's Eve
+    jurisdictions: [NT, SA]
+    part_day: true
+    part_day_from: "19:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://nt.gov.au/nt-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 19:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2027-01-01
+    weekday: Fri
+    name: New Year's Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-01-26
+    weekday: Tue
+    name: Australia Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-03-01
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2027-03-08
+    weekday: Mon
+    name: Adelaide Cup Day
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2027-03-08
+    weekday: Mon
+    name: Canberra Day
+    jurisdictions: [ACT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.act.gov.au/__data/assets/pdf_file/0018/2327004/ACT-Public-Holidays-2027.pdf
+    as_at: 2026-09-29
+  - date: 2027-03-08
+    weekday: Mon
+    name: Eight Hours Day
+    jurisdictions: [TAS]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+    as_at: 2026-09-29
+  - date: 2027-03-08
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027
+    as_at: 2026-09-29
+  - date: 2027-03-26
+    weekday: Fri
+    name: Good Friday
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-03-27
+    weekday: Sat
+    name: Easter Saturday
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-03-28
+    weekday: Sun
+    name: Easter Sunday
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-03-29
+    weekday: Mon
+    name: Easter Monday
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-04-25
+    weekday: Sun
+    name: Anzac Day
+    jurisdictions: [ACT, NSW, SA, TAS, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+    notes: 'Sunday. No substitute day in VIC, SA or TAS. NSW and WA add a Monday; the ACT declared an additional public holiday for the Sunday and observes Anzac Day on the Monday. NT and QLD observe Anzac Day on the Monday only.'
+  - date: 2027-04-26
+    weekday: Mon
+    name: Additional public holiday for Anzac Day
+    jurisdictions: [NSW, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.nsw.gov.au/about-nsw/public-holidays
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2027-04-26
+    weekday: Mon
+    name: Anzac Day
+    jurisdictions: [ACT, NT, QLD]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.act.gov.au/__data/assets/pdf_file/0018/2327004/ACT-Public-Holidays-2027.pdf
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+    notes: 'Anzac Day observed on the Monday because 25 April is a Sunday (ACT Holidays Act 1958 s 3(1)(a)(viii); NT and QLD lists). The ATO table calls 26 April ''Additional public holiday for ANZAC Day (ACT, NSW, NT, QLD, WA)''.'
+  - date: 2027-05-03
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [QLD]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+  - date: 2027-05-03
+    weekday: Mon
+    name: May Day
+    jurisdictions: [NT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://nt.gov.au/nt-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-05-31
+    weekday: Mon
+    name: Reconciliation Day
+    jurisdictions: [ACT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.act.gov.au/__data/assets/pdf_file/0018/2327004/ACT-Public-Holidays-2027.pdf
+    as_at: 2026-09-29
+  - date: 2027-06-07
+    weekday: Mon
+    name: Western Australia Day
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+  - date: 2027-06-14
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [ACT, NSW, NT, SA, TAS, VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+      - https://www.ato.gov.au/law/view/view.htm?docid=%22COG%2FLCR20263%2FNAT%2FATO%2F00001%22
+    as_at: 2026-09-29
+  - date: 2027-08-02
+    weekday: Mon
+    name: Picnic Day
+    jurisdictions: [NT]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.ato.gov.au/law/view/view.htm?docid=%22COG%2FLCR20263%2FNAT%2FATO%2F00001%22
+    as_at: 2026-09-29
+  - date: 2027-09-27
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent=&query=gg2024_053.pdf
+    as_at: 2026-09-29
+    notes: 'Proclaimed under the Public and Bank Holidays Act 1972 (WA) s 5; some regional WA areas hold a different date.'
+  - date: 2027-10-04
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [QLD]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+  - date: 2027-10-04
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [ACT, NSW, SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.act.gov.au/__data/assets/pdf_file/0018/2327004/ACT-Public-Holidays-2027.pdf
+      - https://www.nsw.gov.au/about-nsw/public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2027-11-02
+    weekday: Tue
+    name: Melbourne Cup
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027
+    as_at: 2026-09-29
+    notes: 'Public holiday across Victoria unless a non-metropolitan council arranges a different local day.'
+  - date: 2027-12-24
+    weekday: Fri
+    name: Christmas Eve
+    jurisdictions: [NT, SA]
+    part_day: true
+    part_day_from: "19:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://nt.gov.au/nt-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 19:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2027-12-24
+    weekday: Fri
+    name: Christmas Eve
+    jurisdictions: [QLD]
+    part_day: true
+    part_day_from: "18:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 18:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2027-12-25
+    weekday: Sat
+    name: Christmas Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-12-26
+    weekday: Sun
+    name: Boxing Day
+    jurisdictions: [ACT, NSW, NT, QLD, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-12-26
+    weekday: Sun
+    name: Proclamation Day holiday
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2027-12-27
+    weekday: Mon
+    name: Additional public holiday for Christmas Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+    notes: 'Tasmania: Christmas Day substitute Monday (Statutory Holidays Act 2000 s 4(1)(ia)).'
+  - date: 2027-12-28
+    weekday: Tue
+    name: Additional public holiday for Boxing Day
+    jurisdictions: [ACT, NSW, NT, QLD, VIC, WA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    as_at: 2026-09-29
+  - date: 2027-12-28
+    weekday: Tue
+    name: Additional public holiday for Proclamation Day holiday
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2027-12-28
+    weekday: Tue
+    name: Boxing Day
+    jurisdictions: [TAS]
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+    as_at: 2026-09-29
+    notes: 'Tasmania observes Boxing Day on the Tuesday when 26 December is a Sunday.'
+  - date: 2027-12-31
+    weekday: Fri
+    name: New Year's Eve
+    jurisdictions: [NT, SA]
+    part_day: true
+    part_day_from: "19:00"
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    sources:
+      - https://nt.gov.au/nt-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+    notes: 'Part-day public holiday (from 19:00). See regimes.commonwealth_tax and regimes.sa_state_tax for whether part-day holidays count.'
+  - date: 2028-01-01
+    weekday: Sat
+    name: New Year's Day
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC, WA]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+    notes: 'Saturday. Tasmania has no holiday on the Saturday; it observes New Year''s Day on Monday 3 January.'
+  - date: 2028-01-03
+    weekday: Mon
+    name: Additional public holiday for New Year's Day
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC, WA]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+  - date: 2028-01-03
+    weekday: Mon
+    name: New Year's Day
+    jurisdictions: [TAS]
+    status: VERIFIED
+    source: https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+    as_at: 2026-09-29
+    notes: 'Substitute Monday for Saturday 1 January (Statutory Holidays Act 2000 s 4(1)(a)).'
+  - date: 2028-01-26
+    weekday: Wed
+    name: Australia Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+  - date: 2028-03-13
+    weekday: Mon
+    name: Adelaide Cup Day
+    jurisdictions: [SA]
+    status: VERIFIED
+    source: https://safework.sa.gov.au/resources/public-holidays
+    as_at: 2026-09-29
+  - date: 2028-03-13
+    weekday: Mon
+    name: Canberra Day
+    jurisdictions: [ACT]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    as_at: 2026-09-29
+  - date: 2028-03-13
+    weekday: Mon
+    name: Eight Hours Day
+    jurisdictions: [TAS]
+    status: VERIFIED
+    source: https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+    as_at: 2026-09-29
+  - date: 2028-03-13
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [VIC]
+    status: VERIFIED
+    source: https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+    as_at: 2026-09-29
+  - date: 2028-04-14
+    weekday: Fri
+    name: Good Friday
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+  - date: 2028-04-15
+    weekday: Sat
+    name: Easter Saturday
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+    as_at: 2026-09-29
+  - date: 2028-04-16
+    weekday: Sun
+    name: Easter Sunday
+    jurisdictions: [ACT, NSW, NT, QLD, SA, VIC, WA]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+  - date: 2028-04-17
+    weekday: Mon
+    name: Easter Monday
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+  - date: 2028-04-25
+    weekday: Tue
+    name: Anzac Day
+    jurisdictions: [ALL]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://www.qld.gov.au/recreation/travel/holidays/public
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+      - https://www.legislation.wa.gov.au/legislation/statutes.nsf/main_mrtitle_762_homepage.html
+    as_at: 2026-09-29
+  - date: 2028-05-01
+    weekday: Mon
+    name: Labour Day
+    jurisdictions: [QLD]
+    status: VERIFIED
+    source: https://www.qld.gov.au/recreation/travel/holidays/public
+    as_at: 2026-09-29
+  - date: 2028-05-01
+    weekday: Mon
+    name: May Day
+    jurisdictions: [NT]
+    status: VERIFIED
+    source: https://nt.gov.au/nt-public-holidays
+    as_at: 2026-09-29
+  - date: 2028-05-29
+    weekday: Mon
+    name: Reconciliation Day
+    jurisdictions: [ACT]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    as_at: 2026-09-29
+    notes: '27 May is a Saturday in 2028, so the Act moves it to the following Monday (Holidays Act 1958 (ACT) s 3(1)(a)(ix)).'
+  - date: 2028-06-12
+    weekday: Mon
+    name: King's Birthday
+    jurisdictions: [ACT, NSW, NT, SA, TAS, VIC]
+    status: VERIFIED
+    source: https://www.act.gov.au/__data/assets/pdf_file/0016/3003712/ACT-Public-Holidays-2028.pdf
+    sources:
+      - https://legislation.nsw.gov.au/view/html/inforce/current/act-2010-115
+      - https://nt.gov.au/nt-public-holidays
+      - https://safework.sa.gov.au/resources/public-holidays
+      - https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays
+      - https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+    as_at: 2026-09-29
+unresolved:
+  # Holidays that are not yet declared, or whose date depends on a pending law change. date is null on purpose (SUSPECT). candidate_dates are for uncertainty
+  # flagging only: a calculator must never roll a due date over a candidate date; it reports the uncertainty instead.
+  - name: Friday before the AFL Grand Final
+    jurisdictions: [VIC]
+    date: null
+    status: SUSPECT
+    source: https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    expected_month: 2027-09
+    notes: 'Business Victoria lists the 2027 date as subject to the AFL schedule and says it typically falls on the last Friday in September; it will publish the date after the 2027 AFL schedule is released. A due date on a Friday in September 2027 may be affected.'
+  - name: Labour Day
+    jurisdictions: [WA]
+    date: null
+    status: SUSPECT
+    source: https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    candidate_dates:
+      - date: 2028-03-06
+        basis: 'Current law: Public and Bank Holidays Act 1972 (WA) Second Schedule, the Monday on or first Monday following 1 March.'
+    sources:
+      - https://www.parliament.wa.gov.au/parliament/bills.nsf/BillProgressPopup?ParentUNID=BBE2E54905F318A948258D08002E4F0C&openForm=
+      - https://www.wa.gov.au/organisation/department-of-the-premier-and-cabinet/public-holiday-review
+    notes: 'WA Government says the 2028 dates will be published when confirmed. The Public and Bank Holidays Amendment Bill 2025 (passed the Legislative Assembly on 23 Oct 2025; the WA Parliament current-bills page read on 2026-09-29 still shows Legislative Council second reading, last action 23 Oct 2025) would move Labour Day to the second Monday in March from 1 Jan 2028, that is 13 Mar 2028 (already a holiday in ACT, SA, TAS and VIC). If the Bill is not enacted, 6 Mar 2028 stays a WA holiday and so a non-business day for Commonwealth tax.'
+  - name: Western Australia Day
+    jurisdictions: [WA]
+    date: null
+    status: SUSPECT
+    source: https://www.wa.gov.au/service/employment/workplace-arrangements/public-holidays-western-australia
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    candidate_dates:
+      - date: 2028-06-05
+        basis: 'Current law: Public and Bank Holidays Act 1972 (WA) Second Schedule, the Monday on or first Monday following 1 June.'
+    sources:
+      - https://www.parliament.wa.gov.au/parliament/bills.nsf/BillProgressPopup?ParentUNID=BBE2E54905F318A948258D08002E4F0C&openForm=
+      - https://www.wa.gov.au/organisation/department-of-the-premier-and-cabinet/public-holiday-review
+    notes: 'Same pending Bill as Labour Day: it would move WA Day to the second Monday in November from 1 Jan 2028, so 5 Jun 2028 would stop being a WA holiday. Undeclared as at the as_at date.'
+ato_first_business_day_table:
+  # The ATO's own table (Table 1 and Table 2, page last updated 1 Jul 2026), transcribed as printed: holiday date -> "first business day" column. Weekday holidays only.
+  # The page lists 2026 rows from 3 Aug 2026 and 2027 rows to 14 Jun 2027. Read 2026-09-29.
+  source: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+  status: VERIFIED
+  as_at: 2026-09-29
+  rows:
+    - {date: 2026-08-03, first_business_day: 2026-08-04}
+    - {date: 2026-09-25, first_business_day: 2026-09-28, discrepancy: 'The ATO prints Mon 28 Sep 2026, but 28 Sep 2026 is the King''s Birthday in WA (row below), so it is not a business day under TAA 1953 s 8AAZMB(2); the definition gives Tue 29 Sep 2026.'}
+    - {date: 2026-09-28, first_business_day: 2026-09-29}
+    - {date: 2026-10-05, first_business_day: 2026-10-06}
+    - {date: 2026-11-03, first_business_day: 2026-11-04}
+    - {date: 2026-12-24, first_business_day: 2026-12-29}
+    - {date: 2026-12-25, first_business_day: 2026-12-29}
+    - {date: 2026-12-28, first_business_day: 2026-12-29}
+    - {date: 2026-12-31, first_business_day: 2027-01-04}
+    - {date: 2027-01-01, first_business_day: 2027-01-04}
+    - {date: 2027-01-26, first_business_day: 2027-01-27}
+    - {date: 2027-03-01, first_business_day: 2027-03-02}
+    - {date: 2027-03-08, first_business_day: 2027-03-09}
+    - {date: 2027-03-26, first_business_day: 2027-03-30}
+    - {date: 2027-03-29, first_business_day: 2027-03-30}
+    - {date: 2027-04-26, first_business_day: 2027-04-27}
+    - {date: 2027-05-03, first_business_day: 2027-05-04}
+    - {date: 2027-05-31, first_business_day: 2027-06-01}
+    - {date: 2027-06-07, first_business_day: 2027-06-08}
+    - {date: 2027-06-14, first_business_day: 2027-06-15}

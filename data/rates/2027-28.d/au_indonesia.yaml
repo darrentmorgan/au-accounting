@@ -1,0 +1,255 @@
+# au-indonesia-cross-border overlay, income year 2027-28. Same schema as the base file; no key collisions.
+# Mirrors the 2026-27 overlay key for key. Treaty and Australian withholding constants (Australia-Indonesia treaty as read in the ATO synthesised text,
+# Dividends, Interest and Royalties Withholding Tax Act 1974 s 7) were re-read on 2026-09-29 and are fixed by the instruments, so they are VERIFIED again.
+# The three MLI keys stay SOURCE-CITED (ATO synthesised text is not a source of law). IDR rates and the foreign assets threshold are unpublished
+# for 2027-28: SUSPECT/null with checked_at and the URL checked. Existing Indonesia treaty keys stay in residency.yaml (one fact, one key).
+au_indonesia:
+  dta_pe_resource_installation_days:
+    value: 120
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 5(2)(h). Installation, rig or ship used for exploring or exploiting natural resources is a permanent establishment where the use continues for more than this
+      many days. Tabled 1992 text agrees. Not modelled by a tool (escalate). Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  dta_pe_building_site_days:
+    value: 120
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 5(2)(i). Building site, construction, installation or assembly project, or supervisory activities lasting more than this many days. MLI Art 14 splitting-up
+      applies to the count. Tabled 1992 text agrees. Not modelled by a tool (escalate). Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument
+      and is unchanged.'
+  dta_pe_services_days:
+    value: 120
+    unit: days
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 5(2)(j). Services (including consultancy) furnished through employees or other personnel, for the same or a connected project, for periods aggregating more
+      than this many days within any 12 month period. No fixed place of business is needed. The treaty does not define how the days are counted (see the service PE screen tool).
+      Tabled 1992 text agrees. Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  dta_wht_pensions_annuities:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 18(2). Source-State tax on a pension or annuity paid to a resident of the other State may not exceed this share of the gross amount. Tabled 1992 text agrees.
+      Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  dta_branch_profits_additional_tax_cap:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 10(6). Additional tax on the profits of a permanent establishment of a company resident in the other State: not more than this share of the profits after the
+      source State tax on them. Art 10(7) carves out Indonesian oil and gas production sharing contracts. Re-read on 2026-09-29 for income year 2027-28: the constant is fixed
+      by the instrument and is unchanged.'
+  dta_underlying_tax_credit_min_voting_share:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 24(2). An Australian company holding not less than this share of the voting power of an Indonesian company gets the credit extended to underlying tax on the
+      profits behind a dividend. ITAA 1997 s 768-5 can make the dividend non-assessable non-exempt income, so no credit arises (ATO FITO guide 2026 Example 13). Re-read on
+      2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  dta_teacher_visit_max_years:
+    value: 2
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 20(1). Visiting professor or teacher for a period not exceeding this many years: remuneration exempt in the visited State to the extent taxed at home. Re-read
+      on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  dta_map_case_presentation_years:
+    value: 3
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: 'Art 25(1). A mutual agreement case must be presented within this many years of the first notification of the action; the solution is implemented despite domestic
+      time limits (Art 25(2)). Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  mli_splitting_up_min_activity_days:
+    value: 30
+    unit: days
+    status: SOURCE-CITED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: MLI Art 14(1) applied to Art 5(2)(i). Activities at a building site above this many days, and connected activities by closely related enterprises each above this
+      many days, are added together. Read only in the ATO synthesised text (not a source of law); the authentic MLI text [2019] ATS 1 was not separately read.
+  mli_land_rich_lookback_days:
+    value: 365
+    unit: days
+    status: SOURCE-CITED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: MLI Art 9 applied to Art 13(4). The land-rich value threshold is tested at any time in this many days before the alienation, and the paragraph extends to comparable
+      interests (partnership, trust). ATO synthesised text only.
+  mli_closely_related_control_share:
+    value: 0.5
+    unit: rate
+    status: SOURCE-CITED
+    source: https://www.ato.gov.au/law/view/pdf/mli/indonesia_c1.pdf
+    as_at: 2026-09-29
+    notes: MLI Art 15(1). Enterprises are closely related where one holds more than this share of the beneficial interest in the other (for a company, of the aggregate vote
+      and value). ATO synthesised text only.
+  au_wht_unfranked_dividend_rate:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://classic.austlii.edu.au/au/legis/cth/consol_act/itiarwta1974590/s7.html
+    as_at: 2026-09-29
+    notes: 'Income Tax (Dividends, Interest and Royalties Withholding Tax) Act 1974 s 7(a); also on the ATO withholding rate page. Reduced to the Art 10(2) cap for Indonesian
+      residents by ITAA 1953 s 17A(1). Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument and is unchanged.'
+  au_wht_interest_rate:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://classic.austlii.edu.au/au/legis/cth/consol_act/itiarwta1974590/s7.html
+    as_at: 2026-09-29
+    notes: '1974 Act s 7(b). Equal to the Art 11(2) cap, so the treaty gives no reduction. Re-read on 2026-09-29 for income year 2027-28: the constant is fixed by the instrument
+      and is unchanged.'
+  au_wht_royalty_rate:
+    value: 0.3
+    unit: rate
+    status: VERIFIED
+    source: https://classic.austlii.edu.au/au/legis/cth/consol_act/itiarwta1974590/s7.html
+    as_at: 2026-09-29
+    notes: '1974 Act s 7(c). Reduced by Art 12(2) to the two royalty caps held in the residency overlay. Re-read on 2026-09-29 for income year 2027-28: the constant is fixed
+      by the instrument and is unchanged.'
+  foreign_assets_reporting_threshold:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/forms-and-instructions/individual-supplementary-tax-return-2026-instructions/income-questions-13-24-supplementary-tax-return-2026/20-foreign-source-income-and-foreign-assets-or-property-2026
+    as_at: &id001 2026-09-29
+    checked_at: *id001
+    notes: 'Checked 2026-09-29: the 2027-28 supplementary return instructions do not exist yet (the 2027 instructions URL returns not found; only the 2025-26 year''s instructions
+      are published). Do not carry an earlier amount forward.'
+  fx_idr_per_aud_average_year_to_30_jun:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Checked 2026-09-29: the ATO monthly page for the 2028 financial year (source URL) is not yet published. Not published: the year ending 30 Jun 2028 has not started. Needs the ATO annual table published after 30 Jun 2028. Do not average or extrapolate.'
+  fx_idr_per_aud_nearest_actual_30_jun:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: 30 Jun 2028 has not happened. Needs the ATO annual table for the year ending 30 Jun 2028. Do not extrapolate.'
+  fx_idr_per_aud_monthly_average_jul:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    notes: 'Not published: the Jul average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+    checked_at: *id001
+  fx_idr_per_aud_monthly_average_aug:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    notes: 'Not published: the Aug average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+    checked_at: *id001
+  fx_idr_per_aud_monthly_average_sep:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Sep average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_oct:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Oct average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_nov:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Nov average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_dec:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Dec average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_jan:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Jan average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_feb:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Feb average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_mar:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Mar average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_apr:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Apr average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_may:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the May average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'
+  fx_idr_per_aud_monthly_average_jun:
+    value: null
+    unit: IDR per AUD
+    status: SUSPECT
+    source: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2028-financial-year
+    as_at: *id001
+    checked_at: *id001
+    notes: 'Not published: the Jun average for the 2027-28 income year has not been published (the ATO monthly page for the year ending 30 Jun 2028 was not found on 2026-09-29;
+      the newest page is the 2026-27 one, updated 9 Sep 2026 with July and August 2026 only). Do not estimate.'

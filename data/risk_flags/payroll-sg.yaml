@@ -1,0 +1,37 @@
+# payroll-sg risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: RF-PAY-001
+    topic: Contractor misclassification
+    description: Workers engaged as contractors (often with an ABN) who are employees at common law, or SG employees because the contract is wholly or principally for their labour. Exposure to PAYG withholding, SG charge, payroll tax and Fair Work claims. Common for cleaners and maintenance staff.
+    citations: ["SGAA 1992 s12(3)", "TR 2023/4", "CFMMEU v Personnel Contracting Pty Ltd [2022] HCA 1", "ZG Operations Australia Pty Ltd v Jamsek [2022] HCA 2", "Fair Work Act 2009 s15AA"]
+    skills: [payroll-sg]
+  - id: RF-PAY-002
+    topic: Late Payday Super contributions
+    description: From 1 July 2026 SG must be received by the fund within 7 business days after each payday. Quarterly habits, clearing house lead times and rejected contributions create SG charge (notional earnings plus administrative uplift) that cannot be removed by paying late.
+    citations: ["SGAA 1992 ss16B-19B (as amended 2025)", "LCR 2026/3"]
+    skills: [payroll-sg]
+  - id: RF-PAY-003
+    topic: Salary sacrifice reducing the SG base
+    description: Calculating SG on pay after salary sacrifice, or counting sacrificed amounts towards the employer's SG, understates SG.
+    citations: ["SGAA 1992 s10A (qualifying earnings, from 1 Jul 2026)", "ATO: What payments are qualifying earnings"]
+    skills: [payroll-sg]
+  - id: RF-PAY-004
+    topic: Missing no-TFN or no-ABN withholding
+    description: Paying without withholding at the top rate when a payee has not quoted a TFN, or a supplier has not quoted an ABN, leaves the payer liable for a penalty equal to the amount not withheld.
+    citations: ["TAA 1953 Sch 1 s12-190", "TAA 1953 Sch 1 s16-30"]
+    skills: [payroll-sg]
+  - id: RF-PAY-005
+    topic: STP reporting gaps
+    description: Pay events not reported on or before payday, qualifying earnings and super liability not reported from 1 July 2026, or finalisation missed (14 July; closely held payees later). ATO uses STP data to assess the SG charge.
+    citations: ["TAA 1953 Sch 1 Div 389", "LCR 2026/3 para 156"]
+    skills: [payroll-sg]
+  - id: RF-PAY-006
+    topic: Director penalties
+    description: Directors can become personally liable for unpaid PAYG withholding and SG charge (director penalty regime).
+    citations: ["TAA 1953 Sch 1 Div 269"]
+    skills: [payroll-sg]
+  - id: RF-PAY-007
+    topic: Underpayment of minimum wages
+    description: Hourly rates below the national minimum wage (award/agreement-free adults) or the applicable award rate, including for casuals without the casual loading.
+    citations: ["Fair Work Act 2009 s293", "National Minimum Wage Order"]
+    skills: [payroll-sg]

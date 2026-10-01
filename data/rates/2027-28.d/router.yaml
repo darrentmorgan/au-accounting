@@ -1,0 +1,19 @@
+# router overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+employer_sa:
+  return_to_work_registration_days:
+    value: 14
+    unit: days
+    status: VERIFIED
+    source: https://www.rtwsa.com/insurance/insurance-with-us/register
+    as_at: 2026-09-29
+    notes: 'ReturnToWorkSA (Return to Work Act 2014 (SA) scheme): an employer must register for work injury insurance within 14 days of employing (page
+      updated 22 Jul 2026). For 2027-28 (read 2026-09-29): ReturnToWorkSA register page: register within 14 days of employing.'
+  return_to_work_registration_remuneration_min:
+    value: null
+    unit: AUD
+    status: SUSPECT
+    source: https://www.rtwsa.com/insurance/insurance-with-us/register
+    as_at: 2026-09-29
+    checked_at: 2026-09-29
+    notes: 'Not published for 2027-28: ReturnToWorkSA states the no-registration remuneration amount for the 2026-27 financial year only; it is set each
+      year.'

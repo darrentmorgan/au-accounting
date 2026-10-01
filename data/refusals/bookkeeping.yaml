@@ -1,0 +1,14 @@
+# bookkeeping-year-end refusal codes. Same schema as au.yaml.
+refusals:
+  - code: AU-BKP-001
+    trigger: Audit or assurance work, consolidated group financial statements, AASB judgement areas (revenue recognition for complex or multi-element contracts, leases, impairment, business combinations, financial instruments), or an application for ASIC relief.
+    message: "This needs accounting-standard judgement or professional assurance work that a working paper cannot settle: an audit, consolidated group accounts, a judgement area such as complex revenue, leases or impairment, or an ASIC relief application. A registered company auditor or a CA/CPA accountant should handle it."
+    route: registered company auditor or CA/CPA accountant
+  - code: AU-BKP-002
+    trigger: Prepayment made under a tax shelter arrangement (managed investment or similar), where the prepayment rules apportion the deduction regardless of the 12-month rule.
+    message: "Prepayments under a tax shelter arrangement are apportioned over the eligible service period and cannot use the 12-month rule; the treatment depends on the arrangement's terms. A registered tax agent should review it."
+    route: registered tax agent
+  - code: AU-BKP-003
+    trigger: Entity in the large proprietary test is not a proprietary company (public company, disclosing entity, registered scheme, registrable superannuation entity, company limited by guarantee, CCIV), so the s 45A size test does not decide its reporting obligations.
+    message: "The large or small proprietary company test only applies to proprietary companies. Public companies, disclosing entities, registered schemes and similar entities must prepare financial reports whatever their size. A registered company auditor or accountant should confirm the reporting obligations."
+    route: registered company auditor or CA/CPA accountant

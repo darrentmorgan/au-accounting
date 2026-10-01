@@ -1,0 +1,47 @@
+# Refusal codes for the trusts-partnerships skill. Same schema as au.yaml (code, trigger, message, route).
+# Skills surface code + message verbatim, then stop the affected work.
+refusals:
+  - code: AU-TRUST-001
+    trigger: Asked to conclude whether ITAA 1936 s100A applies, to rate an arrangement outside the PCG 2022/2 green or white zone as safe, or to advise on an arrangement in a PCG 2022/2 red-zone scenario (TR 2022/4). The skill may only name the likely zone and the facts that put it there.
+    message: "Whether section 100A applies to this arrangement is a judgement on the facts (TR 2022/4, PCG 2022/2) that I can flag but not decide. A registered tax agent or tax lawyer should assess it before the distribution is relied on."
+    route: registered tax agent or tax lawyer
+  - code: AU-TRUST-002
+    trigger: The answer turns on interpreting a trust deed or partnership agreement - the deed's definition of income, whether a resolution was valid or made in time, whether the trustee has power to stream, default beneficiaries, or who is presently entitled when the deed is unclear.
+    message: "This turns on the wording of the trust deed (or partnership agreement), which I can't interpret reliably. A lawyer or registered tax agent should read the deed and confirm the entitlements before the tax outcome is worked out."
+    route: lawyer or registered tax agent
+  - code: AU-TRUST-003
+    trigger: Trust vesting, variation or resettlement of a trust, change of trustee or appointor with tax consequences, or winding up a trust.
+    message: "Vesting, varying or resettling a trust can trigger CGT and stamp duty and depends on the deed. This needs a lawyer and a registered tax agent; I won't work it out here."
+    route: lawyer and registered tax agent
+  - code: AU-TRUST-004
+    trigger: Trust loss or bad debt tests (ITAA 1936 Sch 2F - 50% stake, pattern of distributions, control, income injection), recouping trust losses, making or revoking a family trust or interposed entity election, or computing family trust distribution tax.
+    message: "Trust loss recoupment, family trust and interposed entity elections, and family trust distribution tax follow the Schedule 2F tests, which I don't model. A registered tax agent should work through them."
+    route: registered tax agent
+  - code: AU-TRUST-005
+    trigger: Foreign trusts or non-resident trust estates, distributions from foreign trusts (s99B), transferor trust rules, or tax on a non-resident beneficiary's share beyond flagging that the trustee is assessed (s98(3)) and withholding may apply.
+    message: "Foreign trusts, non-resident trust estates and the tax on non-resident beneficiaries involve rules (including s99B and withholding) that this skill does not compute. A registered tax agent should handle this part."
+    route: registered tax agent
+  - code: AU-TRUST-006
+    trigger: Unit trust capital distributions and CGT event E4, managed investment trusts or AMITs, public trading trusts, or other fixed-trust regimes that change how trust income is taxed.
+    message: "Unit trust capital payments (CGT event E4), managed investment trusts, AMITs and public trading trusts have their own rules that this skill does not model. A registered tax agent should prepare this."
+    route: registered tax agent
+  - code: AU-TRUST-007
+    trigger: Deceased estates, bankrupt estates or other trusts where the trustee is assessed under s99 or the Commissioner's s99A discretion could apply, or tax payable by a trustee under s98 at individual or company rates (other than a minor's Div 6AA amount).
+    message: "The trustee's assessment here (section 98 at individual or company rates, section 99, or the Commissioner's discretion under section 99A) needs the full trust return and facts I don't model. A registered tax agent should compute it."
+    route: registered tax agent
+  - code: AU-TRUST-008
+    trigger: Trust net income is less than the trust's net capital gains plus franked distributions and franking credits (rateable reduction under Subdiv 115-C / 207-B and Div 6E), several capital gains with different CGT discount or small business concession character, or streaming of other classes of income.
+    message: "The trust's net income is below its capital gains and franked distributions (or the gains have mixed character), so the streaming amounts must be rateably reduced under Subdivisions 115-C and 207-B. I can't compute that reliably; a registered tax agent should."
+    route: registered tax agent
+  - code: AU-TRUST-009
+    trigger: Div 6AA case the div6aa_minor_tax tool does not model - a non-resident minor, a minor with shares of net income from more than one trust assessed to trustees (ITRA s13(4)-(7) Commissioner's discretion), a special income component (primary production averaging or abnormal income), or excepted income that depends on the Commissioner's opinion (s102AE(2)(f), s102AE(5) business income, s102AG trust amounts).
+    message: "This minor's income involves a Division 6AA situation that depends on the Commissioner's discretion or on rules I don't model (non-resident minor, several trusts, averaging, or disputed excepted income). A registered tax agent should prepare it."
+    route: registered tax agent
+  - code: AU-TRUST-010
+    trigger: Partnership matters beyond sharing net income or loss - corporate limited partnerships, a partner joining or leaving during the year, Everett assignments or other assignments of a partnership interest, professional firm profit allocation (PCG 2021/4), CGT on partnership interests, or partnership agreements made after year end.
+    message: "This partnership question goes beyond sharing the year's net income or loss (for example a corporate limited partnership, partner changes, assignments of an interest, or PCG 2021/4 profit allocation). A registered tax agent should handle it."
+    route: registered tax agent
+  - code: AU-TRUST-011
+    trigger: Asked to advise on Part IVA, or on Division 7A or Subdiv EA consequences of a corporate beneficiary's unpaid present entitlement beyond stating the post-Bendel position (for example converting a UPE to a loan, using trust funds for shareholders, or sub-trust arrangements).
+    message: "Part IVA and the Division 7A or Subdivision EA consequences of this trust and company arrangement need a full review of the facts. After Bendel an untouched UPE is not a Division 7A loan, but what you describe needs a registered tax agent."
+    route: registered tax agent

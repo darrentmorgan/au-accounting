@@ -1,0 +1,103 @@
+# fbt overlay, income year 2025-26 (FBT year ending 31 Mar 2026). Same schema as the base file; no key collisions.
+fbt:
+  return_due_date:
+    value: 20260521
+    unit: date_yyyymmdd
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/fbt-registration-lodgment-payment-and-reporting/lodging-your-fbt-return-and-paying
+    as_at: 2026-09-29
+    notes: "FBT return lodgment and payment due 21 May after the FBT year, if the day is a weekend or public holiday the next business day (ATO lodging page)."
+  return_due_date_agent_electronic:
+    value: 20260625
+    unit: date_yyyymmdd
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program-2025-26/due-dates-by-obligation-type/fbt-return
+    as_at: 2026-09-29
+    notes: "Generally 25 June where a tax agent lodges electronically and the employer was on the agent's FBT client list by 21 May."
+  ev_exemption_start_date:
+    value: 20220701
+    unit: date_yyyymmdd
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/fbt-on-cars-other-vehicles-parking-and-tolls/electric-cars-exemption
+    as_at: 2026-09-29
+    notes: "FBTAA s 8A: car first held AND used on or after 1 Jul 2022; benefits provided on or after that date."
+  phev_cutoff_date:
+    value: 20250401
+    unit: date_yyyymmdd
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/fbt-on-cars-other-vehicles-parking-and-tolls/fbt-on-plug-in-hybrid-electric-vehicles
+    as_at: 2026-09-29
+    notes: "From this date a plug-in hybrid is not a zero or low emissions vehicle; exemption continues only if use was exempt before the date and a financially binding commitment continues."
+  pcg_2018_3_private_km_cap:
+    value: 1000
+    unit: km
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?DocID=COG%2FPCG20183%2FNAT%2FATO%2F00001
+    as_at: 2026-09-29
+    notes: "PCG 2018/3 safe harbour: total kilometres of wholly private journeys (other than home to work) in the FBT year not more than this."
+  pcg_2018_3_single_trip_km_cap:
+    value: 200
+    unit: km
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?DocID=COG%2FPCG20183%2FNAT%2FATO%2F00001
+    as_at: 2026-09-29
+    notes: "PCG 2018/3 safe harbour: no wholly private return journey longer than this."
+  pcg_2018_3_diversion_km_cap:
+    value: 2
+    unit: km
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?DocID=COG%2FPCG20183%2FNAT%2FATO%2F00001
+    as_at: 2026-09-29
+    notes: "PCG 2018/3 safe harbour: any diversion on the home to work trip adds no more than this."
+  small_business_turnover_threshold:
+    value: 50000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/fbt-on-cars-other-vehicles-parking-and-tolls/car-parking-and-fbt
+    as_at: 2026-09-29
+    notes: "Aggregated turnover test for the small business car parking exemption (prior income year), also small business employers for work-related item multiples."
+  small_business_gross_income_threshold:
+    value: 10000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/fbt-on-cars-other-vehicles-parking-and-tolls/car-parking-and-fbt
+    as_at: 2026-09-29
+    notes: "Alternative test: gross total income of the prior income year below this."
+  lct_threshold_fuel_efficient_by_year:
+    value:
+    - from: 2019-07-01
+      to: 2020-06-30
+      rate: 75526
+    - from: 2020-07-01
+      to: 2021-06-30
+      rate: 77565
+    - from: 2021-07-01
+      to: 2022-06-30
+      rate: 79659
+    - from: 2022-07-01
+      to: 2023-06-30
+      rate: 84916
+    - from: 2023-07-01
+      to: 2024-06-30
+      rate: 89332
+    - from: 2024-07-01
+      to: 2025-06-30
+      rate: 91387
+    - from: 2025-07-01
+      to: 2026-06-30
+      rate: 91387
+    - from: 2026-07-01
+      to: 2027-06-30
+      rate: 91661
+    unit: AUD_by_financial_year
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/luxury-car-tax-rate-and-thresholds
+    as_at: 2026-09-29
+    notes: "Dated series: rate holds the LCT threshold for fuel-efficient vehicles for the financial year the car was first sold or imported. Zero and low emissions vehicles use this threshold. EV exemption test is that no LCT has become payable (FBTAA s 8A)."
+  meal_entertainment_split_rate:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/entertainment-related-fringe-benefits/calculating-the-taxable-value-of-entertainment-related-benefits
+    as_at: 2026-09-29
+    notes: "50:50 split method: taxable value is 50% of total meal entertainment expenditure on all people (FBTAA Div 9A)."

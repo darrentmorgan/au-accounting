@@ -1,0 +1,47 @@
+# sole-trader-business risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: BUS-PSI-001
+    topic: Personal services income
+    description: PSI rules apply regardless of ABN or business structure. Passing a personal services business test does not remove Part IVA exposure; the 80% rule blocks all tests except the results test.
+    citations: [ITAA 1997 Pt 2-42, ITAA 1997 s 87-15, PCG 2025/5, TR 2022/3]
+    skills: [sole-trader-business]
+  - id: BUS-WFH-001
+    topic: Home office fixed rate
+    description: The fixed rate needs a record of actual hours worked from home for the whole year (estimates fail), plus one record per additional running expense. Claiming the fixed rate and actual costs for the same expenses is a double claim.
+    citations: [PCG 2023/1]
+    skills: [sole-trader-business]
+  - id: BUS-WFH-002
+    topic: Home office occupancy and CGT
+    description: Claiming occupancy expenses for an area with the character of a place of business can partly remove the main residence CGT exemption.
+    citations: [ITAA 1997 s 118-190, PCG 2023/1]
+    skills: [sole-trader-business, cgt]
+  - id: BUS-CAR-001
+    topic: Car expenses
+    description: Cents per kilometre is capped per car per year and covers all running costs and depreciation. Logbook method needs a 12-week continuous logbook valid for 5 years and odometer records. Private travel (home to work) is not business travel.
+    citations: [ITAA 1997 Div 28]
+    skills: [sole-trader-business]
+  - id: BUS-DEP-001
+    topic: Simplified depreciation timing
+    description: The write-off threshold is set by the date the asset was first used or installed ready for use for a taxable purpose, not the purchase date. Business use proportion must be reviewed for 3 years after pooling.
+    citations: [ITAA 1997 Subdiv 328-D, Treasury Laws Amendment (Tax Reform No. 2) Act 2026 Sch 2]
+    skills: [sole-trader-business]
+  - id: BUS-DEP-002
+    topic: Instant asset write-off and GST
+    description: The cost test uses the GST-exclusive cost when the business claims GST credits and the GST-inclusive cost when it does not. The threshold applies per asset.
+    citations: [ITAA 1997 s 328-180]
+    skills: [sole-trader-business, gst-bas]
+  - id: BUS-NCL-001
+    topic: Non-commercial losses
+    description: Business losses that fail the income requirement or all four tests are deferred, not lost. Sole trader deferred losses must be added back for small business income tax offset purposes.
+    citations: [ITAA 1997 Div 35]
+    skills: [sole-trader-business]
+  - id: BUS-SBITO-001
+    topic: Small business income tax offset
+    description: The offset turnover threshold is lower than the small business entity threshold. PSI (unless a PSB), net capital gains, salary and interest not related to the business are excluded from net small business income.
+    citations: [ITAA 1997 Subdiv 328-F]
+    skills: [sole-trader-business]
+  - id: BUS-STD-001
+    topic: Standard deduction interaction
+    description: The 2026-27 standard deduction for work-related expenses is for assessable labour income only. It does not apply to business or investment income and is not additive to business deductions.
+    citations: [ITAA 1997 s 25-130, Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 4]
+    skills: [sole-trader-business, individual-tax]

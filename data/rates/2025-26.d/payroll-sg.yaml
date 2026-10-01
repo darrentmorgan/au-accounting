@@ -1,0 +1,407 @@
+# payroll-sg overlay, income year 2025-26. Same schema as the base file; no key collisions.
+# Coefficient tables: y = rate x x - b on weekly earnings x (whole dollars plus 99 cents), row where from <= x < to.
+payroll:
+  payg_scale1_no_tft:
+    value:
+    - from: 0
+      to: 150
+      rate: 0.16
+      base: 0
+      b: 0.16
+      whole_income: true
+    - from: 150
+      to: 371
+      rate: 0.2117
+      base: 0
+      b: 7.755
+      whole_income: true
+    - from: 371
+      to: 515
+      rate: 0.189
+      base: 0
+      b: -0.6702
+      whole_income: true
+    - from: 515
+      to: 932
+      rate: 0.3227
+      base: 0
+      b: 68.2367
+      whole_income: true
+    - from: 932
+      to: 2246
+      rate: 0.32
+      base: 0
+      b: 65.7202
+      whole_income: true
+    - from: 2246
+      to: 3303
+      rate: 0.39
+      base: 0
+      b: 222.951
+      whole_income: true
+    - from: 3303
+      to: null
+      rate: 0.47
+      base: 0
+      b: 487.2587
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: &id001 2026-09-29
+    notes: 'Schedule 1 (NAT 1004) scale 1, tax-free threshold not claimed. Schedule dated 1 Jul 2024; ATO ''Tax tables for
+      2025-26'' page confirms it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).
+      Row: weekly earnings x from ''from'' up to but not including ''to''; y = rate x x - b.'
+  payg_scale2_tft:
+    value:
+    - from: 0
+      to: 361
+      rate: 0
+      base: 0
+      b: 0
+      whole_income: true
+    - from: 361
+      to: 500
+      rate: 0.16
+      base: 0
+      b: 57.8462
+      whole_income: true
+    - from: 500
+      to: 625
+      rate: 0.26
+      base: 0
+      b: 107.8462
+      whole_income: true
+    - from: 625
+      to: 721
+      rate: 0.18
+      base: 0
+      b: 57.8462
+      whole_income: true
+    - from: 721
+      to: 865
+      rate: 0.189
+      base: 0
+      b: 64.3365
+      whole_income: true
+    - from: 865
+      to: 1282
+      rate: 0.3227
+      base: 0
+      b: 180.0385
+      whole_income: true
+    - from: 1282
+      to: 2596
+      rate: 0.32
+      base: 0
+      b: 176.5769
+      whole_income: true
+    - from: 2596
+      to: 3653
+      rate: 0.39
+      base: 0
+      b: 358.3077
+      whole_income: true
+    - from: 3653
+      to: null
+      rate: 0.47
+      base: 0
+      b: 650.6154
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: 'Schedule 1 (NAT 1004) scale 2, tax-free threshold claimed. Schedule dated 1 Jul 2024; ATO ''Tax tables for 2025-26''
+      page confirms it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).
+      Row: weekly earnings x from ''from'' up to but not including ''to''; y = rate x x - b.'
+  payg_scale3_foreign:
+    value:
+    - from: 0
+      to: 2596
+      rate: 0.3
+      base: 0
+      b: 0.3
+      whole_income: true
+    - from: 2596
+      to: 3653
+      rate: 0.37
+      base: 0
+      b: 181.7308
+      whole_income: true
+    - from: 3653
+      to: null
+      rate: 0.45
+      base: 0
+      b: 474.0385
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: 'Schedule 1 (NAT 1004) scale 3, foreign residents. Schedule dated 1 Jul 2024; ATO ''Tax tables for 2025-26'' page
+      confirms it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).
+      Row: weekly earnings x from ''from'' up to but not including ''to''; y = rate x x - b.'
+  payg_scale5_full_medicare_exemption:
+    value:
+    - from: 0
+      to: 361
+      rate: 0
+      base: 0
+      b: 0
+      whole_income: true
+    - from: 361
+      to: 721
+      rate: 0.16
+      base: 0
+      b: 57.8462
+      whole_income: true
+    - from: 721
+      to: 865
+      rate: 0.169
+      base: 0
+      b: 64.3365
+      whole_income: true
+    - from: 865
+      to: 1282
+      rate: 0.3027
+      base: 0
+      b: 180.0385
+      whole_income: true
+    - from: 1282
+      to: 2596
+      rate: 0.3
+      base: 0
+      b: 176.5769
+      whole_income: true
+    - from: 2596
+      to: 3653
+      rate: 0.37
+      base: 0
+      b: 358.3077
+      whole_income: true
+    - from: 3653
+      to: null
+      rate: 0.45
+      base: 0
+      b: 650.6154
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: 'Schedule 1 (NAT 1004) scale 5, full Medicare levy exemption. Schedule dated 1 Jul 2024; ATO ''Tax tables for 2025-26''
+      page confirms it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).
+      Row: weekly earnings x from ''from'' up to but not including ''to''; y = rate x x - b.'
+  payg_scale6_half_medicare_exemption:
+    value:
+    - from: 0
+      to: 361
+      rate: 0
+      base: 0
+      b: 0
+      whole_income: true
+    - from: 361
+      to: 721
+      rate: 0.16
+      base: 0
+      b: 57.8462
+      whole_income: true
+    - from: 721
+      to: 843
+      rate: 0.169
+      base: 0
+      b: 64.3365
+      whole_income: true
+    - from: 843
+      to: 865
+      rate: 0.219
+      base: 0
+      b: 106.4962
+      whole_income: true
+    - from: 865
+      to: 1053
+      rate: 0.3527
+      base: 0
+      b: 222.1981
+      whole_income: true
+    - from: 1053
+      to: 1282
+      rate: 0.3127
+      base: 0
+      b: 180.0385
+      whole_income: true
+    - from: 1282
+      to: 2596
+      rate: 0.31
+      base: 0
+      b: 176.5769
+      whole_income: true
+    - from: 2596
+      to: 3653
+      rate: 0.38
+      base: 0
+      b: 358.3077
+      whole_income: true
+    - from: 3653
+      to: null
+      rate: 0.46
+      base: 0
+      b: 650.6154
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: 'Schedule 1 (NAT 1004) scale 6, half Medicare levy exemption. Schedule dated 1 Jul 2024; ATO ''Tax tables for 2025-26''
+      page confirms it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).
+      Row: weekly earnings x from ''from'' up to but not including ''to''; y = rate x x - b.'
+  payg_scale4_no_tfn_resident_rate:
+    value: 0.47
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: 'Scale 4, no TFN provided, resident: rate x whole-dollar earnings, cents ignored. Schedule dated 1 Jul 2024; ATO
+      ''Tax tables for 2025-26'' page confirms it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).'
+  payg_scale4_no_tfn_foreign_rate:
+    value: 0.45
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: Scale 4, no TFN provided, foreign resident. Schedule dated 1 Jul 2024; ATO 'Tax tables for 2025-26' page confirms
+      it applies to payments made 1 Jul 2025 to 30 Jun 2026 (https://www.ato.gov.au/tax-rates-and-codes/previous-years-tax-tables/tax-tables-for-2025-26).
+  payg_offset_factor_weekly:
+    value: 0.019
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+    notes: Reduction = factor x annual tax offsets claimed on the Withholding declaration, rounded to the nearest dollar (scales
+      2, 5, 6 only).
+  payg_offset_factor_fortnightly:
+    value: 0.038
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+  payg_offset_factor_monthly:
+    value: 0.083
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+  payg_offset_factor_quarterly:
+    value: 0.25
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/a8c9f1aaa12247eaad9e077b0c2f9b2c?v=f528d73b
+    as_at: *id001
+  payg_stsl_component_tft_or_foreign:
+    value:
+    - from: 0
+      to: 1288
+      rate: 0
+      base: 0
+      b: 0
+      whole_income: true
+    - from: 1288
+      to: 2403
+      rate: 0.15
+      base: 0
+      b: 193.2692
+      whole_income: true
+    - from: 2403
+      to: 3447
+      rate: 0.17
+      base: 0
+      b: 241.3462
+      whole_income: true
+    - from: 3447
+      to: null
+      rate: 0.1
+      base: 0
+      b: 0
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/bb2dc0e10bf24e259fa8a5677a44362c?v=60998f97
+    as_at: *id001
+    notes: 'Schedule 8 (NAT 3539) study and training support loan component, tax-free threshold claimed or foreign resident.
+      Top row is 10% of the whole weekly figure (b = 0). Applies to payments made 24 Sep 2025 to 30 Jun 2026 only (marginal
+      repayment system). The 1 Jul to 23 Sep 2025 schedule is not held. Row: weekly earnings x from ''from'' up to but not
+      including ''to''; y = rate x x - b.'
+  payg_stsl_component_no_tft:
+    value:
+    - from: 0
+      to: 938
+      rate: 0
+      base: 0
+      b: 0
+      whole_income: true
+    - from: 938
+      to: 2053
+      rate: 0.15
+      base: 0
+      b: 140.7692
+      whole_income: true
+    - from: 2053
+      to: 2597
+      rate: 0.17
+      base: 0
+      b: 181.8462
+      whole_income: true
+    - from: 2597
+      to: null
+      rate: 0.1
+      base: 0
+      b: 0
+      whole_income: true
+    unit: coefficients_weekly
+    status: VERIFIED
+    source: https://www.ato.gov.au/api/public/content/bb2dc0e10bf24e259fa8a5677a44362c?v=60998f97
+    as_at: *id001
+    notes: 'Schedule 8 (NAT 3539) study and training support loan component, tax-free threshold not claimed. Applies to payments
+      made 24 Sep 2025 to 30 Jun 2026 only (marginal repayment system). The 1 Jul to 23 Sep 2025 schedule is not held. Row:
+      weekly earnings x from ''from'' up to but not including ''to''; y = rate x x - b.'
+  no_abn_withholding_rate:
+    value: 0.47
+    unit: rate
+    status: VERIFIED
+    source: https://www.ato.gov.au/forms-and-instructions/statement-by-supplier-not-quoting-an-abn
+    as_at: *id001
+    notes: 'TAA 1953 Sch 1 s12-190: payer withholds the top rate (47% from 1 Jul 2017, top marginal rate plus Medicare levy)
+      from the whole payment when the supplier quotes no ABN, unless an exception applies.'
+  no_abn_payment_threshold:
+    value: 75
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/payg-withholding/payments-you-need-to-withhold-from/withholding-from-suppliers/payments-you-don-t-withhold-from
+    as_at: *id001
+    notes: No withholding where the total payment for the supply is $75 or less excluding GST.
+super:
+  sgc_nominal_interest_rate:
+    value: 0.1
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/F2018L01289/latest/text
+    as_at: *id001
+    notes: 'SG (Administration) Regulations 2018 s13 (rate applicable for SGAA s31). Quarters up to 30 Jun 2026. Simple interest:
+      shortfall x days/365 x rate, from the first day of the quarter up to but not including the lodgment day (ATO Module
+      6 worked example).'
+  sgc_admin_fee_per_employee:
+    value: 20
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/super-guarantee-employer-obligations-online-course/module-6-rectifying-late-payments
+    as_at: *id001
+    notes: Administration component per employee with a shortfall, per quarter (quarters up to 30 Jun 2026).
+payroll_wages:
+  national_minimum_wage_weekly_38h:
+    value: 948.0
+    unit: AUD
+    status: VERIFIED
+    source: https://www.fairwork.gov.au/about-us/workplace-laws/annual-wage-review/annual-wage-review-2024-2025
+    as_at: *id001
+    notes: From the first full pay period starting on or after 1 Jul 2025 ([2025] FWCFB 3500).

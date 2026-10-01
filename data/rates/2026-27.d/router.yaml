@@ -1,0 +1,16 @@
+# router overlay, income year 2026-27: non-tax state employer registrations used by obligations_calendar. Read 29 Sep 2026.
+employer_sa:
+  return_to_work_registration_days:
+    value: 14
+    unit: days
+    status: VERIFIED
+    source: https://www.rtwsa.com/insurance/insurance-with-us/register
+    as_at: 2026-09-29
+    notes: 'ReturnToWorkSA (Return to Work Act 2014 (SA) scheme): an employer must register for work injury insurance within 14 days of employing (page updated 22 Jul 2026).'
+  return_to_work_registration_remuneration_min:
+    value: 16806
+    unit: AUD
+    status: VERIFIED
+    source: https://www.rtwsa.com/insurance/insurance-with-us/register
+    as_at: 2026-09-29
+    notes: 'No registration needed if total remuneration paid to workers for the 2026-27 financial year will be less than this amount; if a worker is injured the employer must still report, register and pay the minimum premium (page updated 22 Jul 2026).'

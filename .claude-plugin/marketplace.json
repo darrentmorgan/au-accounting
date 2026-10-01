@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "au-accounting",
+  "owner": {
+    "name": "Darren Morgan",
+    "url": "https://github.com/darrentmorgan"
+  },
+  "metadata": {
+    "description": "Australian tax and accounting plugin (single-plugin marketplace)."
+  },
+  "plugins": [
+    {
+      "name": "au-accounting",
+      "source": "./",
+      "description": "Australian tax and accounting skills for self-preparers and practitioners: primary-source rules, deterministic calculators and working papers for registered-agent review; rates for 2025-26 to 2027-28 (2027-28 partial), South Australia only for state taxes, and Australia-Indonesia only for treaty analysis (other countries get the generic foreign income tax offset).",
+      "author": {
+        "name": "Darren Morgan"
+      },
+      "repository": "https://github.com/darrentmorgan/au-accounting",
+      "license": "MIT"
+    }
+  ]
+}

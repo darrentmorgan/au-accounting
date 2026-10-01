@@ -1,0 +1,37 @@
+# residency-cross-border risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: RES-001
+    topic: Residency assumed to end on departure
+    description: Leaving Australia does not by itself end residency. Retaining a home, family, or an intention to return keeps a person a resident under the resides or domicile tests until a permanent place of abode overseas is established. Treating oneself as non-resident from the departure date is a common ATO review point.
+    citations: ["TR 2023/1 paras 25, 62-82", "ITAA 1936 s 6(1)"]
+    skills: [residency-cross-border, individual-tax]
+  - id: RES-002
+    topic: 183 days used as a bright line
+    description: The 183-day test is only one of four tests and has an exception (usual place of abode overseas and no intention to take up residence). Fewer than 183 days does not make a person a non-resident. The Board of Taxation bright-line model is not law.
+    citations: ["TR 2023/1 paras 14, 83-95", "ITAA 1936 s 6(1)"]
+    skills: [residency-cross-border]
+  - id: RES-003
+    topic: Indonesia treaty thresholds confused with the domestic 183-day test
+    description: The Australia-Indonesia agreement uses 120 days in any 12 months for independent personal services (Art 14) and employment (Art 15), not 183 days, and its individual tie-breaker has no nationality step (Art 4(3)). Applying a generic OECD model is a common error.
+    citations: ["Australia-Indonesia DTA Arts 4, 14, 15"]
+    skills: [residency-cross-border]
+  - id: RES-004
+    topic: Foreign income tax offset limit not tested above the default amount
+    description: "A foreign income tax offset above the default limit is reduced to the computed limit (s 770-75(2)(b)). Excess foreign tax is lost: no refund and no carry-forward. Foreign tax counts only on amounts included in assessable income."
+    citations: ["ITAA 1997 ss 770-10, 770-75"]
+    skills: [residency-cross-border]
+  - id: RES-005
+    topic: Section 23AG exemption assumed for ordinary overseas employment
+    description: Since s 23AG(1AA) the exemption for foreign employment income only applies to service directly attributable to listed activities (for example aid delivery by a non-government employer, certain charities, disciplined force deployment), and a continuous period of at least the minimum foreign service days. An ordinary overseas job does not qualify.
+    citations: ["ITAA 1936 s 23AG(1), (1AA)", "TR 2013/7"]
+    skills: [residency-cross-border]
+  - id: RES-006
+    topic: Departing resident capital gains event
+    description: Ceasing residency triggers CGT event I1 on assets that are not taxable Australian property unless the individual chooses to disregard the gain or loss (s 104-165). The choice is all or nothing and makes the assets taxable Australian property until sold or residency resumes.
+    citations: ["ITAA 1997 ss 104-160, 104-165"]
+    skills: [residency-cross-border, cgt]
+  - id: RES-007
+    topic: Offshore companies, trusts and foreign super
+    description: An Australian resident controlling an overseas company or benefiting from a foreign trust or foreign super fund can have income attributed or taxed in Australia regardless of cash received. Needs specialist review.
+    citations: ["ITAA 1936 Part X", "ITAA 1936 s 99B", "ITAA 1997 Div 305"]
+    skills: [residency-cross-border]

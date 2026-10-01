@@ -1,0 +1,26 @@
+# FBT refusal codes. Same schema as au.yaml. Skills surface code + message verbatim, then stop the affected work.
+refusals:
+  - code: AU-FBT-001
+    trigger: Employer is a public benevolent institution, health promotion charity, public or not-for-profit hospital, public ambulance service, or a rebatable (non-government NFP) employer, or the benefits are provided under a salary packaging arrangement in one of those sectors. The exemption and rebate caps, grossing-up of the cap and employee-level cap tracking are not modelled.
+    message: "FBT for public benevolent institutions, health promotion charities, hospitals, ambulance services and other rebatable not-for-profit employers turns on exemption or rebate caps and salary packaging arrangements that this calculator does not model. A registered tax agent with FBT experience should prepare this."
+    route: registered tax agent
+  - code: AU-FBT-002
+    trigger: Living-away-from-home allowance or fringe benefits (fly-in fly-out, temporary accommodation, reasonable food and drink amounts, maintaining an Australian home).
+    message: "Living-away-from-home allowances and benefits depend on the employee's away-from-home circumstances, the fringe benefits declaration and the reasonable food and drink amounts. I can't compute this reliably; a registered tax agent should prepare it."
+    route: registered tax agent
+  - code: AU-FBT-003
+    trigger: Employer-provided housing, including remote area housing, housing in a remote area and related holiday transport or fuel benefits.
+    message: "Housing fringe benefits, including remote area housing, use market value, statutory formula and indexation rules and concessions that this calculator does not model. A registered tax agent should prepare this."
+    route: registered tax agent
+  - code: AU-FBT-004
+    trigger: Entertainment fringe benefits beyond the simple meal entertainment methods - recreation, entertainment facility leasing, Division 9A elections combined with other methods, meal entertainment provided under a salary packaging arrangement, or annual election changes.
+    message: "This entertainment scenario (recreation, entertainment facility leasing, salary-packaged meal entertainment, or a mixed election) needs the entertainment valuation rules applied benefit by benefit, which this calculator does not model. A registered tax agent should prepare it."
+    route: registered tax agent
+  - code: AU-FBT-005
+    trigger: Car provided under a pre-existing commitment made before 7.30pm AEST on 10 May 2011, where the statutory percentage varies with kilometres travelled.
+    message: "This car was provided under a pre-existing commitment from before 10 May 2011, so the statutory percentage depends on kilometres travelled rather than the flat rate. I can't compute this reliably; a registered tax agent should confirm the commitment and prepare the calculation."
+    route: registered tax agent
+  - code: AU-FBT-006
+    trigger: Whether the recipient is an employee, or the benefit is provided in respect of employment, is doubtful - shareholder-directors of private companies, directors of corporate trustees, partners, associates or trust beneficiaries, personal services entities.
+    message: "Whether these benefits are fringe benefits at all depends on whether the person is an employee and the benefit is provided in respect of their employment. Recent Full Federal Court authority (SEPL Pty Ltd v Commissioner of Taxation [2026] FCAFC 36) makes this fact-specific, and the ATO is reviewing its guidance. A registered tax agent should advise before any FBT is calculated."
+    route: registered tax agent

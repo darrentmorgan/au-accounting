@@ -1,0 +1,86 @@
+# state-taxes-sa overlay, income year 2025-26. Same schema as the base file; no key collisions. Read 29 Sep 2026.
+state.sa:
+  payroll_tax_monthly_due_day:
+    value: 7
+    unit: day of month
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payrolltax/returns-and-annual-reconciliation/monthly-returns
+    as_at: 2026-09-29
+    notes: 'Monthly return and payment due by the 7th day of the month after the month of wages (Payroll Tax Act 2009 (SA) s 9(1)(a)); next business day if the 7th is a weekend or public holiday (RevenueSA).'
+  payroll_tax_annual_reconciliation_due_day_july:
+    value: 28
+    unit: day of July
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/payrolltax/returns-and-annual-reconciliation/monthly-returns
+    as_at: 2026-09-29
+    notes: 'RevenueSA due date for the annual reconciliation return and any shortfall payment (2025-26: Tue 28 Jul 2026; 2026-27: Wed 28 Jul 2027); next business day if it falls on a weekend or public holiday. Not a separate June monthly return: June is included in the reconciliation.'
+  payroll_tax_june_payment_due_day_act:
+    value: 21
+    unit: day of July
+    status: VERIFIED
+    source: https://www.legislation.sa.gov.au/__legislation/lz/c/a/payroll%20tax%20act%202009/current/2009.22.auth.pdf
+    as_at: 2026-09-29
+    notes: 'Payroll Tax Act 2009 (SA) s 9(1)(b): tax on June wages is payable within 21 days after the end of June. RevenueSA administers the June/annual reconciliation due date as 28 July; use the RevenueSA date and treat 21 July as the statutory default.'
+  payroll_tax_variable_band_width:
+    value: 200000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.sa.gov.au/__legislation/lz/c/a/payroll%20tax%20act%202009/current/2009.22.auth.pdf
+    as_at: 2026-09-29
+    notes: 'Denominator of the variable-rate formula R = 4.95% x (TARW - 1,500,000) / 200,000 (Payroll Tax Act 2009 (SA) Sch 1 cl 5(2)(a), Sch 2 cl 5(1a)(b)(i)). Equals the top of the band less the threshold.'
+  land_tax_ppr_full_exemption_business_area_below_pct:
+    value: 25
+    unit: percent
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/landtax/exemption-waiver-relief/residential-home
+    as_at: 2026-09-29
+    notes: 'Principal place of residence: full exemption where business or commercial use is less than 25% of total building floor area (Land Tax Act 1936 (SA) s 5(10)(a)(iii); RevenueSA residential home page).'
+  land_tax_ppr_partial_max_business_area_pct:
+    value: 75
+    unit: percent
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/landtax/exemption-waiver-relief/residential-home
+    as_at: 2026-09-29
+    notes: 'No exemption above 75% business floor area; at 75% the reduction in taxable value is 25% (RevenueSA residential home page table).'
+  land_tax_ppr_partial_step_pct:
+    value: 5
+    unit: percent
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/landtax/exemption-waiver-relief/residential-home
+    as_at: 2026-09-29
+    notes: 'Partial exemption steps in 5 percentage point bands: reduction in taxable value = 100 minus 5 x floor(business area percent / 5) for business area from 25% to 75% (RevenueSA table read on the page as excerpted by search: 25% to under 30% gives 75%, 70% to under 75% gives 30%, 75% gives 25%).'
+  land_tax_primary_production_min_hectares:
+    value: 0.8
+    unit: hectares
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/landtax/exemption-waiver-relief/primary-production
+    as_at: 2026-09-29
+    notes: 'Primary production exemption needs land of at least 0.8 hectare used wholly or mainly for the business of primary production (Land Tax Act 1936 (SA) s 5(10); RevenueSA). Inside the defined rural area extra owner-based conditions apply (s 5(10)(g)).'
+  stamp_duty_fhb_full_relief_contracts_from:
+    value: 20250213
+    unit: date yyyymmdd
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stampduty/first-home-buyer-relief/relief-available
+    as_at: 2026-09-29
+    notes: 'First home buyer stamp duty relief for a new home, off-the-plan apartment or vacant land to build on: full relief regardless of value for contracts entered into on or after 13 Feb 2025; relief is not applied to the foreign ownership surcharge from that date; applicants who previously held a relevant interest in residential property are ineligible from that date. Contracts 6 Jun 2024 to 12 Feb 2025 also had full relief (with possible relief on the surcharge); earlier contracts had value caps. The calculator only models contracts on or after this date.'
+  stamp_duty_qualifying_land_nil_duty_from:
+    value: 20180701
+    unit: date yyyymmdd
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/real-property-land
+    as_at: 2026-09-29
+    notes: 'No duty on a conveyance or transfer of qualifying (non-residential, non-primary-production) land executed on or after 1 Jul 2018, unless it arises from a contract or transaction entered into before 1 Jul 2018. Residential and primary production land stay dutiable. Phased reductions from 7 Dec 2015 apply to earlier dates and are not modelled.'
+  stamp_duty_foreign_surcharge_from:
+    value: 20180101
+    unit: date yyyymmdd
+    status: VERIFIED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/FOS
+    as_at: 2026-09-29
+    notes: 'Foreign ownership surcharge applies to dutiable instruments executed on or after 1 Jan 2018; it applies to residential land only and is paid with the duty.'
+  stamp_duty_downsizer_contracts_from:
+    value: 20260325
+    unit: date yyyymmdd
+    status: SOURCE-CITED
+    source: https://www.revenuesa.sa.gov.au/stamp-duty-land/seniors-downsizing-stamp-duty-relief
+    as_at: 2026-09-29
+    notes: 'Seniors downsizing stamp duty relief (age 60 plus, new home, off-the-plan apartment or vacant land, replacement smaller by land size): contracts from 25 Mar 2026 per SA Government announcement reported by several secondary sources. The RevenueSA page could not be fetched, the Stamp Duties Act 1923 text served does not yet show it, so the start date, value caps and conditions are NOT verified. The calculator refuses (AU-SA-005) rather than compute it.'

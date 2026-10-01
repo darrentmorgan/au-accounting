@@ -1,0 +1,8 @@
+# Internal process docs: kept in the repo, excluded from `git archive` (public copy).
+GOAL.md export-ignore
+docs/BUILD-PLAN.md export-ignore
+docs/JUDGE-REPORT.md export-ignore
+docs/PROGRESS-*.md export-ignore
+docs/RUNBOOK-DRYRUN-*.md export-ignore
+docs/STATUS.md export-ignore
+docs/goals export-ignore

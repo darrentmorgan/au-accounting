@@ -1,0 +1,277 @@
+# super_contributions overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+super:
+  concessional_cap_2018_19:
+    value: 25000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2018-19 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2019_20:
+    value: 25000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2019-20 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2020_21:
+    value: 25000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2020-21 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2021_22:
+    value: 27500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2021-22 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2022_23:
+    value: 27500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2022-23 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2023_24:
+    value: 27500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2023-24 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2024_25:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2024-25 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  concessional_cap_2025_26:
+    value: 30000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: 'General concessional contributions cap for 2025-26 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts
+      exist only from 2018-19. For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO contributions caps page (updated 11 Sep 2026).'
+  nonconcessional_cap_2024_25:
+    value: 120000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: 2026-09-29
+    notes: 'General non-concessional contributions cap for 2024-25. A bring-forward period triggered in 2024-25 keeps this cap for the whole period (no
+      indexation), per ATO NCC page and ITAA 1997 s292-85(5). For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO non-concessional contributions
+      cap page.'
+  nonconcessional_cap_2025_26:
+    value: 120000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: 2026-09-29
+    notes: 'General non-concessional contributions cap for 2025-26. A bring-forward period triggered in 2025-26 keeps this cap for the whole period (no
+      indexation), per ATO NCC page and ITAA 1997 s292-85(5). For 2027-28 (read 2026-09-29): Historical cap re-read on the ATO non-concessional contributions
+      cap page.'
+  carry_forward_years:
+    value: 5
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s291-20(3)(c): unapplied unused concessional cap from the previous 5 financial years; applied earliest first (s291-20(5)). For 2027-28
+      (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  carry_forward_first_unused_year_start:
+    value: 2018
+    unit: year
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s291-20(7): no unused concessional cap for a financial year earlier than 2018-19 (value is the starting calendar year of 2018-19).
+      For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  excess_concessional_offset_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s291-15(b): non-refundable tax offset equal to 15% of excess concessional contributions, which are included in assessable income (s291-15(a)).
+      For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  excess_concessional_release_divisor:
+    value: 0.85
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-90(1A): an amount released for excess concessional contributions is divided by 85% before reducing the excess counted as non-concessional
+      contributions. For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  nonconcessional_cap_multiple:
+    value: 4
+    unit: multiple
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-85(2)(a): general non-concessional cap = 4 x concessional cap under s291-20(2). For 2027-28 (read 2026-09-29): Re-read in ITAA
+      1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  bring_forward_age_limit:
+    value: 75
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-85(3)(c): bring forward available only if under 75 at any time in the first year. For 2027-28 (read 2026-09-29): Re-read in ITAA
+      1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  co_contribution_match_rate:
+    value: 0.5
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Superannuation (Government Co-contribution for Low Income Earners) Act 2003 s9(1)(d): 50% of eligible personal contributions, 2012-13 and later.
+      For 2027-28 (read 2026-09-29): Re-read in the Co-contribution Act latest compilation C2018C00325 on 2026-09-29: unchanged.'
+  co_contribution_taper_per_dollar:
+    value: 0.03333
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s10(1C): maximum reduced by 3.333 cents per dollar of total income above the lower income threshold. For 2027-28 (read 2026-09-29):
+      Re-read in the Co-contribution Act latest compilation C2018C00325 on 2026-09-29: unchanged.'
+  co_contribution_minimum:
+    value: 20
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s11: an entitlement below $20 is increased to $20. For 2027-28 (read 2026-09-29): Re-read in the Co-contribution Act latest
+      compilation C2018C00325 on 2026-09-29: unchanged.'
+  co_contribution_eligible_income_ratio:
+    value: 0.1
+    unit: ratio
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s6(1)(b): at least 10% of total income from employment-type activities or carrying on a business (business deductions not
+      subtracted for this test, s8(3)). For 2027-28 (read 2026-09-29): Re-read in the Co-contribution Act latest compilation C2018C00325 on 2026-09-29:
+      unchanged.'
+  co_contribution_age_limit:
+    value: 71
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s6(1)(e): less than 71 years old at the end of the income year. For 2027-28 (read 2026-09-29): Re-read in the Co-contribution
+      Act latest compilation C2018C00325 on 2026-09-29: unchanged.'
+  listo_rate:
+    value: 0.15
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s12E(2)(a): LISTO = 15% of concessional contributions, capped at the maximum and at least $10 (s12E(2)(b)-(c)). Schedule
+      4 of Act No. 8 of 2026 changes the threshold and maximum from 1 Jul 2027 only. For 2027-28 (read 2026-09-29): Paragraph (a) of s 12E(2) is not amended
+      by Act No. 8 of 2026 Sch 4 (which changes the threshold and the maximum from 2027-28): still 15%.'
+  listo_minimum:
+    value: 10
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A01195/2018-07-01/2018-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'Co-contribution Act s12E(2)(c): LISTO below $10 is increased to $10. For 2027-28 (read 2026-09-29): Unchanged by Act No. 8 of 2026 Sch 4.'
+  spouse_offset_rate:
+    value: 0.18
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s290-235(1): offset is 18% of the lesser of the reduced $3,000 amount and spouse contributions. For 2027-28 (read 2026-09-29): Re-read
+      in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  spouse_offset_max_contributions:
+    value: 3000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s290-235(1)(a): $3,000 reduced by the spouse income above $37,000. For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation
+      C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  spouse_offset_income_threshold:
+    value: 37000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s290-235(1)(a): reduction starts once spouse income (assessable income + RFB + RESC, s290-230(2)(c)) exceeds $37,000. For 2027-28
+      (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  spouse_offset_income_cutout:
+    value: 40000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s290-230(2)(c): spouse income must be less than $40,000. For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400
+      (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  spouse_offset_max:
+    value: 540
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s290-235(2): maximum offset per income year $540, even for more than one spouse. For 2027-28 (read 2026-09-29): Re-read in ITAA 1997
+      compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  downsizer_cap:
+    value: 300000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-102(3)(a): $300,000 per person less earlier downsizer contributions; also limited to capital proceeds (s292-102(3)(b)). Not indexed.
+      For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  downsizer_min_age:
+    value: 55
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-102(1)(a): contribution made when aged 55 or over. For 2027-28 (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400
+      (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  downsizer_ownership_years:
+    value: 10
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-102(2): dwelling or land held by the person, spouse or former spouse for the 10 years ending just before the disposal. For 2027-28
+      (read 2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  downsizer_contribution_days:
+    value: 90
+    unit: days
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s292-102(1)(g): contribution within 90 days after change of ownership, or longer period the Commissioner allows. For 2027-28 (read
+      2026-09-29): Re-read in ITAA 1997 compilation C2026C00400 (27 Aug 2026, latest at 2026-09-29): unchanged; not indexed.'
+  concessional_cap_2026_27:
+    value: 32500
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    as_at: 2026-09-29
+    notes: General concessional cap for 2026-27, $32,500 from 1 Jul 2026 after AWOTE indexation (ATO contributions caps page updated 11 Sep 2026). Added
+      so a 2027-28 carry forward replay can read the previous year's cap; the 2026-27 file holds the same fact as super.concessional_cap.
+  nonconcessional_cap_2026_27:
+    value: 130000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    as_at: 2026-09-29
+    notes: General non-concessional cap for 2026-27, $130,000 (4 x the concessional cap; ATO non-concessional contributions cap page). Added for bring-forward
+      replays in 2027-28; the 2026-27 file holds the same fact as super.non_concessional_cap.

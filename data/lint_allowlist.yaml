@@ -1,0 +1,31 @@
+# Allowlist for scripts/lint_skills.py hard-coded figure check.
+# Each entry: file (glob relative to repo root), pattern (regex matched against the flagged text
+# or its line), reason. Only statutory constants that are not indexed or annually changed belong here.
+allow:
+  - file: "skills/*/*.md"
+    pattern: '50%\s*(CGT\s*)?discount|discount[^.\n]{0,40}50%'
+    reason: Statutory 50% CGT discount for individuals (ITAA 1997 s 115-100); a fixed statutory constant.
+  - file: "skills/*/*.md"
+    pattern: '10%\s*GST|GST[^.\n]{0,30}10%'
+    reason: GST rate fixed by A New Tax System (Goods and Services Tax) Act 1999 s 9-70.
+  - file: "skills/*/references/*.md"
+    pattern: '50%\s*(CGT\s*)?discount|discount[^.\n]{0,40}50%'
+    reason: Statutory 50% CGT discount (ITAA 1997 s 115-100), references subfolder.
+  - file: "skills/*/references/*.md"
+    pattern: '10%\s*GST|GST[^.\n]{0,30}10%'
+    reason: GST rate fixed by GSTA 1999 s 9-70, references subfolder.
+  # Day counts that equal a day-count figure value but are different, fixed statutory or
+  # administrative periods with no figure key of their own (lint_skills flags N days when N matches
+  # any day-count figure in data/rates, and every "N business days").
+  - file: "skills/payroll-sg/*"
+    pattern: 'within 14 days of detection'
+    reason: STP Phase 2 error correction period (ATO STP Phase 2 employer reporting guidelines); fixed administrative period, not the lodgment online concession that shares the value.
+  - file: "skills/payroll-sg/references/*.md"
+    pattern: 'Due 28 days after quarter end'
+    reason: Historical quarterly SG due date (28 days after quarter end, ATO SG due dates page) for quarters ending on or before 30 Jun 2026; fixed statutory period, replaced by Payday Super, no figure key.
+  - file: "skills/payg-instalments-lodgment/references/*.md"
+    pattern: 'notifies the GIC; 14 days to pay'
+    reason: Fixed period in the GIC notice rule (TAA 1953 Pt IIA); not indexed and not the online concession figure that shares the value.
+  - file: "skills/super-contributions/SKILL.md"
+    pattern: '28 days after the end of the month of turning 75'
+    reason: Statutory age-75 deduction cut-off (ITAA 1997 s 290-165); fixed period, not indexed, no figure key.

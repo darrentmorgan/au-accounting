@@ -1,0 +1,34 @@
+# Refusal codes for the super-contributions skill. Same schema as au.yaml. Skills surface code + message verbatim.
+refusals:
+  - code: AU-SUPER-001
+    trigger: Member has a defined benefit interest (including untaxed schemes and constitutionally protected funds), where contributions, Division 293 low tax contributions and Division 296 earnings are worked out under special valuation rules (ITAA 1997 Subdivs 291-C, 293-D; s296-70).
+    message: "This involves a defined benefit super interest, which uses special valuation rules for contributions caps, Division 293 and Division 296. I can't compute this reliably; the fund's actuarial figures and a registered tax agent are needed."
+    route: registered tax agent (with the fund's defined benefit statement)
+  - code: AU-SUPER-002
+    trigger: Self-managed super fund administration - fund tax return, fund-level Division 296 fund earnings or member attribution, CGT cost base adjustments for Division 296, in-house assets, LRBAs, related-party transactions, audit, trustee duties, or reserves.
+    message: "This is SMSF administration, which this skill does not cover. The fund's trustee should get advice from an SMSF specialist accountant and the approved SMSF auditor."
+    route: SMSF specialist registered tax agent and approved SMSF auditor
+  - code: AU-SUPER-003
+    trigger: Member has (or expects) an excess non-concessional contributions determination and must choose between releasing the excess with associated earnings and paying excess non-concessional contributions tax, or wants to object to a determination.
+    message: "Choosing how to deal with excess non-concessional contributions is an irrevocable election with tax consequences that depend on your whole position. A registered tax agent should review the ATO determination and make or advise on the election within the 60-day window."
+    route: registered tax agent
+  - code: AU-SUPER-004
+    trigger: Starting, commuting or restructuring a retirement phase pension, transfer balance account reporting or excess transfer balance, or choosing between pension and accumulation.
+    message: "Starting or changing a retirement phase pension affects your transfer balance account and is a financial product decision. This skill does not cover it; speak to a licensed financial adviser and your fund, and a registered tax agent for the tax effects."
+    route: licensed financial adviser and registered tax agent
+  - code: AU-SUPER-005
+    trigger: Division 296 earnings would have to be estimated from balance movements rather than taken from the fund-reported relevant super earnings, or the member disputes a total super balance valuation or reported earnings.
+    message: "Division 296 tax is based on earnings your super fund calculates and reports to the ATO, not on changes in your balance, and I can't resolve valuation disputes. Ask your fund for its reported Division 296 earnings, and use a registered tax agent to object to any assessment you disagree with."
+    route: super fund and registered tax agent
+  - code: AU-SUPER-006
+    trigger: Special contribution types outside the calculators - transfers from foreign super funds, personal injury (structured settlement) contributions, CGT small business cap contributions, FHSS or COVID re-contributions, family law splits.
+    message: "This contribution type has its own cap or treatment that this tool does not model. A registered tax agent should confirm how it counts towards your caps."
+    route: registered tax agent
+  - code: AU-SUPER-007
+    trigger: User asks for a recommendation on whether, how much or where to contribute, which fund or investment option to use, or retirement strategy (personal financial product advice).
+    message: "I can show how the contribution rules and caps apply, but a recommendation about what you should contribute or which fund or product to use is personal financial advice. Speak to a licensed financial adviser."
+    route: licensed financial adviser
+  - code: AU-SUPER-008
+    trigger: Information needed for the calculation is missing or inconsistent (e.g. earlier-year history not consecutive, a prior total super balance needed to decide carry forward, a bring-forward trigger outside the two previous years, or an opening balance for Division 296 from 2027-28).
+    message: "I need more information to work this out reliably. Please supply the missing detail (shown below), which you can usually find in ATO online services under Super."
+    route: preparer

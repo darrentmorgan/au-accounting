@@ -1,0 +1,30 @@
+# gst-bas refusal codes. Same schema as au.yaml. Skills surface code + message verbatim, then stop the affected work.
+refusals:
+  - code: AU-GST-001
+    trigger: Property development or complex real property GST position - developer selling new residential premises or subdivided land, margin scheme where s75-11 special rules apply (acquired from an associate, as a GST-free going concern or farmland, within a GST group or joint venture, or subdivided), eligibility of the margin scheme in dispute, the new residential premises 5-year rental rule, or Division 129 / 135 change-of-use adjustments on real property.
+    message: "This is a property development GST position (new residential premises, subdivision, the special margin scheme rules, or a change-of-use adjustment on real property). The outcome turns on contracts and history that this tool cannot test. A registered tax agent should review it, and a private ruling from the ATO may be needed."
+    route: registered tax agent; ATO private ruling
+  - code: AU-GST-002
+    trigger: Short-stay or serviced accommodation operator where the answer depends on whether the premises are commercial residential premises (s195-1, GSTR 2012/6) rather than residential premises - for example a head-lease or principal model across many dwellings, hotel-like services, or a request to confirm that short-stay income is (or is not) subject to GST.
+    message: "Whether these premises are commercial residential premises (taxable) or residential premises (input taxed) is a question of fact under GSTR 2012/6 that turns on how the operation is run and contracted. I can set out the tests, but I can't make the determination. A registered tax agent should review it, and a private ruling from the ATO is the reliable way to settle it."
+    route: registered tax agent; ATO private ruling
+  - code: AU-GST-003
+    trigger: Financial supplies or other input taxed supplies needing apportionment beyond a simple direct split - exceeding the financial acquisitions threshold, reduced input tax credits (Div 70), or choosing and documenting an apportionment method for mixed-use overheads.
+    message: "Apportioning GST credits between input taxed (such as financial) supplies and other supplies needs a documented method and a financial acquisitions threshold test that this tool does not perform. A registered tax agent or BAS agent should work out the creditable proportion."
+    route: registered tax agent or BAS agent
+  - code: AU-GST-004
+    trigger: GST groups, GST branches, GST joint ventures, or a GST religious group - formation, membership, turnover or reporting through a representative member.
+    message: "GST groups, branches and joint ventures change who reports and how turnover is counted. This tool treats each entity on its own and can't model those arrangements. A registered tax agent should handle this."
+    route: registered tax agent
+  - code: AU-GST-005
+    trigger: International supply where place of supply or connection with Australia is complex - supplies to non-residents where an Australian entity receives the service (s38-190(3)) or the recipient's location is unclear, non-resident suppliers registering or making supplies in Australia, offshore supplies of low value goods, EDP operator liability, or reverse charge where the creditable purpose split is not simple.
+    message: "This cross-border supply needs a place-of-supply and recipient analysis (for example s38-190(3) or the offshore supply rules) that this tool can't settle. A registered tax agent should confirm the GST treatment before you rely on it."
+    route: registered tax agent
+  - code: AU-GST-006
+    trigger: Margin scheme requested but not available - no written agreement with the buyer on or before the supply (s75-5(1), (1A)), the seller acquired the property through a taxable supply on which GST was worked out without the margin scheme (s75-5(3)), or a valuation method was chosen where no s75-10(3) item applies.
+    message: "The margin scheme can't be applied to this sale on the facts given, so GST is 1/11 of the full price. If you think the scheme is available, a registered tax agent should check the purchase history and the written agreement."
+    route: registered tax agent
+  - code: AU-GST-007
+    trigger: Fuel tax credit calculation (rates, eligible fuels and activities, labels 7C and 7D) requested.
+    message: "Fuel tax credit rates change often and depend on fuel type, use and road user charge. This tool does not calculate them. Use the ATO fuel tax credit calculator or ask a BAS agent."
+    route: BAS agent

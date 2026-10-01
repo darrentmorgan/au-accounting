@@ -1,0 +1,67 @@
+# CGT risk flags. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: CGT-CONTRACT-DATE
+    topic: Timing of the CGT event
+    description: The CGT event for a disposal under contract happens at the contract date, not settlement. A contract signed in June and settled in July falls in the earlier income year; a contract signed before 1 July 2027 keeps the old discount rules.
+    citations: ["ITAA 1997 s104-10(3)"]
+    skills: [cgt]
+  - id: CGT-2027-VALUATION
+    topic: Market value just before 1 July 2027
+    description: For assets held on 30 June 2027 and sold later, individuals are deemed to sell and reacquire at market value just before 1 July 2027. Without a contemporaneous valuation (or a Ministerial apportioning method, not made as at 29 Sep 2026) the split between the discounted and indexed parts of the gain cannot be supported.
+    citations: ["ITAA 1997 s112-155", "ITAA 1997 s112-175", "ITAA 1997 s112-185", "Act No. 49 of 2026 Sch 1"]
+    skills: [cgt]
+  - id: CGT-NEW-DWELLING-DEFINITION
+    topic: New residential dwelling not yet defined
+    description: The retained 50% discount for new residential dwellings depends on requirements the Minister must determine by legislative instrument (s26-160(4)). No instrument had been made as at 29 Sep 2026; Treasury's exposure draft is not law. Any claim that a dwelling is new is an assumption until the requirements exist.
+    citations: ["ITAA 1997 s115-102", "ITAA 1997 s26-160(3)-(4)"]
+    skills: [cgt]
+  - id: CGT-MINIMUM-TAX
+    topic: 30% minimum tax on capital gains
+    description: From CGT events on or after 1 July 2027, resident individuals may pay extra income tax so that post-1 July 2027 non-deferred gains (other than new dwelling and affordable housing gains) bear at least the minimum rate before offsets. Low-income taxpayers with large gains are most exposed; recipients of listed pensions and allowances are excepted.
+    citations: ["ITAA 1997 Div 119", "Income Tax Rates Act 1986 s12AA"]
+    skills: [cgt]
+  - id: CGT-MRE-FOREIGN-RESIDENT
+    topic: Main residence exemption denied to foreign residents
+    description: No main residence exemption (full or partial) if the owner is a foreign resident when the contract is signed, unless the life events test is met and foreign residency has lasted 6 years or less.
+    citations: ["ITAA 1997 s118-110(3)-(5)", "ITAA 1997 s118-185(3)"]
+    skills: [cgt]
+  - id: CGT-MRE-ABSENCE-CHOICE
+    topic: Six-year absence choice is exclusive
+    description: Choosing to treat a former home as the main residence during an absence means no other dwelling can be the main residence for that period (except the 6-month changeover). The choice is made when preparing the return for the year of sale and must be consistent with any other home owned.
+    citations: ["ITAA 1997 s118-145(4)", "ITAA 1997 s118-140"]
+    skills: [cgt]
+  - id: CGT-MRE-FIRST-INCOME-USE
+    topic: Home first used to produce income
+    description: If a home is first rented out after 20 August 1996 and only a partial exemption results, the cost base is reset to market value at that time and discount eligibility is tested from that date. A professional valuation at the change of use is expected.
+    citations: ["ITAA 1997 s118-192"]
+    skills: [cgt]
+  - id: CGT-CRYPTO-PERSONAL-USE
+    topic: Crypto as a personal use asset
+    description: Crypto is rarely a personal use asset; holding it as an investment, or for a long period, defeats the exemption even if it is later spent. Swaps between tokens are disposals. Missing records do not justify a nil cost base.
+    citations: ["TD 2014/26", "ITAA 1997 s108-20", "ITAA 1997 s118-10(3)"]
+    skills: [cgt]
+  - id: CGT-CRYPTO-DRAFTS
+    topic: Crypto draft rulings
+    description: TR 2026/D1 (airdrops) and TD 2026/D2 (wrapping and unwrapping) are drafts issued 19 Aug 2026; they state the ATO's preliminary view only and may change.
+    citations: ["TR 2026/D1", "TD 2026/D2"]
+    skills: [cgt]
+  - id: CGT-LOSS-ORDERING
+    topic: Loss ordering and quarantines
+    description: Capital losses (current year, then carried forward) reduce gains before the discount; collectable losses only offset collectable gains; personal use asset losses are disregarded; net capital losses cannot reduce other income.
+    citations: ["ITAA 1997 s102-5", "ITAA 1997 s102-10", "ITAA 1997 s108-10", "ITAA 1997 s108-20"]
+    skills: [cgt]
+  - id: CGT-FRCGW
+    topic: Foreign resident capital gains withholding
+    description: Purchasers of Australian real property must withhold at the FRCGW rate from the purchase price unless the vendor gives a clearance certificate (residents) or a variation applies. From 1 October 2026 the real property definition is wider and the principal asset test looks back 365 days.
+    citations: ["TAA 1953 Sch 1 Subdiv 14-D", "ITAA 1997 s855-25", "Act No. 86 of 2026 Sch 2"]
+    skills: [cgt]
+  - id: CGT-SB-ACTIVE-ASSET
+    topic: Rental property and the active asset test
+    description: Assets whose main use is to derive rent are generally not active assets, so residential or short-stay rentals usually fail the small business concession tests.
+    citations: ["ITAA 1997 s152-40(4)(e)"]
+    skills: [cgt]
+  - id: CGT-WASH-SALE
+    topic: Wash sales
+    description: Selling an asset to crystallise a loss and reacquiring it soon after may be a scheme to which Part IVA applies; the loss can be cancelled.
+    citations: ["TR 2008/1", "ITAA 1936 Part IVA"]
+    skills: [cgt]

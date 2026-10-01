@@ -1,0 +1,39 @@
+# trusts-partnerships overlay, income year 2026-27. Same schema as the base file; no key collisions.
+# Div 6AA amounts are fixed in Income Tax Rates Act 1986 s13 and Sch 11 (not indexed).
+trusts:
+  minor_eti_threshold:
+    value: 416
+    unit: AUD
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA 1986 s13(1)(b): Sch 11 rates apply to a resident prescribed person (ITAA 1936 s102AC) whose eligible
+      taxable income exceeds this amount. Read in the compilation in force 1 Jul 2026. ATO "Tax rates if you are under 18"
+      (https://www.ato.gov.au/tax-rates-and-codes/tax-rates-if-you-re-under-18-years-old, updated 1 Jun 2026) shows the same for 2025-26.'
+  minor_phase_in_rate:
+    value: 0.66
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA 1986 s13(2)(a): tax on eligible taxable income above the threshold and up to the resident phase-out limit
+      is capped at this rate on the excess (or, if greater, the top-slice amount in s13(2)(b)). The phase-out limit
+      (s13(10)) = threshold x this rate / (this rate - highest rate in Sch 7 Pt I), rounded down; the calculator derives it.'
+  minor_eti_rate:
+    value: 0.45
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA 1986 Sch 11 Pt I cl 2: rate on the whole eligible taxable income of a resident minor once it exceeds the
+      threshold (subject to the s13(2) phase-in cap). Other income is taxed at Sch 7 rates as if it were the whole taxable
+      income (cl 1). Same rate for a trustee assessed under s98 on a resident minor''s share (s13(3), Sch 12 Pt I).'
+  s99a_rate:
+    value: 0.45
+    unit: rate
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-09-29
+    notes: 'ITRA 1986 s12(9): rate on net income assessed to a trustee under ITAA 1936 s99A. Medicare levy is added at
+      medicare.levy_rate where the trustee pays the top rate on all of it (ATO trust tax return instructions, Medicare levy
+      item; https://www.ato.gov.au/forms-and-instructions/trust-tax-return-2022-instructions/instructions-to-complete-the-trust-tax-return/medicare-levy-reduction-or-exemption-item-55).'

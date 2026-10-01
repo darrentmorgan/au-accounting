@@ -1,0 +1,122 @@
+---
+name: router
+description: 'Front door for broad or multi-domain Australian tax and accounting work: runs a short intake (entity, income year, residency, income sources, ABN/GST/PAYG withholding/STP registrations, employees, property, super, state), picks the domain skills to load in order, passes results between them, and combines everything into one working paper with a lodgment and obligations calendar. Use when someone says "prepare my tax", "do my tax return", "year-end for my company", "I''m a sole trader with a rental and crypto", "new client onboarding", "what do I need to lodge", "what''s due this year", "help with my client''s tax affairs", "I have wages, a rental and shares", "salary plus a rental loss and a share sale: total tax", "family trust and company year-end", or any Australian tax or accounting question where the right specific skill is unclear or several apply. Also use when one part may be out of scope: the router runs the other parts and lists the escalation prominently.'
+---
+
+# Router: multi-domain intake and combined working paper
+
+Coordinates the au-accounting domain skills for one client and one income year. The router never computes tax itself and never quotes a rate, threshold or date from memory. Every number comes from a domain skill's tool output (`figures_used`), from `assemble_taxable_income` or from `obligations_calendar`. The router does no arithmetic in prose, not even addition.
+
+## Scope
+
+In scope:
+- Deciding which domain skills apply to a client's facts, in which order, and loading each through the Skill tool.
+- Passing one skill's result into the next as an input (never re-deriving it).
+- Checking the combined inputs for contradictions.
+- One combined working paper per CONVENTIONS section 8, with a section per skill.
+- Assembling an individual's taxable income from the other skills' results (`assemble_taxable_income`).
+- A lodgment and obligations calendar for the income year (`obligations_calendar`).
+
+Out of scope for the router itself: any calculation or judgement that belongs to a domain skill. If a single domain clearly covers the request ("what is my Div 293 tax"), load that skill alone and let it answer; the router adds nothing.
+
+## Required inputs
+
+Run the intake in `references/intake.md`: one short batch of questions, only for facts not already given.
+1. **Income year** (`2025-26`, `2026-27` or `2027-28`; FBT year as `FBT2027`; a domain tool refuses where a figure for the year is not yet published). If it is ambiguous, ask. Never assume the current year silently.
+2. **Entities**: individual, sole trader, partnership, company, trust (and who controls or benefits from each).
+3. **Residency** of each individual, and any months overseas.
+4. **Income sources**: wages, business, rental, capital gains (shares, crypto, property), trust or partnership distributions, dividends, foreign income, super.
+5. **Registrations**: ABN, GST (cycle, cash or accruals), PAYG withholding, STP, PAYG instalments, FBT, state payroll tax.
+6. **Employees or contractors**, fringe benefits.
+7. **Property**: rentals, holiday homes, main residence changes, purchases or sales, state and land tax.
+8. **Super**: contributions made or planned, balances.
+9. **State or territory** of each business and property.
+
+If other facts are missing, continue with clearly labelled assumptions rather than stalling; ask only where the answer would change materially.
+
+## Procedure
+
+1. **Intake.** Collect the facts above. Record each fact once, with its source (user said, document, assumption).
+2. **Map facts to skills.** Use the routing table in `references/skill-map.md`. Write the plan as an ordered list before loading anything: skill, why it applies, what it must hand on. Default order:
+   1. `residency-cross-border` (residency gates everything for individuals; foreign income and FITO)
+   1a. `au-indonesia-cross-border` (optional branch, only when Indonesian income, the Indonesia treaty, days in Indonesia or payments to an Indonesian resident are involved; runs straight after residency, its offset result is reported like the FITO result). For foreign income from any other country, skip this branch: `residency-cross-border` and the generic `foreign_income_tax_offset` are the default, with no treaty analysis
+   2. `bookkeeping-year-end` (clean ledger and year-end adjustments before any tax figure)
+   3. `gst-bas`, `payroll-sg`, `fbt`, `state-taxes-sa` (entity-level obligations; FBT gives reportable fringe benefits)
+   4. `company-div7a`, `trusts-partnerships` (entity net income, distributions, Div 7A)
+   5. `sole-trader-business`, `short-stay-accommodation` (before `rental-property` for short-stay letting), `rental-property` (individual's business and rental results; for rent from property outside Australia its `foreign_rental_net` path, never `rental_property_result`)
+   6. `crypto` (crypto transactions, staking and airdrop income; its gains and losses then join the `cgt` step), then `cgt` (after trusts, because streamed trust gains join the individual's own gains and losses)
+   7. `super-contributions` (personal deductions, Div 293 needs taxable income: run the deduction part before individual-tax and Div 293 after)
+   8. `assemble_taxable_income`, then `individual-tax` (last), then offsets that need its result (FITO, small business income tax offset)
+   9. `payg-instalments-lodgment` (lodgment dates, instalments, penalties) and `obligations_calendar`
+   Skip skills with no facts. Use `rates-lookup` for any single figure the user asks about.
+3. **Load each skill** on the plan with the Skill tool (plugin name `au-accounting:<slug>`; the bare `<slug>` if not namespaced), one Skill call per domain, before calling any of that skill's tools. Follow that skill's own procedure and tools, and keep its full output contract. The router never calls a domain tool directly in place of loading its skill: staking, airdrop or token-swap facts mean loading `crypto` first (then `crypto_income_receipts`, `crypto_parcel_ledger` and the rest), short-stay letting means loading `short-stay-accommodation` and `rental-property`, Indonesian (e.g. Bali) income means loading `au-indonesia-cross-border`, and so on for every row of the plan. If a skill is not installed, record "skill not available" for that part, list the facts it would have needed, and do not do that domain from memory.
+4. **Hand results forward** using the handoff table below. Pass the exact figure the upstream tool returned, and name its source skill and tool.
+5. **Assemble taxable income** for each individual: call `assemble_taxable_income` with `income_year` and `inputs`, for example `{"components": [{"kind": "salary_wages", "amount": <amt>, "source_skill": "user"}, {"kind": "business_net", "amount": <amt>, "source_skill": "sole-trader-business", "source_tool": "non_commercial_loss_test", "gst_inclusive": false}, {"kind": "rental_net", "amount": <net_rental_result>, "source_skill": "rental-property", "source_tool": "rental_property_result"}, {"kind": "net_capital_gain", "amount": <net_capital_gain>, "source_skill": "cgt", "source_tool": "net_capital_gain"}, {"kind": "personal_super_deduction", "amount": <personal_deductible>, "source_skill": "super-contributions"}], "gst_registered": true, "prior_year_tax_losses": 0}`. Kinds and field mapping: `references/skill-map.md`.
+   - `consistent: false`: quote each `blocking_issues` entry, fix the input at its source skill (or ask the user), and call again. Never work around a block by adding the numbers yourself.
+   - `consistent: true`: pass `taxable_income` to `individual_income_tax`, and `handoffs.net_rental_loss_for_net_investment_losses` (plus any financial investment loss) as `net_investment_losses`. Show `lines` as the build-up table.
+   - Then run offsets that need the tax result: `foreign_income_tax_offset` (quote its `tax_payable_after_fito`) and `small_business_income_tax_offset` (with the assembled taxable income). Report them beside the tax; never subtract by hand.
+6. **Consistency check** before the individual-tax step and again before writing the paper (see Cross-domain rules).
+7. **New client or new business (onboarding).** Produce a registrations checklist before the calendar: ABN; GST (call `gst_registration_check` with projected turnover: required or optional, and the registration deadline); PAYG withholding before the first wage payment and STP from the first payday (payroll-sg); super guarantee under the regime for the pay date, with a super choice form for new employees (payroll-sg); state payroll tax (state-taxes-sa `sa_payroll_tax`, which shows whether wages are under the threshold); FBT if benefits are planned; PAYG instalments may start after the first return (payg-instalments-lodgment). For an SA employer, ReturnToWorkSA work injury insurance registration comes from `obligations_calendar` (`employs_in_sa`, `employment_start` = the worker's start date, `employing_from` = first pay date, `expected_annual_wages`): quote whether registration is required and the date. Other states' workers compensation schemes are not modelled: name them as "check with the scheme", with no thresholds or dates from memory.
+8. **Calendar.** Call `obligations_calendar` with `income_year` and `inputs`, for example `{"entity_type": "company", "gst_registered": true, "gst_cycle": "quarterly", "lodgment": "registered_agent", "payg_withholding_registered": true, "has_employees": true, "provides_fringe_benefits": false, "sa_payroll_tax_registered": false, "payg_instalments": true, "tpar_industry": false, "other_states": []}`. Add `gst_registered_from`, `employing_from` or `company_registration_date` when a registration or employment starts during the year. Run it once per entity. For each item lead with the standard due date (`original_due_date`, e.g. the 28th for a quarterly BAS), then give `due_date` as the date after any online or agent concession and the business day roll (a Saturday, Sunday or public holiday moves the date to the first business day after: TAA 1953 s 8AAZMB and Sch 1 s 388-52 for ATO dates, using holidays of every State and Territory; SA state tax dates use SA public holidays only), with its rule and the `business_day_roll` reason, e.g. "28 Apr 2027 (12 May 2027 if you lodge online yourself)". It already includes BAS, PAYG instalments, the self-lodged individual return, STP finalisation, TPAR, FBT, SA payroll tax and the ASIC review date (pass `company_registration_date`). Items in `not_computed` (agent lodgment program, company and trust returns, other states) belong to the named skill: load it for them, otherwise list them as "date not computed, see <skill>". Items in `unverified` carry AU-GEN-001, AU-GEN-003 or AU-GEN-004: quote it (AU-GEN-004 means the date is after the public holiday data: the item shows `statutory_due_date` for reference only, unrolled and unchecked, so give the ATO's lodgment and payment dates page instead of a due date); after AU-GEN-001 rerun with `allow_draft: true` only if the user wants a marked draft; after AU-GEN-003 no draft is possible. For a single BAS period use `bas_due_date`; for FBT use the `fbt_payable` due dates.
+9. **Loaded-skills check.** Before writing, list every domain tool you called and the skill it belongs to (`references/skill-map.md`), and confirm each of those skills was loaded with the Skill tool in this session. If one was not (for example `crypto_income_receipts` called without `crypto`), load that skill now, follow its judgement rules and escalations, and correct anything its rules change, before writing.
+10. **Write the combined working paper** (Output below).
+
+## Cross-domain rules
+
+Handoffs (upstream result to downstream input). Details and field names in `references/skill-map.md`.
+
+| From | Result | To |
+|---|---|---|
+| residency-cross-border | residency indication, `resident_months`, foreign income (AUD) and FITO, exempt foreign employment income | individual-tax |
+| sole-trader-business | net business income or deferred non-commercial loss, small business income tax offset | individual-tax |
+| short-stay-accommodation | `rental_property_result_handoff` (night split and holiday home answer), registration handoff | rental-property; gst-bas |
+| rental-property | net rental result (deductible part and any quarantined part), net rental loss for income tests | individual-tax; super-contributions (Div 293) |
+| rental-property (`foreign_rental_net`), for property outside Australia | gross foreign rent and stated costs as assembly components, net foreign rent, foreign tax for the offset | individual-tax (via `assemble_taxable_income`); au-indonesia-cross-border (`indonesia_treaty_fito` inputs) or residency-cross-border (`foreign_income_tax_offset`) |
+| cgt | net capital gain (after losses and discount), carried-forward capital loss | individual-tax |
+| crypto | `total_assessable_income_aud` from `crypto_income_receipts` (other income); disposal slices' `cgt.components` for `net_capital_gain` | individual-tax (via `assemble_taxable_income`, kind `other_income`); cgt (with any other assets and carried-forward losses) |
+| trusts-partnerships | each beneficiary's or partner's share, with capital gain and franked parts; trustee s99A tax | individual-tax; cgt (streamed gains); company-div7a (corporate beneficiary) |
+| company-div7a | company taxable income and tax; deemed dividends and franked dividends paid | individual-tax (shareholder) |
+| fbt | each employee's reportable fringe benefits amount | individual-tax; super-contributions (Div 293) |
+| super-contributions | personal deductible contributions (valid notice of intent), reportable super contributions | individual-tax |
+| gst-bas | GST-exclusive business income and expenses if registered | sole-trader-business; company-div7a; bookkeeping-year-end |
+| payroll-sg | wages, PAYG withheld, SG paid | individual-tax (employee withholding); bookkeeping-year-end |
+
+Rules:
+- **Never recompute another skill's number.** Quote it as returned. If the downstream skill needs a figure the upstream tool did not return, go back to the upstream skill; do not derive it.
+- **Taxable income assembly.** Only through `assemble_taxable_income`. Capital gains enter only as the `cgt` skill's one `net_capital_gain`; a trust's grossed-up capital gain goes into that cgt calculation, and the trust share is passed without it. Amounts are GST-exclusive; foreign income is gross.
+- **Offsets outside `individual_income_tax`.** It does not model FITO, franking credit offsets or the small business income tax offset. FITO and the small business offset come from their own tools; a franking credit offset equals the `franking_credit` component and is listed as a separate line. Do not net them into the tool's figures by hand.
+- **Rent from property outside Australia (foreign property, e.g. Indonesia/Bali).** First test for complete facts. The fixed path below runs only when the user has stated gross rent, each cost, the foreign tax paid, owner or family use and any loan, and asks for a computed result (for example the numeric Bali villa case). An open question (how do I declare it, do I get a credit, can I claim depreciation or interest) or thin facts (a rounded net-of-tax figure, no gross and cost split, owner use or funding not stated) is an escalation: open with AU-RENT-005 verbatim, orientation in words only, no offset amount, no net Australian result, no confirmed or leaned deduction, no calculator, hand-off to a registered tax agent with cross-border experience (rental-property step 1 has the full wording). On complete facts, never send it to `rental_property_result` or `short_stay_apportionment` (they refuse AU-RENT-005). The path is fixed: convert with `idr_to_aud` (au-indonesia-cross-border), call `foreign_rental_net` (rental-property) with the AUD gross rent, stated costs and foreign tax, put its `assemble_taxable_income_components` into the assembly, and pass its `foreign_income_tax_offset_inputs` to `foreign_income_tax_offset` after `individual_income_tax`; this generic offset path is the default for every country. Only for Indonesia, pass its `indonesia_treaty_fito_inputs` to `indonesia_treaty_fito` instead (the treaty branch). When an offset is shown, cite Art 24 and ITAA 1997 Div 770, say the Indonesian tax counts only if correctly imposed under Indonesian law and the treaty, which the plugin cannot verify (AU-IDN-002), and ask for the Indonesian assessment or payment receipts. Quote AU-RENT-005 from its `escalations` as the part not checked (deductibility for foreign property, depreciation, capital works, interest apportionment, private use), mark the figures "working figure resting on the stated deductions", and still give the total. On the complete-facts path AU-RENT-005 never ends the whole answer: only a loss or owner or family use refuses that part, and every other skill still runs.
+- **Owner abroad.** An individual who lets Australian property and says they have moved overseas or are a foreign resident, with residency resting only on their statement and an open question (what tax do I pay, tax-free threshold, sale): residency goes first and the answer opens with AU-RES-004 verbatim (AU-RES-001 where a treaty country is in play). No tax, rental, CGT or Medicare figure and no illustration; the downstream skills (short-stay-accommodation, rental-property, individual-tax, cgt) do not run their calculators until residency is settled. A stated foreign residency for a plain computation (for example an employee's salary for the whole year) is not held up.
+- **Residency gate: facts that do not depend on the outcome.** When the answer stops at AU-RES-001, AU-RES-004, AU-CRYPTO-005 or AU-IDN-002, still state, from the owning skills and with no tax figure: the Art 15 rule with the day limit as a number and all four conditions (`au-indonesia-cross-border` step 4); that crypto is unaffected until a disposal if the person stays resident, with event I1 (s 104-160) only on ceasing residency; for an Australian home let short-stay, gross rent declared before platform fees and GST input taxed for an ordinary home (GSTA 1999 s 40-35; GSTR 2012/6), which is resolved and not "still to be worked"; the treaty tie-breaker (both countries may treat the person as resident; Art 4(3) order in full or escalate); and the foreign-resident exclusion (s 118-110(3)), the partial exemption when let (s 118-190), the absence rule (s 118-145) and market-value reset (s 118-192) as `cgt` questions for the agent; foreign-resident Airbnb rent as an escalation (foreign resident rates, no tax-free threshold, no Medicare levy); referral to a registered tax agent with cross-border experience and an Indonesian adviser. Full list: `residency-cross-border` step 10.
+- **Flag inconsistent inputs.** Stop and ask (or record as a risk) when facts disagree across skills, for example: residency differs between skills; GST-inclusive figures used in income tax; turnover used for small business entity status differs from GST turnover without explanation; the same asset in both the business and rental skills; wages in payroll-sg that do not match the employee's income; a trust share that does not match the trust's own figures; an income year that differs between skills. Never pick one silently.
+- **User-supplied net figures still get the owning skill's status checks.** If the user gives a net rental result, a gain or a business result instead of the detail, use it as given (say so) but still state the owning skill's gating rule from the facts: for a rental loss, whether the dwelling is grandfathered from the negative gearing quarantine (acquisition date against `rental.negative_gearing_grandfather_date`) and the first income year affected (`rental.negative_gearing_first_income_year`); for a gain, the 12-month discount test; for business income, small business entity status.
+- **Income year per skill.** State the year each skill applied. FBT uses the FBT year ending inside the income year.
+- **Law changes by date.** Date-effective changes (for example the rental loss quarantining and CGT changes from 1 Jul 2027) belong to their skills; do not apply them to earlier years.
+
+## Escalation
+
+- **A component refuses: keep going.** When any skill or tool returns a refusal (exit code 3) or AU-GEN-001 / AU-GEN-003 (exit code 4), quote its code and message verbatim, stop only that part, and continue with the other skills. Any downstream figure that depended on the refused part is marked "incomplete: depends on <code>", not estimated.
+- List every refusal at the top of the working paper ("Parts not completed") and again in section 5.
+- **Indonesian domestic tax.** When the client asks whether Indonesia taxes their salary or other income, or whether they are an Indonesian resident (a move to Bali, Indonesian income), load `au-indonesia-cross-border` and quote AU-IDN-002 verbatim in "Refusals or escalations" beside the residency code (AU-CRYPTO-005 for a crypto holder ceasing residency, AU-RES-004 or AU-RES-001 for conflicting residency facts). Never answer the Indonesian domestic tax question, and never leave AU-IDN-002 out.
+- Asked to lodge or pay: AU-GEN-002.
+- A needed figure is not verified: AU-GEN-001; a needed figure has no published value, or a due date touches a public holiday not yet declared: AU-GEN-003; a due date is outside the public holiday data: AU-GEN-004; from the skill or tool that hit it.
+- The router has no refusal codes of its own; it relays the domain skills' codes exactly.
+
+## Output
+
+One combined working paper for the client and income year, even when the question asks for a single number. Use these exact section headings so a reviewer can find them: "Result", "Figures used", "Assumptions", "Risk flags", "Refusals or escalations". Never drop a section; write "none" if empty.
+
+**Header**: client and entities, income year (and FBT year), skills run in order with status (complete, partly refused, not available).
+**Parts not completed**: each refusal code and message verbatim, with the skill, or "none".
+
+1. **Result**
+   - One section per skill in the order run, each holding that skill's result as the skill produced it, with its income year.
+   - **Combined position**: the `assemble_taxable_income` `lines` table (component, amount, effect, source skill, tool) and its `taxable_income`, then the individual-tax result, then offsets from their own tools.
+   - **Obligations calendar**: date, obligation, period, rule, source; then recurring rules (Payday Super, STP) and "date not computed" items with their owner skill.
+2. **Figures used**: one combined table (key, value, status, source URL, skill, source URL or table). Same key used by two skills for different years: show both, labelled by year.
+3. **Assumptions**: combined list, each tagged with its skill, plus the router's own (facts assumed at intake) and the assembly tool's.
+4. **Risk flags**: combined, each tagged with its skill, plus any cross-skill inconsistency found, or "none".
+5. **Refusals or escalations**: every code and message, with the skill and what was not done; include the tools' `warnings`.
+6. One review line: "Working paper only. Review by a registered tax agent (or BAS agent for BAS matters) before use." Copy this sentence verbatim as the last line of the answer; do not paraphrase it.
+
+References: `references/intake.md` (intake questions and fact to skill map), `references/skill-map.md` (routing table, handoff fields, worked routing examples).

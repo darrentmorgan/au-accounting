@@ -1,0 +1,21 @@
+# short-stay-accommodation refusal codes. Skills surface code + message verbatim, then stop the affected work.
+# Reused, not duplicated: AU-GST-002 (commercial residential premises determination), AU-RENT-001 (entity owner,
+# business of letting, mixed structure), AU-RENT-002 (2027-28 quarantine), AU-RENT-003 (s 26-50 unresolved),
+# AU-RENT-005 (overseas property), AU-GEN-002 (asked to lodge).
+refusals:
+  - code: AU-SS-001
+    trigger: A host or adviser asks for a statement that GST registration is (or is not) required because of income earned through an online platform, where the answer would rest on the ATO Registering for GST page wording (which lists sharing economy or digital platform income) rather than on GSTA 1999 s 23-5 and the GST turnover rules (residential rent is input taxed and outside GST turnover).
+    message: "The rule I can state is GSTA 1999 s 23-5: registration is required when you carry on an enterprise and your GST turnover reaches the registration threshold, and input taxed supplies such as residential rent are not counted in GST turnover. The ATO's Registering for GST page lists income through the sharing economy or digital platforms as a case where you must register, and I can't reconcile that wording with the Act for accommodation hosts. I won't say you must or must not register on that basis alone. A registered tax agent or BAS agent should confirm the position, and a private ruling can settle it."
+    route: registered tax agent or BAS agent
+  - code: AU-SS-002
+    trigger: Sharing Economy Reporting Regime scope is asked for bookings of a property outside Australia by an Australian-resident host (for example a Bali villa), or a mixed case where the SERR property country, the supplier's address and the place of supply point different ways.
+    message: "Whether a platform reports bookings of an overseas property let by an Australian resident under the Sharing Economy Reporting Regime is not settled by the primary sources I can read. The reporting rule needs a supply connected with Australia (TAA 1953 Sch 1 s 396-55 item 15), and the ATO reporting guide is built for Australian property addresses. The host's income tax position does not depend on it: the rent is assessable and must be declared whether or not a report is made. A registered tax agent should confirm what the platform reports."
+    route: registered tax agent
+  - code: AU-SS-003
+    trigger: A short-stay point that the primary sources read do not settle - the day treatment of nights closed for repairs or renovation in the time-based apportionment, when platform payouts held past 30 June are derived as income, whether letting a room affects the SA land tax principal place of residence exemption, SA stamp duty or planning treatment of short-stay use, or whether a hotel-managed serviced apartment is inside the 2027-28 residential dwelling loss rule.
+    message: "The ATO and legislation sources I can read do not settle this short-stay point (for example nights closed for repairs, platform payouts held over 30 June, SA land tax or stamp duty on short-stay use, or hotel-managed serviced apartments and the 2027-28 loss rule). I won't state a treatment as fact. Keep the evidence (booking calendar, payout statements, dates) and ask a registered tax agent to confirm the position."
+    route: registered tax agent
+  - code: AU-SS-004
+    trigger: Platform statements or Sharing Economy Reporting Regime data disagree with the income the client has recorded or declared (for example net-of-fees income declared, a missing platform, a manager-held listing, or refunds that do not reconcile), so the return may need correcting.
+    message: "The platform figures and the income recorded for this property do not agree. The ATO receives gross platform income, fees and nights, so an unexplained difference is visible to it. I can show the reconciliation, but I can't decide whether an earlier return needs amending. A registered tax agent should review the difference and any amendment."
+    route: registered tax agent

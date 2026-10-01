@@ -1,0 +1,551 @@
+# Law-change watch list. Read by scripts/law_watch.py; fingerprints live in fingerprints.json beside this file.
+# Run: uv run scripts/law_watch.py check   (see docs/law-watch.md)
+#
+# What is on the list (primary sources only, CONVENTIONS section 1):
+#   - ATO rates and codes pages, and ATO guidance pages that source two or more figure keys in
+#     data/rates/2026-27*.yaml or 2027-28*.yaml (keys, skills and any null or SUSPECT figures are in `why`);
+#   - ATO new-legislation pages for announced changes, and the registered-agent lodgment pages;
+#   - the latest compilation of each Act and Regulations cited in skills/*/references/sources.md
+#     (legislation.gov.au /latest/ pages; the fingerprint is the compilation id and effective date);
+#   - RevenueSA and SA legislation pages behind state-taxes-sa; ASIC fees; the Fair Work Commission minimum wage;
+#   - public-holiday pages behind data/holidays/au.yaml (Fair Work Ombudsman, SA, and the pages that carry the
+#     unresolved WA and VIC 2028 dates).
+# Left off: as-made Acts and PDFs (they never change), AustLII mirrors, ATO legal-database pages (rulings and print
+# views, which render by script), single-figure ATO pages whose figure is fixed by legislation, and other states'
+# revenue offices.
+#
+# Extraction hints were tuned against real pages on 2026-09-29: legislation.gov.au, asic.gov.au, wa.gov.au and
+# abs.gov.au fetched by the script; one ato.gov.au page and one fairwork.gov.au page fetched once outside it (the
+# script itself is refused or times out there). The `generic` profile (whole body) is a placeholder for RevenueSA,
+# legislation.sa.gov.au, safework.sa.gov.au, business.vic.gov.au, fwc.gov.au and the ATO software-developer page,
+# which refused or did not answer: tune them from a saved copy (docs/law-watch.md) before relying on them.
+#
+# Fields: id (kebab-case, unique), url (https), profile (shared extraction hints below), why (which figure keys or
+# skills depend on the page), skills, extract (per-page overrides of the profile).
+# Extraction hints (all optional):
+#   select        one compound selector for the region to fingerprint: tag, #id, .class, [attr], [attr^=v], [attr*=v]
+#   exclude       selectors of regions inside it to drop (breadcrumbs, feedback widgets)
+#   start / end   text anchors that trim the extracted text
+#   strip         regexes removed from each text block (changing boilerplate such as "Last updated" lines)
+#   meta          name: regex over the raw HTML; captured values are stored and shown when they move
+#   fingerprint   {mode: text} (default) or {mode: meta, keys: [...]} to hash only those meta values
+#   min_chars     fewer extracted characters than this is reported as `error: blocked` (empty or script-rendered page)
+#   expect        strings that must appear in the extracted text, else `error: blocked`
+#   http_last_modified   also store the HTTP Last-Modified header in meta (only where the site keeps it stable)
+# ATO pages, RevenueSA and legislation.sa.gov.au can answer scripted requests with a bot challenge or an empty
+# shell. law_watch reports those as `error: blocked` and never works around them: check such pages by hand.
+schema: 1
+profiles:
+  ato:
+    select: "section#content"
+    exclude: ["#breadcrumb-nav", "#content-nav", "#page-qc", "#page-print"]
+    strip: ['^Last updated\b.*$']
+    meta:
+      last_updated: '<strong>Last updated\s*</strong>\s*([^<]+)<'
+  legislation-gov-au:
+    fingerprint: {mode: meta, keys: [compilation_id, effective_start]}
+    meta:
+      compilation_id: 'class="item-id[^"]*">\s*([A-Z]\d{4}[A-Z]\d{5})'
+      compilation_no: 'class="item-id[^"]*">\s*[A-Z]\d{4}[A-Z]\d{5}\s+(\w+)'
+      effective_start: 'date-effective-start">([^<]+)<'
+      publish_comments: '"isLatest":true[^{}]*?"publishComments":"((?:[^"\\]|\\.)*)"'
+  fwo:
+    select: "article.main"
+    strip: ['^Content last updated.*$', '^Printed from .*$']
+    meta:
+      last_updated: 'Content last updated:\s*(\d{4}-\d{2}-\d{2})'
+  asic:
+    select: "main"
+    meta:
+      last_modified: 'name="dcterms.date.modified" content="([^"]+)"'
+  wa-gov:
+    select: "article[class*=node--view-mode-full]"
+    strip: ['^Last updated\b.*$']
+    meta:
+      last_updated: 'ast updated: <time[^>]*>([^<]+)<'
+  abs:
+    select: "main"
+    meta:
+      release_date: 'elease date and time</div><div class="field__item">([^<]+)<'
+  generic: {}
+pages:
+  - id: ato-tax-rates-resident
+    url: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: individual.resident_rates, medicare.levy_rate'
+    skills: [individual-tax]
+  - id: ato-fbt-rates-thresholds
+    url: https://www.ato.gov.au/tax-rates-and-codes/fringe-benefits-tax-rates-and-thresholds
+    profile: ato
+    why: 'Cited source for 22 figure key(s) in data/rates/2026-27 and 2027-28: fbt.benchmark_interest_rate, fbt.car_operating_cost_depreciation_rate, fbt.car_parking_threshold, fbt.car_statutory_rate (+18 more). Null or SUSPECT now (10): fbt.benchmark_interest_rate, fbt.car_parking_threshold, fbt.ev_home_charging_rate_per_km and others; a change here may publish them'
+    skills: [fbt]
+  - id: ato-gic-rates
+    url: https://www.ato.gov.au/tax-rates-and-codes/general-interest-charge-rates
+    profile: ato
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: penalties_interest.gic_apr_jun_2027, penalties_interest.gic_apr_jun_2028, penalties_interest.gic_jan_mar_2027, penalties_interest.gic_jan_mar_2028 (+1 more). Null or SUSPECT now (5): penalties_interest.gic_apr_jun_2027, penalties_interest.gic_apr_jun_2028, penalties_interest.gic_jan_mar_2027 and others; a change here may publish them'
+    skills: [payg-instalments-lodgment]
+  - id: ato-sic-rates
+    url: https://www.ato.gov.au/tax-rates-and-codes/shortfall-interest-charge-rates
+    profile: ato
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: penalties_interest.sic_apr_jun_2027, penalties_interest.sic_apr_jun_2028, penalties_interest.sic_jan_mar_2027, penalties_interest.sic_jan_mar_2028 (+1 more). Null or SUSPECT now (5): penalties_interest.sic_apr_jun_2027, penalties_interest.sic_apr_jun_2028, penalties_interest.sic_jan_mar_2027 and others; a change here may publish them'
+    skills: [payg-instalments-lodgment]
+  - id: ato-div7a-benchmark-rate
+    url: https://www.ato.gov.au/tax-rates-and-codes/division-7a-benchmark-interest-rate
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: div7a.benchmark_interest_rate, div7a.benchmark_interest_rate_history. Null or SUSPECT now (1): div7a.benchmark_interest_rate; a change here may publish them'
+    skills: [company-div7a]
+  - id: ato-company-tax-rate-changes
+    url: https://www.ato.gov.au/tax-rates-and-codes/company-tax-rate-changes
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: company.bre_aggregated_turnover_threshold, company.bre_passive_income_max_share, company.rate_base_rate_entity, company.rate_other'
+    skills: [company-div7a]
+  - id: ato-luxury-car-tax
+    url: https://www.ato.gov.au/tax-rates-and-codes/luxury-car-tax-rate-and-thresholds
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: car_home.lct_threshold_fuel_efficient, car_home.lct_threshold_other, fbt.lct_threshold_fuel_efficient_by_year. Null or SUSPECT now (2): car_home.lct_threshold_fuel_efficient, car_home.lct_threshold_other; a change here may publish them'
+    skills: [fbt, individual-tax]
+  - id: ato-fx-rates-2027
+    url: https://www.ato.gov.au/tax-rates-and-codes/foreign-exchange-rates-monthly-2027-financial-year
+    profile: ato
+    why: 'Cited source for 14 figure key(s) in data/rates/2026-27 and 2027-28: au_indonesia.fx_idr_per_aud_average_year_to_30_jun, au_indonesia.fx_idr_per_aud_monthly_average_apr, au_indonesia.fx_idr_per_aud_monthly_average_aug, au_indonesia.fx_idr_per_aud_monthly_average_dec (+10 more). Null or SUSPECT now (12): au_indonesia.fx_idr_per_aud_average_year_to_30_jun, au_indonesia.fx_idr_per_aud_monthly_average_apr, au_indonesia.fx_idr_per_aud_monthly_average_dec and others; a change here may publish them'
+    skills: [au-indonesia-cross-border]
+  - id: ato-help-repayment-thresholds
+    url: https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: help.repayment_schedule. Null or SUSPECT now (1): help.repayment_schedule; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-paygw-schedule-1-coefficients
+    url: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/coefficients-to-use-in-formulas-for-withholding-from-weekly-payments
+    profile: ato
+    why: 'Cited source for 7 figure key(s) in data/rates/2026-27 and 2027-28: payroll.payg_scale1_no_tft, payroll.payg_scale2_tft, payroll.payg_scale3_foreign, payroll.payg_scale4_no_tfn_foreign_rate (+3 more). Null or SUSPECT now (7): payroll.payg_scale1_no_tft, payroll.payg_scale2_tft, payroll.payg_scale3_foreign and others; a change here may publish them'
+    skills: [payroll-sg]
+  - id: ato-paygw-schedule-1-weekly-earnings
+    url: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-1-statement-of-formulas-for-calculating-amounts-to-be-withheld/working-out-the-weekly-earnings
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: payroll.payg_offset_factor_fortnightly, payroll.payg_offset_factor_monthly, payroll.payg_offset_factor_quarterly, payroll.payg_offset_factor_weekly. Null or SUSPECT now (4): payroll.payg_offset_factor_fortnightly, payroll.payg_offset_factor_monthly, payroll.payg_offset_factor_quarterly and others; a change here may publish them'
+    skills: [payroll-sg]
+  - id: ato-paygw-schedule-8-stsl
+    url: https://www.ato.gov.au/tax-rates-and-codes/schedule-8-statement-of-formulas-for-calculating-study-and-training-support-loans-components
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: payroll.payg_stsl_component_no_tft, payroll.payg_stsl_component_tft_or_foreign. Null or SUSPECT now (2): payroll.payg_stsl_component_no_tft, payroll.payg_stsl_component_tft_or_foreign; a change here may publish them'
+    skills: [payroll-sg]
+  - id: ato-paygw-schedule-11-etp
+    url: https://www.ato.gov.au/tax-rates-and-codes/payg-withholding-schedule-11-tax-table-for-employment-termination-payments
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: individual.etp_whole_of_income_cap'
+    skills: [individual-tax]
+  - id: ato-super-contributions-caps
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
+    profile: ato
+    why: 'Cited source for 12 figure key(s) in data/rates/2026-27 and 2027-28: super.carry_forward_tsb_limit, super.cgt_cap_amount, super.concessional_cap, super.concessional_cap_2018_19 (+8 more). Null or SUSPECT now (2): super.cgt_cap_amount, super.concessional_cap; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-super-guarantee-rate
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.max_contribution_base_annual, super.sg_rate. Null or SUSPECT now (1): super.max_contribution_base_annual; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-super-div293
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/division-293-tax
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.div293_rate, super.div293_threshold'
+    skills: [super-contributions]
+  - id: ato-super-transfer-balance-cap
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/transfer-balance-cap
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.defined_benefit_income_cap, super.transfer_balance_cap. Null or SUSPECT now (2): super.defined_benefit_income_cap, super.transfer_balance_cap; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-super-government-contributions
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/government-contributions
+    profile: ato
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: super.co_contribution_higher_threshold, super.co_contribution_lower_threshold, super.co_contribution_max, super.listo_ati_limit (+1 more). Null or SUSPECT now (2): super.co_contribution_higher_threshold, super.co_contribution_lower_threshold; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-super-other-rates
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/other-super-rates-and-thresholds
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.smsf_lrba_safe_harbour_listed_shares, super.smsf_lrba_safe_harbour_real_property. Null or SUSPECT now (2): super.smsf_lrba_safe_harbour_listed_shares, super.smsf_lrba_safe_harbour_real_property; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-super-etp-caps
+    url: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/employment-termination-payments
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: individual.etp_cap, individual.genuine_redundancy_tax_free_base, individual.genuine_redundancy_tax_free_per_year. Null or SUSPECT now (3): individual.etp_cap, individual.genuine_redundancy_tax_free_base, individual.genuine_redundancy_tax_free_per_year; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-medicare-levy-reduction-low-income
+    url: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: medicare.low_income_sapto_single_lower, medicare.low_income_sapto_single_upper, medicare.low_income_single_lower, medicare.low_income_single_upper. Null or SUSPECT now (4): medicare.low_income_sapto_single_lower, medicare.low_income_sapto_single_upper, medicare.low_income_single_lower and others; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-medicare-levy-reduction-family
+    url: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income
+    profile: ato
+    why: 'Cited source for 6 figure key(s) in data/rates/2026-27 and 2027-28: medicare.low_income_family_lower, medicare.low_income_family_upper, medicare.low_income_per_child_lower_add, medicare.low_income_per_child_upper_add (+2 more). Null or SUSPECT now (6): medicare.low_income_family_lower, medicare.low_income_family_upper, medicare.low_income_per_child_lower_add and others; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-medicare-levy-surcharge-thresholds
+    url: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: medicare.mls_family_per_child_after_first, medicare.mls_family_tiers, medicare.mls_single_tiers. Null or SUSPECT now (2): medicare.mls_family_tiers, medicare.mls_single_tiers; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-phi-rebate-thresholds
+    url: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+    profile: ato
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: medicare.phi_rebate_1jul_to_31mar_65_69, medicare.phi_rebate_1jul_to_31mar_70_plus, medicare.phi_rebate_1jul_to_31mar_under_65, medicare.phi_rebate_from_2027_04_01 (+1 more). Null or SUSPECT now (5): medicare.phi_rebate_1jul_to_31mar_65_69, medicare.phi_rebate_1jul_to_31mar_70_plus, medicare.phi_rebate_1jul_to_31mar_under_65 and others; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-lito
+    url: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: individual.lito'
+    skills: [individual-tax]
+  - id: ato-part-year-residency-thresholds
+    url: https://www.ato.gov.au/individuals-and-families/coming-to-australia-or-going-overseas/your-tax-residency/australian-resident-for-tax-purposes
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: individual.part_year_tax_free_threshold_flat, individual.part_year_tax_free_threshold_prorated'
+    skills: [individual-tax]
+  - id: ato-home-office-fixed-rate
+    url: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim/work-related-deductions/working-from-home-expenses/fixed-rate-method
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: car_home.home_office_fixed_rate_per_hour. Null or SUSPECT now (1): car_home.home_office_fixed_rate_per_hour; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-cgt-discount
+    url: https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: cgt.discount_company, cgt.discount_complying_super_fund, cgt.discount_individual_trust'
+    skills: [cgt]
+  - id: ato-div296-how-calculated
+    url: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/division-296-tax/how-division-296-tax-is-calculated
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: super.div296_additional_rate_over_vlsbt, super.div296_large_balance_threshold, super.div296_rate_over_lsbt, super.div296_very_large_balance_threshold. Null or SUSPECT now (2): super.div296_large_balance_threshold, super.div296_very_large_balance_threshold; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-super-non-concessional-cap
+    url: https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/caps-limits-and-tax-on-super-contributions/non-concessional-contributions-cap
+    profile: ato
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: super.bring_forward_tiers, super.non_concessional_cap, super.nonconcessional_cap_2024_25, super.nonconcessional_cap_2025_26 (+1 more). Null or SUSPECT now (2): super.bring_forward_tiers, super.non_concessional_cap; a change here may publish them'
+    skills: [super-contributions]
+  - id: ato-payday-super-about
+    url: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/payday-super/about-payday-super
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.sgc_late_payment_penalty_rate_first, super.sgc_late_payment_penalty_rate_repeat'
+    skills: [payroll-sg]
+  - id: ato-payday-super-deadlines
+    url: https://www.ato.gov.au/businesses-and-organisations/super-for-employers/paying-super-on-payday/payment-deadlines-for-payday-super
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.payday_super_first_contribution_business_days, super.payday_super_usual_period_business_days'
+    skills: [payroll-sg]
+  - id: ato-new-legislation-tax-cuts
+    url: https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/personal-income-tax-new-tax-cuts-for-every-australian-taxpayer
+    profile: ato
+    why: 'Cited source for 9 figure key(s) in data/rates/2026-27 and 2027-28: individual.sapto_cut_out_couple_each, individual.sapto_cut_out_illness_separated_each, individual.sapto_cut_out_single, individual.sapto_max_offset_couple_each (+5 more). Null or SUSPECT now (6): individual.sapto_cut_out_couple_each, individual.sapto_cut_out_illness_separated_each, individual.sapto_cut_out_single and others; a change here may publish them'
+    skills: [individual-tax]
+  - id: ato-new-legislation-listo
+    url: https://www.ato.gov.au/about-ato/new-legislation/in-detail/superannuation/low-income-superannuation-tax-offset-listo
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: super.listo_ati_limit, super.listo_max'
+    skills: [super-contributions]
+  - id: ato-new-legislation-ev-fbt
+    url: https://www.ato.gov.au/about-ato/new-legislation/in-detail/businesses/electric-car-discount-more-sustainable-fbt-treatment-of-electric-cars
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: fbt.ev_proposal_base_value_limit, fbt.ev_proposal_discounted_statutory_rate, fbt.ev_proposal_full_discount_end_date, fbt.ev_proposal_start_date'
+    skills: [fbt]
+  - id: ato-new-legislation-frcgw
+    url: https://www.ato.gov.au/about-ato/new-legislation/in-detail/businesses/strengthening-the-foreign-resident-cgt-regime
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: cgt.frcgw_rate'
+    skills: [cgt]
+  - id: ato-fbt-lodge-return
+    url: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/fbt-registration-lodgment-payment-and-reporting/lodging-your-fbt-return-and-paying
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: fbt.return_due_date'
+    skills: [fbt]
+  - id: ato-fbt-car-parking-small-business
+    url: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/types-of-fringe-benefits/fbt-on-cars-other-vehicles-parking-and-tolls/car-parking-and-fbt
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: fbt.small_business_gross_income_threshold, fbt.small_business_turnover_threshold'
+    skills: [fbt]
+  - id: ato-fbt-minor-benefits
+    url: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/fringe-benefits-tax/exemptions-concessions-and-other-ways-to-reduce-fbt/minor-benefits-exemption
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: fbt.minor_benefit_threshold'
+    skills: [fbt]
+  - id: ato-gst-registering
+    url: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: gst.registration_deadline_days, gst.registration_threshold, gst.registration_threshold_nfp'
+    skills: [gst-bas]
+  - id: ato-gst-tax-invoices
+    url: https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/tax-invoices
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: gst.tax_invoice_buyer_identity_threshold, gst.tax_invoice_threshold_incl_gst'
+    skills: [gst-bas]
+  - id: ato-bas-due-dates
+    url: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
+    profile: ato
+    why: 'Cited source for 10 figure key(s) in data/rates/2026-27 and 2027-28: gst.bas_annual_gst_return_due_day_october, gst.bas_monthly_due_day, gst.bas_quarterly_due_day, gst.monthly_reporting_turnover_min (+6 more)'
+    skills: [gst-bas, payg-instalments-lodgment]
+  - id: ato-agent-lodgment-program-activity-statements
+    url: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/due-dates-by-obligation-type/activity-statements
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: gst.bas_agent_q1_due_yyyymmdd, gst.bas_agent_q3_due_yyyymmdd, gst.bas_agent_q4_due_yyyymmdd, gst.bas_monthly_december_concession_day_february. Null or SUSPECT now (3): gst.bas_agent_q1_due_yyyymmdd, gst.bas_agent_q3_due_yyyymmdd, gst.bas_agent_q4_due_yyyymmdd; a change here may publish them'
+    skills: [gst-bas]
+  - id: ato-agent-lodgment-program-fbt-return
+    url: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/due-dates-by-obligation-type/fbt-return
+    profile: ato
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: fbt.return_due_date_agent_electronic. Null or SUSPECT now (1): fbt.return_due_date_agent_electronic; a change here may publish them'
+    skills: [fbt]
+  - id: ato-agent-lodgment-weekend-holiday-rule
+    url: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
+    profile: ato
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: ato-payg-instalments-starting
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: payg_instalments.entry_company_instalment_income_min, payg_instalments.entry_instalment_income_min, payg_instalments.entry_last_assessed_tax_min, payg_instalments.entry_notional_tax_min'
+    skills: [payg-instalments-lodgment]
+  - id: ato-payg-instalments-when-due
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/when-are-payg-instalments-due
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: payg_instalments.annual_option_notional_tax_max, payg_instalments.monthly_instalment_income_min, payg_instalments.quarters_per_year, payg_instalments.two_instalment_first_share'
+    skills: [payg-instalments-lodgment]
+  - id: ato-payg-instalments-rate-calculation
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/calculate-your-payg-instalments/how-we-calculate-your-payg-instalment-amount-or-rate
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: payg_instalments.reasonable_rate_corporate, payg_instalments.reasonable_rate_individual_trust, payg_instalments.reasonable_rate_super_fund'
+    skills: [payg-instalments-lodgment]
+  - id: ato-lodge-return-payment-due-dates
+    url: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: lodgment.individual_payment_due_day, lodgment.individual_payment_due_month, lodgment.individual_return_due_day, lodgment.individual_return_due_month'
+    skills: [payg-instalments-lodgment]
+  - id: ato-penalty-failure-to-lodge
+    url: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/failure-to-lodge-on-time-penalty
+    profile: ato
+    why: 'Cited source for 6 figure key(s) in data/rates/2026-27 and 2027-28: penalties_interest.failure_to_lodge_units_per_28_days_small, penalties_interest.ftl_max_base_units, penalties_interest.ftl_multiplier_large, penalties_interest.ftl_multiplier_medium (+2 more)'
+    skills: [payg-instalments-lodgment]
+  - id: ato-penalty-false-or-misleading
+    url: https://www.ato.gov.au/individuals-and-families/paying-the-ato/interest-and-penalties/penalties/penalties-for-making-false-or-misleading-statements
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: penalties_interest.shortfall_penalty_intentional_disregard, penalties_interest.shortfall_penalty_no_reasonable_care, penalties_interest.shortfall_penalty_recklessness'
+    skills: [payg-instalments-lodgment]
+  - id: ato-stp-finalisation
+    url: https://www.ato.gov.au/businesses-and-organisations/hiring-and-paying-your-workers/single-touch-payroll/start-reporting/end-of-year-finalisation-through-stp
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: lodgment.stp_finalisation_due_day, lodgment.stp_finalisation_due_month'
+    skills: [payg-instalments-lodgment]
+  - id: ato-serr-how-to-lodge
+    url: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/third-party-reporting/sharing-economy-reporting-regime/how-and-when-to-report-under-the-serr/how-to-lodge-your-serr-report
+    profile: ato
+    why: 'Cited source for 4 figure key(s) in data/rates/2026-27 and 2027-28: shortstay.serr_due_day_period_jan_jun, shortstay.serr_due_day_period_jul_dec, shortstay.serr_due_month_period_jan_jun, shortstay.serr_due_month_period_jul_dec'
+    skills: [short-stay-accommodation]
+  - id: ato-sbito
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/concessions-offsets-and-rebates/small-business-income-tax-offset
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: business.sbito_cap, business.sbito_rate, business.sbito_turnover_threshold'
+    skills: [sole-trader-business]
+  - id: ato-small-business-pool
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/simpler-depreciation-for-small-business/small-business-pool-calculations
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: business.pool_first_year_rate, business.pool_later_year_rate'
+    skills: [sole-trader-business]
+  - id: ato-non-commercial-losses-four-tests
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/offset-or-defer-the-loss-individuals-or-sole-traders/four-tests
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: business.ncl_assessable_income_test, business.ncl_other_assets_test, business.ncl_real_property_test'
+    skills: [sole-trader-business]
+  - id: ato-non-commercial-losses-overview
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/losses/non-commercial-losses/what-is-a-non-commercial-loss
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: business.ncl_income_requirement, business.ncl_profit_test_window_years, business.ncl_profit_test_years_required'
+    skills: [sole-trader-business]
+  - id: ato-small-business-cgt-eligibility
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/incentives-and-concessions/small-business-cgt-concessions/small-business-cgt-concessions-eligibility-conditions/cgt-concessions-eligibility-overview
+    profile: ato
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: cgt.small_business_aggregated_turnover, cgt.small_business_max_net_asset_value'
+    skills: [cgt]
+  - id: ato-simplified-trading-stock
+    url: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/accounting-for-trading-stock/simplified-trading-stock-rules
+    profile: ato
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: bookkeeping.medium_entity_turnover_ceiling, bookkeeping.simplified_trading_stock_change_max, business.simplified_trading_stock_change_max'
+    skills: [bookkeeping-year-end, sole-trader-business]
+  - id: legis-itaa-1997
+    url: https://www.legislation.gov.au/C2004A05138/latest/text
+    profile: legislation-gov-au
+    why: 'Income Tax Assessment Act 1997: a new compilation id or effective date means an amendment to check against the rules cited by skills au-indonesia-cross-border, bookkeeping-year-end, cgt, company-div7a, crypto, individual-tax, rental-property, residency-cross-border, short-stay-accommodation, sole-trader-business, super-contributions, trusts-partnerships; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [au-indonesia-cross-border, bookkeeping-year-end, cgt, company-div7a, crypto, individual-tax, rental-property, residency-cross-border, short-stay-accommodation, sole-trader-business, super-contributions, trusts-partnerships]
+  - id: legis-itaa-1936
+    url: https://www.legislation.gov.au/C1936A00027/latest/text
+    profile: legislation-gov-au
+    why: 'Income Tax Assessment Act 1936 (includes Division 7A): a new compilation id or effective date means an amendment to check against the rules cited by skills au-indonesia-cross-border, bookkeeping-year-end, company-div7a, crypto, individual-tax, residency-cross-border, state-taxes-sa, trusts-partnerships; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [au-indonesia-cross-border, bookkeeping-year-end, company-div7a, crypto, individual-tax, residency-cross-border, state-taxes-sa, trusts-partnerships]
+  - id: legis-taa-1953
+    url: https://www.legislation.gov.au/C1953A00001/latest/text
+    profile: legislation-gov-au
+    why: 'Taxation Administration Act 1953 (Schedule 1: PAYG, GST administration, penalties): a new compilation id or effective date means an amendment to check against the rules cited by skills cgt, gst-bas, payg-instalments-lodgment, payroll-sg, rental-property; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [cgt, gst-bas, payg-instalments-lodgment, payroll-sg, rental-property]
+  - id: legis-income-tax-rates-act-1986
+    url: https://www.legislation.gov.au/C2004A03348/latest/text
+    profile: legislation-gov-au
+    why: 'Income Tax Rates Act 1986: a new compilation id or effective date means an amendment to check against the rules cited by skills cgt, company-div7a, individual-tax, trusts-partnerships; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [cgt, company-div7a, individual-tax, trusts-partnerships]
+  - id: legis-medicare-levy-act-1986
+    url: https://www.legislation.gov.au/C2004A03351/latest/text
+    profile: legislation-gov-au
+    why: 'Medicare Levy Act 1986: a new compilation id or effective date means an amendment to check against the rules cited by skills individual-tax; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [individual-tax]
+  - id: legis-fbtaa-1986
+    url: https://www.legislation.gov.au/C2004A03280/latest/text
+    profile: legislation-gov-au
+    why: 'Fringe Benefits Tax Assessment Act 1986: a new compilation id or effective date means an amendment to check against the rules cited by skills fbt; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [fbt]
+  - id: legis-gst-act-1999
+    url: https://www.legislation.gov.au/C2004A00446/latest/text
+    profile: legislation-gov-au
+    why: 'A New Tax System (Goods and Services Tax) Act 1999: a new compilation id or effective date means an amendment to check against the rules cited by skills gst-bas; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [gst-bas]
+  - id: legis-sgaa-1992
+    url: https://www.legislation.gov.au/C2004A04402/latest/text
+    profile: legislation-gov-au
+    why: 'Superannuation Guarantee (Administration) Act 1992: a new compilation id or effective date means an amendment to check against the rules cited by skills payroll-sg; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [payroll-sg]
+  - id: legis-sga-regulations-2018
+    url: https://www.legislation.gov.au/F2018L01289/latest/text
+    profile: legislation-gov-au
+    why: 'Superannuation Guarantee (Administration) Regulations 2018: a new compilation id or effective date means an amendment to check against the rules cited by skills payroll-sg; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [payroll-sg]
+  - id: legis-super-co-contribution-act-2003
+    url: https://www.legislation.gov.au/C2004A01195/latest/text
+    profile: legislation-gov-au
+    why: 'Superannuation (Government Co-contribution for Low Income Earners) Act 2003: a new compilation id or effective date means an amendment to check against the rules cited by skills super-contributions; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [super-contributions]
+  - id: legis-hesa-2003
+    url: https://www.legislation.gov.au/C2004A01234/latest/text
+    profile: legislation-gov-au
+    why: 'Higher Education Support Act 2003 (HELP repayment): a new compilation id or effective date means an amendment to check against the rules cited by skills individual-tax; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [individual-tax]
+  - id: legis-international-tax-agreements-act-1953
+    url: https://www.legislation.gov.au/C1953A00082/latest/text
+    profile: legislation-gov-au
+    why: 'International Tax Agreements Act 1953 (Australia-Indonesia agreement): a new compilation id or effective date means an amendment to check against the rules cited by skills au-indonesia-cross-border; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [au-indonesia-cross-border]
+  - id: legis-corporations-act-2001
+    url: https://www.legislation.gov.au/C2004A00818/latest/text
+    profile: legislation-gov-au
+    why: 'Corporations Act 2001: a new compilation id or effective date means an amendment to check against the rules cited by skills bookkeeping-year-end; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [bookkeeping-year-end]
+  - id: legis-corporations-regulations-2001
+    url: https://www.legislation.gov.au/F2001B00274/latest/text
+    profile: legislation-gov-au
+    why: 'Corporations Regulations 2001: a new compilation id or effective date means an amendment to check against the rules cited by skills bookkeeping-year-end; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [bookkeeping-year-end]
+  - id: legis-fair-work-act-2009
+    url: https://www.legislation.gov.au/C2009A00028/latest/text
+    profile: legislation-gov-au
+    why: 'Fair Work Act 2009: a new compilation id or effective date means an amendment to check against the rules cited by skills payroll-sg; no figure keys depend on it directly, so read the compilation notes and re-check the skill references'
+    skills: [payroll-sg]
+  - id: revenuesa-land-tax-rates-thresholds
+    url: https://www.revenuesa.sa.gov.au/land-tax/rates-and-thresholds
+    profile: generic
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.land_tax_general_scale, state.sa.land_tax_general_threshold, state.sa.land_tax_minimum_assessment, state.sa.land_tax_trust_scale (+1 more). Null or SUSPECT now (4): state.sa.land_tax_general_scale, state.sa.land_tax_general_threshold, state.sa.land_tax_trust_scale and others; a change here may publish them'
+    skills: [state-taxes-sa]
+  - id: revenuesa-land-tax-residential-home
+    url: https://www.revenuesa.sa.gov.au/landtax/exemption-waiver-relief/residential-home
+    profile: generic
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.land_tax_ppr_full_exemption_business_area_below_pct, state.sa.land_tax_ppr_partial_max_business_area_pct, state.sa.land_tax_ppr_partial_step_pct'
+    skills: [state-taxes-sa]
+  - id: revenuesa-payroll-tax-rates-thresholds
+    url: https://www.revenuesa.sa.gov.au/payroll-tax/rates-and-thresholds
+    profile: generic
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.payroll_tax_max_deduction_annual, state.sa.payroll_tax_rate, state.sa.payroll_tax_threshold_annual, state.sa.payroll_tax_threshold_monthly (+1 more)'
+    skills: [state-taxes-sa]
+  - id: revenuesa-payroll-tax-monthly-returns
+    url: https://www.revenuesa.sa.gov.au/payrolltax/returns-and-annual-reconciliation/monthly-returns
+    profile: generic
+    why: 'Cited source for 3 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.payroll_tax_annual_reconciliation_due_day_july, state.sa.payroll_tax_december_return_due_yyyymmdd, state.sa.payroll_tax_monthly_due_day'
+    skills: [state-taxes-sa]
+  - id: revenuesa-stamp-duty-rates
+    url: https://www.revenuesa.sa.gov.au/stamp-duty-land/rate-of-stamp-duty
+    profile: generic
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.stamp_duty_conveyance_scale'
+    skills: [state-taxes-sa]
+  - id: revenuesa-stamp-duty-foreign-ownership-surcharge
+    url: https://www.revenuesa.sa.gov.au/stamp-duty-land/FOS
+    profile: generic
+    why: 'Cited source for 2 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.stamp_duty_foreign_ownership_surcharge, state.sa.stamp_duty_foreign_surcharge_from'
+    skills: [state-taxes-sa]
+  - id: legis-sa-land-tax-act-1936
+    url: https://www.legislation.sa.gov.au/lz?path=/c/a/land%20tax%20act%201936
+    profile: generic
+    why: Primary legislation behind the SA land tax, payroll tax and holiday rules (state-taxes-sa, due dates)
+    skills: [state-taxes-sa]
+  - id: legis-sa-payroll-tax-act-2009
+    url: https://www.legislation.sa.gov.au/lz?path=/c/a/payroll%20tax%20act%202009
+    profile: generic
+    why: Primary legislation behind the SA land tax, payroll tax and holiday rules (state-taxes-sa, due dates)
+    skills: [state-taxes-sa]
+  - id: legis-sa-public-holidays-act-2023
+    url: https://www.legislation.sa.gov.au/lz?path=/c/a/public%20holidays%20act%202023
+    profile: generic
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: asic-fees-commonly-lodged-documents
+    url: https://www.asic.gov.au/for-business-and-companies/forms-and-fees/all-fees/fees-for-commonly-lodged-documents
+    profile: asic
+    why: 'Cited source for 5 figure key(s) in data/rates/2026-27 and 2027-28: asic.annual_review_proprietary, asic.annual_review_special_purpose_proprietary, asic.company_registration_fee, asic.late_fee_higher (+1 more). Null or SUSPECT now (5): asic.annual_review_proprietary, asic.annual_review_special_purpose_proprietary, asic.company_registration_fee and others; a change here may publish them'
+    skills: [bookkeeping-year-end]
+  - id: fwc-national-minimum-wage
+    url: https://www.fwc.gov.au/work-conditions/minimum-wages-and-conditions/national-minimum-wage
+    profile: generic
+    why: Source for payroll_wages.national_minimum_wage_hourly, payroll_wages.casual_loading
+    skills: [payroll-sg]
+  - id: fwo-public-holidays-2026
+    url: https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays
+    profile: fwo
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: fwo-public-holidays-2027
+    url: https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays
+    profile: fwo
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: safework-sa-public-holidays
+    url: https://safework.sa.gov.au/resources/public-holidays
+    profile: generic
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: wa-public-holiday-review
+    url: https://www.wa.gov.au/organisation/department-of-the-premier-and-cabinet/public-holiday-review
+    profile: wa-gov
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: vic-public-holidays-2028
+    url: https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2028
+    profile: generic
+    why: Public-holiday dates in data/holidays/au.yaml (due-date business-day rolls)
+    skills: [gst-bas, payg-instalments-lodgment, fbt, payroll-sg, state-taxes-sa]
+  - id: abs-cpi-latest-release
+    url: https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/latest-release
+    profile: abs
+    why: cgt.indexation_cpi_from_2027 (CGT indexation from 1 Jul 2027 uses CPI)
+    skills: [cgt]
+  - id: ato-payg-instalments-gdp-uplift-factor
+    url: https://softwaredevelopers.ato.gov.au/GDPupliftfactor
+    profile: generic
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: payg_instalments.gdp_adjustment. Null or SUSPECT now (1): payg_instalments.gdp_adjustment; a change here may publish them'
+    skills: [payg-instalments-lodgment]
+  - id: revenuesa-land-tax-primary-production
+    url: https://www.revenuesa.sa.gov.au/landtax/exemption-waiver-relief/primary-production
+    profile: generic
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.land_tax_primary_production_min_hectares'
+    skills: [state-taxes-sa]
+  - id: revenuesa-stamp-duty-real-property-land
+    url: https://www.revenuesa.sa.gov.au/stamp-duty-land/real-property-land
+    profile: generic
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.stamp_duty_qualifying_land_nil_duty_from'
+    skills: [state-taxes-sa]
+  - id: revenuesa-stamp-duty-seniors-downsizing
+    url: https://www.revenuesa.sa.gov.au/stamp-duty-land/seniors-downsizing-stamp-duty-relief
+    profile: generic
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.stamp_duty_downsizer_contracts_from'
+    skills: [state-taxes-sa]
+  - id: revenuesa-stamp-duty-first-home-buyer-relief
+    url: https://www.revenuesa.sa.gov.au/stampduty/first-home-buyer-relief/relief-available
+    profile: generic
+    why: 'Cited source for 1 figure key(s) in data/rates/2026-27 and 2027-28: state.sa.stamp_duty_fhb_full_relief_contracts_from'
+    skills: [state-taxes-sa]

@@ -1,0 +1,38 @@
+# payroll-sg refusal codes. Skills surface code + message verbatim, then stop the affected work.
+refusals:
+  - code: AU-PAY-001
+    trigger: Worker status is disputed, a worker or regulator alleges sham contracting (Fair Work Act 2009 ss357-359), or the employer wants a definitive employee/contractor ruling where facts conflict.
+    message: "Whether this worker is an employee or a contractor is disputed or may involve sham contracting. I can list the indicators, but the decision needs an employment lawyer or registered tax agent (or an ATO private ruling for tax and super)."
+    route: employment lawyer or registered tax agent
+  - code: AU-PAY-002
+    trigger: Question turns on interpreting a modern award or enterprise agreement - classification, minimum rates, penalty rates, overtime, allowances, loadings or leave entitlements under an industrial instrument.
+    message: "This depends on how a modern award or enterprise agreement applies, which I don't interpret. Check the award with the Fair Work Ombudsman (fairwork.gov.au, Pay Calculator) or an employment lawyer before paying."
+    route: Fair Work Ombudsman or employment lawyer
+  - code: AU-PAY-003
+    trigger: Termination payments - employment termination payments, genuine redundancy or early retirement scheme payments, unused annual or long service leave paid on termination (Schedules 7 and 11), or death benefit ETPs.
+    message: "Termination payments (ETPs, redundancy and unused leave on termination) have their own caps, tax-free parts and withholding schedules that this skill does not calculate. A registered tax agent or payroll specialist should prepare them."
+    route: registered tax agent
+  - code: AU-PAY-004
+    trigger: State or territory payroll tax - thresholds, grouping, contractor (relevant contract) provisions, registration or returns.
+    message: "Payroll tax is a state tax outside this skill. Use the state-taxes-sa skill for South Australia, or the relevant state revenue office."
+    route: state-taxes-sa skill or state revenue office
+  - code: AU-PAY-005
+    trigger: Fringe benefits tax - car benefits, salary packaging of non-cash benefits, reportable fringe benefits amounts, FBT returns.
+    message: "Fringe benefits tax is outside this skill. Use the fbt skill; reportable fringe benefits amounts over the reporting threshold are then reported through STP."
+    route: fbt skill or registered tax agent
+  - code: AU-PAY-006
+    trigger: Withholding needs a schedule or adjustment other than the regular Schedule 1 formulas - working holiday makers (Schedule 15), seniors and pensioners (Schedule 9), horticulture or shearing, entertainers, daily or casual table, back payments, bonuses and commissions paid as lump sums (Schedule 5), Medicare levy variation for spouse or dependants, 53/27-pay top-ups, voluntary or increased withholding agreements, or a 2025-26 study loan component before 24 Sep 2025.
+    message: "This payment needs a different ATO withholding schedule or adjustment than the regular Schedule 1 formulas I apply. Use the ATO tax withheld calculator or the specific schedule, or ask a registered tax agent."
+    route: ATO tax withheld calculator or registered tax agent
+  - code: AU-PAY-007
+    trigger: SG charge question beyond estimating components - objections or amendments, remission, the late payment penalty or Part 7 penalty, director penalty notices, exceptional circumstances determinations, or partly paid or choice-liability quarters under the pre-1 July 2026 SGC.
+    message: "This SG charge question involves penalties, objections, director penalties or a partly paid pre-July 2026 quarter that I can't settle. Use the ATO SGC statement and calculator tool and get a registered tax agent (or lawyer for director penalties) involved."
+    route: registered tax agent or lawyer
+  - code: AU-PAY-008
+    trigger: Request falls outside the modelled period or regime - dates outside the stated income year, mixing the quarterly SG regime (to 30 June 2026) with Payday Super QE days, or special super guarantee cases (defined benefit funds, certificates of coverage for foreign employees, SG opt-out for high-income employees with multiple employers, exemption certificates).
+    message: "This falls outside the period or super guarantee regime I can calculate for the stated income year (or is a special SG case). Split the question by income year, or have a registered tax agent confirm the special case."
+    route: registered tax agent
+  - code: AU-PAY-009
+    trigger: Taxable payments annual report (TPAR) - whether contractor payments for cleaning, courier, building, IT, security or road freight services must be reported, and preparing the report.
+    message: "Taxable payments annual reporting for contractors is outside this skill. A BAS agent or registered tax agent should confirm whether a TPAR is due (by 28 August) and prepare it."
+    route: BAS agent or registered tax agent

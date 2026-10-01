@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+evals/results/
+.DS_Store
+.claude/worktrees/
+.eval-results/
+.claude/
+.codex/
+.omc/
+.env*

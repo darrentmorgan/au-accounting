@@ -1,0 +1,83 @@
+# Crypto risk flags. Fields: id, topic, description, citations, skills.
+# Extends CGT-CRYPTO-PERSONAL-USE, CGT-CRYPTO-DRAFTS, CGT-2027-VALUATION and CGT-WASH-SALE in cgt.yaml with crypto-specific points.
+risk_flags:
+  - id: CRYPTO-SWAP-DISPOSAL
+    topic: Crypto-to-crypto swaps are disposals
+    description: Swapping one crypto for another, spending crypto on goods or services, gifting it, or loading a card is a CGT event A1 even though no AUD is received. Capital proceeds are the AUD market value of what is received. The asset received is acquired on the swap date, so its 12-month clock restarts.
+    citations: ["ITAA 1997 s 104-10", "ITAA 1997 s 116-20(1)(b)", "ITAA 1997 s 109-5", "ATO: crypto to crypto exchange or swap"]
+    skills: [crypto, cgt]
+  - id: CRYPTO-AUD-VALUATION
+    topic: AUD value recorded for every transaction
+    description: Every transaction, including swaps with no AUD leg, needs the AUD market value at the time and the source of that price. The ATO has no approved daily-average shortcut, and UTC timestamps must be converted to the Australian local date before the income year is fixed.
+    citations: ["ATO: crypto asset transactions", "ATO: keeping crypto records"]
+    skills: [crypto]
+  - id: CRYPTO-FEES-IN-CRYPTO
+    topic: Network and platform fees paid in crypto
+    description: A fee paid in crypto is a disposal of the crypto spent. The ATO does not say how the fee counts in the cost base of the asset it relates to, and draft TD 2026/D2 reserves gas fees. Treat the treatment as unsettled and keep the record.
+    citations: ["ATO: tax and crypto asset investments (investors toolkit)", "TD 2026/D2 (draft)"]
+    skills: [crypto]
+  - id: CRYPTO-PARCEL-IDENTIFICATION
+    topic: Which units were sold
+    description: The ATO has published no crypto-specific parcel identification position. TD 33 accepts first-in first-out or the taxpayer's own selection where records show it, and does not accept average cost across parcels bought on different days. A method other than first-in first-out needs contemporaneous records.
+    citations: ["TD 33", "TD 33A"]
+    skills: [crypto]
+  - id: CRYPTO-PUA-NARROW
+    topic: Personal use asset exemption is narrow
+    description: Crypto is a personal use asset only if kept or used mainly to buy items for personal use or consumption, usually acquired and used within a short time. Investment holdings later spent do not qualify. The exemption tests the first element of cost base (inclusive of the threshold); losses are always disregarded; splitting a holding into several disposals may be caught by the set rule, and the ATO web pages conflict on payment gateways.
+    citations: ["TD 2014/26 paras 17-21", "ITAA 1997 s 108-20", "ITAA 1997 s 108-25", "ITAA 1997 s 118-10(3)", "ATO: crypto asset as a personal use asset"]
+    skills: [crypto, cgt]
+  - id: CRYPTO-CHARACTER-SCREEN
+    topic: Investor, trader or business
+    description: Crypto held in a business, or acquired in a commercial profit-making transaction, is on revenue account (trading stock or ordinary income) and the CGT discount does not apply. Volume, holding period and sophistication alone do not decide it; purpose, commerciality, regularity and organisation do. Non-commercial loss rules can apply to a business loss.
+    citations: ["TD 2014/26", "TD 2014/27", "TR 97/11", "TR 92/3", "ITAA 1997 s 70-10", "ITAA 1997 s 118-20", "ATO: crypto assets used in business"]
+    skills: [crypto]
+  - id: CRYPTO-STAKING-INCOME
+    topic: Staking and DeFi rewards are income when received
+    description: Staking and other consensus rewards are ordinary income at the AUD market value when received, and that value is the cost base of the tokens. Taxing them only on sale, or giving them a nil cost base, double counts or omits income. Rewards locked until conditions are met raise a timing question (edited advice only, not binding).
+    citations: ["ITAA 1997 s 6-5", "ITAA 1936 s 21", "ATO: staking rewards and airdrops"]
+    skills: [crypto]
+  - id: CRYPTO-DRAFT-RULINGS
+    topic: Airdrop and wrapping positions are drafts
+    description: TR 2026/D1 (airdrops) and TD 2026/D2 (wrapping), both issued 19 Aug 2026, are draft rulings stating the ATO's preliminary view and may change, including their proposed application before and after issue. ATO web pages updated 19 Aug 2026 mirror them; that does not make them final.
+    citations: ["TR 2026/D1 (draft)", "TD 2026/D2 (draft)", "ATO: staking rewards and airdrops", "ATO: decentralised finance and wrapping crypto"]
+    skills: [crypto, cgt]
+  - id: CRYPTO-CHAIN-SPLIT
+    topic: Chain split cost base and date
+    description: A new asset received on a chain split is neither income nor a capital gain when received, has a nil cost base and is acquired on the split date. Which side is the new asset depends on which one continues the original rights. If neither does, the original is treated as ending. This is ATO web guidance only; no ruling exists.
+    citations: ["ATO: crypto chain splits", "ITAA 1997 s 104-25"]
+    skills: [crypto]
+  - id: CRYPTO-LOSS-EVIDENCE
+    topic: Lost, stolen and failed-platform crypto
+    description: A capital loss on lost or stolen crypto needs evidence of ownership and of loss of access. Recoverable crypto is not lost. The event time is discovery or first compensation, and compensation reduces the loss. Exchange failures are generally realised only when administration is finalised.
+    citations: ["ITAA 1997 s 104-20", "ATO: loss or theft of crypto assets", "ATO: crypto exchanges and platforms under administration"]
+    skills: [crypto]
+  - id: CRYPTO-RECORDS
+    topic: Records for every transaction
+    description: Records of every transaction that may bear on a gain or loss are required and, if missing, must be reconstructed; nil cost base is not the default. Exchange statements alone are not enough, and records must be kept until 5 years after no further CGT event can happen for the asset.
+    citations: ["ITAA 1997 s 121-20", "ITAA 1997 s 121-25", "ATO: keeping crypto records"]
+    skills: [crypto]
+  - id: CRYPTO-DATA-MATCHING
+    topic: ATO data matching of crypto exchanges
+    description: The ATO obtains crypto exchange data (identity details, transactions, wallet addresses) and pre-fills an indicator in myTax. Disposals with no cash, swaps, staking and airdrop income are the commonly missed items. Discrepancies are put to the taxpayer.
+    citations: ["ATO: crypto assets data-matching program protocol", "ATO: clarity on crypto reporting"]
+    skills: [crypto]
+  - id: CRYPTO-RESIDENCY
+    topic: Residency changes the crypto outcome
+    description: Residents are taxed on worldwide crypto income and gains. Foreign residents disregard gains on assets that are not taxable Australian property but are taxed on Australian-source income. Ceasing residency triggers CGT event I1, and becoming a resident resets the cost base to market value. Crypto has no physical location, so source depends on where the activity happens.
+    citations: ["ITAA 1997 s 855-10", "ITAA 1997 s 104-160", "ITAA 1997 s 855-45", "ATO: crypto asset transactions and tax residency"]
+    skills: [crypto, residency-cross-border]
+  - id: CRYPTO-2027-VALUATION
+    topic: Market value just before 1 July 2027
+    description: For crypto held on 30 June 2027 and disposed of later, a resident individual's gain is split at a deemed sale at market value just before 1 July 2027. Keep dated exchange price evidence for every parcel likely to be sold after that date. The draft apportioning method is aimed at real property and assets with no readily ascertainable market value, so it will not normally suit coins with a public price. No primary source fixes the instant or time zone.
+    citations: ["ITAA 1997 s 112-155", "ITAA 1997 s 112-160", "ITAA 1997 s 112-185", "Act No. 49 of 2026 Sch 1"]
+    skills: [crypto, cgt]
+  - id: CRYPTO-WASH-SALE
+    topic: Selling at a loss and rebuying
+    description: Selling crypto to crystallise a loss and repurchasing the same or an equivalent asset soon after may be a scheme to which Part IVA applies, and the loss can be cancelled.
+    citations: ["TR 2008/1", "ITAA 1936 Part IVA"]
+    skills: [crypto, cgt]
+  - id: CRYPTO-GST-PAYROLL-ROUTING
+    topic: GST, PAYG and FBT sit outside this skill
+    description: Crypto paid as salary or for work brings PAYG withholding and super on its AUD value, and a valid salary sacrifice into crypto is a property fringe benefit. Digital currency is not a taxable supply for GST but NFTs and pegged stablecoins differ. Route to payroll-sg, fbt and gst-bas.
+    citations: ["TD 2014/28", "GSTR 2006/9 Addendum", "ATO: GST and digital currency"]
+    skills: [crypto, payroll-sg, fbt, gst-bas]

@@ -1,0 +1,47 @@
+# Crypto refusal and escalation codes (skill: crypto). Same schema as au.yaml. Skills surface code + message verbatim.
+# Complex DeFi, wrapping, bridging and airdrops in a business reuse AU-CGT-005 (data/refusals/cgt.yaml).
+refusals:
+  - code: AU-CRYPTO-001
+    trigger: Facts point to a business, or to profit-making commercial transactions, rather than capital-account investing - a crypto trading business, crypto held for sale or exchange in the ordinary course of any business (including crypto received as payment and held for sale), regular repeated trading with a profit purpose and business-like organisation, or an isolated transaction entered into for profit.
+    message: "These facts may put the crypto on revenue account (trading stock and ordinary income, with no CGT discount) rather than capital account. Whether that is so is a fact-heavy judgement I can't make; a registered tax agent should decide the character and prepare the return."
+    route: registered tax agent
+  - code: AU-CRYPTO-002
+    trigger: Crypto mining or mining pool payouts, by a business or as a hobby (cost base, timing and characterisation of mined coins and pool payouts are not settled in published ATO material; GST also applies to business mining).
+    message: "Mining and pool payouts raise characterisation, cost base and GST questions that published ATO material does not settle. I can't compute this reliably; a registered tax agent should review it."
+    route: registered tax agent
+  - code: AU-CRYPTO-003
+    trigger: An airdrop or token distribution outside draft TR 2026/D1 - an initial allocation airdrop made before a final ruling, rebasing tokens, airdrops rewarding liquidity provision to a decentralised exchange, bounty airdrops for simple tasks, non-arm's-length distributions, or airdrops whose character (income, capital or gift) is not settled by the draft.
+    message: "This token distribution is not covered by the ATO's draft airdrop ruling (draft TR 2026/D1, a preliminary view only). I can't say reliably whether it is income or capital, or what its cost base is; a registered tax agent should review it."
+    route: registered tax agent
+  - code: AU-CRYPTO-004
+    trigger: A loss that depends on evidence or timing I can't settle - an exchange or platform in administration or hacked, compensation or insurance or recovery claims, a lost key, theft or scam with weak evidence of ownership and loss of access, or a worthless, delisted or depegged token where no disposal has happened.
+    message: "A capital loss on lost, stolen, scammed or failed-platform crypto depends on evidence of ownership and loss of access and on the timing of the CGT event, and no ATO guidance realises a loss on a worthless token without a disposal. A registered tax agent should review the evidence before any loss is claimed."
+    route: registered tax agent
+  - code: AU-CRYPTO-005
+    trigger: The holder is a foreign resident, temporary resident, part-year resident, or is ceasing or becoming an Australian resident, or a treaty or overseas-source question arises for crypto income or gains.
+    message: "Residency changes how crypto gains and income are taxed (foreign and temporary residents, CGT event I1 on ceasing residency, and the cost base reset on becoming a resident). I have only screened the resident individual case; a registered tax agent should prepare the rest."
+    route: registered tax agent
+  - code: AU-CRYPTO-006
+    trigger: NFTs (creation, minting, royalties, marketplace selling, lending or renting) or a collectable classification question for a token.
+    message: "NFTs raise business, GST and collectable-versus-personal-use questions that depend on the rights the token carries. I can't compute this reliably; a registered tax agent should review it."
+    route: registered tax agent
+  - code: AU-CRYPTO-007
+    trigger: Crypto bought with borrowed money, interest deductibility, margin lending, or crypto-backed loans.
+    message: "Whether interest on money borrowed to buy crypto is deductible (for example when the crypto produces no income), and how it feeds the cost base, needs individual review. A registered tax agent should consider it."
+    route: registered tax agent
+  - code: AU-CRYPTO-008
+    trigger: Year-end loss harvesting or round-trip trades - selling at a loss and repurchasing the same or an equivalent asset soon afterwards.
+    message: "Selling to crystallise a loss and repurchasing soon after may be a wash sale to which Part IVA applies (TR 2008/1), and the loss can be cancelled. A registered tax agent should review it before the loss is used."
+    route: registered tax agent
+  - code: AU-CRYPTO-009
+    trigger: A parcel identification method that is not acceptable on the ATO's TD 33 reasoning - average cost across parcels bought on different days, or a specific identification with no records showing which units were disposed of.
+    message: "Average cost across crypto bought on different days is not an accepted way to identify which units were sold. Use first-in first-out, or a specific selection that your records show contemporaneously. Please choose a method and confirm the records."
+    route: preparer
+  - code: AU-CRYPTO-010
+    trigger: The ledger cannot support a calculation - a disposal larger than the holdings on record, a cost base with no evidence, or an AUD market value that is missing for a transaction.
+    message: "The records supplied do not support this calculation (a holding is too small for a disposal, a cost base has no evidence, or an AUD value is missing). Missing records must be reconstructed from exchange and blockchain data; a nil cost base is not the default. Please provide the missing entries."
+    route: preparer
+  - code: AU-CRYPTO-011
+    trigger: A chain split where it is not clear which side continues the original asset, or where neither side does (CGT event C2 on the original).
+    message: "Treatment of a chain split depends on which asset continues the original: if none does, the original is treated as ending and both assets are new. That needs the rights and history of each chain; a registered tax agent should confirm which side continues before any figure is used."
+    route: registered tax agent

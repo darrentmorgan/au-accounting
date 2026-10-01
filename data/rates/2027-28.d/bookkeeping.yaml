@@ -1,0 +1,72 @@
+# bookkeeping overlay, income year 2027-28. Same schema as the base file; no key collisions; SUSPECT/null figures carry checked_at.
+bookkeeping:
+  record_retention_years:
+    value: 5
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/record-keeping-for-business/overview-of-record-keeping-rules-for-business
+    as_at: 2026-09-29
+    notes: 'General retention period for tax, super and registration records (ITAA 1936 s 262A; TAA 1953 Sch 1 s 382-5). Start point varies (FBT: lodgment;
+      super contributions: date of contribution); some records must be kept longer (period of review, CGT assets, depreciating assets). For 2027-28 (read
+      2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  company_financial_records_retention_years:
+    value: 7
+    unit: years
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A00818/2026-08-27/2026-09-18/text/original/epub/OEBPS/document_2/document_2.html
+    as_at: 2026-09-29
+    notes: 'Corporations Act 2001 s 286(2): financial records retained for 7 years after the transactions they cover are completed. Applies to companies,
+      registered schemes, registrable superannuation entities and disclosing entities. For 2027-28 (read 2026-09-29): Read in the Corporations Act compilation
+      C2026C00382 (27 Aug 2026 to 18 Sep 2026, latest on the register at 2026-09-29): 7 years after the transactions are completed.'
+  simplified_trading_stock_change_max:
+    value: 5000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/accounting-for-trading-stock/simplified-trading-stock-rules
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 328-285: no stocktake or accounting for the change if opening stock and the reasonable estimate of closing stock differ by no more
+      than this amount. The entity may still choose to stocktake. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found
+      on the source.'
+  medium_entity_turnover_ceiling:
+    value: 50000000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/income-and-deductions-for-business/accounting-for-trading-stock/simplified-trading-stock-rules
+    as_at: 2026-09-29
+    notes: 'Aggregated turnover ceiling for entities that would be a small business entity if the threshold were this amount. Used for the simplified trading
+      stock rules (income years from 1 Jul 2021) and for the prepayment 12-month rule. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or
+      scheduled change found on the source.'
+  prepayment_max_service_months:
+    value: 12
+    unit: months
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=SAV%2FDPE%2F00001
+    as_at: 2026-09-29
+    notes: 'ITAA 1936 s 82KZM 12-month rule: eligible service period of 12 months or less and ending no later than the last day of the income year after
+      the one in which the expenditure was incurred. For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  prepayment_max_apportion_years:
+    value: 10
+    unit: years
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=SAV%2FDPE%2F00001
+    as_at: 2026-09-29
+    notes: 'Eligible service period is capped at 10 years when apportioning a prepayment (ITAA 1936 s 82KZMD). For 2027-28 (read 2026-09-29): Unchanged;
+      no year-specific term or scheduled change found on the source.'
+  prepayment_excluded_amount:
+    value: 1000
+    unit: AUD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=SAV%2FDPE
+    as_at: 2026-09-29
+    notes: 'Excluded expenditure: prepaid amounts below this figure (excluding input tax credits) are deductible in the year incurred (ITAA 1936 s 82KZL).
+      For 2027-28 (read 2026-09-29): Unchanged; no year-specific term or scheduled change found on the source.'
+  financial_report_lodgement_months:
+    value: 4
+    unit: months
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2004A00818/2026-08-27/2026-09-18/text/original/epub/OEBPS/document_2/document_2.html
+    as_at: 2026-09-29
+    notes: 'Corporations Act 2001 s 319: financial reports of large proprietary companies are due to ASIC 4 months after financial year end (3 months for
+      disclosing entities and registered schemes). For 2027-28 (read 2026-09-29): Confirmed in Corporations Act s 319(3)(b) (compilation C2026C00382): 4
+      months for entities other than disclosing entities, registered schemes, registrable superannuation entities and notified foreign passport funds (3
+      months).'

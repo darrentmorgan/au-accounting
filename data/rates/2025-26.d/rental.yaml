@@ -1,0 +1,115 @@
+# rental-property overlay, income year 2025-26. Same schema as the base file; no key collisions.
+# Every figure below was read on the cited primary page on 2026-09-29. Dates are stored as YYYYMMDD numbers.
+rental:
+  negative_gearing_first_income_year:
+    value: 2027
+    unit: calendar year in which the first affected income year starts (2027 = the 2027-28 income year)
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'Treasury Laws Amendment (Tax Reform No. 1) Act 2026 (No. 49 of 2026) Sch 2 item 5: the residential dwelling loss
+      quarantine (ITAA 1997 ss 26-155, 26-160) applies to the 2027-28 income year and later years. Act 71 of 2026 Sch 4 item 5
+      says the same for the extension sections 26-156 to 26-159. The Act commenced 27 Jun 2026 but nothing is quarantined
+      in 2025-26 or 2026-27. ATO page (updated 29 Jun 2026): https://www.ato.gov.au/about-ato/new-legislation/in-detail/individuals/tax-reform-boosting-home-ownership-reforming-negative-gearing-and-capital-gains-tax'
+  negative_gearing_grandfather_date:
+    value: 20260512
+    unit: date YYYYMMDD; the cut-off is 7.30 pm by legal time in the ACT on that day
+    status: VERIFIED
+    source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 26-155(2)(a) as inserted by Act 49 of 2026 Sch 2: an ownership interest in a residential dwelling last
+      acquired before this time is not quarantined. s 26-155(3): for a dwelling acquired under a contract, the interest is held
+      from the time of the contract. Act 71 of 2026 Sch 4 adds death, co-owner death and relationship breakdown extensions
+      (ss 26-156 to 26-158) and disregards s 118-192(2) for the timing test.'
+  holiday_home_compliance_start:
+    value: 20260701
+    unit: date YYYYMMDD
+    status: VERIFIED
+    source: https://www.ato.gov.au/law/view/document?docid=COG%2FPCG20263%2FNAT%2FATO%2F00001
+    as_at: 2026-09-29
+    notes: 'PCG 2026/3 paras 12-13 (citing TR 2026/1 para 138): the ATO will not devote compliance resources to s 26-50 for
+      holiday home expenses incurred before this date. This is a compliance approach only; s 26-50 itself is unchanged.'
+  second_hand_asset_acquired_before:
+    value: 20170509
+    unit: date YYYYMMDD; cut-off is 7.30 pm AEST on that day
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/depreciating-assets-in-rental-properties/second-hand-depreciating-assets
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 40-27 (Treasury Laws Amendment (Housing Tax Integrity) Act 2017). Second-hand assets in residential
+      rental premises are deductible only if acquired before this time AND installed ready for use before the install date below.'
+  second_hand_asset_installed_before:
+    value: 20170701
+    unit: date YYYYMMDD
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/depreciating-assets-in-rental-properties/second-hand-depreciating-assets
+    as_at: 2026-09-29
+    notes: 'See second_hand_asset_acquired_before.'
+  low_cost_asset_immediate_deduction_limit:
+    value: 300
+    unit: AUD
+    status: VERIFIED
+    source: https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s40.80.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 40-80(2): cost not above this amount, used predominantly for non-business income, not part of a set
+      whose total cost exceeds it, and identical assets started in the year total not above it.'
+  diminishing_value_factor:
+    value: 2
+    unit: multiplier (200% divided by effective life)
+    status: VERIFIED
+    source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/general-depreciation-rules-capital-allowances/prime-cost-straight-line-and-diminishing-value-methods
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 40-70(1) for assets started on or after 10 May 2006: base value x days held/365 x 200%/effective life.
+      Prime cost (s 40-75) is cost x days held/365 x 100%/effective life.'
+  borrowing_expense_immediate_limit:
+    value: 100
+    unit: AUD
+    status: VERIFIED
+    source: https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s25.25.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 25-25(6): if total borrowing expenses incurred in the income year for rental-purpose borrowing are at or
+      below this amount they are deducted in full in that year.'
+  borrowing_expense_max_years:
+    value: 5
+    unit: years
+    status: VERIFIED
+    source: https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s25.25.html
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 25-25(5): period of the loan is the shortest of the contract term, the period until repayment, and 5 years from first day borrowed.'
+  capital_works_rate_residential:
+    value:
+    - {from: 1985-07-18, to: 1987-09-15, rate: 0.04}
+    - {from: 1987-09-16, to: 9999-12-31, rate: 0.025}
+    unit: rate by date construction began (dates inclusive); no deduction for residential works begun before the first date
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/capital-expenses/work-out-your-capital-works-deductions
+    as_at: 2026-09-29
+    notes: 'ATO capital works table, row "any building intended to be used on completion for residential purposes or to
+      produce income" (ITAA 1997 Div 43, s 43-25). The ATO note about certain pre-16 Sep 1987 contracts (4%) is not modelled.'
+  capital_works_rate_traveller_accommodation:
+    value:
+    - {from: 1979-08-22, to: 1984-08-21, rate: 0.025}
+    - {from: 1984-08-22, to: 1987-09-15, rate: 0.04}
+    - {from: 1987-09-16, to: 1992-02-26, rate: 0.025}
+    - {from: 1992-02-27, to: 9999-12-31, rate: 0.04}
+    unit: rate by date construction began; only for short-term traveller accommodation meeting the unit or bedroom minimum
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/capital-expenses/work-out-your-capital-works-deductions
+    as_at: 2026-09-29
+    notes: 'ATO capital works table, first row (apartment buildings where you own or lease at least 10 units, hotels, motels and
+      guest houses with at least 10 bedrooms). s 43-25(1) and Table 43-145 give the 4% rate for works begun after 26 Feb 1992.'
+  capital_works_rate_structural_improvement:
+    value:
+    - {from: 1992-02-27, to: 9999-12-31, rate: 0.025}
+    unit: rate by date construction began (structural improvements such as fences, driveways, retaining walls)
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/capital-expenses/work-out-your-capital-works-deductions
+    as_at: 2026-09-29
+    notes: 'ITAA 1997 s 43-20(2): structural improvements begun after 26 Feb 1992.'
+  capital_works_traveller_minimum_units:
+    value: 10
+    unit: apartment units or hotel, motel or guest house bedrooms
+    status: VERIFIED
+    source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/capital-expenses/work-out-your-capital-works-deductions
+    as_at: 2026-09-29
+    notes: 'ATO capital works table: apartment buildings in which you own or lease at least 10 apartment units or flats; hotels,
+      motels and guest houses with at least 10 bedrooms. A single dwelling let short-stay does not qualify.'

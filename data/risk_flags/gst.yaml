@@ -1,0 +1,57 @@
+# gst-bas structured audit risk points. Fields: id, topic, description, citations, skills.
+risk_flags:
+  - id: GST-RF-001
+    topic: Exports of services treated as GST-free
+    description: Services to overseas clients coded GST-free without testing s38-190(1) item 2 (non-resident not in Australia when the thing is done, not directly connected with Australian real property or goods) and s38-190(3) (the service is provided to another entity in Australia).
+    citations: ["GSTA 1999 s 38-190", "GSTR 2004/7", "GSTR 2000/31"]
+    skills: [gst-bas]
+  - id: GST-RF-002
+    topic: Credits claimed for input taxed residential letting
+    description: GST credits claimed on costs of residential rent or short-stay lets of residential premises (input taxed, s40-35), including platform fees and cleaning.
+    citations: ["GSTA 1999 s 11-15", "GSTA 1999 s 40-35"]
+    skills: [gst-bas]
+  - id: GST-RF-003
+    topic: Non-reportable amounts on G labels
+    description: Wages, super, loan principal, dividends, private sales or other out-of-scope amounts reported at G1, G10 or G11.
+    citations: ["ATO BAS instructions, Step 1 and Step 3"]
+    skills: [gst-bas]
+  - id: GST-RF-004
+    topic: Private use and non-deductible purchases
+    description: Full GST credits claimed on purchases with private use or that are not income tax deductible (G15), including car purchases above the car limit.
+    citations: ["GSTA 1999 s 11-15", "GSTA 1999 s 69-10", "ATO BAS instructions, G15"]
+    skills: [gst-bas]
+  - id: GST-RF-005
+    topic: Short-stay premises classification
+    description: Short-stay operator treating accommodation as input taxed when it may be commercial residential premises (or the reverse), or a manager acting as principal while invoicing as agent.
+    citations: ["GSTA 1999 s 195-1", "GSTR 2012/6", "GSTR 2012/6DC"]
+    skills: [gst-bas]
+  - id: GST-RF-006
+    topic: Registration threshold monitoring
+    description: GST turnover (current or projected) reaches the registration threshold without registration within 21 days; GST becomes payable on sales from the date registration was required.
+    citations: ["GSTA 1999 s 23-5", "GSTA 1999 s 188-10"]
+    skills: [gst-bas]
+  - id: GST-RF-007
+    topic: Margin scheme conditions
+    description: Margin scheme applied without a written agreement by settlement, or where the property was acquired through a fully taxable supply; G1 reported at full price instead of the margin.
+    citations: ["GSTA 1999 s 75-5", "GSTA 1999 s 75-10"]
+    skills: [gst-bas]
+  - id: GST-RF-008
+    topic: Credits claimed without a tax invoice
+    description: GST credits attributed for purchases above the tax invoice threshold before a valid tax invoice is held.
+    citations: ["GSTA 1999 s 29-10(3)", "GSTA 1999 s 29-80"]
+    skills: [gst-bas]
+  - id: GST-RF-009
+    topic: Bad debt adjustments on a cash basis
+    description: Division 21 bad debt adjustments claimed by an entity accounting on a cash basis, or supplier write-off adjustments without a write-off or 12 months overdue.
+    citations: ["GSTA 1999 s 21-5", "GSTA 1999 s 21-15", "GSTR 2000/2"]
+    skills: [gst-bas]
+  - id: GST-RF-010
+    topic: Going concern without all conditions
+    description: Sale of a business treated as a GST-free going concern without a written agreement, a registered buyer, or all things necessary for the enterprise being supplied.
+    citations: ["GSTA 1999 s 38-325", "GSTR 2002/5"]
+    skills: [gst-bas]
+  - id: GST-RF-011
+    topic: Reverse charge on imported services missed
+    description: Registered business that makes input taxed supplies or has private use buys services or digital products from offshore without reverse charging GST.
+    citations: ["GSTA 1999 s 84-5"]
+    skills: [gst-bas]
