@@ -79,7 +79,7 @@ End every answer with this working paper (CONVENTIONS section 8):
 
 1. **Result** for the stated income year: taxable income; gross tax; LITO; income tax after offsets; Medicare levy (say if reduced and why); Medicare levy surcharge (tier, or contingent); study loan repayment; total liability; effective rate; marginal rate on the next dollar; a provisional withholding estimate only after confirming no omitted offsets/credits. If any are present or unknown, label the dependent settlement incomplete and show the agent reconciliation.
 2. **Figures used**: key, value, status, source URL for each entry in `figures_used` (group long bracket tables as "resident rates (VERIFIED)").
-3. **Assumptions**: the tool's `assumptions` plus any you made (for example, taxable income derived from salary less deductions).
+3. **Assumptions**: the tool's `assumptions` plus any you made (for example, taxable income assembled from source-labelled components).
 4. **Risk flags**: any relevant entries from `data/risk_flags/au.yaml` (for example, residency or MLS cover issues), or "none".
 5. **Refusals or escalations**: codes and messages, or "none". Include the tool's `warnings`.
 6. "Working paper only. Review by a registered tax agent (or BAS agent for BAS matters) before use." Copy this sentence verbatim as the last line of the answer; do not paraphrase it.

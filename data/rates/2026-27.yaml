@@ -226,7 +226,7 @@ medicare:
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
     as_at: 2026-10-09
     checked_at: 2026-10-09
-    notes: '2026-27 amount not published (re-checked 2026-09-29). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
+    notes: '2026-27 amount not published (re-checked 2026-10-09). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
   low_income_single_upper:
     value: null
     unit: AUD
@@ -234,7 +234,7 @@ medicare:
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
     as_at: 2026-10-09
     checked_at: 2026-10-09
-    notes: '2026-27 amount not published (re-checked 2026-09-29). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
+    notes: '2026-27 amount not published (re-checked 2026-10-09). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
   low_income_sapto_single_lower:
     value: null
     unit: AUD
