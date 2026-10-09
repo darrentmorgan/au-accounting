@@ -307,3 +307,12 @@ def test_calendar_2027_28_lists_dates_after_the_holiday_data_as_unverified_and_k
     assert len(dates(out, "SA payroll tax monthly")) == 11    # Aug 2027 to Jun 2028 returns are all inside the data
     # 21 May 2028 (FBT) is a Sunday (1 Jul 2028 is a Saturday; 21 May is 41 days earlier, 41 mod 7 = 6, so Sunday) -> Mon 22 May 2028.
     assert dates(out, "FBT return") == ["2028-05-22"]
+
+
+def test_individual_payment_calendar_does_not_extend_late_lodgment():
+    out = cal({"entity_type": "individual"}, year="2025-26")
+    pay = next(r for r in out["recurring_rules"] if r["obligation"] == "Individual income tax payment")
+    assert "2026-11-23" in pay["rule"]
+    assert "later of" in pay["rule"]
+    assert "Lodging late does not" in pay["rule"]
+    assert "otherwise 21 days" not in pay["rule"]

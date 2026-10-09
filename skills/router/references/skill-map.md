@@ -30,6 +30,7 @@ Pass the upstream field exactly as returned. Every income amount for an individu
 | Upstream tool (skill) | Output field | Component `kind` or downstream input |
 |---|---|---|
 | user or payment summary | salary, allowances, interest | `salary_wages`, `employment_other`, `interest` (`source_skill: user`) |
+| `standard_work_deduction` (individual-tax), 2026-27 onwards | `additional_deduction` | one `work_related_deduction` (`source_skill: individual-tax`, `source_tool: standard_work_deduction`); existing eligible deductions stay as their own components, once |
 | `crypto_income_receipts` (crypto) | `total_assessable_income_aud` (by income year), `acquisitions` | `other_income` (`source_skill: user`, `source_tool: crypto_income_receipts`, label "crypto staking and services income"); `acquisitions` go into `crypto_parcel_ledger` |
 | `crypto_parcel_ledger` (crypto) | `net_capital_gain_by_income_year`; each slice's `cgt.components` | With no other CGT events: `net_capital_gain` for that year (as returned). With other assets or carried-forward losses: the components join the `gains` and `losses` of `net_capital_gain` (cgt), never added by hand |
 | `capital_gain` (cgt), one call per asset | the result's components (amount, discount flag, category) | the `gains` or `losses` list of `net_capital_gain`; never into assembly directly |

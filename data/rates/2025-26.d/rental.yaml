@@ -6,7 +6,7 @@ rental:
     unit: calendar year in which the first affected income year starts (2027 = the 2027-28 income year)
     status: VERIFIED
     source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Treasury Laws Amendment (Tax Reform No. 1) Act 2026 (No. 49 of 2026) Sch 2 item 5: the residential dwelling loss
       quarantine (ITAA 1997 ss 26-155, 26-160) applies to the 2027-28 income year and later years. Act 71 of 2026 Sch 4 item 5
       says the same for the extension sections 26-156 to 26-159. The Act commenced 27 Jun 2026 but nothing is quarantined
@@ -16,7 +16,7 @@ rental:
     unit: date YYYYMMDD; the cut-off is 7.30 pm by legal time in the ACT on that day
     status: VERIFIED
     source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 26-155(2)(a) as inserted by Act 49 of 2026 Sch 2: an ownership interest in a residential dwelling last
       acquired before this time is not quarantined. s 26-155(3): for a dwelling acquired under a contract, the interest is held
       from the time of the contract. Act 71 of 2026 Sch 4 adds death, co-owner death and relationship breakdown extensions
@@ -34,7 +34,7 @@ rental:
     unit: date YYYYMMDD; cut-off is 7.30 pm AEST on that day
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/depreciating-assets-in-rental-properties/second-hand-depreciating-assets
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 40-27 (Treasury Laws Amendment (Housing Tax Integrity) Act 2017). Second-hand assets in residential
       rental premises are deductible only if acquired before this time AND installed ready for use before the install date below.'
   second_hand_asset_installed_before:
@@ -42,14 +42,14 @@ rental:
     unit: date YYYYMMDD
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/depreciating-assets-in-rental-properties/second-hand-depreciating-assets
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'See second_hand_asset_acquired_before.'
   low_cost_asset_immediate_deduction_limit:
     value: 300
     unit: AUD
     status: VERIFIED
-    source: https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s40.80.html
-    as_at: 2026-09-29
+    source: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_2/document_2.html
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 40-80(2): cost not above this amount, used predominantly for non-business income, not part of a set
       whose total cost exceeds it, and identical assets started in the year total not above it.'
   diminishing_value_factor:
@@ -57,23 +57,23 @@ rental:
     unit: multiplier (200% divided by effective life)
     status: VERIFIED
     source: https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/general-depreciation-rules-capital-allowances/prime-cost-straight-line-and-diminishing-value-methods
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 40-70(1) for assets started on or after 10 May 2006: base value x days held/365 x 200%/effective life.
       Prime cost (s 40-75) is cost x days held/365 x 100%/effective life.'
   borrowing_expense_immediate_limit:
     value: 100
     unit: AUD
     status: VERIFIED
-    source: https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s25.25.html
-    as_at: 2026-09-29
+    source: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 25-25(6): if total borrowing expenses incurred in the income year for rental-purpose borrowing are at or
       below this amount they are deducted in full in that year.'
   borrowing_expense_max_years:
     value: 5
     unit: years
     status: VERIFIED
-    source: https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s25.25.html
-    as_at: 2026-09-29
+    source: https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 25-25(5): period of the loan is the shortest of the contract term, the period until repayment, and 5 years from first day borrowed.'
   capital_works_rate_residential:
     value:
@@ -82,7 +82,7 @@ rental:
     unit: rate by date construction began (dates inclusive); no deduction for residential works begun before the first date
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/capital-expenses/work-out-your-capital-works-deductions
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ATO capital works table, row "any building intended to be used on completion for residential purposes or to
       produce income" (ITAA 1997 Div 43, s 43-25). The ATO note about certain pre-16 Sep 1987 contracts (4%) is not modelled.'
   capital_works_rate_traveller_accommodation:

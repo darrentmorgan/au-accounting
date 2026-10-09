@@ -249,7 +249,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s 61-160 inserted by Treasury Laws Amendment (Tax Reform No. 1) Act 2026 Sch 3: offset is the lesser of $250 and the basic income
       tax liability on net labour income (s 61-155(2)); entitlement needs Australian residency and net labour income above the tax-free threshold. Sch 3
       item 4 applies it to 2027-28 and later years. Non-refundable, no carry forward (s 63-10). ATO page: measure is now law.'
@@ -274,8 +274,8 @@ medicare:
     unit: AUD
     status: SUSPECT
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
-    as_at: 2026-09-29
-    checked_at: 2026-09-29
+    as_at: 2026-10-09
+    checked_at: 2026-10-09
     notes: 'Not published for 2027-28: no ATO figure and no amending law. The ATO pages (updated 30 Jun 2026) show 2025-26 only. The Medicare Levy Act as
       in force 1 Jul 2026 carries the 2025-26 amounts (Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years) and government raises them by a
       further amending Act, so the 2027-28 amounts are not known. Current-law amounts are held as a screen only in medicare.low_income_current_law_*.'
@@ -437,8 +437,8 @@ help:
     unit: AUD
     status: SUSPECT
     source: https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds
-    as_at: 2026-09-29
-    checked_at: 2026-09-29
+    as_at: 2026-10-09
+    checked_at: 2026-10-09
     notes: 'Not published for 2027-28: ATO page (updated 30 Jun 2026) lists repayment income thresholds and rates to 2026-27 only; thresholds are indexed
       each year.'
 super:

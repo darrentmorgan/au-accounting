@@ -499,7 +499,8 @@ def lodgment_due_dates(figures: Figures, inp: DueDatesInput) -> dict:
                     "payment_due_if_lodged_by_due_date": pay_rolled.due.isoformat(),
                     "payment_business_day_roll": pay_rolled.as_dict()})
         warnings.append("Registered tax agent clients may have a later lodgment program date if the agent is engaged before the self-lodger due date; taxpayers with earlier returns outstanding lose it.")
-        warnings.append("If the assessment issues after the self-lodger due date, payment is due 21 days after the assessment issues.")
+        warnings.append("For a return lodged on time, the payment date is the later of the standard November date and 21 days after the assessment issues.")
+        warnings.append("Lodging late does not extend the standard November payment date; verify the notice of assessment and any ATO deferral.")
     elif inp.obligation == "tpar":
         due = date(start_year + 1, int(figures.get("lodgment.tpar_due_month")), int(figures.get("lodgment.tpar_due_day")))
         rolled = _roll(figures, due, warnings)

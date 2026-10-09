@@ -91,13 +91,14 @@ def test_every_null_figure_carries_checked_at_and_a_note():
 
 
 def test_2026_27_unpublished_figures_stay_null_with_url_checked():
-    # Re-checked 2026-09-29: none of these is published for 2026-27.
+    # None published for 2026-27: scoped single lower re-read 2026-10-09; others checked 2026-09-29.
     for key in ("medicare.low_income_single_lower", "medicare.low_income_family_upper", "medicare.low_income_per_child_lower_add",
                 "medicare.low_income_sapto_single_upper", "car_home.home_office_fixed_rate_per_hour",
                 "penalties_interest.gic_jan_mar_2027", "penalties_interest.sic_apr_jun_2027", "medicare.phi_rebate_from_2027_04_01"):
         fig = raw("2026-27", key)
         assert fig["value"] is None and fig["status"] == "SUSPECT"
-        assert fig["checked_at"] == dt.date(2026, 9, 29)
+        expected_check = dt.date(2026, 10, 9) if key == "medicare.low_income_single_lower" else dt.date(2026, 9, 29)
+        assert fig["checked_at"] == expected_check
         assert fig["source"].startswith("https://www.ato.gov.au/")
 
 

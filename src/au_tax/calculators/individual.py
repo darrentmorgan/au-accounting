@@ -88,6 +88,50 @@ class IndividualTaxInput(BaseModel):
         return self
 
 
+class StandardWorkDeductionInput(BaseModel):
+    """Classified employee inputs; deduction eligibility/substantiation remains with the agent."""
+
+    resident_at_any_time: bool = Field(description="Australian tax resident at any time in the income year.")
+    assessable_labour_income: float = Field(
+        ge=0, allow_inf_nan=False, description="Qualifying assessable labour income under ITAA 1997 s25-130(4): "
+        "amounts subject to the specified employee/director/office-holder/religious practitioner/return-to-work, "
+        "retirement/termination or parental-leave withholding provisions. Excludes business, rental and investment "
+        "income. Special lump-sum regimes require separate agent review.")
+    reducing_deductions: float = Field(
+        ge=0, allow_inf_nan=False, description="Already eligible deductions under s25-130(2)(c)-(g): "
+        "labour-related s8-1 costs, Div28 car, s25-100 travel, depreciating-asset repairs/decline/balancing "
+        "adjustments and s25-125 COVID tests. Exclude s25-130(3) insurance premiums and association membership, "
+        "personal super, gifts, tax affairs and the standard top-up itself. Classification must be confirmed.")
+
+
+@calculator("standard_work_deduction", StandardWorkDeductionInput)
+def standard_work_deduction(figures: Figures, inp: StandardWorkDeductionInput) -> dict:
+    """ITAA 1997 s25-130 employee standard work deduction from 2026-27 (Act 49 of 2026 Sch4).
+    Returns ONLY the additional top-up: max(0, min(year cap, qualifying assessable labour income)
+    minus classified reducing deductions). Not business income and not an automatic subtraction from a
+    supplied taxable income. Pass additional_deduction once to assemble_taxable_income before individual
+    tax; retain existing eligible deductions once. 2025-26 and non-resident-all-year cases return no top-up.
+    Does not determine underlying expense eligibility, substantiate actual deductions or assess special lump sums.
+    """
+    applicable = figures.income_year >= "2026-27"
+    eligible = applicable and inp.resident_at_any_time and inp.assessable_labour_income > 0
+    cap = figures.get("individual.standard_work_deduction_cap") if eligible else None
+    base = min(cap, inp.assessable_labour_income) if eligible else 0.0
+    top_up = max(0.0, base - inp.reducing_deductions) if eligible else 0.0
+    return {
+        "applicable": applicable,
+        "eligible": eligible,
+        "assessable_labour_income": inp.assessable_labour_income,
+        "reducing_deductions": inp.reducing_deductions,
+        "base_before_reducing_deductions": round(base, 2),
+        "additional_deduction": round(top_up, 2),
+        "assumptions": ["Qualifying labour income and reducing deductions are classified inputs; underlying "
+                        "eligibility and substantiation have not been determined by this tool.",
+                        "Only the additional deduction is handed to assembly; existing eligible deductions remain once."],
+        "warnings": [] if applicable else ["Standard work deduction does not apply before 2026-27."],
+    }
+
+
 # ---------------------------------------------------------------- helpers
 
 def _bracket(brackets: list[dict], x: float) -> dict:

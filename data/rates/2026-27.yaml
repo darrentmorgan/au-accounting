@@ -34,7 +34,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
-    as_at: &id001 2026-09-29
+    as_at: 2026-10-09
     notes: Tax = base + rate x (taxable income - from). Excludes Medicare levy.
   foreign_resident_rates:
     value:
@@ -53,7 +53,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
-    as_at: *id001
+    as_at: &id001 2026-09-29
     notes: 'Income Tax Rates Act 1986 Sch 7 Pt II table "2024-25 year of income or a later year": to $135,000 at the
       second resident personal tax rate (item 2 of Pt I = 30%), then 37%, 45% (compilation in force 1 Jul 2026, read
       2026-09-29). ATO foreign resident page still lists to 2025-26 only. No tax-free threshold; no Medicare levy.'
@@ -86,7 +86,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf
-    as_at: *id001
+    as_at: 2026-10-09
     notes: New s25-130 ITAA 1997. Lesser of $1,000 and assessable labour income, reduced (not below nil) by other work-related
       deductions. Top-up, not additive. From 2026-27.
   sapto_max_offset_single:
@@ -224,17 +224,17 @@ medicare:
     unit: AUD
     status: SUSPECT
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
-    as_at: *id001
-    checked_at: *id001
-    notes: '2026-27 amount not published (re-checked 2026-09-29). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
+    as_at: 2026-10-09
+    checked_at: 2026-10-09
+    notes: '2026-27 amount not published (re-checked 2026-10-09). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
   low_income_single_upper:
     value: null
     unit: AUD
     status: SUSPECT
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners
-    as_at: *id001
-    checked_at: *id001
-    notes: '2026-27 amount not published (re-checked 2026-09-29). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
+    as_at: 2026-10-09
+    checked_at: 2026-10-09
+    notes: '2026-27 amount not published (re-checked 2026-10-09). The ATO Medicare levy reduction pages (last updated 30 Jun 2026) and the ATO M1 instruction for the 2026 return give the 2025-26 amounts only. The Medicare Levy Act 1986 as in force 1 Jul 2026 (latest compilation) holds the 2025-26 amounts, and Act No. 58 of 2026 Sch 5 applies them to 2025-26 and later years, so no separate 2026-27 amount has been legislated. Do not assume indexation. The current-law amounts are kept in medicare.low_income_current_law_* for screening only.'
   low_income_sapto_single_lower:
     value: null
     unit: AUD

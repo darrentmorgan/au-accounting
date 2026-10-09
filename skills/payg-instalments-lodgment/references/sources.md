@@ -33,3 +33,5 @@ Read 29 Sep 2026. Figures live in `data/rates/<year>.yaml` and `data/rates/<year
 - TAA 1953 s 8AAZMB (tax debts due on a non-business day) and Sch 1 s 388-52 (approved forms; business day defined in s 8AAZMB(2)): https://www.legislation.gov.au/C1953A00001/latest/text
 - ATO, Lodgment and payment dates on weekends or public holidays: https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays
 - Public holiday data and the rule analysis: data/holidays/au.yaml and docs/research/due-dates-public-holidays.md
+
+Scoped EOFY source refresh: 9 Oct 2026; key/year-specific reads and saved content hashes are in `docs/eofy-source-freshness.md` and `data/eofy/source-evidence.json`. Sources outside that bounded pack retain their original read dates.

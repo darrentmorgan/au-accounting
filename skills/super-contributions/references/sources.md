@@ -23,3 +23,5 @@ Read 29 Sep 2026 unless stated. Figures live in `data/rates/<year>.yaml` and `da
 ## Notes on sources
 - The ATO Division 296 example for "Leanne" shows the tax line with a five per cent label; the result shown equals the lower Division 296 rate applied to the taxable super earnings and the Imposition Act s5 sets the lower rate, so the percentage label on that page is a typo.
 - The ATO contributions caps page note on the general transfer balance cap still refers to 1 Jul 2025; the non-concessional cap page and transfer balance cap page give the 2026-27 amount used in the rates file.
+
+Scoped EOFY source refresh: 9 Oct 2026; key/year-specific reads and saved content hashes are in `docs/eofy-source-freshness.md` and `data/eofy/source-evidence.json`. Sources outside that bounded pack retain their original read dates.
