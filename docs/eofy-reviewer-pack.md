@@ -45,7 +45,7 @@ All positive cases begin in 2025–26. Boundary variants use the chosen year's k
 | E08 | Share gains with current and carried-forward losses, short-held asset and exact 12-month boundary | Losses before discount, one annual net capital gain, carried-forward loss never deducted against salary, contract-date year |
 | E09 | Personal super deduction with acknowledged notice; late/invalid notice and fund receipt near 30 June | Eligibility and cap/carry-forward facts before accepting deduction; distinguish voluntary/reportable amounts from ordinary employer SG |
 | E10 | Duplicate rental/CGT components; raw capital loss; inconsistent year or residency | Assembly block must prevent final taxable income/tax; fix at source, no guessed arithmetic workaround |
-| E11 | PAYG withheld with no unmodelled offsets; then add franked dividends/PHI rebate/PAYG instalments | Only first case can use calculator refund as complete within scope; latter cases show exclusions/agent reconciliation and no asserted final refund |
+| E11 | PAYG withheld with no unmodelled offsets; then add franked dividends/PHI rebate/PAYG instalments | Settlement regression: withholding-only baseline; resolved franking/PHI/instalments through `individual_tax_settlement`; unresolved/unmodelled variants refuse a final figure. These added regressions do not extend positive professional assurance |
 | E12 | Self-lodged versus registered-agent return, prior outstanding return and weekend date | Calendar carries source/roll; registered-agent date verified against agent's own client record; never promise a universal extension |
 | E13 | “This year” asked in October 2026; missing residency/cover/spouse facts | Clarify income year and material missing inputs before producing a complete figure; consistent intake defaults |
 | E14 | SAPTO/pension, minor unearned income, deceased final return, ETP/redundancy/super lump sum | Verbatim AU-IND-001/002 as applicable; stop dependent total. Existing `evals/individual-tax/escalate-*` cover examples |
@@ -78,11 +78,11 @@ The scenario manifest is the E01–E18 register above bound by this document's h
 
 Any dependency, scenario, scope or year change invalidates the workflow opinion pending assessment and re-review. `scripts/review_status.py` remains a skill-folder prose status: it does not validate runtime/rates, partial workflow scope, registration, signed evidence or later adverse findings. It must not be cited as EOFY assurance. No placeholders are installed as review records.
 
-## Agent reconciliation and settlement exclusion (P0-3)
+## Agent reconciliation and settlement coverage (P0-3)
 
 The positive pack ignores PAYG credits in E01. A withholding-only variant of E11 can show a provisional estimate within the modelled scope only after confirming absent other offsets/credits and complete material inputs. No final assessment or account settlement is assured.
 
-For franked dividends, PHI rebates, FITO, SBITO, other offsets, PAYG instalments or unresolved credits, put **final settlement not computed** at the top. A gross-up belongs in income assembly; its credit is a separate reconciliation item. Never treat the tool's limited `total_liability` or `estimated_refund` as final for those cases, and never net separately returned offsets in prose.
+For FITO, SBITO, other unsupported offsets or unresolved credits, put **final settlement not computed** at the top. `individual_tax_settlement` now supports confirmed refundable franking, PHI rebate reconciliation and PAYG instalment credits; its input and refusal contract is in `skills/individual-tax/references/settlement.md`. A gross-up belongs in income assembly; its credit is a separate reconciliation item. Never treat the tool's limited `total_liability` or `estimated_refund` as final for those cases, and never net separately returned offsets in prose.
 
 | Agent reconciliation item | Evidence / disposition required |
 |---|---|
@@ -93,7 +93,7 @@ For franked dividends, PHI rebates, FITO, SBITO, other offsets, PAYG instalments
 | FITO/SBITO/other offsets | Separate tool result and entitlement evidence; agent verifies ordering/cap/refundability |
 | Other credits / account balances | ATO assessment and account evidence; avoid treating balances as current-year income-tax credits |
 
-Mark every item confirmed absent, supplied (year/source/amount) or unresolved. Preserve modelled tax, levy, MLS and HELP outputs beside the reconciliation. The agent completes the assessment and account settlement. Full deterministic offset/credit composition is deferred: it needs a separate audited ordering/refundability contract and tests; no partial composition is introduced by this pack.
+Mark every item confirmed absent, supplied (year/source/amount) or unresolved. Preserve modelled tax, levy, MLS and HELP outputs beside the reconciliation. The agent completes the assessment and account settlement. The bounded settlement calculator and `tests/unit/test_settlement.py` provide software regression evidence, including E11 and the canonical taxable-income example. They do not expand this pack's positive assurance boundary or constitute registered-agent approval. Other offsets and company/trust assessments remain outside settlement scope.
 
 ## Future-year employee handoff (P1-4)
 
