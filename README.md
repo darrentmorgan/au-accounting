@@ -18,6 +18,8 @@ Version 0.3.0.
 - **Treaty analysis:** Australia-Indonesia only. For any other country, the generic foreign income tax offset (`foreign_income_tax_offset`) applies, with no treaty analysis.
 - **Indonesia cross-border (`au-indonesia-cross-border`)** is an optional vertical. Skip it if Indonesia is not relevant to you.
 
+The [bounded individual EOFY reviewer pack](docs/eofy-reviewer-pack.md) defines the 2025–26 preparation contract, canonical prompt, exclusions and required scenarios. It is not professionally reviewed and does not grant whole-return or all-year assurance.
+
 ## Requirements
 
 - `uv` on your PATH: the bundled `au-tax` MCP server (`.mcp.json`) starts with `uv run`.
