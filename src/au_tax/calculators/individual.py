@@ -34,6 +34,15 @@ SpecialCircumstance = Literal[
 ]
 
 
+class UpstreamLimitation(BaseModel):
+    """A limitation returned by an upstream tool (for example assemble_taxable_income) on an input used here."""
+
+    id: str = Field(description="Upstream limitation id, as returned.")
+    kind: Literal["exclusion", "assumption"] = Field(description="Upstream limitation kind, as returned.")
+    message: str = Field(description="Upstream limitation message, as returned.")
+    affects: list[str] = Field(default_factory=list, description="Upstream affected fields, as returned.")
+
+
 class IndividualTaxInput(BaseModel):
     """Inputs for one individual for one income year. Amounts in AUD for the whole income year."""
 
@@ -78,6 +87,9 @@ class IndividualTaxInput(BaseModel):
     special_circumstances: list[SpecialCircumstance] = Field(
         default_factory=list, description="Any special regime present; each one stops the calculation (AU-IND-001).")
     tax_withheld: float | None = Field(None, ge=0, description="PAYG withheld, to estimate a refund or debt.")
+    upstream_limitations: list[UpstreamLimitation] = Field(
+        default_factory=list, description="Top-level limitations from the tool that produced taxable_income (for "
+        "example assemble_taxable_income); they carry into this result's limitations and total_status.")
 
     @model_validator(mode="after")
     def _consistent(self):
@@ -315,6 +327,7 @@ def _medicare_levy(figures: Figures, inp: IndividualTaxInput, ti: float, days: i
                     detail["family_reduction"] = _r(levy - after)
                     detail["low_income_reduction"] = "family income reduction applies (MLA s8)"
                     if spouse_liable and after == 0:
+                        detail["spouse_levy_excess_not_modelled"] = True
                         warnings.append("Family reduction may exceed your levy; any excess reduces your spouse's levy (MLA s8(4)), not modelled.")
                 levy = after
                 if not inp.has_spouse and inp.dependent_children:
@@ -484,7 +497,50 @@ def individual_income_tax(figures: Figures, inp: IndividualTaxInput) -> dict:
     assumptions.append("Only LITO (and, from 2027-28, the working Australians tax offset when net_labour_income is given) is "
                        "applied as an offset; other offsets (franking credits, PHI rebate, SBITO, dependant or zone offsets) are not included.")
 
+    # Completeness concerns missing inputs, not ordinary calculation rules or rounding.
+    # It applies only to this component liability, never to final settlement.
+    limitations: list[dict] = []
+
+    def limit(identifier: str, kind: str, message: str) -> None:
+        limitations.append({"id": identifier, "kind": kind, "message": message,
+                            "affects": ["total_liability", "effective_rate", "estimated_refund"]})
+
+    if c["levy_detail"].get("spouse_levy_excess_not_modelled"):
+        limit("spouse_levy_excess", "exclusion",
+              "Family levy reduction excess passing to the spouse is not modelled (MLA s8(4)).")
+    if inp.residency == "resident":
+        if inp.private_hospital_cover is None and (
+                mls_detail.get("contingent_amount_if_no_cover", 0) > 0
+                or "contingent_amount_if_no_cover" not in mls_detail):
+            limit("hospital_cover_not_stated", "assumption",
+                  "Hospital cover is not stated; MLS is excluded and may change the total.")
+        if figures.income_year >= WATO_FIRST_YEAR and inp.net_labour_income is None:
+            limit("net_labour_income_not_stated", "exclusion",
+                  "Working Australians tax offset is not applied because net labour income is not stated.")
+        if not inp.has_spouse and inp.dependent_children and "family_income_threshold" in c["levy_detail"]:
+            limit("sole_parent_family_tax_benefit", "assumption",
+                  "Family tax benefit is assumed payable for each dependent child for the family levy test.")
+        if inp.medicare_full_exemption_days is None and _full_exemption_days(inp, c["days"]):
+            limit("estimated_exemption_days", "assumption",
+                  "Full Medicare exemption days are estimated from resident months; exact days are not stated.")
+        if (inp.has_spouse and inp.spouse_income_for_mls is None
+                and (inp.private_hospital_cover is not True or inp.days_without_cover)
+                and mls_detail.get("days_without_cover", c["days"] - _full_exemption_days(inp, c["days"])) > 0
+                and ti + inp.reportable_fringe_benefits > 0):
+            limit("spouse_mls_income_assumed", "assumption",
+                  "Spouse income for MLS is assumed equal to spouse taxable income.")
+    if help_amt > 0 and inp.help_debt_balance is None:
+        limit("help_balance_not_stated", "assumption",
+              "Study loan balance is not stated; repayment has not been capped at the outstanding balance.")
+    for upstream in inp.upstream_limitations:
+        limit(upstream.id, upstream.kind, upstream.message)
+    total_status = ("incomplete" if any(x["kind"] == "exclusion" for x in limitations)
+                    else "conditional" if limitations else "complete")
     out = {
+        "limitations": limitations,
+        "total_complete": not limitations,
+        "total_status": total_status,
+        "completeness_scope": "Modelled component liability only; final settlement not computed.",
         "residency": inp.residency,
         "resident_months": inp.resident_months,
         "taxable_income": _r(ti),

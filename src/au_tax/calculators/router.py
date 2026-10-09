@@ -563,7 +563,20 @@ def assemble_taxable_income(figures: Figures, inp: AssembleInput) -> dict:
                            "s 36-17) is taken as nil.")
     rental_losses = sum(-x.amount for x in c if x.kind == "rental_net" and x.amount < 0 and not x.quarantined)
     consistent = not blocking
+    limitations = []
+    if inp.prior_year_tax_losses:
+        limitations.append({"id": "net_exempt_income_assumed_nil", "kind": "assumption",
+                            "message": "Net exempt income reducing prior-year revenue losses is assumed nil (s 36-17).",
+                            "affects": ["taxable_income", "tax_loss_carried_forward", "handoffs"]})
+    # Each existing assembly warning identifies unresolved facts affecting the build-up.
+    for index, message in enumerate(warnings, 1):
+        limitations.append({"id": f"assembly_warning_{index}", "kind": "assumption",
+                            "message": message, "affects": ["taxable_income", "handoffs"]})
     return {
+        "limitations": limitations,
+        "total_complete": consistent and not limitations,
+        "total_status": "incomplete" if not consistent else "conditional" if limitations else "complete",
+        "completeness_scope": "Supplied taxable-income components only; downstream totals inherit these limitations.",
         "consistent": consistent,
         "blocking_issues": blocking,
         "lines": lines,

@@ -37,3 +37,31 @@ def test_mcp_tools_listed_and_callable():
 
     res = anyio.run(go)
     assert "0.0877" in str(res)
+
+
+def test_total_limitations_survive_cli_and_mcp(capsys):
+    import json
+    from au_tax.cli import main
+
+    cases = [
+        ('individual_income_tax', {'taxable_income': 120000}, 'hospital_cover_not_stated'),
+        ('assemble_taxable_income', {
+            'components': [{'kind': 'salary_wages', 'amount': 45000, 'source_skill': 'user'}],
+            'prior_year_tax_losses': 1000,
+        }, 'net_exempt_income_assumed_nil'),
+    ]
+    server = build()
+    for name, payload, identifier in cases:
+        assert main([name, '--year', '2025-26', '--json', json.dumps(payload)]) == 0
+        cli = json.loads(capsys.readouterr().out)
+
+        async def go():
+            return await server.call_tool(name, {'income_year': '2025-26', 'inputs': payload})
+
+        result = anyio.run(go)
+        # MCP exposes the same JSON dictionary in its text content.
+        mcp = json.loads(result.content[0].text)
+        assert cli == mcp
+        assert cli['total_complete'] is False
+        assert cli['total_status'] == 'conditional'
+        assert cli['limitations'][0]['id'] == identifier
