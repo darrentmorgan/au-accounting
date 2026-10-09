@@ -65,3 +65,15 @@ An issued assurance record must contain the agent's real name, TPB registration/
 ## Remaining integration work (P1-8)
 
 No paid integration sweep is run in this task. The archived `docs/eval-results/v0.3/final-3/20260930T190019-integration.result.json.gz` reports 13/16 casesPassed, overallScore 0.8885416667, overallPassRate 0.78125 and meanDelta 0.5572916667. Five cases have per-run passRate below 1: bot-trader/head-lease escalation; family-trust/minor/foreign-trust escalation; Adelaide/Bali/staking onboarding; SA sole-trader onboarding; unpublished-IDR refusal. Review their expected results/rubrics and rerun on the final candidate, together with E01–E18 and affected skill suites, before relying on installed behaviour. Historic results and local deterministic tests provide no professional approval.
+
+## Dependency and scenario freeze (P0-2)
+
+On the clean final committed candidate run `uv run python scripts/eofy_manifest.py > <external-pack>/manifest.tsv`, then `shasum -a 256 <external-pack>/manifest.tsv`. The script records candidate commit/tree and sorted SHA-256/path rows, fails on a dirty candidate or missing required scope, and includes:
+
+- All runtime modules (the registry imports all calculators), all rate bases/overlays for all supported years (the loader loads every overlay), complete refusal/risk catalogues, holiday data and execution configuration/lockfile.
+- Every installed skill folder as a technical dependency, including the six core skills, employee WFH/car business handoff and excluded-domain routing/refusal skills; review records/status code, maintenance/lint/source-watch files and this scope/prompt/scenario register. This inventory does not expand the positive professional scope.
+- All unit/data tests, individual-tax and core-domain eval fixtures/graders and the historical salary/rental/shares integration fixture. Other domain runtime/data are frozen technical dependencies, with no positive tax assurance implied.
+
+The scenario manifest is the E01–E18 register above bound by this document's hash. Retain a separate results manifest with one row per variant: scenario ID, year, exact prompt/input/output/trace paths and hashes, candidate commit, UTC timestamp, versions, independent expected-result authority, local result, installed-model result and professional disposition. Explicitly use **not-run** rather than dropping unexecuted scenarios. Hash the results manifest and every referenced evidence file; bind both dependency and completed-results digests in the signed opinion. The generator freezes dependencies; it does not fabricate results.
+
+Any dependency, scenario, scope or year change invalidates the workflow opinion pending assessment and re-review. `scripts/review_status.py` remains a skill-folder prose status: it does not validate runtime/rates, partial workflow scope, registration, signed evidence or later adverse findings. It must not be cited as EOFY assurance. No placeholders are installed as review records.
