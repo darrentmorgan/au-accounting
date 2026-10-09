@@ -77,3 +77,20 @@ On the clean final committed candidate run `uv run python scripts/eofy_manifest.
 The scenario manifest is the E01–E18 register above bound by this document's hash. Retain a separate results manifest with one row per variant: scenario ID, year, exact prompt/input/output/trace paths and hashes, candidate commit, UTC timestamp, versions, independent expected-result authority, local result, installed-model result and professional disposition. Explicitly use **not-run** rather than dropping unexecuted scenarios. Hash the results manifest and every referenced evidence file; bind both dependency and completed-results digests in the signed opinion. The generator freezes dependencies; it does not fabricate results.
 
 Any dependency, scenario, scope or year change invalidates the workflow opinion pending assessment and re-review. `scripts/review_status.py` remains a skill-folder prose status: it does not validate runtime/rates, partial workflow scope, registration, signed evidence or later adverse findings. It must not be cited as EOFY assurance. No placeholders are installed as review records.
+
+## Agent reconciliation and settlement exclusion (P0-3)
+
+The positive pack ignores PAYG credits in E01. A withholding-only variant of E11 can show a provisional estimate within the modelled scope only after confirming absent other offsets/credits and complete material inputs. No final assessment or account settlement is assured.
+
+For franked dividends, PHI rebates, FITO, SBITO, other offsets, PAYG instalments or unresolved credits, put **final settlement not computed** at the top. A gross-up belongs in income assembly; its credit is a separate reconciliation item. Never treat the tool's limited `total_liability` or `estimated_refund` as final for those cases, and never net separately returned offsets in prose.
+
+| Agent reconciliation item | Evidence / disposition required |
+|---|---|
+| PAYG withholding | Finalised income statements/payment summaries; year and exact source amount |
+| PAYG instalments | ATO account amounts credited for the year; distinguish instalments from withholding and account payments |
+| Franking | Dividend/distribution statement, assessable gross-up, credit amount, eligibility/holding-period checks |
+| PHI | Insurer statement, rebate already received, age/income/family facts and final rebate adjustment |
+| FITO/SBITO/other offsets | Separate tool result and entitlement evidence; agent verifies ordering/cap/refundability |
+| Other credits / account balances | ATO assessment and account evidence; avoid treating balances as current-year income-tax credits |
+
+Mark every item confirmed absent, supplied (year/source/amount) or unresolved. Preserve modelled tax, levy, MLS and HELP outputs beside the reconciliation. The agent completes the assessment and account settlement. Full deterministic offset/credit composition is deferred: it needs a separate audited ordering/refundability contract and tests; no partial composition is introduced by this pack.

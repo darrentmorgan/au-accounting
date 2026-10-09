@@ -17,7 +17,7 @@ In scope:
 - Medicare levy surcharge (MLA ss8B-8D): tier from income for MLS purposes, single or family thresholds, days without cover.
 - Compulsory study loan repayment on repayment income (Higher Education Support Act 2003; marginal schedule from 2025-26).
 
-Out of scope (tool refuses, see Escalation): seniors and pensioners tax offset, deceased estates, trustee-assessed income, minors' unearned income (ITAA 1936 Div 6AA), employment termination payments and super lump sums, lump sums in arrears, income averaging, first home super saver releases, foreign-resident study loan debtors, working holiday makers who are tax residents or have other income. Not modelled but not refused: franking credits, private health insurance rebate, other offsets, PAYG instalments. Say so in the assumptions when relevant.
+Out of scope (tool refuses, see Escalation): seniors and pensioners tax offset, deceased estates, trustee-assessed income, minors' unearned income (ITAA 1936 Div 6AA), employment termination payments and super lump sums, lump sums in arrears, income averaging, first home super saver releases, foreign-resident study loan debtors, working holiday makers who are tax residents or have other income. Not modelled but not refused: franking credits, private health insurance rebate, other offsets, PAYG instalments. For any affected case, state **final settlement not computed** at the top. The tool's `total_liability` and `estimated_refund` cover only its modelled components; do not present them as final tax, refund or debt. Include the agent reconciliation below.
 
 Taxable income is an input. If the user gives gross salary and deductions instead, subtract them and state the result as an assumption; for deductions, rental, CGT or business income use the relevant skill first.
 
@@ -30,7 +30,7 @@ Ask for anything missing that changes the answer. Do not assume silently.
 3. **Taxable income** for the year.
 4. For Medicare and MLS: spouse on 30 June (and spouse's taxable income), number of dependent children, and whether they held appropriate private patient hospital cover all year (if not, how many days without cover).
 5. For study loans: whether they have a HELP or other study loan debt; reportable fringe benefits, net investment losses (financial plus rental), reportable super contributions and exempt foreign employment income, which also feed the MLS income test.
-6. Optional: PAYG tax withheld, to estimate a refund or debt.
+6. Optional: PAYG tax withheld. Also ask about franking credits, PHI rebate adjustments, other offsets, PAYG instalments and other credits before treating an estimate as complete within the modelled scope.
 
 ## Procedure
 
@@ -76,11 +76,15 @@ Surface the code and its message exactly as returned, then stop the affected wor
 
 End every answer with this working paper (CONVENTIONS section 8):
 
-1. **Result** for the stated income year: taxable income; gross tax; LITO; income tax after offsets; Medicare levy (say if reduced and why); Medicare levy surcharge (tier, or contingent); study loan repayment; total liability; effective rate; marginal rate on the next dollar; refund or debt if withholding was given.
+1. **Result** for the stated income year: taxable income; gross tax; LITO; income tax after offsets; Medicare levy (say if reduced and why); Medicare levy surcharge (tier, or contingent); study loan repayment; total liability; effective rate; marginal rate on the next dollar; a provisional withholding estimate only after confirming no omitted offsets/credits. If any are present or unknown, label the dependent settlement incomplete and show the agent reconciliation.
 2. **Figures used**: key, value, status, source URL for each entry in `figures_used` (group long bracket tables as "resident rates (VERIFIED)").
 3. **Assumptions**: the tool's `assumptions` plus any you made (for example, taxable income derived from salary less deductions).
 4. **Risk flags**: any relevant entries from `data/risk_flags/au.yaml` (for example, residency or MLS cover issues), or "none".
 5. **Refusals or escalations**: codes and messages, or "none". Include the tool's `warnings`.
 6. "Working paper only. Review by a registered tax agent (or BAS agent for BAS matters) before use." Copy this sentence verbatim as the last line of the answer; do not paraphrase it.
+
+## Agent reconciliation
+
+Record each item as absent (confirmed), supplied (source/year/amount) or unresolved: PAYG withheld; PAYG instalments actually credited by the ATO; franking gross-up and associated credit; PHI premiums/rebate received and final rebate adjustment; FITO, SBITO and other offsets; other credits and prior account balances. Separate assessable-income gross-ups from offsets/credits. Show the tool-derived components and separately produced offsets beside each other, without hand-netting. The agent must determine offset ordering, refundability, entitlement, credit matching and the final assessment/account balance. Withhold any claim of a final refund/debt for affected cases. See `docs/eofy-reviewer-pack.md`.
 
 References: `references/sources.md` (primary sources), `references/rules.md` (calculation order and edge cases).
