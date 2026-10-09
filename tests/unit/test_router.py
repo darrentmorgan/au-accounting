@@ -351,4 +351,5 @@ def test_blocked_assembly_is_incomplete():
     assert out['total_complete'] is False
     assert out['total_status'] == 'incomplete'
     assert out['taxable_income'] is None
-    assert out['limitations'][0]['kind'] == 'exclusion'
+    assert out['limitations'] == []
+    assert out['blocking_issues']

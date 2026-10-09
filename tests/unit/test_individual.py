@@ -533,3 +533,26 @@ def test_spouse_mls_assumption_remains_conditional_below_family_tier():
     assert out['medicare_levy_surcharge'] == 0
     assert out['total_status'] == 'conditional'
     assert out['limitations'][0]['id'] == 'spouse_mls_income_assumed'
+
+
+def test_conditional_assembly_makes_downstream_total_conditional():
+    code, assembled = run("assemble_taxable_income", "2025-26", {
+        "components": [{"kind": "salary_wages", "amount": 45000, "source_skill": "user"}],
+        "prior_year_tax_losses": 1000,
+    })
+    assert code == 0
+    assert assembled["total_status"] == "conditional"
+    alone = calc("2025-26", taxable_income=assembled["taxable_income"], private_hospital_cover=True)
+    assert alone["total_status"] == "complete"
+    out = calc("2025-26", taxable_income=assembled["taxable_income"], private_hospital_cover=True,
+               upstream_limitations=assembled["limitations"])
+    assert out["total_complete"] is False
+    assert out["total_status"] == "conditional"
+    assert [item["id"] for item in out["limitations"]] == ["net_exempt_income_assumed_nil"]
+    assert out["total_liability"] == alone["total_liability"]
+
+
+def test_upstream_exclusion_makes_downstream_total_incomplete():
+    out = calc("2025-26", taxable_income=45000, private_hospital_cover=True,
+               upstream_limitations=[{"id": "x", "kind": "exclusion", "message": "m"}])
+    assert out["total_status"] == "incomplete"

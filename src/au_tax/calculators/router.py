@@ -572,9 +572,6 @@ def assemble_taxable_income(figures: Figures, inp: AssembleInput) -> dict:
     for index, message in enumerate(warnings, 1):
         limitations.append({"id": f"assembly_warning_{index}", "kind": "assumption",
                             "message": message, "affects": ["taxable_income", "handoffs"]})
-    for index, message in enumerate(blocking, 1):
-        limitations.append({"id": f"assembly_block_{index}", "kind": "exclusion",
-                            "message": message, "affects": ["taxable_income", "handoffs"]})
     return {
         "limitations": limitations,
         "total_complete": consistent and not limitations,

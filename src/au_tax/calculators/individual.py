@@ -34,6 +34,15 @@ SpecialCircumstance = Literal[
 ]
 
 
+class UpstreamLimitation(BaseModel):
+    """A limitation returned by an upstream tool (for example assemble_taxable_income) on an input used here."""
+
+    id: str = Field(description="Upstream limitation id, as returned.")
+    kind: Literal["exclusion", "assumption"] = Field(description="Upstream limitation kind, as returned.")
+    message: str = Field(description="Upstream limitation message, as returned.")
+    affects: list[str] = Field(default_factory=list, description="Upstream affected fields, as returned.")
+
+
 class IndividualTaxInput(BaseModel):
     """Inputs for one individual for one income year. Amounts in AUD for the whole income year."""
 
@@ -78,6 +87,9 @@ class IndividualTaxInput(BaseModel):
     special_circumstances: list[SpecialCircumstance] = Field(
         default_factory=list, description="Any special regime present; each one stops the calculation (AU-IND-001).")
     tax_withheld: float | None = Field(None, ge=0, description="PAYG withheld, to estimate a refund or debt.")
+    upstream_limitations: list[UpstreamLimitation] = Field(
+        default_factory=list, description="Top-level limitations from the tool that produced taxable_income (for "
+        "example assemble_taxable_income); they carry into this result's limitations and total_status.")
 
     @model_validator(mode="after")
     def _consistent(self):
@@ -520,6 +532,8 @@ def individual_income_tax(figures: Figures, inp: IndividualTaxInput) -> dict:
     if help_amt > 0 and inp.help_debt_balance is None:
         limit("help_balance_not_stated", "assumption",
               "Study loan balance is not stated; repayment has not been capped at the outstanding balance.")
+    for upstream in inp.upstream_limitations:
+        limit(upstream.id, upstream.kind, upstream.message)
     total_status = ("incomplete" if any(x["kind"] == "exclusion" for x in limitations)
                     else "conditional" if limitations else "complete")
     out = {
