@@ -134,7 +134,7 @@ lodgment:
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
     as_at: 2026-09-29
-    notes: 'Payment due 21 November if a self-lodged return lodged by 31 October gives a tax bill; otherwise 21 days after the assessment issues.'
+    notes: 'Standard payment date 21 November. For an on-time self-lodged return, later assessment can move payment to 21 days after issue. Lodging late does not extend the standard date; check the assessment and any ATO deferral. Re-read 2026-10-09.'
   individual_payment_due_day:
     value: 21
     unit: day_of_month

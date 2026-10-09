@@ -34,7 +34,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
-    as_at: &id001 2026-09-29
+    as_at: 2026-10-09
     notes: Tax = base + rate x (taxable income - from). Excludes Medicare levy.
   foreign_resident_rates:
     value:
@@ -53,7 +53,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-foreign-residents
-    as_at: *id001
+    as_at: &id001 2026-09-29
     notes: No tax-free threshold; no Medicare levy.
   whm_rates:
     value:
@@ -120,7 +120,7 @@ individual:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset
-    as_at: *id001
+    as_at: 2026-10-09
     notes: 'Offset = base + rate x (taxable income - from); rate is negative (taper). Non-refundable. Statute: Subdiv 61-D
       ITAA 1997.'
   personal_use_asset_cgt_exempt_max_cost:
@@ -150,14 +150,14 @@ medicare:
     unit: rate
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents
-    as_at: *id001
+    as_at: 2026-10-09
     notes: 2% of taxable income (Medicare Levy Act 1986 s6). Foreign residents exempt.
   low_income_shade_in_rate:
     value: 0.1
     unit: rate
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
-    as_at: *id001
+    as_at: 2026-10-09
     notes: 'Medicare Levy Act 1986 s7(2): levy capped at 10% of the excess of taxable income over the threshold amount
       (compilation in force 1 Jul 2026, read 2026-09-29). Also the phase-in rate in the s8(2) family reduction formula.'
   low_income_single_lower:
@@ -165,13 +165,13 @@ medicare:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
-    as_at: *id001
+    as_at: 2026-10-09
   low_income_single_upper:
     value: 35013
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
-    as_at: *id001
+    as_at: 2026-10-09
   low_income_sapto_single_lower:
     value: 44268
     unit: AUD
@@ -189,7 +189,7 @@ medicare:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
-    as_at: *id001
+    as_at: 2026-10-09
     notes: Family taxable income limit (worksheet 2, row d).
   low_income_sapto_family_upper:
     value: 77028
@@ -202,14 +202,14 @@ medicare:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026
-    as_at: *id001
+    as_at: 2026-10-09
     notes: Per dependent child.
   low_income_family_lower:
     value: 47238
     unit: AUD
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
-    as_at: *id001
+    as_at: 2026-10-09
     notes: 'Medicare Levy Act 1986 s8(5) family income threshold (Act No. 58 of 2026 Sch 5, applies 2025-26 and later). Also on the ATO family income page. Read 2026-09-29; confirmed on https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income'
   low_income_sapto_family_lower:
     value: 61623
@@ -223,7 +223,7 @@ medicare:
     unit: AUD
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
-    as_at: *id001
+    as_at: 2026-10-09
     notes: 'Medicare Levy Act 1986 s8(5): increase per dependent child or student. Read 2026-09-29; confirmed on https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income'
   mls_single_tiers:
     value:
@@ -250,7 +250,7 @@ medicare:
     unit: rate
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
-    as_at: *id001
+    as_at: 2026-10-09
     notes: Income for MLS purposes picks the tier; rate applies to MLS income base (whole_income). Tier boundary 'from' is
       exclusive.
   mls_family_tiers:
@@ -278,14 +278,14 @@ medicare:
     unit: rate
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
-    as_at: *id001
+    as_at: 2026-10-09
     notes: Family threshold rises by $1,500 per MLS dependent child after the first.
   mls_family_per_child_after_first:
     value: 1500
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates
-    as_at: *id001
+    as_at: 2026-10-09
   phi_rebate_1jul_to_31mar_under_65:
     value:
     - from: 0
@@ -522,7 +522,7 @@ help:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds
-    as_at: *id001
+    as_at: 2026-10-09
     notes: 'Marginal from 2025-26. Top band: 10% of TOTAL repayment income (whole_income), not marginal. Repayment income
       = taxable income + RFBA + net investment losses + reportable super + exempt foreign employment income.'
 super:
@@ -545,13 +545,13 @@ super:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: *id001
+    as_at: 2026-10-09
   carry_forward_tsb_limit:
     value: 500000
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: *id001
+    as_at: 2026-10-09
     notes: Unused concessional cap carries forward up to 5 years if TSB < $500,000 at prior 30 June.
   non_concessional_cap:
     value: 120000
@@ -744,7 +744,7 @@ cgt:
     unit: rate
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount
-    as_at: *id001
+    as_at: 2026-10-09
     notes: Held >= 12 months, Australian resident. Only for CGT events before 1 Jul 2027 (Act 49 Sch 1); indexation + 30%
       minimum tax after.
   discount_complying_super_fund:

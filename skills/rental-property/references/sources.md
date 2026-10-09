@@ -36,3 +36,5 @@ Read 29 Sep 2026 unless stated. Figures live in `data/rates/<year>.d/rental.yaml
 
 ## Open items (not verifiable on 29 Sep 2026)
 - The ministerial instrument defining a new residential dwelling (s 26-160(4)) and any determination under s 26-155(2)(c): not made as at that date. Tranche 2 exposure draft (Tax Reform No. 3 Bill) was reported by secondary sources only.
+
+Scoped EOFY source refresh: 9 Oct 2026; key/year-specific reads and saved content hashes are in `docs/eofy-source-freshness.md` and `data/eofy/source-evidence.json`. Sources outside that bounded pack retain their original read dates.

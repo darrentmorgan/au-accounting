@@ -371,8 +371,8 @@ def obligations_calendar(figures: Figures, inp: ObligationsInput) -> dict:
                      "Return for this income year, lodged by the taxpayer.")
             if r:
                 rules.append({"obligation": "Individual income tax payment", "recurs": "once",
-                              "rule": f"If lodged by the due date, any tax bill is payable by {r['payment_due_if_lodged_by_due_date']}; "
-                                      "otherwise 21 days after the assessment issues.",
+                              "rule": f"For a return lodged on time, any tax bill is due the later of {r['payment_due_if_lodged_by_due_date']} and "
+                                      "21 days after the assessment issues. Lodging late does not extend the standard November payment date; verify the assessment and any ATO deferral.",
                               "figure_keys": ["lodgment.individual_payment_due_month", "lodgment.individual_payment_due_day"],
                               "owner_skill": "payg-instalments-lodgment", "tool": "lodgment_due_dates"})
         else:

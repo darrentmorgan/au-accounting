@@ -6,49 +6,49 @@ super:
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2018-19 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   concessional_cap_2019_20:
     value: 25000
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2019-20 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   concessional_cap_2020_21:
     value: 25000
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2020-21 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   concessional_cap_2021_22:
     value: 27500
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2021-22 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   concessional_cap_2022_23:
     value: 27500
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2022-23 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   concessional_cap_2023_24:
     value: 27500
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2023-24 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   concessional_cap_2024_25:
     value: 30000
     unit: AUD
     status: VERIFIED
     source: https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'General concessional contributions cap for 2024-25 (ATO Table 1.1). Used for unused-cap carry forward (ITAA 1997 s291-20(3)-(7)); unused amounts exist only from 2018-19.'
   nonconcessional_cap_2023_24:
     value: 110000
@@ -69,28 +69,28 @@ super:
     unit: years
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s291-20(3)(c): unapplied unused concessional cap from the previous 5 financial years; applied earliest first (s291-20(5)).'
   carry_forward_first_unused_year_start:
     value: 2018
     unit: year
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s291-20(7): no unused concessional cap for a financial year earlier than 2018-19 (value is the starting calendar year of 2018-19).'
   excess_concessional_offset_rate:
     value: 0.15
     unit: rate
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s291-15(b): non-refundable tax offset equal to 15% of excess concessional contributions, which are included in assessable income (s291-15(a)).'
   excess_concessional_release_divisor:
     value: 0.85
     unit: rate
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'ITAA 1997 s292-90(1A): an amount released for excess concessional contributions is divided by 85% before reducing the excess counted as non-concessional contributions.'
   nonconcessional_cap_multiple:
     value: 4

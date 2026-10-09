@@ -31,7 +31,7 @@ medicare:
     unit: AUD
     status: VERIFIED
     source: https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Medicare Levy Act 1986 s3(1) phase-in limit, para (c), as in force 1 Jul 2026. Screen only; see
       low_income_current_law_single_lower.'
   low_income_current_law_family_lower:

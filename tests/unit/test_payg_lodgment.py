@@ -426,3 +426,11 @@ def test_payg_instalment_2027_28_quarter_4_still_gives_the_amount_when_the_date_
     q3 = call("payg_instalment", "2027-28", method="rate", instalment_income=20000, instalment_rate_percent=11, quarter=3)
     assert q3["due_date"] == "2028-04-28" and "field_refusals" not in q3
     assert q3["instalment_amount"] == q4["instalment_amount"]
+
+
+def test_self_lodged_payment_rule_distinguishes_late_return():
+    # ATO Preparing your tax return, Due dates / If you miss the due date (read 9 Oct 2026):
+    # on-time return: later assessment can move payment; late return: November date still applies.
+    out = call("lodgment_due_dates", "2025-26", obligation="individual_return_self_lodged")
+    assert any("lodged on time" in w and "assessment" in w for w in out["warnings"])
+    assert any("late" in w and "does not" in w for w in out["warnings"])

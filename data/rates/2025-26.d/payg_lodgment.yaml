@@ -77,35 +77,35 @@ lodgment:
     unit: day_of_month
     status: VERIFIED
     source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Quarterly BAS and instalment due day of the month after the quarter (Q2 is 28 February).'
   quarterly_due_month_q1:
     value: 10
     unit: month_number
     status: VERIFIED
     source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Quarter 1 due month (standard July-June year).'
   quarterly_due_month_q2:
     value: 2
     unit: month_number
     status: VERIFIED
     source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Quarter 2 due month (standard July-June year).'
   quarterly_due_month_q3:
     value: 4
     unit: month_number
     status: VERIFIED
     source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Quarter 3 due month (standard July-June year).'
   quarterly_due_month_q4:
     value: 7
     unit: month_number
     status: VERIFIED
     source: https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Quarter 4 due month (standard July-June year).'
   online_concession_days:
     value: 14
@@ -119,28 +119,28 @@ lodgment:
     unit: month_number
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'Self-lodged individual return due 31 October; next business day if a weekend.'
   individual_return_due_day:
     value: 31
     unit: day_of_month
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'See individual_return_due_month.'
   individual_payment_due_month:
     value: 11
     unit: month_number
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
-    as_at: 2026-09-29
-    notes: 'Payment due 21 November if a self-lodged return lodged by 31 October gives a tax bill; otherwise 21 days after the assessment issues.'
+    as_at: 2026-10-09
+    notes: 'Standard payment date 21 November. For an on-time self-lodged return, later assessment can move payment to 21 days after issue. Lodging late does not extend the standard date; check the assessment and any ATO deferral. Re-read 2026-10-09.'
   individual_payment_due_day:
     value: 21
     unit: day_of_month
     status: VERIFIED
     source: https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return
-    as_at: 2026-09-29
+    as_at: 2026-10-09
     notes: 'See individual_payment_due_month.'
   tpar_due_month:
     value: 8

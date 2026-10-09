@@ -1,0 +1,1052 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-10-09",
+  "scope": "Bounded 2025-26 individual preparation; selected 2026-27/2027-28 year and deduction traps only; not professional approval",
+  "snapshot_base": "Retain the external sources/ folder with this index; firstmate task data aa-eofy-fix contains the originals",
+  "hash_convention": "raw_sha256 hashes exact fetched bytes; text_sha256 hashes saved UTF-8 extracted content including terminal newline; law-watch hash uses its own normalization",
+  "sources": [
+    {
+      "id": "figure-source-00",
+      "url": "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/general-depreciation-rules-capital-allowances/prime-cost-straight-line-and-diminishing-value-methods",
+      "read_at": "2026-10-09T01:17:12.548810+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-00.html",
+      "raw_sha256": "994a03442c0f528b32cf9977f096798487723727d6c53355216947de29853dd3",
+      "bytes": 377341,
+      "verification": "saved_primary_page",
+      "text_file": "sources/figure-source-00.content.txt",
+      "text_sha256": "8d6dafc77c5504179a69eb888227d470c0159c23ba1c3efa7d8d50acb263b794",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-bas-due-dates",
+      "url": "https://www.ato.gov.au/businesses-and-organisations/preparing-lodging-and-paying/business-activity-statements-bas/due-dates-for-lodging-and-paying-your-bas",
+      "read_at": "2026-10-09T01:17:17.415428+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-bas-due-dates.html",
+      "raw_sha256": "76aa2f7bfe6165dd9e1a44bdff77a21318decf129b570bbdaa1ddcf7dd1bb738",
+      "bytes": 332091,
+      "watch_baseline": {
+        "id": "ato-bas-due-dates",
+        "sha256": "d22dec4b53410532b454c72affc294159664f1dcf9247727a90c32a78ffe6776",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-bas-due-dates.content.txt",
+      "text_sha256": "792634357048a28db3eada77543d33409560d3378dd25a5e05bcb100ae4b23ec",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "figure-source-02",
+      "url": "https://www.ato.gov.au/forms-and-instructions/tax-return-for-individuals-2026/medicare-levy-questions-m1-m2-individual-tax-return-2026/m1-medicare-levy-reduction-or-exemption-2026",
+      "read_at": "2026-10-09T01:17:22.970715+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-02.html",
+      "raw_sha256": "f3aa39cc2289bd52941cee2d2ba05b3cb9d54a6cef6d5ca3769698d4ea9ce04d",
+      "bytes": 502444,
+      "verification": "saved_primary_page",
+      "text_file": "sources/figure-source-02.content.txt",
+      "text_sha256": "833910c44e20e26081be1eebd302a5c0704e303ec3873ba16a3829e78b8262fc",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-lito",
+      "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset",
+      "read_at": "2026-10-09T01:17:28.082819+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-lito.html",
+      "raw_sha256": "f874321449c2d9dd8ea18a42528ac33dd4adda58299c9048a8171dd27b841673",
+      "bytes": 273003,
+      "watch_baseline": {
+        "id": "ato-lito",
+        "sha256": "63e0442fb5ddb595c58abefd957d7e8de8ea3056149cb85d8330a059205fc72f",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-lito.content.txt",
+      "text_sha256": "d2fe92fd8cf260cdc707c7ba3afd18b6d0d18194c553ce1663378185a5b2e219",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-cgt-discount",
+      "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax/cgt-discount",
+      "read_at": "2026-10-09T01:17:33.684592+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-cgt-discount.html",
+      "raw_sha256": "d0de90822469783c4691c12c71f5fa192885b6aa9030274d0f77309bd3030176",
+      "bytes": 311630,
+      "watch_baseline": {
+        "id": "ato-cgt-discount",
+        "sha256": "53a382075de446d0c1130b1a386bb6bf83b945c0c05addc26cf532fe4fe96b75",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-cgt-discount.content.txt",
+      "text_sha256": "c61f36f7d053fe629f53287c53b343845ded79542b11f633fbf699f142cd6990",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "figure-source-05",
+      "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/capital-expenses/work-out-your-capital-works-deductions",
+      "read_at": "2026-10-09T01:17:39.269006+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-05.html",
+      "raw_sha256": "21f83d1628fd6ca54ef7c2a31a3284448e52b4cdc21bee477d923edfbfae15a6",
+      "bytes": 365088,
+      "verification": "saved_primary_page",
+      "text_file": "sources/figure-source-05.content.txt",
+      "text_sha256": "cd8cf59ffc712efa0b854e9e5b1b85f4ba69bbf73f5814f0a36fbdee387766bc",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "figure-source-06",
+      "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses/depreciating-assets-in-rental-properties/second-hand-depreciating-assets",
+      "read_at": "2026-10-09T01:17:44.179568+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-06.html",
+      "raw_sha256": "f18cdb1ea36a26cc366650fd70d39c50369a57598c31c0d0702ee2011045724c",
+      "bytes": 328740,
+      "verification": "saved_primary_page",
+      "text_file": "sources/figure-source-06.content.txt",
+      "text_sha256": "31a820347e6bfea3052cd8b458dac97a63be6dc9d73a759530cf81baa5da138f",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-medicare-levy-surcharge-thresholds",
+      "url": "https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy-surcharge/medicare-levy-surcharge-income-thresholds-and-rates",
+      "read_at": "2026-10-09T01:17:48.958326+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-medicare-levy-surcharge-thresholds.html",
+      "raw_sha256": "73eb3a900342972280e7539ad834e0abf8536bff96870d2e5558c8c8692c3c92",
+      "bytes": 410466,
+      "watch_baseline": {
+        "id": "ato-medicare-levy-surcharge-thresholds",
+        "sha256": "d1f601d02f8279e7a451462208d1ffbcadf3d2bbe25761fa9265b97a2eba1475",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-medicare-levy-surcharge-thresholds.content.txt",
+      "text_sha256": "5a2b08da15d4c17caaa1ab92a4ad3261518c0b403a1702c3aeadccc7175949a4",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-medicare-levy-reduction-low-income",
+      "url": "https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners",
+      "read_at": "2026-10-09T01:17:53.668118+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-medicare-levy-reduction-low-income.html",
+      "raw_sha256": "59327f97e9d861d9db5ffe350b474fe3c9abc1180849c6070785bb49deff311a",
+      "bytes": 298555,
+      "watch_baseline": {
+        "id": "ato-medicare-levy-reduction-low-income",
+        "sha256": "70a695c8a3c803e9980bf00af64350217a83834d9e6df0b38e77f3755b60f32a",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-medicare-levy-reduction-low-income.content.txt",
+      "text_sha256": "23bfd960457297faebf8cd2dc98768232022acc74f5d45e9aba626888772be4e",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-lodge-return-payment-due-dates",
+      "url": "https://www.ato.gov.au/individuals-and-families/your-tax-return/before-you-prepare-your-tax-return/preparing-your-tax-return",
+      "read_at": "2026-10-09T01:17:58.306538+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-lodge-return-payment-due-dates.html",
+      "raw_sha256": "2f11cab945a12610e69798bb90908f791573938b480c6248a722c18be4fc30cf",
+      "bytes": 291990,
+      "watch_baseline": {
+        "id": "ato-lodge-return-payment-due-dates",
+        "sha256": "607375883ec13c80078bd8c3d9036271a4669600bdb7e61dc54152c53b2b9cbd",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-lodge-return-payment-due-dates.content.txt",
+      "text_sha256": "d3012d2aefa59cbee73adc4a584573459df5ff81f403ac98d49cbdeadca5ae78",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-super-contributions-caps",
+      "url": "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps",
+      "read_at": "2026-10-09T01:18:03.464471+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-super-contributions-caps.html",
+      "raw_sha256": "83061f431de5dd4344e31266c3b5d36df68ec90b6b942b8e984d272b9a202826",
+      "bytes": 628993,
+      "watch_baseline": {
+        "id": "ato-super-contributions-caps",
+        "sha256": "3112c82932eea4d6b9a5a6fc51588e77fa8dc9d6ec75b9c3da9ab896570567e0",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-super-contributions-caps.content.txt",
+      "text_sha256": "4b7426937e33ea357f9cb7ac4b47bcedff03ac8fd0cb2020aaee5c2129624025",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-help-repayment-thresholds",
+      "url": "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds",
+      "read_at": "2026-10-09T01:18:08.582492+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-help-repayment-thresholds.html",
+      "raw_sha256": "f3287f3d46433d491d0ce9e4ab4072b9920e3c800920fc07290362762edabaa2",
+      "bytes": 518824,
+      "watch_baseline": {
+        "id": "ato-help-repayment-thresholds",
+        "sha256": "4414692ef55ec8461687e7917134dd3b6e9baaabda4e15646453fbe8ba254fd5",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-help-repayment-thresholds.content.txt",
+      "text_sha256": "09ff5a5800378c2a9642ca38569803e5a506ee65b186ba1092f9f83f8896d8e2",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-tax-rates-resident",
+      "url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+      "read_at": "2026-10-09T01:18:13.527282+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-tax-rates-resident.html",
+      "raw_sha256": "711bda35ac1f8aa31e15d63737c7df858e1dc35ae65a2118ea14a81f01b634e9",
+      "bytes": 795456,
+      "watch_baseline": {
+        "id": "ato-tax-rates-resident",
+        "sha256": "2d5c59e6d6c6df3bde0e166efd820f0f3aae7f3ce8995e27d1820297c7bc24df",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-tax-rates-resident.content.txt",
+      "text_sha256": "0521e8fc0b9b96d823f6ec091df5d03c7f5b8a65f99844fed5800db0202abea7",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "figure-source-13",
+      "url": "https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:18:18.684715+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-13.html",
+      "raw_sha256": "a306696d3e1ad77ab10aee18c4771d390000bcdd43266798c6fe7c193e0c75bd",
+      "bytes": 220224,
+      "verification": "saved_primary_page",
+      "text_file": "sources/figure-source-13.content.txt",
+      "text_sha256": "5524112b74f67f7eac7bc114a23f9f38aafeb7c3ce50b3da9849182cc26eb7bd"
+    },
+    {
+      "id": "figure-source-14",
+      "url": "https://www.legislation.gov.au/C2004A05138/2026-08-27/2026-08-27/text/original/epub/OEBPS/document_6/document_6.html",
+      "read_at": "2026-10-09T01:18:24.327262+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-14.html",
+      "raw_sha256": "69a75bad0104417327024fe574cd393d300c761d3cef5f5b51124086306f8d05",
+      "bytes": 2154716,
+      "verification": "saved_primary_page",
+      "text_file": "sources/figure-source-14.content.txt",
+      "text_sha256": "d07bf4366db3fe3672445c6c8482507c6a1770090d3f48dc8172f9f6605fca55"
+    },
+    {
+      "id": "figure-source-15",
+      "url": "https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/pdf",
+      "read_at": "2026-10-09T01:18:29.952204+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "pdf",
+      "snapshot_file": "sources/figure-source-15.html",
+      "raw_sha256": "b59a7a2ad9cced7bc93f6913fb3e2593a19be958eac185ebce8a386c7ce6a631",
+      "bytes": 553037,
+      "verification": "saved_primary_page"
+    },
+    {
+      "id": "figure-source-16",
+      "url": "https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s25.25.html",
+      "read_at": "2026-10-09T01:18:33.361442+00:00",
+      "http_status": "403",
+      "fetch_status": "error",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-16.html",
+      "raw_sha256": "22b166bac9c89cbd543e1216a7ed4fd7f693289e23e9456668ddcf522dcf52e0",
+      "bytes": 5023,
+      "error": "Attention Required! | Cloudflare body{margin:0;padding:0} if (!navigator.cookieEnabled) { window.addEventListener('DOMContentLoaded', function () { va",
+      "verification": "fetch_failed_not_used_as_evidence"
+    },
+    {
+      "id": "figure-source-17",
+      "url": "https://www5.austlii.edu.au/au/legis/cth/consol_act/itaa1997240/s40.80.html",
+      "read_at": "2026-10-09T01:18:36.463497+00:00",
+      "http_status": "403",
+      "fetch_status": "error",
+      "format": "html",
+      "snapshot_file": "sources/figure-source-17.html",
+      "raw_sha256": "1cbc9172c73f0f0740911ead37acc66fcf632bccc21bcedcac3b282425b4ab05",
+      "bytes": 5023,
+      "error": "Attention Required! | Cloudflare body{margin:0;padding:0} if (!navigator.cookieEnabled) { window.addEventListener('DOMContentLoaded', function () { va",
+      "verification": "fetch_failed_not_used_as_evidence"
+    },
+    {
+      "id": "itaa1936",
+      "url": "https://www.legislation.gov.au/C1936A00027/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:18:42.730318+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/itaa1936.html",
+      "raw_sha256": "1e8afd3a0769ff150a4332725abb039bc79b5d7b81601232b346bca98a1ea45a",
+      "bytes": 1339024,
+      "verification": "saved_primary_page",
+      "text_file": "sources/itaa1936.content.txt",
+      "text_sha256": "454a13a9ceca5b694deb47d8f42ba3dffdf789d8937aa82e775d78794fa3febb"
+    },
+    {
+      "id": "itaa1936-medicare",
+      "url": "https://www.legislation.gov.au/C1936A00027/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_4/document_4.html",
+      "read_at": "2026-10-09T01:18:48.083143+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/itaa1936-medicare.html",
+      "raw_sha256": "00084e924550d807c58801c63d0066dba6103c4595dd9ca39e158df1366df25c",
+      "bytes": 1036752,
+      "verification": "saved_primary_page",
+      "text_file": "sources/itaa1936-medicare.content.txt",
+      "text_sha256": "f54f7f733c0a22fce3bf17e5c10f01d352ec410f27c58e23283db34522bf86d2"
+    },
+    {
+      "id": "itaa1997-v1",
+      "url": "https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:18:54.383507+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/itaa1997-v1.html",
+      "raw_sha256": "9995335daba7a8896f899bad65e0b2ddb2d9e80886831114f35661f28a7530f9",
+      "bytes": 2828402,
+      "verification": "saved_primary_page",
+      "text_file": "sources/itaa1997-v1.content.txt",
+      "text_sha256": "5ff012b5125d03536c88e8089d32570df28635566ab6c27a32755e7304c5d40f"
+    },
+    {
+      "id": "itaa1997-v3",
+      "url": "https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_3/document_3.html",
+      "read_at": "2026-10-09T01:19:00.793736+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/itaa1997-v3.html",
+      "raw_sha256": "ac968423f77aa83101f390cbcc5d8303911787a2dad561429a21b56160f4ff8f",
+      "bytes": 3174912,
+      "verification": "saved_primary_page",
+      "text_file": "sources/itaa1997-v3.content.txt",
+      "text_sha256": "8c98c9f749cc4c81ebdcf5fd49085a5a17f9e9957f3818786003282df5250262"
+    },
+    {
+      "id": "resident-law",
+      "url": "https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:19:05.699695+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/resident-law.html",
+      "raw_sha256": "739be2b126edaac77adf0f2d715dc60dd5e58f22b4d24314461e2352bf98d883",
+      "bytes": 489711,
+      "verification": "saved_primary_page",
+      "text_file": "sources/resident-law.content.txt",
+      "text_sha256": "fc5b1a6836224e789389459d8a260bf95de21eb325ca00100ba8093edf8cac61"
+    },
+    {
+      "id": "medicare-amendment",
+      "url": "https://www.legislation.gov.au/C2026A00058/asmade/2026-06-30/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:19:10.859995+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/medicare-amendment.html",
+      "raw_sha256": "792f1caab00e3fc71b536ff738b44944d98b36f2f18a3ec83d4151fda6920fcb",
+      "bytes": 100274,
+      "verification": "saved_primary_page",
+      "text_file": "sources/medicare-amendment.content.txt",
+      "text_sha256": "a5882f1bd7b6eb8cf9abe7936d259dd7fbdc7fd92ba22c86b5c649346d033543"
+    },
+    {
+      "id": "standard-law",
+      "url": "https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:19:15.868965+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/standard-law.html",
+      "raw_sha256": "c409a01cfd4ec47f458ad06f0b57b5a7fc6b2c3ba416a9747091ad11f97cdbe2",
+      "bytes": 332852,
+      "verification": "saved_primary_page",
+      "text_file": "sources/standard-law.content.txt",
+      "text_sha256": "b242461cd634f6ee83e72c8808668763a8dd7ca3249702a7f64663d04d1dd5c1"
+    },
+    {
+      "id": "rental-rules",
+      "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/property-and-land/residential-rental-properties/rental-expenses",
+      "read_at": "2026-10-09T01:19:20.852537+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/rental-rules.html",
+      "raw_sha256": "a4bed0957fb493cc7d54924f796d117174fae79b24bc7bfb0e9d65e3978bfcf0",
+      "bytes": 266570,
+      "verification": "saved_primary_page",
+      "text_file": "sources/rental-rules.content.txt",
+      "text_sha256": "41f0ee2865cc8d9e2a38827c0ba46d11b9a92b8a97784342a839cd4ac54cf6bb"
+    },
+    {
+      "id": "personal-super-rules",
+      "url": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super/growing-and-keeping-track-of-your-super/how-to-save-more-in-your-super/personal-super-contributions",
+      "read_at": "2026-10-09T01:19:25.621839+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/personal-super-rules.html",
+      "raw_sha256": "6b724fd6d08b890514a7040a2e7539fbd03850d70dbbf93cc21b188ef220d127",
+      "bytes": 423680,
+      "verification": "saved_primary_page",
+      "text_file": "sources/personal-super-rules.content.txt",
+      "text_sha256": "9243ee81e0d0ceb27c434eda48639df9c1816b24647a4354ae8691fc53f2cf42",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "employee-records",
+      "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/records-you-need-to-keep",
+      "read_at": "2026-10-09T01:19:30.780373+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/employee-records.html",
+      "raw_sha256": "7aff58cd2606430ecfdd6c286faec69af3b3b4f38b6b7b11c731f7313ccff9af",
+      "bytes": 478431,
+      "verification": "saved_primary_page",
+      "text_file": "sources/employee-records.content.txt",
+      "text_sha256": "099eea83e3427e075c93bdc955a979dcd2c2fa03772d33045935d81a1809674a",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "employee-claims",
+      "url": "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/deductions-you-can-claim",
+      "read_at": "2026-10-09T01:19:35.474876+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/employee-claims.html",
+      "raw_sha256": "0c89a9d2d2d8ab152251b843aed0045227c5e941559b3b7aaae0c88c3de90b6f",
+      "bytes": 300092,
+      "verification": "saved_primary_page",
+      "text_file": "sources/employee-claims.content.txt",
+      "text_sha256": "149c5128ed286cd7a33172b3a575cdf79b6caed692d87067befd28086a582ef1"
+    },
+    {
+      "id": "legis-hesa-2003",
+      "url": "https://www.legislation.gov.au/C2004A01234/latest/text",
+      "read_at": "2026-10-09T01:19:41.507941+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/legis-hesa-2003.html",
+      "raw_sha256": "9cf0fe2c13e3dbd2e1ec7974bbd5a9a5643d8bc9014c17c97063bd9e24a62944",
+      "bytes": 488258,
+      "watch_baseline": {
+        "id": "legis-hesa-2003",
+        "sha256": "a197e4ab8c9333e735d733c43f0f0eebff0df44d263a5a50b7d5d914b440213c",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/legis-hesa-2003.content.txt",
+      "text_sha256": "9d75458f72046a740c584e29e6b71033a8474a59982231bf36dd0de3cb748b60"
+    },
+    {
+      "id": "taa1953",
+      "url": "https://www.legislation.gov.au/C1953A00001/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html",
+      "read_at": "2026-10-09T01:21:02.231080+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/taa1953.html",
+      "raw_sha256": "7e1e79c39362bf26eb69155d8aa63a56ea43c2fd752fdb3e33a591c62fe82165",
+      "bytes": 2176550,
+      "verification": "saved_primary_page",
+      "text_file": "sources/taa1953.content.txt",
+      "text_sha256": "53445932052dad1c2bbdbf8ccf9630983154db5b65c5bcde4177afc29c968300"
+    },
+    {
+      "id": "fairwork-holidays-2025",
+      "url": "https://www.fairwork.gov.au/employment-conditions/public-holidays/2025-public-holidays",
+      "read_at": "2026-10-09T01:21:07.799585+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/fairwork-holidays-2025.html",
+      "raw_sha256": "e78dc57b87230caf43280bf4bc67d7a2f0f5e0e07a0362059420f5fbff168aee",
+      "bytes": 437266,
+      "verification": "saved_primary_page",
+      "text_file": "sources/fairwork-holidays-2025.content.txt",
+      "text_sha256": "1cbd08eecde5602d06418a2054b8f29eb8e3d7ead4380f849b3d167f46dc7cc2"
+    },
+    {
+      "id": "fwo-public-holidays-2026",
+      "url": "https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays",
+      "read_at": "2026-10-09T01:21:12.868922+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/fwo-public-holidays-2026.html",
+      "raw_sha256": "d524cff29118c3428a06ff7f8be6b8e5b0b2570fcfe1c7fd0048716fb5e43aff",
+      "bytes": 444101,
+      "watch_baseline": {
+        "id": "fwo-public-holidays-2026",
+        "sha256": "6a9c25c7f2ef951173dc73321313e7daa2bf3f3f2732e78397f1007359c4b585",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/fwo-public-holidays-2026.content.txt",
+      "text_sha256": "7326012324a8b1e7ac0d5ba53dbf8f1d6d6a22551c2960be44d4605a05bab633"
+    },
+    {
+      "id": "ato-agent-lodgment-weekend-holiday-rule",
+      "url": "https://www.ato.gov.au/tax-and-super-professionals/for-tax-professionals/prepare-and-lodge/registered-agent-lodgment-program/lodgment-and-payment-dates-on-weekends-or-public-holidays",
+      "read_at": "2026-10-09T01:21:18.096057+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-agent-lodgment-weekend-holiday-rule.html",
+      "raw_sha256": "c84fcf7112f7e8dd2873461cf8f3ff037b4987bf1ac0eaa1464ab492f5879171",
+      "bytes": 327825,
+      "watch_baseline": {
+        "id": "ato-agent-lodgment-weekend-holiday-rule",
+        "sha256": "b7a597dd18d8f0de57c6369db9e8d47fef7e4044fea584d27a0018bef4730bb7",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-agent-lodgment-weekend-holiday-rule.content.txt",
+      "text_sha256": "61828752415d1c31ec9c1b735ca50550be170dfff150b7523ca7d29caf00897f",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "ato-medicare-levy-reduction-family",
+      "url": "https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-family-income",
+      "read_at": "2026-10-09T01:21:23.219032+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/ato-medicare-levy-reduction-family.html",
+      "raw_sha256": "8b4086be1e370574578dcca6f0df5c3a41500bf17eebba62ed192087352ee299",
+      "bytes": 314046,
+      "watch_baseline": {
+        "id": "ato-medicare-levy-reduction-family",
+        "sha256": "9a7bd909675b5ff115726deb43f933d55d44ddd4438e333ee0f1368a66844500",
+        "extraction": "saved_raw_html"
+      },
+      "verification": "saved_primary_page",
+      "text_file": "sources/ato-medicare-levy-reduction-family.content.txt",
+      "text_sha256": "4060f5f2510ef7d0a60e49a46e1df96b2e7bca5ab5675fe12fd0eaa4f32417d5",
+      "content_extraction": "ATO supplied __NEXT_DATA__: route.fields.contentBody.value (no inferred or reconstructed figures)"
+    },
+    {
+      "id": "itaa1997-v2",
+      "url": "https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_2/document_2.html",
+      "read_at": "2026-10-09T01:24:29.035396+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/itaa1997-v2.html",
+      "raw_sha256": "38b4245ea8dc8c9704bfd6dcb178217ed5b4dbc19730bda70f82f9b3ab6f8855",
+      "bytes": 2423303,
+      "verification": "saved_primary_page",
+      "text_file": "sources/itaa1997-v2.content.txt",
+      "text_sha256": "570a4161cd3fd14cc78652f9af221ae0afe825ef4e671fedef37390c2d029e0a"
+    },
+    {
+      "id": "itaa1997-v10",
+      "url": "https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_10/document_10.html",
+      "read_at": "2026-10-09T01:27:54.419216+00:00",
+      "http_status": "200",
+      "fetch_status": "saved",
+      "format": "html",
+      "snapshot_file": "sources/itaa1997-v10.html",
+      "raw_sha256": "13ed6c3b55ea15db64a6bc62041bca215a394016be55f554d566f9c7d1b70323",
+      "bytes": 1757414,
+      "verification": "saved_primary_page; selected income-year law must be applied for Div900",
+      "text_file": "sources/itaa1997-v10.content.txt",
+      "text_sha256": "e77de62547bbcf0794023b3af1b5ff58a37266d38ffe182d1160599968087157"
+    }
+  ],
+  "figures": [
+    {
+      "rates_income_year": "2025-26",
+      "key": "cgt.discount_individual_trust",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-cgt-discount",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "help.repayment_schedule",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-help-repayment-thresholds",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "individual.lito",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-lito",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "individual.resident_rates",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-tax-rates-resident",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.individual_payment_due_day",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-lodge-return-payment-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.individual_payment_due_month",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-lodge-return-payment-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.individual_return_due_day",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-lodge-return-payment-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.individual_return_due_month",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-lodge-return-payment-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.quarterly_due_day",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-bas-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.quarterly_due_month_q1",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-bas-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.quarterly_due_month_q2",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-bas-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.quarterly_due_month_q3",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-bas-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "lodgment.quarterly_due_month_q4",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-bas-due-dates",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.levy_rate",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-tax-rates-resident",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_family_lower",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-reduction-family",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_family_upper",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-reduction-family",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_per_child_lower_add",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-reduction-family",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_per_child_upper_add",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-reduction-family",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_shade_in_rate",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-13",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_single_lower",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-02",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.low_income_single_upper",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-02",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.mls_family_per_child_after_first",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-surcharge-thresholds",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.mls_family_tiers",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-surcharge-thresholds",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "medicare.mls_single_tiers",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-medicare-levy-surcharge-thresholds",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.borrowing_expense_immediate_limit",
+      "effective_income_year": "2025-26",
+      "source_id": "itaa1997-v1",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.borrowing_expense_max_years",
+      "effective_income_year": "2025-26",
+      "source_id": "itaa1997-v1",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.capital_works_rate_residential",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-05",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.diminishing_value_factor",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-00",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.low_cost_asset_immediate_deduction_limit",
+      "effective_income_year": "2025-26",
+      "source_id": "itaa1997-v2",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.negative_gearing_first_income_year",
+      "effective_income_year": "2027-28 commencement tested inactive in 2025-26",
+      "source_id": "standard-law",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.negative_gearing_grandfather_date",
+      "effective_income_year": "2027-28 commencement tested inactive in 2025-26",
+      "source_id": "standard-law",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.second_hand_asset_acquired_before",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-06",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "rental.second_hand_asset_installed_before",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-06",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.carry_forward_first_unused_year_start",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-14",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.carry_forward_tsb_limit",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.carry_forward_years",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-14",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap",
+      "effective_income_year": "2025-26",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2018_19",
+      "effective_income_year": "2018-19",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2019_20",
+      "effective_income_year": "2019-20",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2020_21",
+      "effective_income_year": "2020-21",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2021_22",
+      "effective_income_year": "2021-22",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2022_23",
+      "effective_income_year": "2022-23",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2023_24",
+      "effective_income_year": "2023-24",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.concessional_cap_2024_25",
+      "effective_income_year": "2024-25",
+      "source_id": "ato-super-contributions-caps",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.excess_concessional_offset_rate",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-14",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2025-26",
+      "key": "super.excess_concessional_release_divisor",
+      "effective_income_year": "2025-26",
+      "source_id": "figure-source-14",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2026-27",
+      "key": "individual.standard_work_deduction_cap",
+      "effective_income_year": "2026-27",
+      "source_id": "standard-law",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2026-27",
+      "key": "individual.resident_rates",
+      "effective_income_year": "2026-27",
+      "source_id": "ato-tax-rates-resident",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2026-27",
+      "key": "medicare.low_income_single_lower",
+      "effective_income_year": "2026-27",
+      "source_id": "ato-medicare-levy-reduction-low-income",
+      "checked_at": "2026-10-09",
+      "verification": "not_published_for_selected_year_on_scoped_source; remains null/SUSPECT"
+    },
+    {
+      "rates_income_year": "2026-27",
+      "key": "medicare.low_income_single_upper",
+      "effective_income_year": "2026-27",
+      "source_id": "ato-medicare-levy-reduction-low-income",
+      "checked_at": "2026-10-09",
+      "verification": "not_published_for_selected_year_on_scoped_source; remains null/SUSPECT"
+    },
+    {
+      "rates_income_year": "2026-27",
+      "key": "medicare.low_income_current_law_single_upper",
+      "effective_income_year": "2026-27",
+      "source_id": "figure-source-13",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2027-28",
+      "key": "individual.working_australians_tax_offset_max",
+      "effective_income_year": "2027-28",
+      "source_id": "standard-law",
+      "checked_at": "2026-10-09",
+      "verification": "published_value_matches_scoped_source"
+    },
+    {
+      "rates_income_year": "2027-28",
+      "key": "medicare.low_income_single_lower",
+      "effective_income_year": "2027-28",
+      "source_id": "ato-medicare-levy-reduction-low-income",
+      "checked_at": "2026-10-09",
+      "verification": "not_published_for_selected_year_on_scoped_source; remains null/SUSPECT"
+    },
+    {
+      "rates_income_year": "2027-28",
+      "key": "help.repayment_schedule",
+      "effective_income_year": "2027-28",
+      "source_id": "ato-help-repayment-thresholds",
+      "checked_at": "2026-10-09",
+      "verification": "not_published_for_selected_year_on_scoped_source; remains null/SUSPECT"
+    }
+  ],
+  "discrepancies": [
+    {
+      "subject": "self-lodged individual payment wording",
+      "finding": "Late lodgment does not extend the standard November payment date; on-time later assessment is conditional. Runtime, notes and regression tests corrected."
+    }
+  ],
+  "limitations": [
+    "Tax-agent independent interpretation and scenario review remain outstanding.",
+    "Registered-agent client dates remain not_computed and must be checked on the actual client record.",
+    "Blocked AustLII reads are not evidence: rental borrowing/asset figure sources were replaced by directly read Federal Register compilation sections.",
+    "HESA watch entry records compilation identity; the saved ATO repayment page supplies the scoped schedule and add-back checks.",
+    "Other skill domains, other offsets and other-year figures are technical frozen dependencies, not refreshed or assured by this scope."
+  ]
+}

@@ -102,3 +102,7 @@ Mark every item confirmed absent, supplied (year/source/amount) or unresolved. P
 ## Employee intake (P1-5)
 
 The canonical checklist is `skills/router/references/employee-deductions.md`, linked from router intake and individual-tax. It covers eligibility and substantiation without treating a receipt, allowance or method threshold as automatic entitlement. Employee WFH/car tool routing does not expand the positive pack to raw claim assurance or business regimes.
+
+## Scoped freshness record (P1-7)
+
+See `docs/eofy-source-freshness.md` and `data/eofy/source-evidence.json` for the 9 October 2026 primary reads, fetched-content hashes, effective years, 54 scoped figure dispositions, 13 scoped watch baselines and the corrected self-lodged payment rule. Retain the external source snapshots with the generated manifest. Unpublished future figures remain null/SUSPECT; no other-year or whole-plugin freshness claim is made.

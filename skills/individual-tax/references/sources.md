@@ -29,3 +29,5 @@ Read 29 Sep 2026 unless stated. Figures themselves live in `data/rates/<year>.ya
 - Addy v Commissioner of Taxation [2021] HCA 34 (working holiday maker rates and treaty non-discrimination): ATO decision impact statement https://www.ato.gov.au/law/view/document?docid=LIT%2FICD%2FQUD108of2018%2F00001 ; judgment http://classic.austlii.edu.au/au/cases/cth/HCA/2021/34.html
 
 - Standard work deduction: ITAA 1997 s 25-130, inserted by Act No. 49 of 2026 Sch 4 items 3 and 17 (2026–27 and later; re-read 9 Oct 2026). https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/epub/OEBPS/document_1/document_1.html
+
+Scoped EOFY source refresh: 9 Oct 2026; key/year-specific reads and saved content hashes are in `docs/eofy-source-freshness.md` and `data/eofy/source-evidence.json`. Sources outside that bounded pack retain their original read dates.
