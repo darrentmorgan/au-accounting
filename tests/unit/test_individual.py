@@ -385,3 +385,81 @@ def test_taxable_income_cents_ignored_before_rates():
     assert out["taxable_income"] == 100000
     assert out["total_liability"] == pytest.approx(22520, abs=0.001)
     assert any("rounded down to whole dollars" in a for a in out["assumptions"])
+
+
+# ITAA 1997 s 25-130, Act 49 of 2026 Sch 4 items 3 and 17.
+# Independent arithmetic: max(0, min(cap, qualifying labour income) - reducing deductions).
+@pytest.mark.parametrize("labour,deductions,expected", [
+    (60000, 0, 1000), (60000, 300, 700), (60000, 1000, 0),
+    (60000, 1800, 0), (400, 0, 400), (400, 150, 250), (0, 0, 0),
+])
+def test_standard_work_deduction_top_up(labour, deductions, expected):
+    code, out = run("standard_work_deduction", "2026-27", {
+        "resident_at_any_time": True, "assessable_labour_income": labour,
+        "reducing_deductions": deductions,
+    })
+    assert code == 0, out
+    assert out["additional_deduction"] == expected
+    if labour:
+        assert out["figures_used"][0]["key"] == "individual.standard_work_deduction_cap"
+    else:
+        assert out["figures_used"] == []
+
+
+@pytest.mark.parametrize("year,resident", [("2025-26", True), ("2026-27", False)])
+def test_standard_work_deduction_not_eligible(year, resident):
+    code, out = run("standard_work_deduction", year, {
+        "resident_at_any_time": resident, "assessable_labour_income": 60000,
+        "reducing_deductions": 0,
+    })
+    assert code == 0, out
+    assert out["additional_deduction"] == 0
+    assert out["eligible"] is False
+    assert out["figures_used"] == []  # Never read a later-year cap into 2025-26.
+
+
+def test_standard_work_deduction_missing_eligibility_or_negative_input():
+    for payload in [
+        {"assessable_labour_income": 60000, "reducing_deductions": 0},
+        {"resident_at_any_time": True, "assessable_labour_income": 60000, "reducing_deductions": -1},
+    ]:
+        code, _ = run("standard_work_deduction", "2026-27", payload)
+        assert code == 2
+
+
+def test_standard_work_deduction_figure_verification():
+    from au_tax.calculators.individual import StandardWorkDeductionInput, standard_work_deduction
+    f = Figures("2026-27")
+    f.data = copy.deepcopy(f.data)
+    f.data["individual"]["standard_work_deduction_cap"]["status"] = "SOURCE-CITED"
+    inp = StandardWorkDeductionInput(resident_at_any_time=True, assessable_labour_income=60000,
+                                     reducing_deductions=0)
+    with pytest.raises(FigureError, match="SOURCE-CITED"):
+        standard_work_deduction(f, inp)
+    f.allow_draft = True
+    assert standard_work_deduction(f, inp)["additional_deduction"] == 1000
+    assert f.draft
+    f.data["individual"]["standard_work_deduction_cap"]["value"] = None
+    with pytest.raises(FigureError, match="no published value"):
+        standard_work_deduction(f, inp)
+
+
+def test_standard_work_deduction_assembly_handoff_once():
+    # 60,000 wages, 300 substantiated reducing costs, 200 association dues (s25-130(3)
+    # excluded from reducing deductions), 700 top-up: taxable income = 58,800.
+    code, deduction = run("standard_work_deduction", "2026-27", {
+        "resident_at_any_time": True, "assessable_labour_income": 60000, "reducing_deductions": 300,
+    })
+    assert code == 0
+    code, assembled = run("assemble_taxable_income", "2026-27", {"components": [
+        {"kind": "salary_wages", "amount": 60000, "source_skill": "user"},
+        {"kind": "work_related_deduction", "amount": 500, "source_skill": "user"},
+        {"kind": "work_related_deduction", "amount": deduction["additional_deduction"],
+         "source_skill": "individual-tax", "source_tool": "standard_work_deduction"},
+    ]})
+    assert code == 0
+    assert assembled["taxable_income"] == 58800
+    # Independent tax: (45,000-18,200)*.15 + (58,800-45,000)*.30 = 8,160;
+    # LITO = 325-(58,800-45,000)*.015 = 118; levy = 1,176; total = 9,218.
+    out = calc("2026-27", taxable_income=assembled["taxable_income"], private_hospital_cover=True)
+    assert out["total_liability"] == approx(9218)

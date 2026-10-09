@@ -19,7 +19,7 @@ In scope:
 
 Out of scope (tool refuses, see Escalation): seniors and pensioners tax offset, deceased estates, trustee-assessed income, minors' unearned income (ITAA 1936 Div 6AA), employment termination payments and super lump sums, lump sums in arrears, income averaging, first home super saver releases, foreign-resident study loan debtors, working holiday makers who are tax residents or have other income. Not modelled but not refused: franking credits, private health insurance rebate, other offsets, PAYG instalments. For any affected case, state **final settlement not computed** at the top. The tool's `total_liability` and `estimated_refund` cover only its modelled components; do not present them as final tax, refund or debt. Include the agent reconciliation below.
 
-Taxable income is an input. If the user gives gross salary and deductions instead, subtract them and state the result as an assumption; for deductions, rental, CGT or business income use the relevant skill first.
+Taxable income is an input. If the user gives gross salary and deductions instead, use `assemble_taxable_income` through `router`; never subtract in prose. For deductions, rental, CGT or business income load the relevant skill first.
 
 ## Required inputs
 
@@ -35,17 +35,18 @@ Ask for anything missing that changes the answer. Do not assume silently.
 ## Procedure
 
 1. Collect the inputs above. Confirm the income year before calling the tool. Run the owner abroad check first (Judgement rules): if it applies, lead with AU-RES-004 and do not call the tool.
-2. Call `individual_income_tax` with `income_year` and `inputs`, for example:
+2. **Employee deduction handoff (2026–27 and later only).** Before assembly, establish Australian residency at any time, qualifying `assessable_labour_income` under ITAA 1997 s 25-130(4), and eligible `reducing_deductions` under s 25-130(2)(c)–(g). These cover labour-related general costs, car/travel, relevant depreciating-asset deductions and COVID tests. Insurance premiums and trade/business/professional association membership in s 25-130(3) do not reduce the top-up; personal super, gifts and tax-affairs deductions do not reduce it either. Business/investment income does not qualify as labour income. Escalate special lump sums or uncertain classification. Call `standard_work_deduction` with `resident_at_any_time`, `assessable_labour_income`, `reducing_deductions`. Its cap is `individual.standard_work_deduction_cap`; pass only `additional_deduction` as one `work_related_deduction` component from `individual-tax`/`standard_work_deduction` to router assembly, retaining existing eligible deductions once. Never apply this to 2025–26, never add the full cap on top of actual costs, and never subtract again from taxable income already containing the top-up. If inclusion is unknown, resolve it first. This handoff does not override missing Medicare thresholds or any refusal in the subsequent tax calculation.
+3. Call `individual_income_tax` with `income_year` and `inputs`, for example:
    `income_year: "2026-27"`, `inputs: {"taxable_income": <amount>, "residency": "resident", "private_hospital_cover": false}`.
    Field names: `taxable_income`, `residency` (`resident` | `foreign` | `whm`), `resident_months`, `has_spouse`, `spouse_taxable_income`, `spouse_income_for_mls`, `dependent_children`, `private_hospital_cover`, `days_without_cover`, `has_help_debt`, `help_debt_balance`, `reportable_fringe_benefits`, `net_investment_losses`, `reportable_super_contributions`, `exempt_foreign_employment_income`, `medicare_full_exemption_days`, `medicare_half_exemption_days`, `sapto_eligible`, `whm_tax_resident`, `whm_other_income`, `net_labour_income` (2027-28 onwards, for the working Australians tax offset: labour, personal services and individual business income less the deductions for earning it; ask for it, never derive it from taxable income), `special_circumstances`, `tax_withheld`.
-3. If the person is of age pension age or receives a pension, set `sapto_eligible: true` (the tool will refuse with AU-IND-002). If any special regime in the out-of-scope list is present, pass it in `special_circumstances`.
-4. Read the envelope:
+4. If the person is of age pension age or receives a pension, set `sapto_eligible: true` (the tool will refuse with AU-IND-002). If any special regime in the out-of-scope list is present, pass it in `special_circumstances`.
+5. Read the envelope:
    - `exit_code` 0: present the result (Output below).
    - `exit_code` 3 with `refusal`: quote the code and message verbatim, stop that part, offer what can still be done (for example, the income tax without the refused component).
    - `exit_code` 4 with refusal `AU-GEN-001`: a figure for that year is not yet verified; quote the message and offer a marked draft with `allow_draft: true`. With `AU-GEN-003`: a figure has no published value, so no draft is possible; quote the message. For 2026-27 and 2027-28 this happens (AU-GEN-003) for incomes near the Medicare low-income range because those thresholds have not been set; for 2027-28 it also happens for the Medicare levy surcharge when cover is missing or partial (the tiers are unpublished) and for any study loan repayment (the schedule is unpublished). Offer the 2025-26 figure as a comparison, clearly labelled, and do not present it as the answer for the later year. Do not retry with `allow_draft: true` after AU-GEN-003.
    - `exit_code` 2: fix the input and call again.
-5. If `private_hospital_cover` was not given, the tool reports a contingent MLS amount instead of adding it (for 2027-28, where the tiers are unpublished, it shows none and says so); ask the user and rerun if it matters. For 2027-28 without `net_labour_income` the working Australians tax offset is not applied and the tax is overstated by up to the offset: say so, or ask for the figure.
-6. Never recompute or round the tool's numbers differently. Quote them as returned, in dollars and cents.
+6. If `private_hospital_cover` was not given, the tool reports a contingent MLS amount instead of adding it (for 2027-28, where the tiers are unpublished, it shows none and says so); ask the user and rerun if it matters. For 2027-28 without `net_labour_income` the working Australians tax offset is not applied and the tax is overstated by up to the offset: say so, or ask for the figure.
+7. Never recompute or round the tool's numbers differently. Quote them as returned, in dollars and cents.
 
 ## Judgement rules
 

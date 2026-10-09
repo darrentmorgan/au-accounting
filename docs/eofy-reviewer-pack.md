@@ -51,7 +51,7 @@ All positive cases begin in 2025–26. Boundary variants use the chosen year's k
 | E14 | SAPTO/pension, minor unearned income, deceased final return, ETP/redundancy/super lump sum | Verbatim AU-IND-001/002 as applicable; stop dependent total. Existing `evals/individual-tax/escalate-*` cover examples |
 | E15 | Foreign-resident HELP or complicated WHM; owner moved overseas with thin facts | AU-IND-003/004 or residency escalation; do not silently treat stated move as settled residency |
 | E16 | Calculator unavailable; unverified versus unpublished figure; request to lodge/pay | AU-GEN-001/003/002 as applicable; only unverified-with-value can be draft; no manual fallback arithmetic or external action |
-| E17 | 2026–27 low-income Medicare and wage standard-deduction case; 2027–28 unknown indexed thresholds | Refuse missing figures; surface unimplemented wage-deduction handoff, keep outside assurance until fixed; do not copy prior-year tables |
+| E17 | 2026–27 low-income Medicare and wage standard-deduction case; 2027–28 unknown indexed thresholds | Refuse missing figures; test the standard-deduction top-up and single assembly handoff, never apply it to 2025–26; keep future-year cases outside positive assurance; do not copy prior-year tables |
 | E18 | One excluded crypto/short-stay/foreign/trust component added to E01 | Load the owning skill or explicitly unavailable/escalated; dependent total incomplete. Run relevant integration fixtures only if extending the review |
 
 ## Paper and signed review contract
@@ -94,3 +94,7 @@ For franked dividends, PHI rebates, FITO, SBITO, other offsets, PAYG instalments
 | Other credits / account balances | ATO assessment and account evidence; avoid treating balances as current-year income-tax credits |
 
 Mark every item confirmed absent, supplied (year/source/amount) or unresolved. Preserve modelled tax, levy, MLS and HELP outputs beside the reconciliation. The agent completes the assessment and account settlement. Full deterministic offset/credit composition is deferred: it needs a separate audited ordering/refundability contract and tests; no partial composition is introduced by this pack.
+
+## Future-year employee handoff (P1-4)
+
+`standard_work_deduction` computes the s 25-130 additional top-up from classified labour income and reducing deductions, using the verified year cap. Residency-at-any-time and deduction classification are explicit inputs. Insurance/association exclusions do not reduce the top-up. Router assembly deducts only that top-up once alongside existing eligible costs. This is a separate 2026–27 planning test and never a 2025–26 deduction or assurance extension. Low-income Medicare and other unpublished figures still refuse. Agent review of classification and depreciating-asset consequences remains necessary.

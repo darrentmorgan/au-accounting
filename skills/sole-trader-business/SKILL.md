@@ -90,3 +90,5 @@ End every answer with this working paper (CONVENTIONS section 8):
 6. "Working paper only. Review by a registered tax agent (or BAS agent for BAS matters) before use." Copy this sentence verbatim as the last line of the answer; do not paraphrase it.
 
 References: `references/sources.md` (primary sources), `references/rules.md` (calculation detail and edge cases).
+
+For an employee standard work deduction in 2026–27 or later, hand the qualifying wage facts to `individual-tax` and its `standard_work_deduction` tool before router assembly. Business/ABN income is not qualifying assessable labour income for this deduction. Do not reuse the standard-deduction cap as a business expense.
