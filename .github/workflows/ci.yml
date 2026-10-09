@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ${{ fromJSON(vars.CI_RUNNER_JSON || '"ubuntu-latest"') }}
+    timeout-minutes: 10
+    env:
+      UV_LOCKED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - name: Set up Python 3.13
+        run: uv python install 3.13
+      - name: Install locked dependencies
+        run: uv sync --locked --python 3.13
+      - name: Run tests and quality checks
+        run: bash scripts/check_all.sh
