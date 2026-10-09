@@ -36,7 +36,7 @@ If other facts are missing, continue with clearly labelled assumptions rather th
 
 ## Procedure
 
-1. **Intake.** Collect the facts above. Record each fact once, with its source (user said, document, assumption).
+1. **Intake.** Collect the facts above. For employees, run `references/employee-deductions.md` and record substantiation gaps before accepting deductions. Record each fact once, with its source (user said, document, assumption).
 2. **Map facts to skills.** Use the routing table in `references/skill-map.md`. Write the plan as an ordered list before loading anything: skill, why it applies, what it must hand on. Default order:
    1. `residency-cross-border` (residency gates everything for individuals; foreign income and FITO)
    1a. `au-indonesia-cross-border` (optional branch, only when Indonesian income, the Indonesia treaty, days in Indonesia or payments to an Indonesian resident are involved; runs straight after residency, its offset result is reported like the FITO result). For foreign income from any other country, skip this branch: `residency-cross-border` and the generic `foreign_income_tax_offset` are the default, with no treaty analysis

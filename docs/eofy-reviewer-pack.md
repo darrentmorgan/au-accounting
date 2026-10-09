@@ -98,3 +98,7 @@ Mark every item confirmed absent, supplied (year/source/amount) or unresolved. P
 ## Future-year employee handoff (P1-4)
 
 `standard_work_deduction` computes the s 25-130 additional top-up from classified labour income and reducing deductions, using the verified year cap. Residency-at-any-time and deduction classification are explicit inputs. Insurance/association exclusions do not reduce the top-up. Router assembly deducts only that top-up once alongside existing eligible costs. This is a separate 2026–27 planning test and never a 2025–26 deduction or assurance extension. Low-income Medicare and other unpublished figures still refuse. Agent review of classification and depreciating-asset consequences remains necessary.
+
+## Employee intake (P1-5)
+
+The canonical checklist is `skills/router/references/employee-deductions.md`, linked from router intake and individual-tax. It covers eligibility and substantiation without treating a receipt, allowance or method threshold as automatic entitlement. Employee WFH/car tool routing does not expand the positive pack to raw claim assurance or business regimes.

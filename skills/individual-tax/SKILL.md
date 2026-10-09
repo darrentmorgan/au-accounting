@@ -27,7 +27,7 @@ Ask for anything missing that changes the answer. Do not assume silently.
 
 1. **Income year** (`2025-26`, `2026-27` or `2027-28`; 2027-28 is 1 Jul 2027 to 30 Jun 2028). Each year reads its own rates file, so 2027-28 uses the 2027-28 resident rates and never the 2026-27 ones. If unclear, ask. "This year" is ambiguous between the year whose return is being lodged and the current income year.
 2. **Residency**: resident, foreign resident, or working holiday maker. If they moved to or left Australia during the year, ask how many months they were resident (count the month of arrival or departure) and, if known, the exact non-resident days.
-3. **Taxable income** for the year.
+3. **Taxable income** for the year, or source-labelled components through router assembly. For employee deductions use `skills/router/references/employee-deductions.md` to identify method, evidence, reimbursement/private use and duplicate claims.
 4. For Medicare and MLS: spouse on 30 June (and spouse's taxable income), number of dependent children, and whether they held appropriate private patient hospital cover all year (if not, how many days without cover).
 5. For study loans: whether they have a HELP or other study loan debt; reportable fringe benefits, net investment losses (financial plus rental), reportable super contributions and exempt foreign employment income, which also feed the MLS income test.
 6. Optional: PAYG tax withheld. Also ask about franking credits, PHI rebate adjustments, other offsets, PAYG instalments and other credits before treating an estimate as complete within the modelled scope.

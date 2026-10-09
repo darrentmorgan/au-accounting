@@ -31,6 +31,10 @@ Ask in one short batch, skipping anything the user already gave. Group questions
 | Dividends (franked), interest, loans from your company? | Franking credits, Div 7A | company-div7a, individual-tax |
 | Super contributions (employer, salary sacrifice, personal, after-tax), total super balance? | Caps, personal deduction, Div 293 | super-contributions |
 
+## Employee deductions
+
+For wage earners, use `employee-deductions.md` before accepting deductions: employment connection/payment/reimbursement, car/travel, WFH method/hours, equipment, clothing, training, dues/insurance, gifts/tax affairs/personal super, evidence and duplicate checks. Record source/year/eligibility/evidence status; unresolved material claims stop dependent totals. The first EOFY review pack accepts only independently substantiated supplied ordinary deductions.
+
 ## 4. Registrations and obligations
 
 | Question | Why | Feeds |
