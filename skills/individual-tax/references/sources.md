@@ -6,7 +6,9 @@ Read 29 Sep 2026 unless stated. Figures themselves live in `data/rates/<year>.ya
 - Income Tax Rates Act 1986 (compilation in force 1 Jul 2026): Sch 7 Pt I (resident rates by year), Pt II (non-resident rates), Pt III (working holiday makers), s3A (working holiday taxable income), ss18-20 (part-year tax-free threshold). https://www.legislation.gov.au/C2004A03348/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
 - Medicare Levy Act 1986 (compilation in force 1 Jul 2026): s3 (threshold amount, phase-in limit), s6 (rate), s7 (small incomes), s8 (family reduction), ss8B-8D (surcharge), s9 (prescribed persons for part of the year). https://www.legislation.gov.au/C2004A03351/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
 - Treasury Laws Amendment (Delivering an Efficient and Trusted Tax System) Act 2026 (No. 58 of 2026) Sch 5: Medicare low-income thresholds for 2025-26 and later years. https://www.legislation.gov.au/C2026A00058/asmade/2026-06-30/text/original/epub/OEBPS/document_1/document_1.html
-- Income Tax Assessment Act 1997 Subdiv 61-D (LITO); ITAA 1936 s251U (prescribed persons), s6(1) (resident). https://www.legislation.gov.au/C2004A05138/latest/text
+- Income Tax Assessment Act 1997 (compilation in force 1 Jul 2026), Subdiv 61-D (LITO), volume 2. https://www.legislation.gov.au/C2004A05138/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_2/document_2.html
+- Income Tax Assessment Act 1936 (compilation No. 192, 1 Jul 2026; re-read 9 Oct 2026), s6(1) (resident), volume 1. https://www.legislation.gov.au/C1936A00027/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_1/document_1.html
+- Income Tax Assessment Act 1936 (same compilation), s251U (prescribed persons), volume 4. https://www.legislation.gov.au/C1936A00027/2026-07-01/2026-07-01/text/original/epub/OEBPS/document_4/document_4.html
 - Higher Education Support Act 2003 (compulsory repayment, repayment income). https://www.legislation.gov.au/C2004A01234/latest/text
 
 ## ATO guidance
