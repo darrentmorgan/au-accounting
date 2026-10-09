@@ -31,3 +31,17 @@ Read 29 Sep 2026 unless stated. Figures themselves live in `data/rates/<year>.ya
 - Standard work deduction: ITAA 1997 s 25-130, inserted by Act No. 49 of 2026 Sch 4 items 3 and 17 (2026–27 and later; re-read 9 Oct 2026). https://www.legislation.gov.au/C2026A00049/asmade/2026-06-26/text/original/epub/OEBPS/document_1/document_1.html
 
 Scoped EOFY source refresh: 9 Oct 2026; key/year-specific reads and saved content hashes are in `docs/eofy-source-freshness.md` and `data/eofy/source-evidence.json`. Sources outside that bounded pack retain their original read dates.
+
+## Individual settlement rules
+
+Applied income year is returned on each `individual_tax_settlement.rule_authorities` entry. Tax, Medicare/MLS and HELP retain the primary sources and selected-year figures above. Settlement supports 2025-26 to 2027-28 only where each required figure is published and verified; missing later-year PHI tables are refused. These additions do not extend the scoped EOFY professional-review boundary.
+
+- ITAA 1997 s63-10: non-refundable offsets before refundable offsets; unused refundable offsets follow Div67. https://www.ato.gov.au/law/view/document?docid=PAC/19970038/63-10
+- ITAA 1997 s207-20: include the franking gross-up in assessable income and credit the corresponding offset once (read 9 Oct 2026). https://www.ato.gov.au/law/view/document?docid=PAC/19970038/207-20
+- ITAA 1997 s207-145: qualified-person and integrity restrictions must be resolved before confirming entitlement. https://www.ato.gov.au/law/view/document?docid=PAC/19970038/207-145
+- ITAA 1997 s67-25 and Div67: eligible individual franking offsets are refundable; excluded entities/regimes are not assumed eligible. https://www.ato.gov.au/law/view/document?docid=PAC/19970038/67-25
+- ATO claiming the PHI rebate (read 9 Oct 2026): premium reduction versus refundable offset, exclude lifetime health cover loading, excess recovery and unclaimed entitlement. https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/claiming-the-private-health-insurance-rebate
+- ATO PHI thresholds and rebate tables (read 9 Oct 2026): payment-period and oldest-person age bands, family status, qualifying children and adult allocation. Figures remain in the selected year's `medicare.phi_rebate_*` tables. https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/private-health-insurance-rebate/income-thresholds-and-rates-for-the-private-health-insurance-rebate
+- TAA 1953 Sch1 s18-15: credit for confirmed PAYG withholding. https://www.ato.gov.au/law/view/document?docid=PAC/19530001/Sch1-18-15
+- TAA 1953 Sch1 s45-30 (read 9 Oct 2026): income-year instalment credit net of claimed credits, including unpaid instalments; unpaid instalment liability remains separate. https://www.ato.gov.au/law/view/document?docid=PAC/19530001/Sch1-45-30
+- PS LA 2011/21, tax offsets and Attachment A: ordering, refund/account offsets and PAYG credit priority for compulsory study-loan repayments. https://www.ato.gov.au/law/view/view.htm?docid=PSR/PS201121/NAT/ATO/00001

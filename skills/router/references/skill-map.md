@@ -20,7 +20,7 @@
 | short-stay-accommodation | Airbnb, Stayz or other short-stay letting by an individual: GST on short-stay rent, private-use and blocked-out nights, holiday home, platform reporting | GST screen (input taxed or escalated), night apportionment and the `rental_property_result` handoff, platform reconciliation, SERR status | rental-property (`rental_property_result_handoff`); gst-bas (`handoff_gst_registration_check`); individual-tax via rental-property |
 | cgt | Sales of shares, crypto, property, business assets; main residence; foreign resident CGT; small business concessions screen | Net capital gain after losses and discount (indexation option from 1 Jul 2027), carried-forward capital loss | individual-tax (net capital gain), company-div7a (company gains, no discount) |
 | super-contributions | Contributions, caps, personal deductions, Div 293, Div 296, co-contribution, downsizer | Cap positions, deductible personal contributions, Div 293 and Div 296 tax | individual-tax (deduction, `reportable_super_contributions`) |
-| individual-tax | An individual's tax figure | Tax, LITO, Medicare levy and surcharge, study loan repayment, refund or debt | combined position |
+| individual-tax | An individual's tax figure or income-year settlement | Tax components; `individual_tax_settlement` refund/amount owing with confirmed PAYG, refundable franking and PHI reconciliation; other offsets/unresolved inputs refuse | combined position |
 | payg-instalments-lodgment | Lodgment and payment dates, PAYG instalments, failure-to-lodge penalties, GIC and SIC | Instalment amounts, due dates (`lodgment_due_dates`, which `obligations_calendar` reuses), agent lodgment program pointers, penalty and interest estimates | combined calendar (`not_computed` items such as agent program and company or trust return dates) |
 
 ## Handoff fields (tool output to tool input)
@@ -55,7 +55,10 @@ Pass the upstream field exactly as returned. Every income amount for an individu
 | foreign income facts (residency-cross-border) | gross foreign income in AUD | `foreign_income` (gross, `net_of_foreign_tax: false`) |
 | `foreign_income_tax_offset` (residency-cross-border) | `offset_after_limit`, `tax_payable_after_fito` | run after `individual_income_tax` with its tax figures; quote `tax_payable_after_fito` |
 | `indonesia_treaty_fito` (au-indonesia-cross-border) | `creditable_foreign_tax`, `fito.offset_after_limit`, `fito.tax_payable_after_fito` | as `foreign_income_tax_offset`: gross Indonesian income goes in as `foreign_income`; run after `individual_income_tax`; quote `fito.tax_payable_after_fito`; the capital gain part needs the cgt `net_capital_gain` first |
-| `payg_withholding` (payroll-sg) or payment summaries | tax withheld | `individual_income_tax.tax_withheld` |
+| `payg_withholding` (payroll-sg) or payment summaries | confirmed year tax withheld | `individual_tax_settlement.tax_withheld`; component estimates only: `individual_income_tax.tax_withheld` |
+| ATO income-year instalment reconciliation | credit net of variations | `individual_tax_settlement.payg_instalment_credit`; unpaid instalment debts stay on the account |
+| Dividend statements and confirmed individual entitlement | credit, dividend/gross-up already included once in assembly | `individual_tax_settlement.franking`; never infer eligibility from `max_franking_credit` alone |
+| Allocated PHI statement rows and confirmed income/family/age facts | gross eligible premiums excluding loading; rebate received | `individual_tax_settlement.private_health_rebate`; selected-year period/age tables calculate entitlement |
 | `obligations_calendar` (router) | `calendar`, `recurring_rules`, `not_computed`, `unverified` | calendar section |
 
 `div293_tax` inputs: `taxable_income` (the assembled figure), `reportable_fringe_benefits` (fbt), `net_investment_loss` (the assembly handoff plus any financial investment loss), `concessional_contributions` (super-contributions).
@@ -81,3 +84,7 @@ Plan: residency-cross-border first. If residency comes back `uncertain_escalate`
 Plan: residency-cross-border (residency indication) > au-indonesia-cross-border (`idr_to_aud`, `indonesia_treaty_allocation` for the rent, `indonesia_service_pe_screen` for the staff; an Indonesian company, a villa held through an entity or a fixed base escalates) > rental-property (`foreign_rental_net` for the villa, never `rental_property_result`) and cgt for the Australian side > `assemble_taxable_income` (villa gross rent as `foreign_income`, its costs as `other_deduction`) > individual-tax > `indonesia_treaty_fito`, offset reported beside the tax. AU-RENT-005 is quoted as a scope note on the villa costs and the total is still given.
 
 **One part refused.** Example: the trust's s100A position is refused (AU-TRUST-001). The router still completes the trust shares, the rental result and each beneficiary's tax, lists AU-TRUST-001 under "Parts not completed" at the top and in section 5, and marks any figure that depended on the s100A outcome as incomplete.
+
+## Settlement handoff
+
+For supported individual income-year settlements, call `individual_tax_settlement` with assembled taxable income, the same tax facts and assembly limitations unchanged. Follow `skills/individual-tax/references/settlement.md`. Keep FITO, SBITO and every other unmodelled offset/credit or unresolved input in `unmodelled_inputs`; any entry or component limitation blocks the final figure. Company/trust assessments and ATO account balances remain separate. Never hand-net separately returned offsets.

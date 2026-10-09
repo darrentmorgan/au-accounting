@@ -451,8 +451,9 @@ def individual_income_tax(figures: Figures, inp: IndividualTaxInput) -> dict:
     Medicare levy with low-income and family reductions and exemption days, Medicare levy surcharge
     (tier from income for MLS purposes, single or family thresholds), and compulsory HELP/study loan
     repayment on repayment income. Returns each component, total liability, effective rate, marginal
-    rate on the next dollar (income tax and Medicare levy), and a refund/debt estimate if tax_withheld is
-    given. Use for "how much tax on $X", "tax payable", "take-home", "Medicare levy surcharge", "HELP
+    rate on the next dollar (income tax and Medicare levy), and a withholding-only component estimate if
+    tax_withheld is given. Final refund/amount owing requires individual_tax_settlement, including credits
+    and PHI reconciliation. Use for "how much tax on $X", "tax payable", "take-home", "Medicare levy surcharge", "HELP
     repayment". From 2027-28 also the working Australians tax offset when net_labour_income is given. Refuses
     (AU-IND-001..004) for special regimes, SAPTO cases, foreign-resident study loans
     and mixed WHM cases; refuses AU-GEN-001 when a needed figure for the year is not yet verified, or AU-GEN-003

@@ -1,11 +1,11 @@
 ---
 name: individual-tax
-description: 'Works out Australian individual income tax for 2025-26 to 2027-28 - tax on taxable income, low income tax offset, the working Australians tax offset, Medicare levy (including the low-income and family reductions), Medicare levy surcharge, and compulsory HELP or other study loan repayments - for residents, part-year residents, foreign residents and working holiday makers. Use when someone asks "how much tax will I pay on X", "what''s my take-home", "do I pay the Medicare levy surcharge", "MLS if I don''t have private health", "HELP repayment this year", "HECS repayment", "tax for a working holiday maker", "tax as a non-resident", or "tax if I moved to Australia part way through the year". Also use for any question about tax on a child''s or minor''s income (including trust distributions to children), a deceased person''s final return, redundancy, termination or other lump-sum payments, and super lump sums: the skill decides what is in scope and escalates special regimes to a registered tax agent.'
+description: 'Works out Australian individual income tax, LITO, WATO, Medicare levy and surcharge, and HELP repayments for 2025-26 to 2027-28. Computes an income-year refund or amount owing with confirmed PAYG withholding, PAYG instalment credits, refundable franking credits and private health insurance rebate adjustments; refuses incomplete settlements. Use for "how much tax on X", "take-home pay", "tax refund", "amount owing", "franking credits", "PHI rebate", "MLS", "HELP repayment", "HECS", resident, part-year, foreign resident or working holiday maker tax. Routes special regimes such as minors, deceased returns, SAPTO and lump sums to a registered tax agent.'
 ---
 
 # Individual income tax (Australia)
 
-Computes an individual's tax for one income year through the `individual_income_tax` tool. Never do the arithmetic yourself and never quote a rate or threshold from memory; every figure comes from the tool's `figures_used`.
+Computes an individual's tax components through `individual_income_tax` and income-year settlement through `individual_tax_settlement`. Never do the arithmetic yourself and never quote a rate or threshold from memory; every figure comes from the tool's `figures_used`.
 
 ## Scope
 
@@ -16,8 +16,9 @@ In scope:
 - Medicare levy (Medicare Levy Act 1986 s6), low-income shade-in (s7), family reduction (s8), exemption days (s9; ITAA 1936 s251U).
 - Medicare levy surcharge (MLA ss8B-8D): tier from income for MLS purposes, single or family thresholds, days without cover.
 - Compulsory study loan repayment on repayment income (Higher Education Support Act 2003; marginal schedule from 2025-26).
+- Income-year settlement against confirmed PAYG withholding and instalment credits, eligible refundable franking credits, and PHI rebate entitlement less rebate received. This is a working paper on confirmed inputs; ATO account balances are reconciled separately.
 
-Out of scope (tool refuses, see Escalation): seniors and pensioners tax offset, deceased estates, trustee-assessed income, minors' unearned income (ITAA 1936 Div 6AA), employment termination payments and super lump sums, lump sums in arrears, income averaging, first home super saver releases, foreign-resident study loan debtors, working holiday makers who are tax residents or have other income. Not modelled but not refused: franking credits, private health insurance rebate, other offsets, PAYG instalments. For any affected case, state **final settlement not computed** at the top. The tool's `total_liability` and `estimated_refund` cover only its modelled components; do not present them as final tax, refund or debt. Include the agent reconciliation below.
+Out of scope (tool refuses, see Escalation): seniors and pensioners tax offset, deceased estates, trustee-assessed income, minors' unearned income (ITAA 1936 Div 6AA), employment termination payments and super lump sums, lump sums in arrears, income averaging, first home super saver releases, foreign-resident study loan debtors, working holiday makers who are tax residents or have other income. Other offsets such as FITO and SBITO, unresolved credit entitlements, and company/trust assessments remain outside settlement scope. `individual_tax_settlement` refuses AU-IND-005 when any unmodelled input or component limitation remains. State **final settlement not computed** for those cases. `individual_income_tax.total_liability` and `estimated_refund` cover only tax components and withholding; use the settlement tool for a complete income-year refund or amount owing. Include the reconciliation below.
 
 Taxable income is an input. If the user gives gross salary and deductions instead, use `assemble_taxable_income` through `router`; never subtract in prose. For deductions, rental, CGT or business income load the relevant skill first.
 
@@ -30,7 +31,7 @@ Ask for anything missing that changes the answer. Do not assume silently.
 3. **Taxable income** for the year, or source-labelled components through router assembly. For employee deductions use `skills/router/references/employee-deductions.md` to identify method, evidence, reimbursement/private use and duplicate claims.
 4. For Medicare and MLS: spouse on 30 June (and spouse's taxable income), number of dependent children, and whether they held appropriate private patient hospital cover all year (if not, how many days without cover).
 5. For study loans: whether they have a HELP or other study loan debt; reportable fringe benefits, net investment losses (financial plus rental), reportable super contributions and exempt foreign employment income, which also feed the MLS income test.
-6. Optional: PAYG tax withheld. Also ask about franking credits, PHI rebate adjustments, other offsets, PAYG instalments and other credits before treating an estimate as complete within the modelled scope.
+6. For a settlement, PAYG withheld and ATO-reconciled instalment credit for the selected year; dividend/gross-up and refundable franking eligibility; every allocated PHI premium/rebate row and confirmed income/family/age facts. Explicitly confirm absence or identify unresolved inputs and other offsets/credits. See `references/settlement.md` for the required fields; missing credits must never default to nil.
 
 ## Procedure
 
@@ -46,7 +47,8 @@ Ask for anything missing that changes the answer. Do not assume silently.
    - `exit_code` 4 with refusal `AU-GEN-001`: a figure for that year is not yet verified; quote the message and offer a marked draft with `allow_draft: true`. With `AU-GEN-003`: a figure has no published value, so no draft is possible; quote the message. For 2026-27 and 2027-28 this happens (AU-GEN-003) for incomes near the Medicare low-income range because those thresholds have not been set; for 2027-28 it also happens for the Medicare levy surcharge when cover is missing or partial (the tiers are unpublished) and for any study loan repayment (the schedule is unpublished). Offer the 2025-26 figure as a comparison, clearly labelled, and do not present it as the answer for the later year. Do not retry with `allow_draft: true` after AU-GEN-003.
    - `exit_code` 2: fix the input and call again.
 6. If `private_hospital_cover` was not given, the tool reports a contingent MLS amount instead of adding it (for 2027-28, where the tiers are unpublished, it shows none and says so); ask the user and rerun if it matters. For 2027-28 without `net_labour_income` the working Australians tax offset is not applied and the tax is overstated by up to the offset: say so, or ask for the figure.
-7. Never recompute or round the tool's numbers differently. Quote them as returned, in dollars and cents.
+7. **Settlement:** follow `references/settlement.md` and call `individual_tax_settlement` with the same tax facts and upstream limitations. Supply every settlement field, including explicit null for absent franking/PHI and an empty `unmodelled_inputs` only after reconciliation confirms none. Never hand-net offsets or reuse an after-offset tax amount as taxable income. AU-IND-005 stops the final figure; retain separately available components and quote the refusal. No final figure may be asserted from draft output.
+8. Never recompute or round the tool's numbers differently. Quote them as returned, in dollars and cents.
 
 ## Judgement rules
 
@@ -73,13 +75,15 @@ Ask for anything missing that changes the answer. Do not assume silently.
 
 Surface the code and its message exactly as returned, then stop the affected work.
 
+Settlement refusal: **AU-IND-005** for unresolved inputs, credit eligibility, component limitations or draft figures; route to a registered tax agent.
+
 ## Output
 
 Lead with **Limitations and completeness** before any amount: quote the tool's top-level `limitations` (id, kind, message and affected fields), `total_status` and `completeness_scope`; write "none" for an empty list. A false `total_complete` means the dependent total must be labelled conditional or incomplete exactly as returned, never complete. When taxable income comes from `assemble_taxable_income`, pass its `limitations` unchanged as `upstream_limitations`; the tool then folds them into its own `limitations` and `total_status`, because a complete component calculation cannot make an assumed taxable income complete. Completeness covers only the modelled component liability; it never establishes a final settlement or removes the agent reconciliation below.
 
 End every answer with this working paper (CONVENTIONS section 8):
 
-1. **Result** for the stated income year: taxable income; gross tax; LITO; income tax after offsets; Medicare levy (say if reduced and why); Medicare levy surcharge (tier, or contingent); study loan repayment; total liability; effective rate; marginal rate on the next dollar; a provisional withholding estimate only after confirming no omitted offsets/credits. If any are present or unknown, label the dependent settlement incomplete and show the agent reconciliation.
+1. **Result** for the stated income year: taxable income; gross tax; LITO; income tax after offsets; Medicare levy (say if reduced and why); Medicare levy surcharge (tier, or contingent); study loan repayment; total liability; effective rate; marginal rate on the next dollar; the settlement tool's `refund`, `amount_owing`, component/credit reconciliation and `rule_authorities` when complete. A withholding-only estimate is provisional. If any input is unresolved or unmodelled, label the settlement incomplete and show the agent reconciliation, with no final figure.
 2. **Figures used**: key, value, status, source URL for each entry in `figures_used` (group long bracket tables as "resident rates (VERIFIED)").
 3. **Assumptions**: the tool's `assumptions` plus any you made (for example, taxable income assembled from source-labelled components).
 4. **Risk flags**: any relevant entries from `data/risk_flags/au.yaml` (for example, residency or MLS cover issues), or "none".
@@ -88,6 +92,6 @@ End every answer with this working paper (CONVENTIONS section 8):
 
 ## Agent reconciliation
 
-Record each item as absent (confirmed), supplied (source/year/amount) or unresolved: PAYG withheld; PAYG instalments actually credited by the ATO; franking gross-up and associated credit; PHI premiums/rebate received and final rebate adjustment; FITO, SBITO and other offsets; other credits and prior account balances. Separate assessable-income gross-ups from offsets/credits. Show the tool-derived components and separately produced offsets beside each other, without hand-netting. The agent must determine offset ordering, refundability, entitlement, credit matching and the final assessment/account balance. Withhold any claim of a final refund/debt for affected cases. See `docs/eofy-reviewer-pack.md`.
+Record each item as absent (confirmed), supplied (source/year/amount) or unresolved: PAYG withheld; PAYG instalments actually credited by the ATO; franking gross-up and associated credit; PHI premiums/rebate received and final rebate adjustment; FITO, SBITO and other offsets; other credits and prior account balances. Separate assessable-income gross-ups from offsets/credits. Use `individual_tax_settlement` for the supported, resolved items and show its component/credit reconciliation. Separately produced FITO, SBITO or other offsets are unmodelled inputs: report them beside tax and refuse final settlement, without hand-netting. The agent confirms entitlement and credit matching and separately reconciles the ATO account, including unpaid instalments and prior balances. See `docs/eofy-reviewer-pack.md`.
 
 References: `references/sources.md` (primary sources), `references/rules.md` (calculation order and edge cases).
