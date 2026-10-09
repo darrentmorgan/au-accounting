@@ -76,6 +76,25 @@ On the clean final committed candidate run `uv run python scripts/eofy_manifest.
 
 The scenario manifest is the E01–E18 register above bound by this document's hash. Retain a separate results manifest with one row per variant: scenario ID, year, exact prompt/input/output/trace paths and hashes, candidate commit, UTC timestamp, versions, independent expected-result authority, local result, installed-model result and professional disposition. Explicitly use **not-run** rather than dropping unexecuted scenarios. Hash the results manifest and every referenced evidence file; bind both dependency and completed-results digests in the signed opinion. The generator freezes dependencies; it does not fabricate results.
 
+### Offline results template and file-integrity check
+
+`scripts/eofy_results_manifest.py` is separate from the dependency generator. It emits a JSON template with E01–E18 explicitly **not-run**: 19 rows, because E17 has separate 2026–27 and 2027–28 planning/refusal entries. Other scenarios are 2025–26 only. On the clean committed candidate, keep all generated records and evidence in an external pack directory:
+
+```sh
+uv run python scripts/eofy_results_manifest.py template --candidate "$(git rev-parse HEAD)" > <external-pack>/records.json
+uv run python scripts/eofy_results_manifest.py freeze <external-pack>/records.json --evidence-root <external-pack> > <external-pack>/results.json
+shasum -a 256 <external-pack>/results.json
+uv run python scripts/eofy_results_manifest.py verify <external-pack>/results.json --evidence-root <external-pack> --sha256 <retained-results-digest>
+```
+
+Use different input and output files; shell redirection to the input file would truncate it. The initial template's evidence references and `run_at_utc` are null, `versions` is empty, and every result/disposition is `not-run`. No run time or software/model version is invented for an unexecuted scenario. Generation performs no computations, scenario execution, model calls, registration checks or signing.
+
+To record supplied local evidence, edit a row in `records.json`: select `local_result` (`pass` or `fail`) and `evidence_tier` (`synthetic` or `local`), supply the actual `run_at_utc` in `YYYY-MM-DDTHH:MM:SSZ` form and a nonempty `versions` mapping of software names to exact versions. Supply all five `evidence` entries (`prompt`, `input`, `output`, `trace`, `expected_authority`), each as `{"path": "relative/file.txt", "sha256": null}`. The authority file must retain the independently supplied expectation and source/year mapping; file hashing does not judge its correctness. Unexecuted rows may reference prompt/input/authority fixtures, but cannot claim output, trace or run metadata. Add variants with distinct lowercase `variant` slugs; do not remove required scenario/year coverage. Duplicate scenario ID/year/variant combinations, unknown IDs, out-of-scope years, mismatched candidate SHAs, unknown fields, missing files and paths escaping the evidence root are rejected.
+
+`freeze` supplies hashes only where null; an existing hash must match, so changed evidence cannot silently be re-frozen. Output rows and object keys have stable ordering and unchanged inputs produce identical UTF-8 bytes/digests. `verify` requires the externally retained manifest digest, checks canonical bytes and every referenced file hash, and fails on modified/missing evidence. Retain the digest outside the mutable pack; the helper checks the supplied SHA's format and row consistency, but does not authenticate the candidate, run, version, result or authority claims. Bind the same candidate to the dependency manifest separately.
+
+This offline schema keeps `installed_model_result` and `professional_disposition` fixed at **not-run**, including after a local/synthetic pass. It rejects signature/reviewer fields and creates no reviewer identity or assurance record. Actual installed-model runs and professional opinions require separate evidence and the signed-review contract above; a successful file-integrity check is not a scenario pass or professional approval.
+
 Any dependency, scenario, scope or year change invalidates the workflow opinion pending assessment and re-review. `scripts/review_status.py` remains a skill-folder prose status: it does not validate runtime/rates, partial workflow scope, registration, signed evidence or later adverse findings. It must not be cited as EOFY assurance. No placeholders are installed as review records.
 
 ## Agent reconciliation and settlement exclusion (P0-3)
