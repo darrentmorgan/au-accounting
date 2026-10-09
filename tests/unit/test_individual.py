@@ -463,3 +463,73 @@ def test_standard_work_deduction_assembly_handoff_once():
     # LITO = 325-(58,800-45,000)*.015 = 118; levy = 1,176; total = 9,218.
     out = calc("2026-27", taxable_income=assembled["taxable_income"], private_hospital_cover=True)
     assert out["total_liability"] == approx(9218)
+
+
+@pytest.mark.parametrize('year,payload,limitation,status', [
+    ('2025-26', {'taxable_income': 120000}, 'hospital_cover_not_stated', 'conditional'),
+    ('2025-26', {'taxable_income': 29000, 'has_spouse': True, 'spouse_taxable_income': 29000,
+                 'dependent_children': 1, 'private_hospital_cover': True}, 'spouse_levy_excess', 'incomplete'),
+    ('2027-28', {'taxable_income': 120000, 'private_hospital_cover': True}, 'net_labour_income_not_stated', 'incomplete'),
+    ('2025-26', {'taxable_income': 40000, 'dependent_children': 1, 'private_hospital_cover': True},
+     'sole_parent_family_tax_benefit', 'conditional'),
+    ('2025-26', {'taxable_income': 120000, 'resident_months': 6, 'private_hospital_cover': True},
+     'estimated_exemption_days', 'conditional'),
+    ('2025-26', {'taxable_income': 150000, 'has_spouse': True, 'spouse_taxable_income': 100000,
+                 'private_hospital_cover': False}, 'spouse_mls_income_assumed', 'conditional'),
+    ('2025-26', {'taxable_income': 120000, 'has_help_debt': True, 'private_hospital_cover': True},
+     'help_balance_not_stated', 'conditional'),
+])
+def test_total_limitations(year, payload, limitation, status):
+    out = calc(year, **payload)
+    assert out['total_complete'] is False
+    assert out['total_status'] == status
+    assert limitation in {item['id'] for item in out['limitations']}
+    assert all('total_liability' in item['affects'] for item in out['limitations'])
+
+
+def test_clean_total_is_complete_within_modelled_scope():
+    out = calc('2025-26', taxable_income=45000, private_hospital_cover=True)
+    assert out['total_complete'] is True
+    assert out['total_status'] == 'complete'
+    assert out['limitations'] == []
+    assert out['total_liability'] == 4863
+
+
+def test_mls_unknown_cover_boundary_only_flags_possible_surcharge():
+    at = calc('2025-26', taxable_income=101000)
+    above = calc('2025-26', taxable_income=101001)
+    assert at['total_complete'] is True
+    assert above['total_complete'] is False
+    assert above['limitations'][0]['id'] == 'hospital_cover_not_stated'
+
+
+@pytest.mark.parametrize('payload', [
+    {'taxable_income': 120000, 'private_hospital_cover': True, 'has_help_debt': True, 'help_debt_balance': 1000},
+    {'taxable_income': 120000, 'private_hospital_cover': True, 'resident_months': 6,
+     'medicare_full_exemption_days': 182},
+    {'taxable_income': 150000, 'private_hospital_cover': False, 'has_spouse': True,
+     'spouse_taxable_income': 100000, 'spouse_income_for_mls': 100000},
+    {'taxable_income': 45000, 'private_hospital_cover': True},
+])
+def test_stated_inputs_remove_conditional_limitations(payload):
+    assert calc('2025-26', **payload)['total_complete'] is True
+
+
+def test_unknown_cover_with_unpublished_tiers_is_conditional():
+    out = calc('2027-28', taxable_income=120000, net_labour_income=120000)
+    assert out['total_status'] == 'conditional'
+    assert out['limitations'][0]['id'] == 'hospital_cover_not_stated'
+
+
+def test_foreign_resident_missing_cover_is_not_a_limitation():
+    assert calc('2025-26', taxable_income=120000, residency='foreign')['total_complete'] is True
+
+
+def test_spouse_mls_assumption_remains_conditional_below_family_tier():
+    # Stated taxable incomes are below the family tier, but unstated spouse MLS add-backs
+    # could move the family into a surcharge tier.
+    out = calc('2025-26', taxable_income=120000, has_spouse=True,
+               spouse_taxable_income=50000, private_hospital_cover=False)
+    assert out['medicare_levy_surcharge'] == 0
+    assert out['total_status'] == 'conditional'
+    assert out['limitations'][0]['id'] == 'spouse_mls_income_assumed'

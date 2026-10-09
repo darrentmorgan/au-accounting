@@ -75,6 +75,8 @@ Surface the code and its message exactly as returned, then stop the affected wor
 
 ## Output
 
+Lead with **Limitations and completeness** before any amount: quote the tool's top-level `limitations` (id, kind, message and affected fields), `total_status` and `completeness_scope`; write "none" for an empty list. A false `total_complete` means the dependent total must be labelled conditional or incomplete exactly as returned, never complete. Carry forward any `assemble_taxable_income` limitations too: a complete component calculation cannot make an assumed taxable income complete. Completeness covers only the modelled component liability; it never establishes a final settlement or removes the agent reconciliation below.
+
 End every answer with this working paper (CONVENTIONS section 8):
 
 1. **Result** for the stated income year: taxable income; gross tax; LITO; income tax after offsets; Medicare levy (say if reduced and why); Medicare levy surcharge (tier, or contingent); study loan repayment; total liability; effective rate; marginal rate on the next dollar; a provisional withholding estimate only after confirming no omitted offsets/credits. If any are present or unknown, label the dependent settlement incomplete and show the agent reconciliation.

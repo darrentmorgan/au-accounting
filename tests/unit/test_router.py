@@ -316,3 +316,39 @@ def test_individual_payment_calendar_does_not_extend_late_lodgment():
     assert "later of" in pay["rule"]
     assert "Lodging late does not" in pay["rule"]
     assert "otherwise 21 days" not in pay["rule"]
+
+
+def test_prior_losses_make_assembly_conditional():
+    payload = {'components': [{'kind': 'salary_wages', 'amount': 45000, 'source_skill': 'user'}]}
+    code, clean = run('assemble_taxable_income', '2025-26', payload)
+    assert code == 0
+    assert clean['total_complete'] is True
+    assert clean['limitations'] == []
+    code, out = run('assemble_taxable_income', '2025-26', {**payload, 'prior_year_tax_losses': 1000})
+    assert code == 0
+    assert out['total_complete'] is False
+    assert out['total_status'] == 'conditional'
+    assert out['limitations'][0]['id'] == 'net_exempt_income_assumed_nil'
+    assert out['taxable_income'] == 44000
+
+
+def test_assembly_unresolved_gst_warning_is_conditional():
+    code, out = run('assemble_taxable_income', '2025-26', {
+        'components': [{'kind': 'business_net', 'amount': 45000, 'source_skill': 'sole-trader-business'}],
+        'gst_registered': True,
+    })
+    assert code == 0
+    assert out['consistent'] is True
+    assert out['total_complete'] is False
+    assert out['total_status'] == 'conditional'
+    assert out['limitations'][0]['message'] == out['warnings'][0]
+
+
+def test_blocked_assembly_is_incomplete():
+    component = {'kind': 'salary_wages', 'amount': 45000, 'source_skill': 'user'}
+    code, out = run('assemble_taxable_income', '2025-26', {'components': [component, component]})
+    assert code == 0
+    assert out['total_complete'] is False
+    assert out['total_status'] == 'incomplete'
+    assert out['taxable_income'] is None
+    assert out['limitations'][0]['kind'] == 'exclusion'
