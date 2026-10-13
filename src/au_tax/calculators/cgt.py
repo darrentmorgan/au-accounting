@@ -362,7 +362,7 @@ def capital_gain(figures: Figures, inp: CapitalGainInput) -> dict:
     warnings: list[str] = []
     escalations: list[dict] = []
     figures = event_figures(figures, inp.event_date, warnings)  # date-effective: the income year of the event
-    event, acq = inp.event_date, inp.acquisition_date
+    event = inp.event_date
     post_reform = event >= REFORM_DATE
     regime = "from_1_july_2027" if post_reform else "before_1_july_2027"
     items = _items(inp)

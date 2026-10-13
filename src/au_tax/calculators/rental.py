@@ -464,7 +464,6 @@ def _negative_gearing(figures: Figures, inp: RentalInput, income: float, deducti
         raise Refusal("AU-RENT-002", "acquisition date needed to decide whether the dwelling is grandfathered")
     if status == "new_residential_dwelling_claimed":
         warnings.append("New residential dwelling status cannot be assessed (ministerial instrument not made). No effect on this income year.")
-    net_income = income - deductions
     if applies and status == "subject_to_quarantine":
         q = quarantine_step(deductions, income, inp.quarantined_brought_forward, inp.other_exempt_dwellings_net_income)
         block["quarantined_carried_forward"] = _r(q["quarantined_carried_forward"])

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 from mcp.server.mcpserver import MCPServer
 
 from au_tax.cli import list_keys
