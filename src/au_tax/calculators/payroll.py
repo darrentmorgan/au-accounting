@@ -17,7 +17,7 @@ import math
 from datetime import date, timedelta
 from typing import Literal
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field
 
 from au_tax.figures import FigureError, Figures
 from au_tax.holidays import COMMONWEALTH, business_days_after as business_days_after_checked, roll_due_date

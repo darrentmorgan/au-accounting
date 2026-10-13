@@ -39,8 +39,6 @@ def _fraction(figures: Figures) -> float:
 
 # ---------------------------------------------------------------- BAS worksheet
 
-SaleClass = Literal["taxable", "export_goods", "gst_free", "input_taxed", "margin_scheme", "out_of_scope"]
-PurchaseClass = Literal["taxable", "gst_free", "input_taxed_use", "private", "reverse_charge", "out_of_scope"]
 AdjustmentReason = Literal[
     "bad_debt_written_off_by_supplier",  # s21-5 decreasing (supplier)
     "bad_debt_recovered_by_supplier",    # s21-10 increasing (supplier)
