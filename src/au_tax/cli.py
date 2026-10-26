@@ -6,8 +6,16 @@ import argparse
 import json
 import sys
 
+from pydantic import BaseModel, ConfigDict
+
 from au_tax.figures import FigureError, Figures
 from au_tax.registry import figure_refusal, run
+
+
+class FigureInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    key: str
 
 
 def list_keys(node: dict, prefix: str = "") -> list[dict]:
@@ -50,7 +58,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "keys":
             result = {"keys": list_keys(figures.data)}
         else:
-            result = {"key": payload["key"], "value": figures.get(payload["key"])}
+            inputs = FigureInput.model_validate(payload)
+            result = {"key": inputs.key, "value": figures.get(inputs.key)}
     except FigureError as e:
         return emit(e.exit_code, {"error": str(e), "income_year": args.year,
                                   "refusal": figure_refusal(e)})
