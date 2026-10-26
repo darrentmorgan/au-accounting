@@ -27,7 +27,7 @@ packages specified by `pyproject.toml` and `uv.lock` (Python 3.13 or later).
 1. Read this coverage record and inspect changes since the sync commit:
 
    ```bash
-   git diff 7289aa737402747a9894853ebe63c31e6a5009af -- src/au_tax/calculators/individual.py src/au_tax/calculators/settlement.py src/au_tax/figures.py data/rates scripts/verify_invariants.py tests/unit/test_invariants.py
+   git diff 0a762b716ce14351dfd7457d0f468e4ea46f17cc -- src/au_tax/calculators/individual.py src/au_tax/calculators/settlement.py src/au_tax/figures.py data/rates scripts/verify_invariants.py tests/unit/test_invariants.py
    ```
 
 2. Check that the actual function paths, output keys, published figures and bounds
@@ -68,7 +68,7 @@ packages specified by `pyproject.toml` and `uv.lock` (Python 3.13 or later).
 
 ## Coverage record
 
-Sync commit: `7289aa737402747a9894853ebe63c31e6a5009af` (calculator, figure-loader, verifier and tests
+Sync commit: `0a762b716ce14351dfd7457d0f468e4ea46f17cc` (calculator, figure-loader, verifier and tests
 reviewed together; all seven gates passed).
 Advance this to a real commit only after reviewing the covered changes and
 confirming that the checks and coverage record describe that commit. Do not move
@@ -79,7 +79,7 @@ coverage before relying on the record.
 | Real code | Checks |
 | --- | --- |
 | `individual.py`: `_income_tax`, `_lito` | Statutory LITO in `[0, max_offset]` and non-increasing; resident (one, six and twelve months), foreign and WHM base tax and tax less statutory LITO non-decreasing over each ordered grid. |
-| `individual.py`: `_core`, `_wato`, `individual_income_tax` | Public applied LITO/WATO nonnegative, capped at their maxima and remaining gross income tax; reported `income_tax_after_offsets == max(0, round(gross_tax - lito - wato, 2))`; public gross/net monotonicity with fixed labour income. |
+| `individual.py`: `_core`, `_wato`, `individual_income_tax` | Public applied LITO/WATO nonnegative, capped at their maxima and remaining gross income tax; reported `income_tax_after_offsets == max(0, round(gross_tax - lito - wato, 2))`; public gross/net monotonicity with fixed labour income; exact cent sum of reported net tax, Medicare levy, MLS and HELP equals total liability (also checked through settlement). |
 | `individual.py`: `_medicare_levy`, `_mls`, `_help` through settlement | Single Medicare boundaries, family shade-in including children, MLS single/family tiers, HELP repayment tiers and balance caps exercised in settlement; all exemption-day combinations in seeded cases are bounded to the public input domain. |
 | `settlement.py`: `_phi` through `individual_tax_settlement` | PHI refundable/excess amounts nonnegative and mutually exclusive, entitlement less received equals refundable less excess; exact row sums, tier selection and per-row half-up rounding. |
 | `settlement.py`: `individual_tax_settlement`, `_money` | Liability plus PHI excess; credits by type and sum; signed balance; refund and owing sign, mutual exclusion and exact net identity. |
@@ -132,11 +132,11 @@ The real calculators now pass all 17489 cases: base 8540, public components
 5278, boundary settlements 701, PHI 2268, credit products 162, seeded 512 and
 safety 28. The standalone verifier takes approximately 1.4 seconds on the
 validation machine; this is measured bounded execution, not a universal runtime
-guarantee. All seven `./scripts/check_all.sh` gates passed, including 2090 pytest tests
-and the verifier in 1.404 seconds. The domain skill lint still covers exactly
+guarantee. All seven `./scripts/check_all.sh` gates passed, including 2094 pytest tests
+and the verifier in 1.556 seconds. The domain skill lint still covers exactly
 19 tax-domain skills; this developer skill is outside that directory.
 
-Two actual-source scratch checks were performed with restoration in `finally`:
+Three actual-source scratch checks were performed with restoration in `finally`:
 
 - Add one dollar to `_lito`'s return value. Observed exit 1:
 
@@ -151,10 +151,20 @@ Two actual-source scratch checks were performed with restoration in `finally`:
   FAIL non-refundable offset balance: 2025-26 resident, income=45001, net_labour_income=0; expected 3963.31, got 3963.32
   ```
 
+- Add one cent to `individual_income_tax`'s total liability. Observed exit 1:
+
+  ```text
+  FAIL total liability component sum: 2025-26 resident, income=0, net_labour_income=0; expected 0.00, got 0.01
+  ```
+
 The fixed source was restored byte-for-byte and the verifier passed again.
 `tests/unit/test_individual.py` also contains four independently computed cent
 rounding regressions across all supported years, including WATO, total liability
-and the withholding estimate. `tests/unit/test_invariants.py` has 31 passing tests,
+and the withholding estimate. Additional regressions assert the unrounded next-dollar
+marginal rate of 0.335 at 55000 in 2025-26 and exact component cents at 118114
+with one uncovered day. `_core` retains raw net tax for the marginal calculation;
+total liability sums each rounded reported component. Both offset and settlement
+checkers reject a one-cent total/component mismatch. `tests/unit/test_invariants.py` has 33 passing tests,
 including corruption probes and command execution. These do not substitute for
 the real-source scratch evidence above.
 
