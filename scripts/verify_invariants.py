@@ -98,6 +98,13 @@ def check_monotonic(gross: float, net: float, previous: tuple[float, float], con
             f'tax fell from {previous[1]} to {net}')
 
 
+def check_component_total(tax: dict, context: str) -> None:
+    components = ('income_tax_after_offsets', 'medicare_levy', 'medicare_levy_surcharge', 'help_repayment')
+    check_money_fields(tax, ('total_liability', *components), context)
+    equal(money(tax['total_liability']), sum((money(tax[k]) for k in components), Decimal(0)),
+          'total liability component sum', context)
+
+
 def check_offsets(tax: dict, cap: float, context: str, wato_cap: float = 0) -> None:
     check_money_fields(tax, ('gross_tax', 'income_tax_after_offsets'), context)
     check_money_fields(tax['offsets'], ('lito',), context)
@@ -112,6 +119,7 @@ def check_offsets(tax: dict, cap: float, context: str, wato_cap: float = 0) -> N
             f'WATO {wato}, tax remaining {gross - lito}, maximum {wato_cap}')
     equal(tax['income_tax_after_offsets'], max(0, round(gross - lito - wato, 2)),
           'non-refundable offset balance', context)
+    check_component_total(tax, context)
 
 
 def check_phi(phi: dict, context: str) -> None:
@@ -131,7 +139,7 @@ def check_phi(phi: dict, context: str) -> None:
 def check_settlement(out: dict, inp: settlement.IndividualSettlementInput, context: str) -> None:
     check_money_fields(out, ('liability_including_phi_excess', 'total_credits',
                             'net_amount_owing', 'refund', 'amount_owing'), context)
-    check_money_fields(out['tax_components'], ('total_liability',), context)
+    check_component_total(out['tax_components'], context)
     check_money_fields(out['credits'], ('payg_withheld', 'payg_instalments',
                                        'refundable_franking', 'phi_refundable_offset'), context)
     phi = out['private_health_rebate']

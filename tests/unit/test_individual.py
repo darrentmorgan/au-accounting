@@ -2,6 +2,7 @@
 shown step by step. None were produced by running the calculator."""
 
 import copy
+from decimal import Decimal
 
 import pytest
 
@@ -576,3 +577,15 @@ def test_upstream_exclusion_makes_downstream_total_incomplete():
     out = calc("2025-26", taxable_income=45000, private_hospital_cover=True,
                upstream_limitations=[{"id": "x", "kind": "exclusion", "message": "m"}])
     assert out["total_status"] == "incomplete"
+
+
+def test_lito_second_taper_marginal_rate():
+    out = calc("2025-26", taxable_income=55000, private_hospital_cover=True)
+    # Income tax .30 + LITO taper .015 + Medicare .02 on the next dollar.
+    assert out["marginal_rate_tax_and_medicare"] == pytest.approx(0.335)
+
+
+def test_partial_cover_total_equals_reported_component_cents():
+    out = calc("2025-26", taxable_income=118114, days_without_cover=1)
+    components = ("income_tax_after_offsets", "medicare_levy", "medicare_levy_surcharge", "help_repayment")
+    assert Decimal(str(out["total_liability"])) == sum(Decimal(str(out[k])) for k in components)

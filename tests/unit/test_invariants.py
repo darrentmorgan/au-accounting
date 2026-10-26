@@ -146,3 +146,15 @@ def test_fractional_cent_corruption_is_caught(valid_settlement, field):
     broken[field] += 0.001
     with pytest.raises(v.InvariantViolation, match='reported money precision'):
         v.check_settlement(broken, inp, 'sub-cent corruption')
+
+
+@pytest.mark.parametrize('checker', ['offsets', 'settlement'])
+def test_total_component_mismatch_is_caught(valid_settlement, checker):
+    out, inp = deepcopy(valid_settlement)
+    tax = out['tax_components']
+    tax['total_liability'] += 0.01
+    with pytest.raises(v.InvariantViolation, match='total liability component sum'):
+        if checker == 'offsets':
+            v.check_offsets(tax, 700, 'corrupt component total')
+        else:
+            v.check_settlement(out, inp, 'corrupt component total')

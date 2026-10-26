@@ -441,9 +441,10 @@ def _core(figures: Figures, inp: IndividualTaxInput, ti: float, assumptions: lis
     levy, levy_detail = _medicare_levy(figures, inp, ti, days, assumptions, warnings)
     # Reconcile the reported cent amounts before carrying net tax into liability
     # and settlement; rounding only the unrounded difference can add a cent.
+    raw_net = gross - lito - wato
     net = max(0.0, _r(_r(gross) - _r(lito) - _r(wato)))
     return {"gross": gross, "tft": tft, "bracket_rate": bracket_rate, "lito": lito, "wato": wato,
-            "wato_detail": wato_detail, "net": net, "levy": levy, "levy_detail": levy_detail, "days": days}
+            "wato_detail": wato_detail, "net": net, "raw_net": raw_net, "levy": levy, "levy_detail": levy_detail, "days": days}
 
 
 @calculator("individual_income_tax", IndividualTaxInput)
@@ -484,11 +485,11 @@ def individual_income_tax(figures: Figures, inp: IndividualTaxInput) -> dict:
     # marginal rate on the next dollar: income tax after LITO plus Medicare levy (MLS/HELP cliffs excluded)
     try:
         nxt = _core(figures, inp, ti + 1, [], [])
-        marginal = round((nxt["net"] + nxt["levy"]) - (c["net"] + c["levy"]), 4)
+        marginal = round((nxt["raw_net"] + nxt["levy"]) - (c["raw_net"] + c["levy"]), 4)
     except FigureError:
         marginal = None
 
-    total = c["net"] + c["levy"] + mls + help_amt
+    total = _r(c["net"]) + _r(c["levy"]) + _r(mls) + _r(help_amt)
     if inp.residency == "resident" and inp.resident_months < 12:
         assumptions.append(f"Part-year resident for {inp.resident_months} months: tax-free threshold pro-rated (ITRA s20); "
                            "resident rates apply to all taxable income; LITO available in full.")
