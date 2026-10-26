@@ -27,7 +27,7 @@ packages specified by `pyproject.toml` and `uv.lock` (Python 3.13 or later).
 1. Read this coverage record and inspect changes since the sync commit:
 
    ```bash
-   git diff 4f7c981 -- src/au_tax/calculators/individual.py src/au_tax/calculators/settlement.py src/au_tax/figures.py data/rates scripts/verify_invariants.py tests/unit/test_invariants.py
+   git diff 7289aa737402747a9894853ebe63c31e6a5009af -- src/au_tax/calculators/individual.py src/au_tax/calculators/settlement.py src/au_tax/figures.py data/rates scripts/verify_invariants.py tests/unit/test_invariants.py
    ```
 
 2. Check that the actual function paths, output keys, published figures and bounds
@@ -68,7 +68,8 @@ packages specified by `pyproject.toml` and `uv.lock` (Python 3.13 or later).
 
 ## Coverage record
 
-Sync commit: `4f7c981` (calculator and figure-loader implementation inspected).
+Sync commit: `7289aa737402747a9894853ebe63c31e6a5009af` (calculator, figure-loader, verifier and tests
+reviewed together; all seven gates passed).
 Advance this to a real commit only after reviewing the covered changes and
 confirming that the checks and coverage record describe that commit. Do not move
 it forward merely because a check happened to pass. After changes that skipped
