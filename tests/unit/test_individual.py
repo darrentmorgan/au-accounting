@@ -28,6 +28,26 @@ def test_registered_as_tool():
 
 # ---------------------------------------------------------------- resident rates 2025-26
 
+@pytest.mark.parametrize("year,labour,gross,wato,net,total", [
+    ("2025-26", 0, 4288.30, 0, 3963.31, 4863.33),
+    ("2026-27", 0, 4020.30, 0, 3695.31, 4595.33),
+    ("2027-28", 0, 3752.30, 0, 3427.31, 4327.33),
+    ("2027-28", 50000, 3752.30, 250, 3177.31, 4077.33),
+])
+def test_offset_cent_rounding_reconciles_reported_components(year, labour, gross, wato, net, total):
+    # At 45,001: gross = first taxed slice + .30; statutory LITO
+    # = 325 - .015 = 324.985, reported as 324.99. Net must subtract
+    # that reported offset, then add Medicare 45,001 * .02 = 900.02.
+    out = calc(year, taxable_income=45001, private_hospital_cover=True,
+               net_labour_income=labour, tax_withheld=5000)
+    assert out["gross_tax"] == gross
+    assert out["offsets"]["lito"] == 324.99
+    assert out["offsets"].get("working_australians_tax_offset", 0) == wato
+    assert out["income_tax_after_offsets"] == net
+    assert out["total_liability"] == total
+    assert out["estimated_refund"] == round(5000 - total, 2)
+
+
 def test_2025_26_tax_free_threshold_boundary():
     # 18,200 is the top of the nil band. LITO 700 is capped at gross tax 0. Medicare: 18,200 <= 28,011 lower -> nil.
     out = calc("2025-26", taxable_income=18200)

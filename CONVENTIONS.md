@@ -104,3 +104,4 @@ All checks below run through `./scripts/check_all.sh` (and CI). Runtime contract
 | §5: unknown calculator input keys rejected, including nested models | `@calculator` / `forbid_extra`; `test_registry_strict.py`, `test_mcp_boundaries.py` |
 | §5: lookup payload validation precedes rate loading; CLI/MCP envelopes agree | shared `lookups.py`; `test_lookup_contracts.py`, `test_cli.py` |
 | §7: risk flag schemas and emitted IDs exist | `lint_risk_flags.py`; risk flag lint unit tests |
+| §5: bounded individual tax offset bounds/monotonicity, settlement accounting and refusal safety | `verify_invariants.py`; `test_invariants.py`; coverage and sync record in `.cursor/skills/verify-individual-settlement/SKILL.md` |

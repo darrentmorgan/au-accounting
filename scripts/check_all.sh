@@ -14,6 +14,7 @@ run() {
   fi
 }
 run pytest uv run pytest -q
+run verify_invariants uv run python scripts/verify_invariants.py
 run validate_rates uv run scripts/validate_rates.py
 run validate_holidays uv run scripts/validate_holidays.py
 run lint_skills uv run python scripts/lint_skills.py

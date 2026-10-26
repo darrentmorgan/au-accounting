@@ -439,8 +439,11 @@ def _core(figures: Figures, inp: IndividualTaxInput, ti: float, assumptions: lis
     wato, wato_detail = _wato(figures, inp, assumptions, warnings)
     wato = min(wato, gross - lito)  # both offsets are non-refundable: together they cannot exceed the tax
     levy, levy_detail = _medicare_levy(figures, inp, ti, days, assumptions, warnings)
+    # Reconcile the reported cent amounts before carrying net tax into liability
+    # and settlement; rounding only the unrounded difference can add a cent.
+    net = max(0.0, _r(_r(gross) - _r(lito) - _r(wato)))
     return {"gross": gross, "tft": tft, "bracket_rate": bracket_rate, "lito": lito, "wato": wato,
-            "wato_detail": wato_detail, "net": gross - lito - wato, "levy": levy, "levy_detail": levy_detail, "days": days}
+            "wato_detail": wato_detail, "net": net, "levy": levy, "levy_detail": levy_detail, "days": days}
 
 
 @calculator("individual_income_tax", IndividualTaxInput)
