@@ -6,30 +6,8 @@ import argparse
 import json
 import sys
 
-from pydantic import BaseModel, ConfigDict
-
-from au_tax.figures import FigureError, Figures
-from au_tax.registry import figure_refusal, run
-
-
-class FigureInput(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    key: str
-
-
-def list_keys(node: dict, prefix: str = "") -> list[dict]:
-    """Flatten a rates file into [{key, status, unit}] for discovery."""
-    out = []
-    for name, child in node.items():
-        if name == "meta" and not prefix:
-            continue
-        key = f"{prefix}{name}"
-        if isinstance(child, dict) and "status" in child:
-            out.append({"key": key, "status": child["status"], "unit": child.get("unit", "")})
-        elif isinstance(child, dict):
-            out.extend(list_keys(child, key + "."))
-    return out
+from au_tax.lookups import run_lookup
+from au_tax.registry import run
 
 
 def emit(code: int, out: dict) -> int:
@@ -53,21 +31,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command not in ("keys", "figure"):
         return emit(*run(args.command, args.year, payload, args.allow_draft))
-    try:
-        figures = Figures(args.year, allow_draft=args.allow_draft)
-        if args.command == "keys":
-            result = {"keys": list_keys(figures.data)}
-        else:
-            inputs = FigureInput.model_validate(payload)
-            result = {"key": inputs.key, "value": figures.get(inputs.key)}
-    except FigureError as e:
-        return emit(e.exit_code, {"error": str(e), "income_year": args.year,
-                                  "refusal": figure_refusal(e)})
-    except (KeyError, ValueError, TypeError) as e:
-        return emit(2, {"error": f"invalid input: {e}"})
-
-    return emit(0, {"income_year": args.year, **result,
-                    "figures_used": figures.report(), "draft": figures.draft})
+    return emit(*run_lookup(args.command, args.year, payload, args.allow_draft))
 
 
 if __name__ == "__main__":

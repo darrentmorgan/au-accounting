@@ -14,7 +14,8 @@ def _double(figures, inputs):
     """Test-only calculator."""
     if inputs.amount < 0:
         raise Refusal("AU-GEN-002", "negative")
-    return {"result": inputs.amount * 2 * figures.get("div7a.benchmark_interest_rate")}
+    return {"result": inputs.amount * 2 * figures.get("div7a.benchmark_interest_rate"),
+            "assumptions": [], "warnings": []}
 
 
 def test_registry_envelope_and_refusal():

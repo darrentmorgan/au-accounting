@@ -4,9 +4,8 @@ from __future__ import annotations
 
 from mcp.server.mcpserver import MCPServer
 
-from au_tax.cli import list_keys
-from au_tax.figures import FigureError, Figures
-from au_tax.registry import figure_refusal, load_all, run
+from au_tax.lookups import run_lookup
+from au_tax.registry import load_all, run
 
 server = MCPServer(
     name="au-tax",
@@ -21,24 +20,18 @@ server = MCPServer(
 
 def list_figures(income_year: str) -> dict:
     """List every figure key in the rates file for an income year (e.g. 2026-27), with status and unit."""
-    try:
-        return {"income_year": income_year, "keys": list_keys(Figures(income_year, allow_draft=True).data)}
-    except FigureError as e:
-        return {"error": str(e)}
+    code, out = run_lookup("keys", income_year, {})
+    return {"exit_code": code, **out}
 
 
 def get_figure(income_year: str, key: str, allow_draft: bool = False) -> dict:
     """Get one figure (value, status, primary source) by key, e.g. div7a.benchmark_interest_rate.
     Unverified figures are refused with AU-GEN-001 unless allow_draft is true; a figure with no
     published value is refused with AU-GEN-003 (no draft is possible)."""
-    try:
-        f = Figures(income_year, allow_draft=allow_draft)
-        value = f.get(key)
-        return {"income_year": income_year, "key": key, "value": value,
-                "figures_used": f.report(), "draft": f.draft}
-    except FigureError as e:
-        return {"exit_code": e.exit_code, "error": str(e), "income_year": income_year,
-                "refusal_code": e.code, "refusal": figure_refusal(e)}
+    code, out = run_lookup("figure", income_year, {"key": key}, allow_draft)
+    if "refusal" in out:
+        out["refusal_code"] = out["refusal"]["code"]  # legacy MCP alias
+    return {"exit_code": code, **out}
 
 
 def _make_tool(name: str, model):

@@ -45,8 +45,9 @@ Rules every contributor (human or agent) follows. Where this file and a skill di
 - Refuse with `raise Refusal("<code>", "<detail>")`; the code must exist in `data/refusals/*.yaml` (add it there first: general `AU-GEN-*` codes in `au.yaml`, domain codes in `<domain>.yaml`).
 - Skills reach calculators through the bundled MCP server `au-tax` (tools appear to the model as `mcp__plugin_au-accounting_au-tax__<tool_name>`). Skills name tools by `<tool_name>`; they never shell out.
 - The `au-tax <tool_name> --year 2026-27 --json '<input>'` CLI exists for humans and tests.
-- Envelope returned (CLI and MCP alike): `exit_code`, `income_year`, result fields, `figures_used` (key, value, status, source), `draft`, plus `refusal` when refused. Calculators should also return `assumptions` and `warnings` lists.
+- Envelope returned (CLI and MCP alike): `exit_code`, `income_year`, result fields, `figures_used` (key, value, status, source), `draft`, plus `refusal` when refused. Every successful calculator result must include explicit `assumptions` and `warnings` lists of strings (empty is allowed); `@calculator` checks this for direct calls and registered tools. A broken result is a contributor error (`CalculatorContractError`), never an invalid-input response or an implicitly empty list.
 - Input models reject unknown keys (`extra="forbid"`, applied to every input model and nested model by `@calculator`), so a misspelt field is exit code 2, never silently ignored.
+- CLI `keys` takes an empty JSON object; `figure` takes only a string `key`. Shared lookup models validate before opening rates files. CLI and MCP lookups share validation, figure refusals and envelopes; MCP `get_figure` also keeps its legacy `refusal_code` alias.
 - Figure refusals: `AU-GEN-001` when a figure has a value but is not VERIFIED (a draft with `allow_draft` is possible); `AU-GEN-003` when the figure has no published value (no rates file, key absent or null), so no draft is possible.
 - Exit codes: 0 ok, 2 invalid input, 3 refused, 4 missing or unverified figure without `allow_draft`.
 - Every calculator has pytest tests in `tests/unit/test_<domain>.py` with expected values from an ATO calculator, ATO worked example, or a hand computation shown step by step in the test. Never generate expected values by running our own code.
@@ -88,3 +89,18 @@ Every skill that produces a working paper ends with:
 
 - Work on branches; `main` only via merge. Parallel domain work uses worktrees under `.claude/worktrees/`.
 - No secrets, no client data in the repo. Client fixtures are synthetic.
+
+## 12. Rule <-> Enforcement
+
+All checks below run through `./scripts/check_all.sh` (and CI). Runtime contracts also protect direct calculator calls.
+
+| Rule | Enforcement |
+| --- | --- |
+| §2: figure schemas, overlays, verification and cross-year provenance | `validate_rates.py`; `Figures`; `test_rate_loading_boundaries.py`, `test_figures.py` |
+| §2: holiday schema, calendar rules and coverage | `validate_holidays.py`; `test_holidays.py` |
+| §§2, 4: skill layout, figure literals, glossary and tool names | `lint_skills.py`; lint unit tests |
+| §5: every calculator returns explicit `assumptions` and `warnings` lists of strings | `@calculator` result guard; `test_calculator_contracts.py` and domain unit tests |
+| §§5, 6: only catalogued refusal codes, including keyword/aliased calls | AST checks in `lint_refusals.py`; `Refusal` constructor checks dynamic codes; `test_lint.py`, `test_calculator_contracts.py` |
+| §5: unknown calculator input keys rejected, including nested models | `@calculator` / `forbid_extra`; `test_registry_strict.py`, `test_mcp_boundaries.py` |
+| §5: lookup payload validation precedes rate loading; CLI/MCP envelopes agree | shared `lookups.py`; `test_lookup_contracts.py`, `test_cli.py` |
+| §7: risk flag schemas and emitted IDs exist | `lint_risk_flags.py`; risk flag lint unit tests |
