@@ -2,6 +2,8 @@ import importlib.util
 import sys
 from pathlib import Path
 
+import pytest
+
 SCRIPTS = Path(__file__).resolve().parents[2] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
@@ -112,6 +114,39 @@ def test_refusal_raised_in_src_must_exist(tmp_path):
     (tmp_path / "src" / "m.py").write_text('raise Refusal("AU-GEN-001")\nraise Refusal("AU-ZZZ-404", "x")\n')
     errs = lr.lint_refusals(tmp_path)
     assert len(errs) == 1 and "AU-ZZZ-404" in errs[0]
+
+
+@pytest.mark.parametrize("source", [
+    'raise Refusal(code="AU-ZZZ-404", detail="x")',
+    'raise Refusal(\n    "AU-ZZZ-" "404", "x"\n)',
+    'from au_tax.registry import Refusal as Stop\nraise Stop("AU-ZZZ-404")',
+    'from au_tax import registry as reg\nraise reg.Refusal(code="AU-ZZZ-404")',
+])
+def test_refusal_call_syntax_cannot_bypass_catalogue(tmp_path, source):
+    make(tmp_path)
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "m.py").write_text(source + "\n")
+    errs = lr.lint_refusals(tmp_path)
+    assert len(errs) == 1
+    assert "src/m.py:" in errs[0] and "AU-ZZZ-404" in errs[0]
+
+
+def test_refusal_examples_are_not_calls(tmp_path):
+    make(tmp_path)
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "m.py").write_text(
+        '# Refusal("AU-ZZZ-404")\n\'\'\'Example: Refusal("AU-ZZZ-404")\'\'\'\n'
+        'raise Refusal(code="AU-GEN-001")\n'
+    )
+    assert lr.lint_refusals(tmp_path) == []
+
+
+def test_refusal_lint_reports_invalid_python(tmp_path):
+    make(tmp_path)
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "m.py").write_text("raise Refusal(\n")
+    errs = lr.lint_refusals(tmp_path)
+    assert len(errs) == 1 and "invalid Python" in errs[0]
 
 
 def test_review_status_hash_and_states(tmp_path):

@@ -6,7 +6,7 @@ from __future__ import annotations
 import importlib
 import pkgutil
 from dataclasses import dataclass
-from functools import cache
+from functools import cache, wraps
 from pathlib import Path
 from typing import Any, Callable, get_args
 
@@ -24,6 +24,8 @@ class Refusal(Exception):
     exit_code = 3
 
     def __init__(self, code: str, detail: str = ""):
+        if code not in refusal_catalogue():
+            raise ValueError(f"unknown refusal code {code}; add it to data/refusals first")
         super().__init__(code)
         self.code = code
         self.detail = detail
@@ -32,6 +34,20 @@ class Refusal(Exception):
 class InputError(ValueError):
     """Raise when inputs contradict each other in a way only the calculator can see (for example nights that
     do not add up to the days in the income year). Exit code 2, like a validation error."""
+
+
+class CalculatorContractError(RuntimeError):
+    """A contributor broke the result contract; this is not invalid user input."""
+
+
+def validate_result(name: str, result: dict) -> None:
+    """Require explicit narrative lists; never conceal an omission with empty defaults."""
+    if not isinstance(result, dict):
+        raise CalculatorContractError(f"{name}: calculator must return a dict")
+    for field in ("assumptions", "warnings"):
+        value = result.get(field)
+        if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
+            raise CalculatorContractError(f"{name}: {field} must be a list of strings")
 
 
 @cache
@@ -95,8 +111,15 @@ def calculator(name: str, input_model: type[BaseModel]):
         if name in REGISTRY:
             raise ValueError(f"duplicate calculator {name}")
         forbid_extra(input_model)
-        REGISTRY[name] = Calculator(name, (fn.__doc__ or "").strip(), input_model, fn)
-        return fn
+
+        @wraps(fn)
+        def checked(*args, **kwargs):
+            result = fn(*args, **kwargs)
+            validate_result(name, result)
+            return result
+
+        REGISTRY[name] = Calculator(name, (fn.__doc__ or "").strip(), input_model, checked)
+        return checked
 
     return wrap
 
